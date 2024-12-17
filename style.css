@@ -1,3 +1,27 @@
+/* ====================================================
+   GENERAL STYLES
+   ==================================================== */
+
+/* Reset and Box Sizing */
+header,
+nav,
+main,
+footer,
+section,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+li {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body Styles */
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -8,6 +32,7 @@ body {
   text-align: center;
 }
 
+/* Link Styles */
 a {
   color: #FFCB05;
   text-decoration: none;
@@ -18,59 +43,59 @@ a:focus {
   text-decoration: underline;
 }
 
-header, nav, main, footer, section, div, p, h1, h2, h3, h4, ul, li {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ====================================================
+   NAVBAR STYLES
+   ==================================================== */
 
-/* NAVBAR */
+/* Navigation Bar Container */
 nav {
   background: #00274C;
   color: #fff;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
+/* Flex Container for Navbar Items */
 .nav-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Align items vertically */
+  align-items: center; /* Vertically centers items */
   flex-wrap: wrap;
 }
 
+/* Left and Right Sections within Navbar */
 .left-section,
 .right-section {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically centers items */
 }
 
+/* Right Section Specific Styles */
 .right-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* Ensure spacing between nav icons and sign-in button */
-  height: 30px; /* Set a fixed height for the right section */
+  gap: 1rem; /* Spacing between nav icons and sign-in button */
+  height: 30px; /* Fixed height for the right section */
 }
 
+/* Logo Styles */
 .logo-link img {
   height: 40px;
   cursor: pointer;
 }
 
+/* Search Form Styles */
 .search-form {
   margin-left: 1rem;
-  display: inline-block;
+  display: flex;
+  align-items: center; /* Vertically centers items */
   background: #fff;
   border-radius: 4px;
-  padding: 0.25rem 0.25rem 0.25rem 0.5rem; /* Double the padding on the left */
-  display: flex;
-  align-items: center; /* Align items vertically */
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem; /* Extra padding on the left */
 }
 
 .search-form input {
   border: none;
   outline: none;
   font-size: 0.9rem;
-  width: 200px; /* Ensure full display text is shown */
+  width: 200px; /* Ensures full display of text */
 }
 
 .search-form button {
@@ -84,6 +109,7 @@ nav {
   margin-left: 0.5rem;
 }
 
+/* Sign-In Button Styles */
 .sign-in-button {
   background: #FFCB05;
   border: none;
@@ -95,24 +121,24 @@ nav {
   color: #000;
   font-size: 0.9rem;
   margin: 0 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   height: 30px;
-  gap: 0.25rem; /* Adjust spacing between span and text */
+  gap: 0.25rem; /* Spacing between icon and text */
 }
 
 .sign-in-button img {
-  margin-right: 0.25rem;
-  margin-left: 0.25rem;
-  height:30px;
+  margin: 0 0.25rem;
+  height: 30px;
 }
 
+/* Navigation Icons Styles */
 .nav-icons {
   list-style: none;
   display: flex;
+  align-items: center; /* Vertically centers items */
+  height: 30px;
   margin: 0;
   padding: 0;
-  align-items: center; /* Align items vertically */
-  height:30px;
 }
 
 .nav-icons li {
@@ -124,45 +150,110 @@ nav {
   border-radius: 4px;
   background: #FFCB05;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  height:30px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  height: 30px;
 }
 
+/* ====================================================
+   HERO SECTION STYLES
+   ==================================================== */
 
-/* HERO SECTION */
+/* Hero Section Container */
 .hero-section {
   position: relative;
   min-height: 80vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url("assets/MPhotos/MPHOTO_CampusAerials20(310).JPG");
+  background-image: url("assets/MPhotos/Aerials/2020_310.jpg");
   color: #fff;
   text-align: center;
   padding: 2rem;
 }
 
-.hero-overlay {
-  background: rgba(0,0,0,0.5);
-  padding: 2rem;
+/* Hero Content Box */
+.hero-content {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3rem 2rem;
   border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-.hero-overlay h1 {
+.hero-content h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
 }
 
-.hero-overlay p {
-  margin: 1rem 0 0 0;
-  font-size: 1.1rem;
+/* Hero Search Form */
+.hero-search-form {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 
-/* CONTENT SECTIONS */
+.hero-search-form input {
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 500px;
+  padding: 0.75rem 1rem;
+  border-radius: 4px 0 0 4px;
+}
+
+.hero-search-form button {
+  background: #FFCB05;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 0 4px 4px 0;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-search-form button .material-icons {
+  font-size: 1.5rem;
+}
+
+/* Hero Section Cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cards-container.collections {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 collections cards side-by-side */
+  gap: 2rem; /* Increased gap between collections cards */
+  margin-top: 1rem;
+}
+
+.hero-section .cards-container.collections a.collections-card {
+  transition: transform 0.2s ease;
+}
+
+.hero-section .cards-container.collections a.collections-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ====================================================
+   CONTENT SECTIONS STYLES
+   ==================================================== */
+
+/* General Content Section */
 .content-section {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -177,46 +268,70 @@ nav {
   margin-bottom: 1rem;
 }
 
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.card {
+/* Card Styles */
+.cards-container .card,
+.cards-container .collections-card,
+.cards-container .most-popular-card,
+.cards-container .it-services-card {
   background: #F5F5F5;
   border-radius: 8px;
   padding: 1rem;
-  max-width: 200px;
-  width: 100%;
   box-sizing: border-box;
   text-align: center;
   transition: transform 0.2s ease;
-  text-decoration: none; /* Prevent text underline on hover */
+  text-decoration: none; /* Prevents text underline on hover */
   color: #000;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  user-select: none; /* Prevent text selection */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  user-select: none; /* Prevents text selection */
 }
 
-.card:hover {
+.card,
+.most-popular-card,
+.it-services-card {
+  max-width: 200px;
+  width: 100%;
+}
+
+.collections-card {
+  max-width: 260px;
+}
+
+.card:hover,
+.collections-card:hover,
+.most-popular-card:hover,
+.it-services-card:hover {
   transform: translateY(-5px);
-  text-decoration: none; /* Prevent text underline on hover */
+  text-decoration: none; /* Prevents text underline on hover */
 }
 
-.card h3 {
+/* Card Titles */
+.card h3,
+.collections-card h3,
+.most-popular-card h3,
+.it-services-card h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
   font-weight: 700;
 }
 
-.card img {
+/* Card Images */
+.card img,
+.collections-card img,
+.most-popular-card img {
   max-width: 100%;
   border-radius: 4px;
 }
 
-/* FOOTER */
+/* IT Services Icons */
+.it-services-card .material-icons {
+  font-size: 72px;
+}
+
+/* ====================================================
+   FOOTER STYLES
+   ==================================================== */
+
+/* Footer Container */
 footer {
   background: #1A1A1A;
   color: #fff;
@@ -224,6 +339,7 @@ footer {
   padding: 2rem 1rem;
 }
 
+/* Top Section of Footer */
 .footer-top {
   display: flex;
   flex-wrap: wrap;
@@ -234,10 +350,18 @@ footer {
   gap: 2rem;
 }
 
-.footer-logo-section img {
-  height: 60px;
+.footer-logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem; /* Add margin to the right of the logo */
 }
 
+.footer-logo-section img {
+  height: 200px; /* Make the image bigger */
+}
+
+/* Footer Information Section */
 .footer-info-section {
   flex: 1;
 }
@@ -248,6 +372,7 @@ footer {
   font-weight: 700;
 }
 
+/* Footer Columns */
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
@@ -269,6 +394,7 @@ footer {
   color: #ccc;
 }
 
+/* Bottom Section of Footer */
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
@@ -276,7 +402,10 @@ footer {
   color: #ccc;
 }
 
-/* BACK TO TOP BUTTON */
+/* ====================================================
+   BACK TO TOP BUTTON STYLES
+   ==================================================== */
+
 .back-to-top {
   position: fixed;
   bottom: 1rem;
@@ -289,10 +418,13 @@ footer {
   font-size: 1.25rem;
   border-radius: 4px;
   display: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* NOT IMPLEMENTED PAGE */
+/* ====================================================
+   NOT IMPLEMENTED PAGE STYLES
+   ==================================================== */
+
 .not-implemented-container {
   display: flex;
   flex-direction: column;
@@ -305,8 +437,7 @@ footer {
 
 .not-implemented-container h1 {
   font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
   font-weight: 700;
 }
 
@@ -324,32 +455,45 @@ footer {
   color: #000;
   border-radius: 4px;
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* MOBILE OPTIMIZATION */
+/* ====================================================
+   MOBILE OPTIMIZATION
+   ==================================================== */
+
 @media (max-width: 768px) {
-  .hero-overlay {
-    padding: 1rem;
+  /* Hero Content Adjustments */
+  .hero-content {
+    padding: 2rem 1rem;
   }
 
-  .hero-overlay h1 {
-    font-size: 1.8rem;
+  .hero-content h1 {
+    font-size: 2.5rem;
   }
 
-  .hero-overlay p {
-    font-size: 1rem;
+  /* Hero Search Form Adjustments */
+  .hero-search-form input {
+    max-width: 100%;
+    width: 100%;
   }
 
+  .hero-search-form button {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Card Size Adjustments */
   .card {
     max-width: 150px;
   }
 
+  /* Footer Columns Stack Vertically */
   .footer-columns {
     flex-direction: column;
     gap: 1rem;
   }
 
+  /* Footer Information Text Adjustments */
   .footer-info-section h3 {
     font-size: 1rem;
   }
