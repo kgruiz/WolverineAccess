@@ -1,0 +1,1349 @@
+<website_creation_instructions>
+    <general_structure>
+        <html>Use semantic HTML5 to organize content and ensure accessibility compliance.</html>
+        <css>
+            Implement modern styling with CSS3. Maintain responsive design and strictly adhere to UMich branding guidelines.
+        </css>
+        <javascript>
+            Use JavaScript for parallax scrolling, smooth animations, and interactive features like search functionality.
+        </javascript>
+        <assets>
+            Store all static resources in the "assets/" directory, selecting images from the provided <image_index>.
+        </assets>
+    </general_structure>
+
+    <branding_guidelines>
+        <umich_pdf>
+            Use the University of Michigan branding guidelines to extract:
+            <elements>
+                <colors>Primary and secondary color hex codes.</colors>
+                <typography>University-approved fonts, sizes, and fallback options.</typography>
+                <logos>Rules for logo usage, including spacing and placement guidelines.</logos>
+            </elements>
+            <file_search>
+                Search for:
+                <queries>
+                    <query>Color Palette</query>
+                    <query>Typography</query>
+                    <query>Logo Guidelines</query>
+                </queries>
+            </file_search>
+        </umich_pdf>
+    </branding_guidelines>
+
+    <Features>
+        <Campus_Collections>
+            Organized sections for user groups:
+            <Groups>
+                <Students>
+                    Use relevant images from <image_index> that showcase student life, classes, or campus engagement.
+                </Students>
+                <Faculty_Staff>
+                    Select images portraying professional staff, teaching, or office environments.
+                </Faculty_Staff>
+                <Parents_Family>
+                    Use family-oriented visuals reflecting connection to the university.
+                </Parents_Family>
+                <Alumni>
+                    Highlight alumni achievements, networking, or celebratory visuals.
+                </Alumni>
+            </Groups>
+        </Campus_Collections>
+
+        <Search_Functionality>
+            Add a prominent search bar at the top with a relevant search icon or keyword image from <image_index>.
+        </Search_Functionality>
+
+        <Most_Popular_This_Week>
+            Highlight frequently accessed services with relevant visuals:
+            <Services>
+                <Service name="Backpack/Register for Classes">
+                    Select class or registration-themed images from <image_index>.
+                </Service>
+                <Service name="Canvas">
+                    Use images reflecting course dashboards or virtual learning.
+                </Service>
+                <Service name="Google Mail">
+                    Select tech-related or email visuals.
+                </Service>
+                <Service name="View Final Grades">
+                    Use academic-themed visuals such as grade reports or success imagery.
+                </Service>
+            </Services>
+        </Most_Popular_This_Week>
+
+        <Navigation_Bar>
+            Add the following icons:
+            <Icons>
+                <Home>Home icon image from <image_index>.</Home>
+                <My_Favorite_Links>Bookmark or star icon.</My_Favorite_Links>
+                <Categories>Folder or organizational icon.</Categories>
+                <Announcements>Bell or notification icon.</Announcements>
+            </Icons>
+        </Navigation_Bar>
+
+        <Information_Technology_Services>
+            Include visuals for ITS:
+            <Details>
+                <Help_Center>Select contact or support imagery from <image_index>.</Help_Center>
+                <System_Status>
+                    Use visuals indicating system availability or operation hours.
+                </System_Status>
+                <Accessibility>
+                    Include accessibility-related images like the wheelchair symbol or assistive tech.
+                </Accessibility>
+                <Feedback>Use suggestion form or comment box visuals.</Feedback>
+            </Details>
+        </Information_Technology_Services>
+
+        <Footer_Information>
+            Add the following:
+            <Elements>
+                <Logo>Include the official University of Michigan logo from <image_index>.</Logo>
+                <ITS_Support>Use contact-related visuals for ITS support details.</ITS_Support>
+                <Accessibility>
+                    Add accessibility-compliant imagery, such as high-contrast symbols.
+                </Accessibility>
+            </Elements>
+        </Footer_Information>
+
+        <Back_to_Top_Button>
+            Use a simple upward arrow icon or scroll button from <image_index>.
+        </Back_to_Top_Button>
+
+        <User_Authentication>
+            Add a "Sign in" button with a user account or login icon image from <image_index>.
+        </User_Authentication>
+    </Features>
+
+    <parallax_features>
+        <parallax_backgrounds>
+            Apply parallax effects to full-width images. Select lightweight, visually appealing images from <image_index> for:
+            <Sections>
+                <Section>Campus Collections</Section>
+                <Section>Most Popular This Week</Section>
+                <Section>ITS Details</Section>
+            </Sections>
+        </parallax_backgrounds>
+        <performance>
+            Optimize all selected images for performance (e.g., compress with .webp format).
+        </performance>
+        <mobile_optimization>
+            Replace parallax effects with static images on smaller devices.
+        </mobile_optimization>
+    </parallax_features>
+
+    <responsiveness>
+        Use mobile-first media queries for seamless display across all screen sizes.
+    </responsiveness>
+
+    <animations>
+        Apply polished animations for:
+        <Details>
+            <Smooth_Scrolling>Use smooth scrolling for a natural user experience.</Smooth_Scrolling>
+            <Hover_Effects>Subtle transitions for buttons, links, and icons.</Hover_Effects>
+            <Section_Load>Include fade-in effects for content on scroll.</Section_Load>
+        </Details>
+    </animations>
+
+    <image_index>
+        <Images>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Blue Logo/U-M_Logo-Blue-CMYK-withoutline.svg</Path>
+                <Name>U-M_Logo-Blue-CMYK-withoutline.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Blue Logo/U-M_Logo-Blue-Hex.png</Path>
+                <Name>U-M_Logo-Blue-Hex.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Blue Logo/U-M_Logo-Blue-PMS-withoutline.svg</Path>
+                <Name>U-M_Logo-Blue-PMS-withoutline.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Blue Logo/U-M_Logo-Blue-PMS.svg</Path>
+                <Name>U-M_Logo-Blue-PMS.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Blue Logo/U-M_Logo-Blue-Hex-withoutline.png</Path>
+                <Name>U-M_Logo-Blue-Hex-withoutline.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Blue Logo/U-M_Logo-Blue-CMYK.svg</Path>
+                <Name>U-M_Logo-Blue-CMYK.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Black Logo/U-M_Logo-Black.png</Path>
+                <Name>U-M_Logo-Black.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Black Logo/U-M_Logo-Black.svg</Path>
+                <Name>U-M_Logo-Black.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Black Logo/U-M_Logo-Black-withoutline.png</Path>
+                <Name>U-M_Logo-Black-withoutline.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Black Logo/U-M_Logo-Black-withoutline.svg</Path>
+                <Name>U-M_Logo-Black-withoutline.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Color Logo/U-M_Logo-CMYK-withoutline.svg</Path>
+                <Name>U-M_Logo-CMYK-withoutline.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Color Logo/U-M_Logo-PMS-withoutline.svg</Path>
+                <Name>U-M_Logo-PMS-withoutline.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Color Logo/U-M_Logo-Hex-withoutline.png</Path>
+                <Name>U-M_Logo-Hex-withoutline.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Color Logo/U-M_Logo-PMS.svg</Path>
+                <Name>U-M_Logo-PMS.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Color Logo/U-M_Logo-CMYK.svg</Path>
+                <Name>U-M_Logo-CMYK.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png</Path>
+                <Name>U-M_Logo-Hex.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-Hex-reversed.png</Path>
+                <Name>U-M_Logo-Horizontal-Hex-reversed.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-Black.png</Path>
+                <Name>U-M_Logo-Horizontal-Black.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-PMS-reversed.svg</Path>
+                <Name>U-M_Logo-Horizontal-PMS-reversed.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-Hex.svg</Path>
+                <Name>U-M_Logo-Horizontal-Hex.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-PMS.svg</Path>
+                <Name>U-M_Logo-Horizontal-PMS.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-Hex.png</Path>
+                <Name>U-M_Logo-Horizontal-Hex.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-Black.svg</Path>
+                <Name>U-M_Logo-Horizontal-Black.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-Hex-reversed.svg</Path>
+                <Name>U-M_Logo-Horizontal-Hex-reversed.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-White.png</Path>
+                <Name>U-M_Logo-Horizontal-White.png</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-CMYK-reversed.svg</Path>
+                <Name>U-M_Logo-Horizontal-CMYK-reversed.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-CMYK.svg</Path>
+                <Name>U-M_Logo-Horizontal-CMYK.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/HorizontalLogoKit/U-M_Logo-Horizontal-White.svg</Path>
+                <Name>U-M_Logo-Horizontal-White.svg</Name>
+                <Metadata>None</Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMMA-Exterior19(042).JPG</Path>
+                <Name>MPHOTO_UMMA-Exterior19(042).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:05:16 08:54:15</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusMiscStock17(066).jpg</Path>
+                <Name>MPHOTO_UMCampusMiscStock17(066).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2018:01:04 09:01:37</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C.Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMMA-Exterior19(054).JPG</Path>
+                <Name>MPHOTO_UMMA-Exterior19(054).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:05:16 08:55:09</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UM-MiscStock18(035)1.jpg</Path>
+                <Name>MPHOTO_UM-MiscStock18(035)1.jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:01:03 12:23:32</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(301).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(301).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:06 14:59:00</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(213).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(213).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <Orientation>1</Orientation>
+                    <DateTime>2020:06:24 13:29:05</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudents29Jul21_110.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudents29Jul21_110.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:06 19:40:26</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_SnowStock16Feb21(027).JPG</Path>
+                <Name>MPHOTO_SnowStock16Feb21(027).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <Orientation>1</Orientation>
+                    <DateTime>2021:02:16 20:31:38</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_DedCrmnyBSBNatHistMsm(087).JPG</Path>
+                <Name>MPHOTO_DedCrmnyBSBNatHistMsm(087).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:04:17 14:45:11</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowFeb21_030.JPG</Path>
+                <Name>MPHOTO-Stock_SnowFeb21_030.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 15:24:24</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SocialFallcolors21_013.JPG</Path>
+                <Name>MPHOTO-Stock_SocialFallcolors21_013.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:07 10:27:39</DateTime>
+                    <XResolution>240.0</XResolution>
+                    <YResolution>240.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_KinesiologyLab-Hand22(16).JPG</Path>
+                <Name>MPHOTO_KinesiologyLab-Hand22(16).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:06:04 17:18:06</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowFeb21_019.JPG</Path>
+                <Name>MPHOTO-Stock_SnowFeb21_019.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 15:24:04</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMMA-Exterior19(023).JPG</Path>
+                <Name>MPHOTO_UMMA-Exterior19(023).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:05:16 08:52:54</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_FallMisc21_117.JPG</Path>
+                <Name>MPHOTO-Stock_FallMisc21_117.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 15:45:25</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-FBL22_Maryland_361.JPG</Path>
+                <Name>MPHOTO-FBL22_Maryland_361.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>24/09/2022 Football defeats Maryland for Homecoming.
+    FBL 2022
+    Win 34-27                               </ImageDescription>
+                    <Orientation>1</Orientation>
+                    <DateTime>2022:09:24 15:42:58</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>ROGER HART</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_BKW11-DetroitMercy(003).JPG</Path>
+                <Name>MPHOTO_BKW11-DetroitMercy(003).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2010:12:19 22:45:32</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_SolarEclipse10June21(002).JPG</Path>
+                <Name>MPHOTO_SolarEclipse10June21(002).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:06:10 13:01:38</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_LSA-WelcomeBkPicnic21(106).jpg</Path>
+                <Name>MPHOTO_LSA-WelcomeBkPicnic21(106).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:09:06 12:18:39</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudents29Jul21_076.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudents29Jul21_076.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:06 19:39:12</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowFeb21_020.JPG</Path>
+                <Name>MPHOTO-Stock_SnowFeb21_020.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 15:24:04</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock1-20(164)A.JPG</Path>
+                <Name>MPHOTO_UMCampusStock1-20(164)A.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:08:15 17:24:47</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_BCTNSpiritDt17(071).JPG</Path>
+                <Name>MPHOTO_BCTNSpiritDt17(071).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2017:08:24 10:37:35</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Roger Hart</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_SchembechlerHall(31).JPG</Path>
+                <Name>MPHOTO_SchembechlerHall(31).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2014:05:20 12:07:38</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials_eb(248).JPG</Path>
+                <Name>MPHOTO_CampusAerials_eb(248).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:28 17:55:20</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowdayJan23_022.JPG</Path>
+                <Name>MPHOTO-Stock_SnowdayJan23_022.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 15:24:11</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMCampusMiscStock22_SS_220.JPG</Path>
+                <Name>MPHOTO-UMCampusMiscStock22_SS_220.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:12:07 15:57:25</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_TrotterExterior19(030).jpg</Path>
+                <Name>MPHOTO_TrotterExterior19(030).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:06:08 16:48:20</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_FallMisc21_071.JPG</Path>
+                <Name>MPHOTO-Stock_FallMisc21_071.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 13:50:51</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock2-20(148).jpg</Path>
+                <Name>MPHOTO_UMCampusStock2-20(148).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:10:13 14:30:54</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowdayJan23_239.JPG</Path>
+                <Name>MPHOTO-Stock_SnowdayJan23_239.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2023:01:25 20:57:13</DateTime>
+                    <YResolution>240.0</YResolution>
+                    <XResolution>240.0</XResolution>
+                    <Artist>Daryl Marshke</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_LSA-BldgExtn20(54).jpg</Path>
+                <Name>MPHOTO_LSA-BldgExtn20(54).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:01:09 09:18:09</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_OnoInauguration_0457.JPG</Path>
+                <Name>MPHOTO_OnoInauguration_0457.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2023:03:07 16:02:10</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(327).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(327).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:06 14:32:31</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SpringCampus_032.JPG</Path>
+                <Name>MPHOTO-Stock_SpringCampus_032.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock1-20(236).JPG</Path>
+                <Name>MPHOTO_UMCampusStock1-20(236).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:08:15 17:26:50</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_GGBrownBldgSun15(026).jpg</Path>
+                <Name>MPHOTO_GGBrownBldgSun15(026).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2015:06:24 12:11:08</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_BioMedRsrch-Panel19(059).JPG</Path>
+                <Name>MPHOTO_BioMedRsrch-Panel19(059).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:05:24 11:22:51</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMS-VictorsArtsGala18(119).jpg</Path>
+                <Name>MPHOTO_UMS-VictorsArtsGala18(119).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2018:10:08 11:56:37</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C.Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_NCmornJun15(01).jpg</Path>
+                <Name>MPHOTO_NCmornJun15(01).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2015:06:01 14:59:45</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Austin Thomason</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_SOM19-FGC(100).jpg</Path>
+                <Name>MPHOTO_SOM19-FGC(100).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>8/30/9 2019 Men’s Soccer vs. Florida Golf Coast.
+    SOM 2019
+    Loss 3-4</ImageDescription>
+                    <Orientation>1</Orientation>
+                    <DateTime>2019:08:31 22:14:58</DateTime>
+                    <YResolution>72.0</YResolution>
+                    <XResolution>72.0</XResolution>
+                    <Artist>Sam Janicki</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_KinesiologyBldng21(002).JPG</Path>
+                <Name>MPHOTO_KinesiologyBldng21(002).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:07:12 14:50:26</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock2-20(06).jpg</Path>
+                <Name>MPHOTO_UMCampusStock2-20(06).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:10:13 14:26:14</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMStockMisc2Dec21_008.JPG</Path>
+                <Name>MPHOTO-UMStockMisc2Dec21_008.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:12:02 12:10:15</DateTime>
+                    <XResolution>240.0</XResolution>
+                    <YResolution>240.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_FallMisc21_001.JPG</Path>
+                <Name>MPHOTO-Stock_FallMisc21_001.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 13:48:25</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMCampusMiscStock22_SS_085.JPG</Path>
+                <Name>MPHOTO-UMCampusMiscStock22_SS_085.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>08/18/2022 The Frankel Detroit Observatory.    </ImageDescription>
+                    <DateTime>2022:12:07 15:49:59</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMStockMisc2Dec21_009.JPG</Path>
+                <Name>MPHOTO-UMStockMisc2Dec21_009.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:12:02 10:59:20</DateTime>
+                    <XResolution>240.0</XResolution>
+                    <YResolution>240.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(255).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(255).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:01 10:21:41</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowdayJan23_066.JPG</Path>
+                <Name>MPHOTO-Stock_SnowdayJan23_066.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2023:01:25 12:39:24</DateTime>
+                    <YResolution>240.0</YResolution>
+                    <XResolution>240.0</XResolution>
+                    <Artist>Daryl Marshke</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(310).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(310).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:06 14:59:17</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMS19-DenisMatsuev(046).JPG</Path>
+                <Name>MPHOTO_UMS19-DenisMatsuev(046).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:10:23 16:04:11</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Eric Bronson</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMCampusMiscStock22_SS_268.JPG</Path>
+                <Name>MPHOTO-UMCampusMiscStock22_SS_268.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>11/03/2022 The Ross School of Business.        </ImageDescription>
+                    <DateTime>2022:12:07 15:59:51</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_FBL18-Indiana-eb(236).JPG</Path>
+                <Name>MPHOTO_FBL18-Indiana-eb(236).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>11/17/18 The 2018 Football team defeats Indiana, 31-20 on Senior Day.
+
+    FBL 2018
+    Win 31-20                        </ImageDescription>
+                    <Orientation>1</Orientation>
+                    <DateTime>2018:11:18 15:53:12</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Eric Bronson</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CovidCampusStockApr20(26).jpg</Path>
+                <Name>MPHOTO_CovidCampusStockApr20(26).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:04:28 17:15:43</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Austin Thomason</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusMiscStock22(112).JPG</Path>
+                <Name>MPHOTO_UMCampusMiscStock22(112).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:12:07 15:51:24</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_FDH19-UConn(148).JPG</Path>
+                <Name>MPHOTO_FDH19-UConn(148).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>9/13/19 The 2019 Field Hockey team defeats Connecticut, 3-2.
+
+    FDH 2019
+    WIn 3-2                             </ImageDescription>
+                    <Orientation>1</Orientation>
+                    <DateTime>2019:09:19 16:42:25</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Daryl Marshke</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMMA-Exterior19(032).JPG</Path>
+                <Name>MPHOTO_UMMA-Exterior19(032).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:05:16 08:53:32</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(234).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(234).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <Orientation>1</Orientation>
+                    <DateTime>2020:06:24 13:09:36</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudents29Jul21_002.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudents29Jul21_002.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:06 19:36:20</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock1-20(86).JPG</Path>
+                <Name>MPHOTO_UMCampusStock1-20(86).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>7/28/20 The LSA Building with the Cube.</ImageDescription>
+                    <DateTime>2020:08:15 17:22:25</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock1-20(131).JPG</Path>
+                <Name>MPHOTO_UMCampusStock1-20(131).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:08:15 17:23:47</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(372).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(372).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:06 14:34:16</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(299).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(299).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:01 10:23:10</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UM-MiscStock18(060)1.jpg</Path>
+                <Name>MPHOTO_UM-MiscStock18(060)1.jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:01:03 12:25:13</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStock2-20(161).jpg</Path>
+                <Name>MPHOTO_UMCampusStock2-20(161).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:10:13 14:31:24</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowdayJan23_123.JPG</Path>
+                <Name>MPHOTO-Stock_SnowdayJan23_123.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2023:01:25 20:54:20</DateTime>
+                    <YResolution>240.0</YResolution>
+                    <XResolution>240.0</XResolution>
+                    <Artist>Daryl Marshke</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudents29Jul21_019.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudents29Jul21_019.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:06 19:37:03</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudents29Jul21_025.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudents29Jul21_025.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:06 19:37:22</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_LurieTower20AnnvCelb16(097).jpg</Path>
+                <Name>MPHOTO_LurieTower20AnnvCelb16(097).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <ImageDescription>10/20/16 Lurie Tower 20th Anniversary Celebration </ImageDescription>
+                    <DateTime>2016:10:24 16:12:41</DateTime>
+                    <YResolution>72.0</YResolution>
+                    <XResolution>72.0</XResolution>
+                    <Artist>Scott C.Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMStockMisc2Dec21_005.JPG</Path>
+                <Name>MPHOTO-UMStockMisc2Dec21_005.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:12:02 10:43:25</DateTime>
+                    <XResolution>240.0</XResolution>
+                    <YResolution>240.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusSnow22(11).jpg</Path>
+                <Name>MPHOTO_UMCampusSnow22(11).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:02:04 16:06:38</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusStockPhotos21(015).JPG</Path>
+                <Name>MPHOTO_UMCampusStockPhotos21(015).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:12:20 11:27:04</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott Soderberg   </Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowdayJan23_124.JPG</Path>
+                <Name>MPHOTO-Stock_SnowdayJan23_124.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2023:01:25 20:54:18</DateTime>
+                    <YResolution>240.0</YResolution>
+                    <XResolution>240.0</XResolution>
+                    <Artist>Daryl Marshke</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_RuthvenFeb22(01).jpg</Path>
+                <Name>MPHOTO_RuthvenFeb22(01).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:02:07 16:11:36</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SnowdayJan23_079.JPG</Path>
+                <Name>MPHOTO-Stock_SnowdayJan23_079.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2023:01:25 12:39:36</DateTime>
+                    <YResolution>240.0</YResolution>
+                    <XResolution>240.0</XResolution>
+                    <Artist>Daryl Marshke</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_1stDayWntrSmstr21(100).jpg</Path>
+                <Name>MPHOTO_1stDayWntrSmstr21(100).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:01:19 15:45:39</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-UMCampusMiscStock22_SS_204.JPG</Path>
+                <Name>MPHOTO-UMCampusMiscStock22_SS_204.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:12:07 15:56:30</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_FallMisc21_097.JPG</Path>
+                <Name>MPHOTO-Stock_FallMisc21_097.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 15:44:35</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_BKM19-MaizedCrisler(019).JPG</Path>
+                <Name>MPHOTO_BKM19-MaizedCrisler(019).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:02:24 18:09:30</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudents29Jul21_079.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudents29Jul21_079.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:06 19:39:21</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SocialFallcolors21_026.JPG</Path>
+                <Name>MPHOTO-Stock_SocialFallcolors21_026.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:09 11:30:12</DateTime>
+                    <XResolution>240.0</XResolution>
+                    <YResolution>240.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials_eb(006).JPG</Path>
+                <Name>MPHOTO_CampusAerials_eb(006).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:28 20:59:09</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusSnow22(21).jpg</Path>
+                <Name>MPHOTO_UMCampusSnow22(21).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2022:02:04 16:06:58</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_FallMisc21_053.JPG</Path>
+                <Name>MPHOTO-Stock_FallMisc21_053.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 13:50:12</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_CampusAerials20(338).JPG</Path>
+                <Name>MPHOTO_CampusAerials20(338).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2020:07:06 14:32:58</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UM-MiscStock18(039)1.jpg</Path>
+                <Name>MPHOTO_UM-MiscStock18(039)1.jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2019:01:03 12:23:46</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SocialFallcolors21_008.JPG</Path>
+                <Name>MPHOTO-Stock_SocialFallcolors21_008.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:07 10:27:27</DateTime>
+                    <XResolution>240.0</XResolution>
+                    <YResolution>240.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_BurtonTwrAprLght21(193).JPG</Path>
+                <Name>MPHOTO_BurtonTwrAprLght21(193).JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:05:02 10:13:24</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO_UMCampusMiscStock17(032).jpg</Path>
+                <Name>MPHOTO_UMCampusMiscStock17(032).jpg</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2018:01:04 08:59:26</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C.Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_FallMisc21_051.JPG</Path>
+                <Name>MPHOTO-Stock_FallMisc21_051.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:11:30 13:50:11</DateTime>
+                    <YResolution>300.0</YResolution>
+                    <XResolution>300.0</XResolution>
+                    <Artist>Scott C. Soderberg</Artist>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/MPhotos/MPHOTO-Stock_SumrStudentsJul21_106.JPG</Path>
+                <Name>MPHOTO-Stock_SumrStudentsJul21_106.JPG</Name>
+                <Metadata>
+                    <ResolutionUnit>2</ResolutionUnit>
+                    <DateTime>2021:08:11 13:57:41</DateTime>
+                    <XResolution>300.0</XResolution>
+                    <YResolution>300.0</YResolution>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/FinanceIcon.jpg</Path>
+                <Name>FinanceIcon.jpg</Name>
+                <Metadata>
+                    <ImageDescription>A dark blue bank building with a yellow piggy bank, representing savings and finance.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/BackpackIcon.jpg</Path>
+                <Name>BackpackIcon.jpg</Name>
+                <Metadata>
+                    <ImageDescription>A blue and yellow backpack with a front pocket, symbolizing school supplies.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/WolverineAccessLogo.jpg</Path>
+                <Name>WolverineAccessLogo.jpg</Name>
+                <Metadata>
+                    <ImageDescription>The University of Michigan's maize block 'M' with 'WOLVERINE ACCESS' in bold white text.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/CheckBoxesIcon.jpg</Path>
+                <Name>CheckBoxesIcon.jpg</Name>
+                <Metadata>
+                    <ImageDescription>A dark blue clipboard icon with two yellow checkboxes, symbolizing task completion.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/GPAIcon.jpg</Path>
+                <Name>GPAIcon.jpg</Name>
+                <Metadata>
+                    <ImageDescription>A GPA report card with scores (4.0, 2.8, 3.7, 3.9) in blue text and yellow lines.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/ShoppingCart.jpg</Path>
+                <Name>ShoppingCart.jpg</Name>
+                <Metadata>
+                    <ImageDescription>A dark blue shopping cart with yellow wheels, symbolizing e-commerce or shopping.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/BooksAndApple.jpg</Path>
+                <Name>BooksAndApple.jpg</Name>
+                <Metadata>
+                    <ImageDescription>Two stacked blue books with a yellow apple and bookmark, symbolizing education.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/CanvasLogo.jpg</Path>
+                <Name>CanvasLogo.jpg</Name>
+                <Metadata>
+                    <ImageDescription>The Canvas LMS logo, a red circular design with nodes and lowercase 'canvas' text.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/WolverineAccessTabsIcon.jpg</Path>
+                <Name>WolverineAccessTabsIcon.jpg</Name>
+                <Metadata>
+                    <ImageDescription>A yellow 'Wolverine Access' square in front of layered white tab icons.</ImageDescription>
+                </Metadata>
+            </Image>
+            <Image>
+                <Path>assets/CurrentIcons/GMailLogo.jpg</Path>
+                <Name>GMailLogo.jpg</Name>
+                <Metadata>
+                    <ImageDescription>The Google Gmail logo, a colorful letter 'M' representing Google Mail.</ImageDescription>
+                </Metadata>
+            </Image>
+        </Images>
+    </image_index>
+</website_creation_instructions>
