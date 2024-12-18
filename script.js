@@ -29,7 +29,7 @@ const showAllButton = document.getElementById("show-all")
 let linksData = []
 let initialLoaded = false
 
-fetch("JSON Files/links.json")
+fetch("JSON Files/tasks.json")
   .then(response => response.json())
   .then(data => {
     linksData = data
@@ -37,7 +37,7 @@ fetch("JSON Files/links.json")
     const mostPopularContainer = document.getElementById("most-popular-container")
     if (mostPopularContainer) {
 
-      const sortedByRank = [...linksData].sort((a, b) => a.rank - b.rank)
+      const sortedByRank = [...linksData].sort((a, b) => a.currentRating - b.currentRating)
       const top4 = sortedByRank.slice(0,4)
 
       top4.forEach(link => {
@@ -49,7 +49,7 @@ fetch("JSON Files/links.json")
     const allLinksContainer = document.getElementById("all-links-container")
     if (allLinksContainer) {
 
-      const sortedByRank = [...linksData].sort((a, b) => a.rank - b.rank)
+      const sortedByRank = [...linksData].sort((a, b) => a.currentRating - b.currentRating)
       const top10 = sortedByRank.slice(0,10)
       const next30 = sortedByRank.slice(10,40)
 
@@ -77,7 +77,7 @@ fetch("JSON Files/links.json")
         let linksToShow = [...linksData]
 
         if (sortType === "rank") {
-          linksToShow.sort((a, b) => a.rank - b.rank)
+          linksToShow.sort((a, b) => a.currentRating - b.currentRating)
         } else if (sortType === "alphabetical") {
           linksToShow.sort((a, b) => a.header.localeCompare(b.header))
         }
@@ -116,7 +116,7 @@ const RenderAllLinksFull = (sortType) => {
   let linksToShow = [...linksData]
 
   if (sortType === "rank") {
-    linksToShow.sort((a, b) => a.rank - b.rank)
+    linksToShow.sort((a, b) => a.currentRating - b.currentRating)
   } else if (sortType === "alphabetical") {
     linksToShow.sort((a, b) => a.header.localeCompare(b.header))
   }
@@ -176,12 +176,12 @@ function createCard(link) {
   card.className = 'card';
 
   const header = document.createElement('h3');
-  header.textContent = link.header;
+  header.textContent = link.title;
   card.appendChild(header);
 
   const subHeader = document.createElement('p');
   subHeader.className = 'sub-header';
-  subHeader.textContent = link.subHeader;
+  subHeader.textContent = link.applicationName;
   card.appendChild(subHeader);
 
   const img = document.createElement("img")
