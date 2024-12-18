@@ -232,12 +232,22 @@ nav {
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .cards-container.collections {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 collections cards side-by-side */
   gap: 2rem; /* Increased gap between collections cards */
+  margin-top: 1rem;
+}
+
+.cards-container.all-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -263,6 +273,7 @@ nav {
 /* Card Styles */
 .cards-container .card,
 .cards-container .collections-card,
+.cards-container .popular-card,
 .cards-container .link-card,
 .cards-container .it-services-card {
   background: #F5F5F5;
@@ -278,6 +289,7 @@ nav {
 }
 
 .card,
+.popular-card,
 .link-card,
 .it-services-card {
   max-width: 200px;
@@ -290,6 +302,7 @@ nav {
 
 .card:hover,
 .collections-card:hover,
+.popular-card:hover,
 .link-card:hover,
 .it-services-card:hover {
   transform: translateY(-5px);
@@ -299,6 +312,7 @@ nav {
 /* Card Titles */
 .card h3,
 .collections-card h3,
+.popular-card h3,
 .link-card h3,
 .it-services-card h3 {
   font-size: 1rem;
@@ -309,7 +323,8 @@ nav {
 /* Card Images */
 .card img,
 .collections-card img,
-.link-card img {
+.link-card img,
+.popular-card img {
   max-width: 100%;
   border-radius: 4px;
 }
