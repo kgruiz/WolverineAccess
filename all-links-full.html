@@ -5,30 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Wolverine Access" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-  <!-- Styles and Scripts -->
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" type="image/png" />
 
   <title>Wolverine Access</title>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <nav>
       <div class="nav-container">
 
-        <!-- Left Section: Logo and Search -->
         <div class="left-section">
           <a href="index.html" aria-label="Home" class="logo-link">
             <img src="assets/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
@@ -42,7 +36,6 @@
           </form>
         </div>
 
-        <!-- Right Section: Nav Icons and Sign In -->
         <div class="right-section">
           <ul class="nav-icons">
             <li>
@@ -76,34 +69,44 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
   <main>
 
-    <div class="not-implemented-container">
+    <section class="full-search-area" aria-label="Full Search Area">
 
-      <section class="not-implemented-main">
+      <h1>All Links</h1>
 
-      <h1>Page Not Implemented</h1>
+      <form class="full-search-form" action="not-implemented.html" method="get">
+        <input type="search" name="q" placeholder="Search All Links" aria-label="Search All Links" />
+        <button type="submit">
+          <span class="material-icons">search</span>
+        </button>
+      </form>
 
-      <p>This feature is not yet available. Please check back later.</p>
-
-      <a href="index.html" class="go-back-button">Go Back</a>
+      <h3>Sort By:</h3>
+      <input type="checkbox" id="toggle" class="sort-type-selector" />
+<label for="toggle" class='sort-type-container'>
+  <div>Rank</div>
+  <div>Alphabetical</div>
+</label>
 
     </section>
 
-    </div>
+    <section class="content-section" aria-label="All Links">
+
+      <div class="cards-container all-links-full" id="all-links-full-container"></div>
+
+    </section>
+
+
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-top">
-      <!-- Logo Section -->
       <div class="footer-logo-section">
         <img src="assets/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" alt="University of Michigan Official Logo" />
       </div>
 
-      <!-- Information Section -->
       <div class="footer-info-section">
         <h3>Information and Technology Services</h3>
         <div class="footer-columns">
@@ -128,20 +131,16 @@
       </div>
     </div>
 
-    <!-- Bottom Footer -->
     <div class="footer-bottom">
       <p>© 2024 The Regents of the University of Michigan and Kaden Gruizenga</p>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
   <button class="back-to-top" aria-label="Back to Top">
     <span class="material-icons">
       north
       </span>
   </button>
-
-  <!-- Home Button -->
 
   <button class="home-button" aria-label="Home">
     <span class="material-icons">
