@@ -1,15 +1,23 @@
 window.addEventListener("scroll", () => {
+
   const backToTopButton = document.querySelector(".back-to-top")
   const homeButton = document.querySelector(".home-button")
+
 
   if (window.scrollY > 200) {
     backToTopButton.style.display = "block"
     homeButton.style.display = "block"
-  } else {
+
+  }
+
+
+  else {
     backToTopButton.style.display = "none"
     homeButton.style.display = "none"
   }
+
 })
+
 
 document.querySelector(".back-to-top").addEventListener("click", () => {
   window.scrollTo({
@@ -18,16 +26,22 @@ document.querySelector(".back-to-top").addEventListener("click", () => {
   })
 })
 
+
 document.querySelector(".home-button").addEventListener("click", () => {
   window.location.href = "index.html"
 })
 
+
+
 const showMoreButton = document.getElementById("show-more")
+
 const showLessButton = document.getElementById("show-less")
+
 const showAllButton = document.getElementById("show-all")
 
 let linksData = []
 let initialLoaded = false
+
 
 fetch("JSON Files/tasks.json")
   .then(response => response.json())
@@ -35,160 +49,216 @@ fetch("JSON Files/tasks.json")
     linksData = data
 
     const mostPopularContainer = document.getElementById("most-popular-container")
-    if (mostPopularContainer) {
 
+
+    if (mostPopularContainer) {
       const sortedByRank = [...linksData].sort((a, b) => a.currentRating - b.currentRating)
       const top4 = sortedByRank.slice(0,4)
 
+
       top4.forEach(link => {
-        const card = createCard(link)
+        const card = CreateCard(link)
         mostPopularContainer.append(card)
       })
     }
 
     const allLinksContainer = document.getElementById("all-links-container")
-    if (allLinksContainer) {
 
+
+    if (allLinksContainer) {
       const sortedByRank = [...linksData].sort((a, b) => a.currentRating - b.currentRating)
       const top10 = sortedByRank.slice(0,10)
       const next30 = sortedByRank.slice(10,40)
 
+
       top10.forEach(link => {
-        const card = createCard(link)
+        const card = CreateCard(link)
         card.classList.add("initial-cards")
         allLinksContainer.append(card)
       })
 
+
       next30.forEach(link => {
-        const card = createCard(link)
+        const card = CreateCard(link)
         card.classList.add("additional-cards", "hidden")
         allLinksContainer.append(card)
       })
     }
 
     const allLinksFullContainer = document.getElementById("all-links-full-container")
+
+
     if (allLinksFullContainer) {
 
-      // Add references to the radio buttons
-      const sortOptions = document.getElementsByName("sort")
+      function RenderAllLinksFull(sortType) {
 
-      const renderAllLinksFull = (sortType) => {
         allLinksFullContainer.innerHTML = ""
         let linksToShow = [...linksData]
 
+
         if (sortType === "rank") {
           linksToShow.sort((a, b) => a.currentRating - b.currentRating)
-        } else if (sortType === "alphabetical") {
-          linksToShow.sort((a, b) => a.header.localeCompare(b.header))
         }
 
+        else if (sortType === "alphabetical") {
+          linksToShow.sort((a, b) => a.title.localeCompare(b.title))
+        }
+
+
         linksToShow.forEach(link => {
-          const card = createCard(link)
+          const card = CreateCard(link)
           allLinksFullContainer.append(card)
         })
       }
 
-      // Initially render links sorted by rank
-      renderAllLinksFull("rank")
 
-      // Add event listeners to radio buttons
-      sortOptions.forEach(option => {
-        option.addEventListener("change", () => {
-          if (option.checked) {
-            renderAllLinksFull(option.value)
-          }
-        })
+      // Initially show by rank
+      RenderAllLinksFull("rank")
+
+
+      const toggle = document.getElementById("toggle")
+      toggle.addEventListener("change", () => {
+
+        if (toggle.checked) {
+          RenderAllLinksFull("alphabetical")
+        }
+
+        else {
+          RenderAllLinksFull("rank")
+        }
       })
     }
 
   })
 
-// Replace sortSlider and sortLabel with toggleSwitch and label elements
-const toggleSwitch = document.getElementById("toggleSwitch")
-const labelRank = document.getElementById("labelRank")
-const labelAlphabetical = document.getElementById("labelAlphabetical")
-
-// Remove previous sortSlider event listeners
-// ...existing code related to sortSlider...
-
-const RenderAllLinksFull = (sortType) => {
-  allLinksFullContainer.innerHTML = ""
-  let linksToShow = [...linksData]
-
-  if (sortType === "rank") {
-    linksToShow.sort((a, b) => a.currentRating - b.currentRating)
-  } else if (sortType === "alphabetical") {
-    linksToShow.sort((a, b) => a.header.localeCompare(b.header))
-  }
-
-  linksToShow.forEach(link => {
-    const card = createCard(link)
-    allLinksFullContainer.append(card)
-  })
-}
-
-// Initially render links sorted by rank
-RenderAllLinksFull("rank")
-
-// Update sort based on toggle switch state
-toggleSwitch.addEventListener("change", () => {
-  if (toggleSwitch.checked) {
-    RenderAllLinksFull("alphabetical")
-    labelRank.classList.remove("active")
-    labelAlphabetical.classList.add("active")
-  } else {
-    RenderAllLinksFull("rank")
-    labelRank.classList.add("active")
-    labelAlphabetical.classList.remove("active")
-  }
-})
-
-// Animate the slider thumb if necessary
-// ...existing code...
 
 showMoreButton.addEventListener("click", () => {
   const additionalCards = document.querySelectorAll(".additional-cards")
 
+
   additionalCards.forEach(card => {
     card.classList.remove("hidden")
   })
+
 
   showMoreButton.classList.add("hidden")
   showLessButton.classList.remove("hidden")
   showAllButton.classList.remove("hidden")
 })
 
+
 showLessButton.addEventListener("click", () => {
   const additionalCards = document.querySelectorAll(".additional-cards")
+
 
   additionalCards.forEach(card => {
     card.classList.add("hidden")
   })
-// Ensure the slider thumb moves correctly with the slider input
+
 
   showMoreButton.classList.remove("hidden")
   showLessButton.classList.add("hidden")
   showAllButton.classList.add("hidden")
 })
 
-function createCard(link) {
-  const card = document.createElement('div');
+
+function CreateCard(link) {
+
+  const card = document.createElement('a');
   card.className = 'card';
+  card.href = link.href;
+
+  if (link.openInNewWindow) {
+    card.target = "_blank"
+    card.rel = "noopener"
+  }
 
   const header = document.createElement('h3');
   header.textContent = link.title;
   card.appendChild(header);
+
 
   const subHeader = document.createElement('p');
   subHeader.className = 'sub-header';
   subHeader.textContent = link.applicationName;
   card.appendChild(subHeader);
 
+
   const img = document.createElement("img")
   img.src = link.image
   img.alt = link.alt
-
   card.appendChild(img)
+
 
   return card;
 }
+
+
+let tasks = [];
+let sortByRating = true;
+
+
+function LoadTasks() {
+
+  fetch('tasks.json')
+    .then(response => response.json())
+    .then(data => {
+      tasks = data;
+      RenderTasks();
+    });
+
+}
+
+
+function RenderTasks() {
+
+  const container = document.getElementById('all-links-full-container');
+  if(!container) return;
+
+
+  container.innerHTML = '';
+
+
+  if (sortByRating) {
+    tasks.sort((a, b) => b.rating - a.rating);
+  }
+
+  else {
+    tasks.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+
+  tasks.forEach(task => {
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = task.href;
+    if (task.openInNewWindow) {
+      card.target = "_blank";
+      card.rel = "noopener";
+    }
+
+    card.innerHTML = `
+      <h2>${task.title}</h2>
+      <p>${task.description}</p>
+      <p>Rating: ${task.rating}</p>
+    `;
+    container.appendChild(card);
+  });
+
+}
+
+
+const sortTypeSelector = document.getElementById('toggle');
+
+sortTypeSelector.addEventListener('change', function() {
+
+  sortByRating = !sortByRating;
+  RenderTasks();
+
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  LoadTasks();
+});

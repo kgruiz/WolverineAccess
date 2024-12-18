@@ -28,6 +28,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 nav {
@@ -224,6 +225,11 @@ nav {
   margin-right: 50px;
 }
 
+/* 5 per row for all-links in index.html */
+.cards-container.all-links-expandable .card {
+  flex: 0 1 calc((100% - (4 * 1rem))/5);
+}
+
 .cards-container.all-links-full {
   display: flex;
   flex-wrap: wrap;
@@ -299,6 +305,10 @@ nav {
   font-size: 1.5rem;
 }
 
+.sort-type-selector {
+  display: none;
+}
+
 .sort-type-container {
   position: relative;
   display: grid;
@@ -311,40 +321,44 @@ nav {
   color: #00274C;
   cursor: pointer;
 }
+
 .sort-type-container::before {
   content: '';
   position: absolute;
   width: 50%;
   height: 100%;
   left: 0%;
-  border-radius:20px;
+  border-radius: 20px;
   background: #00274C;
   transition: all 0.3s;
 }
+
 .sort-type-selector:checked + .sort-type-container::before {
-   left: 50%;
+  left: 50%;
 }
+
 .sort-type-container div {
   padding: 6px;
   text-align: center;
   z-index: 1;
 }
-.sort-type-selector {
-  display: none;
-}
-.sort-type-selector:checked + .sort-type-container div:first-child{
+
+.sort-type-selector:checked + .sort-type-container div:first-child {
   color: #00274C;
   transition: color 0.3s;
 }
-.sort-type-selector:checked + .sort-type-container div:last-child{
+
+.sort-type-selector:checked + .sort-type-container div:last-child {
   color: white;
   transition: color 0.3s;
 }
-.sort-type-selector + .sort-type-container div:first-child{
+
+.sort-type-selector + .sort-type-container div:first-child {
   color: white;
   transition: color 0.3s;
 }
-.sort-type-selector + .sort-type-container div:last-child{
+
+.sort-type-selector + .sort-type-container div:last-child {
   color: #00274C;
   transition: color 0.3s;
 }
@@ -705,6 +719,7 @@ footer a[href]:hover {
 
 .slider-container input[type="range"] {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   background: transparent;
   position: absolute;
