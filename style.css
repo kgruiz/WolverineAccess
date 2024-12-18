@@ -34,7 +34,6 @@ body {
 
 /* Link Styles */
 a {
-  color: #FFCB05;
   text-decoration: none;
 }
 
@@ -242,14 +241,6 @@ nav {
   margin-top: 1rem;
 }
 
-.hero-section .cards-container.collections a.collections-card {
-  transition: transform 0.2s ease;
-}
-
-.hero-section .cards-container.collections a.collections-card:hover {
-  transform: translateY(-5px);
-}
-
 /* ====================================================
    CONTENT SECTIONS STYLES
    ==================================================== */
@@ -272,7 +263,7 @@ nav {
 /* Card Styles */
 .cards-container .card,
 .cards-container .collections-card,
-.cards-container .most-popular-card,
+.cards-container .link-card,
 .cards-container .it-services-card {
   background: #F5F5F5;
   border-radius: 8px;
@@ -287,7 +278,7 @@ nav {
 }
 
 .card,
-.most-popular-card,
+.link-card,
 .it-services-card {
   max-width: 200px;
   width: 100%;
@@ -299,7 +290,7 @@ nav {
 
 .card:hover,
 .collections-card:hover,
-.most-popular-card:hover,
+.link-card:hover,
 .it-services-card:hover {
   transform: translateY(-5px);
   text-decoration: none; /* Prevents text underline on hover */
@@ -308,7 +299,7 @@ nav {
 /* Card Titles */
 .card h3,
 .collections-card h3,
-.most-popular-card h3,
+.link-card h3,
 .it-services-card h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
@@ -318,7 +309,7 @@ nav {
 /* Card Images */
 .card img,
 .collections-card img,
-.most-popular-card img {
+.link-card img {
   max-width: 100%;
   border-radius: 4px;
 }
@@ -338,6 +329,10 @@ footer {
   color: #fff;
   text-align: left;
   padding: 2rem 1rem;
+}
+
+footer a[href]:hover {
+  color: #FFCB05;
 }
 
 /* Top Section of Footer */
