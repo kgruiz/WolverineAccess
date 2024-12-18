@@ -1207,10 +1207,7 @@
         "openInNewWindow": true,
         "currentRating": 71,
         "alt": "Register Your Travel",
-        "image": [
-            "assets/Current/RegisterYourTravel.png",
-            "assets/Current/RegisterYourTravelFaculty.png"
-        ],
+        "image":"assets/Current/RegisterYourTravel.png",
         "href": "not-implemented.html"
     },
     {
@@ -1669,10 +1666,7 @@
         "openInNewWindow": true,
         "currentRating": 98,
         "alt": "Register Your Travel",
-        "image": [
-            "assets/Current/RegisterYourTravel.png",
-            "assets/Current/RegisterYourTravelFaculty.png"
-        ],
+        "image": "assets/Current/RegisterYourTravelFaculty.png",
         "href": "not-implemented.html"
     },
     {
