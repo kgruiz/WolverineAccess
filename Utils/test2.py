@@ -1,88 +1,126 @@
-from pathlib import Path
+import json
+from pathlib import *
 
-from fpdf import FPDF
+if __name__ == "__main__":
 
+    def GetImagePath(title: str) -> str:
 
-def images_to_pdf_grid(directory_path: str, output_pdf: str):
-    """
-    Creates a PDF with all images in a directory arranged in a grid of 5 columns per page.
-    Each image is captioned with its relative path.
-    """
-    directory = Path(directory_path)
+        if title in imageData:
 
-    if not directory.exists():
-        print(f"Error: The directory '{directory_path}' does not exist.")
-        return
+            return imageData[title]
 
-    # Initialize the PDF
-    pdf = FPDF("P", "mm", "A4")
-    pdf.set_auto_page_break(auto=True, margin=5)
+        else:
 
-    # Image grid parameters
-    cell_width = 20  # Width of each cell (image)
-    cell_height = 20  # Height of each cell (image)
-    caption_height = 6  # Space for caption
-    margin = 5  # Margin around the page
-    columns = 5  # Number of columns
-    spacing = 5  # Space between images
+            print(title)
 
-    x_start = margin
-    y_start = margin
-    x_pos = x_start
-    y_pos = y_start
+    currentDir = Path("..").resolve()
 
-    # Add a new page to start
-    pdf.add_page()
+    path = Path(currentDir, "JSON Files/currentTasks.json")
 
-    for file in directory.iterdir():
-        if file.is_file() and file.suffix.lower() in [
-            ".png",
-            ".jpg",
-            ".jpeg",
-            ".gif",
-            ".bmp",
-            ".tiff",
-        ]:
+    collectionsPath = path.with_stem("collections")
+    tasksPath = path.with_stem("tasks")
 
-            if not file.stem[0].isdigit():
+    isolatedTasks = []
 
-                continue
+    with open(path, "r") as file:
 
-            try:
-                # Add the image
-                pdf.image(str(file), x=x_pos, y=y_pos, w=cell_width, h=cell_height)
+        tasksDicts = json.load(file)
 
-                # Add the caption
-                pdf.set_xy(x_pos, y_pos + cell_height)
-                pdf.set_font("Arial", size=8)
-                pdf.multi_cell(
-                    cell_width,
-                    caption_height,
-                    str(file.relative_to(directory)),
-                    align="C",
-                )
+    with path.with_stem("imageData").open("r") as file:
 
-                # Update x_pos for the next image
-                x_pos += cell_width + spacing
+        imageData = json.load(file)
 
-                # Move to the next row if the current row is full
-                if x_pos + cell_width > pdf.w - margin:
-                    x_pos = x_start
-                    y_pos += cell_height + caption_height + spacing
+    newTasksDicts = tasksDicts
 
-                # Add a new page if the current page is full
-                if y_pos + cell_height + caption_height > pdf.h - margin:
-                    pdf.add_page()
-                    x_pos = x_start
-                    y_pos = y_start
+    keepKeys = ["taskCollections"]
 
-            except RuntimeError as e:
-                print(f"Skipping file '{file}': {e}")
+    newTasksDicts = {key: value for key, value in tasksDicts.items() if key in keepKeys}
 
-    # Save the PDF
-    pdf.output(output_pdf)
-    print(f"PDF created successfully: {output_pdf}")
+    keepKeys = ["name", "uniqueKey", "tiles"]
 
+    for collectionNum, collectionDict in enumerate(newTasksDicts["taskCollections"]):
 
-# Usage
-images_to_pdf_grid("../assets/Current", "output.pdf")
+        newTasksDicts["taskCollections"][collectionNum] = {
+            key: value for key, value in collectionDict.items() if key in keepKeys
+        }
+
+    for collectionNum, collectionDict in enumerate(newTasksDicts["taskCollections"]):
+
+        keepKeys = [
+            "favorite",
+            "announcements",
+            "collectionName",
+            "title",
+            "uniqueKey",
+            "task",
+        ]
+
+        for tileNum, tile in enumerate(collectionDict["tiles"]):
+
+            newTasksDicts["taskCollections"][collectionNum]["tiles"][tileNum] = {
+                key: value for key, value in tile.items() if key in keepKeys
+            }
+
+    for collectionNum, collectionDict in enumerate(newTasksDicts["taskCollections"]):
+
+        for tileNum, tile in enumerate(collectionDict["tiles"]):
+
+            keepKeys = [
+                "applicationName",
+                "averageRating",
+                "ratingCount",
+                "tabletHighResolutionImageCdnUrl",
+                "tabletLowResolutionImageCdnUrl",
+                "openInNewWindow",
+            ]
+
+            taskDict = tile["task"]
+
+            taskDict = {
+                key: value for key, value in taskDict.items() if key in keepKeys
+            }
+
+            currentDict = newTasksDicts["taskCollections"][collectionNum]["tiles"][
+                tileNum
+            ]
+
+            currentDict = {
+                key: value for key, value in currentDict.items() if key != "task"
+            }
+
+            currentDict.update(taskDict)
+
+            currentDict["currentRating"] = tileNum + 1
+            currentDict["alt"] = currentDict["title"]
+            currentDict["image"] = GetImagePath(title=currentDict["title"])
+            currentDict["href"] = "not-implemented.html"
+
+            if currentDict["title"] == "Canvas":
+
+                currentDict["target"] = "_blank"
+                currentDict["rel"] = "noopener"
+                currentDict["href"] = "https://canvas.it.umich.edu/"
+
+            elif currentDict["title"] == "Google Mail":
+
+                currentDict["target"] = "_blank"
+                currentDict["rel"] = "noopener"
+                currentDict["href"] = "https://gmail.com"
+
+            newTasksDicts["taskCollections"][collectionNum]["tiles"][
+                tileNum
+            ] = currentDict
+
+    for collectionNum, collectionDict in enumerate(newTasksDicts["taskCollections"]):
+
+        for tileNum, tile in enumerate(collectionDict["tiles"]):
+
+            isolatedTasks.append(tile)
+
+    with open(collectionsPath, "w") as newFile:
+
+        json.dump(newTasksDicts, newFile, indent=4)
+
+    with open(tasksPath, "w") as newFile:
+
+        json.dump(isolatedTasks, newFile, indent=4)

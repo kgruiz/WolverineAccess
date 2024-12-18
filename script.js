@@ -29,7 +29,7 @@ const showAllButton = document.getElementById("show-all")
 let linksData = []
 let initialLoaded = false
 
-fetch("links.json")
+fetch("JSON Files/links.json")
   .then(response => response.json())
   .then(data => {
     linksData = data
@@ -41,23 +41,7 @@ fetch("links.json")
       const top4 = sortedByRank.slice(0,4)
 
       top4.forEach(link => {
-        const card = document.createElement("a")
-
-        card.className = "popular-card"
-
-        card.href = link.href
-        card.target = link.target ? link.target : "_self"
-        card.rel = link.rel ? link.rel : ""
-
-        const h3 = document.createElement("h3")
-        h3.textContent = link.header
-
-        const img = document.createElement("img")
-        img.src = link.image
-        img.alt = link.alt
-
-        card.append(h3)
-        card.append(img)
+        const card = createCard(link)
         mostPopularContainer.append(card)
       })
     }
@@ -70,44 +54,14 @@ fetch("links.json")
       const next30 = sortedByRank.slice(10,40)
 
       top10.forEach(link => {
-        const card = document.createElement("a")
-
-        card.className = "link-card-expandable initial-cards"
-
-        card.href = link.href
-        card.target = link.target ? link.target : "_self"
-        card.rel = link.rel ? link.rel : ""
-
-        const h3 = document.createElement("h3")
-        h3.textContent = link.header
-
-        const img = document.createElement("img")
-        img.src = link.image
-        img.alt = link.alt
-
-        card.append(h3)
-        card.append(img)
+        const card = createCard(link)
+        card.classList.add("initial-cards")
         allLinksContainer.append(card)
       })
 
       next30.forEach(link => {
-        const card = document.createElement("a")
-
-        card.className = "link-card-expandable additional-cards hidden"
-
-        card.href = link.href
-        card.target = link.target ? link.target : "_self"
-        card.rel = link.rel ? link.rel : ""
-
-        const h3 = document.createElement("h3")
-        h3.textContent = link.header
-
-        const img = document.createElement("img")
-        img.src = link.image
-        img.alt = link.alt
-
-        card.append(h3)
-        card.append(img)
+        const card = createCard(link)
+        card.classList.add("additional-cards", "hidden")
         allLinksContainer.append(card)
       })
     }
@@ -129,23 +83,7 @@ fetch("links.json")
         }
 
         linksToShow.forEach(link => {
-          const card = document.createElement("a")
-
-          card.className = "link-card-full"
-
-          card.href = link.href
-          card.target = link.target ? link.target : "_self"
-          card.rel = link.rel ? link.rel : ""
-
-          const h3 = document.createElement("h3")
-          h3.textContent = link.header
-
-          const img = document.createElement("img")
-          img.src = link.image
-          img.alt = link.alt
-
-          card.append(h3)
-          card.append(img)
+          const card = createCard(link)
           allLinksFullContainer.append(card)
         })
       }
@@ -184,23 +122,7 @@ const RenderAllLinksFull = (sortType) => {
   }
 
   linksToShow.forEach(link => {
-    const card = document.createElement("a")
-
-    card.className = "link-card-full"
-
-    card.href = link.href
-    card.target = link.target ? link.target : "_self"
-    card.rel = link.rel ? link.rel : ""
-
-    const h3 = document.createElement("h3")
-    h3.textContent = link.header
-
-    const img = document.createElement("img")
-    img.src = link.image
-    img.alt = link.alt
-
-    card.append(h3)
-    card.append(img)
+    const card = createCard(link)
     allLinksFullContainer.append(card)
   })
 }
@@ -248,3 +170,25 @@ showLessButton.addEventListener("click", () => {
   showLessButton.classList.add("hidden")
   showAllButton.classList.add("hidden")
 })
+
+function createCard(link) {
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const header = document.createElement('h3');
+  header.textContent = link.header;
+  card.appendChild(header);
+
+  const subHeader = document.createElement('p');
+  subHeader.className = 'sub-header';
+  subHeader.textContent = link.subHeader;
+  card.appendChild(subHeader);
+
+  const img = document.createElement("img")
+  img.src = link.image
+  img.alt = link.alt
+
+  card.appendChild(img)
+
+  return card;
+}

@@ -1,0 +1,817 @@
+{
+    "Backpack/Register for Classes": 
+    [
+        "For Ann Arbor Students"
+    ],
+    "Student Business": 
+    [
+        "For Ann Arbor Students"
+    ],
+    "Human Resource Management System": 
+    [
+        "M-Pathways"
+    ],
+    "Financials & Physical Resources System": 
+    [
+        "M-Pathways"
+    ],
+    "Student Administration": 
+    [
+        "M-Pathways"
+    ],
+    "Employee Self Service": null,
+    "Expense Reporting": 
+    [
+        "Chrome River"
+    ],
+    "New and Prospective Student Business": null,
+    "Time Reporting": 
+    [
+        "Employee Self-Service"
+    ],
+    "View Paycheck": 
+    [
+        "Payroll & Compensation"
+    ],
+    "Faculty Business": null,
+    "View Final Grades": 
+    [
+        "Student Business"
+    ],
+    "Canvas": 
+    [
+        "Course Dashboard"
+    ],
+    "Data Warehouse": 
+    [
+        "BusinessObjects"
+    ],
+    "Google Mail": 
+    [
+        "U-M Email"
+    ],
+    "M-Reports": null,
+    "MarkeSite+ (Browse Only)": 
+    [
+        "Page"
+    ],
+    "View/Pay My Student Account": 
+    [
+        "Campus Finances"
+    ],
+    "View Unofficial Transcript": 
+    [
+        "Academic Records"
+    ],
+    "Class Schedule": null,
+    "Timesheet Approval": 
+    [
+        "University Business"
+    ],
+    "eResearch": 
+    [
+        "Electronic Research Administration"
+    ],
+    "Student Center": null,
+    "Cornerstone Learning (formerly MLearning)": 
+    [
+        "For Michigan Medicine"
+    ],
+    "DART": 
+    [
+        "Donor & Alumni Relationship Tool"
+    ],
+    "Faculty Center": 
+    [
+        "Faculty Business"
+    ],
+    "Document Imaging": null,
+    "Benefits Self-Service": 
+    [
+        "Employee Self-Service"
+    ],
+    "Michigan Medicine Email": 
+    [
+        "Microsoft Outlook"
+    ],
+    "MPrint": 
+    [
+        "Printing Service"
+    ],
+    "LSA Unofficial Audit Checklist": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Dropbox at U-M": 
+    [
+        "Cloud Storage & Collaboration"
+    ],
+    "Course & Instructor Ratings": 
+    [
+        "Atlas (formerly ART 2.0)"
+    ],
+    "Human Subject Incentive Payment Request": null,
+    "Travel Booking": 
+    [
+        "Collegiate Travel Planners (CTP)"
+    ],
+    "Purchasing Requisitions": null,
+    "View Current Grades": 
+    [
+        "Canvas"
+    ],
+    "Qualtrics": null,
+    "Google Drive": null,
+    "Order Transcripts/Check Order Status (Ann Arbor)": 
+    [
+        "Page"
+    ],
+    "Atlas Schedule Builder": null,
+    "Search for Classes": 
+    [
+        "Course Catalog"
+    ],
+    "Manager Desktop": null,
+    "My LINC": null,
+    "MCommunity": 
+    [
+        "Find People & Groups"
+    ],
+    "Leave Balances": 
+    [
+        "Employee Self-Service"
+    ],
+    "Zoom": 
+    [
+        "Video Conferencing"
+    ],
+    "M-Passport": null,
+    "Teaching Evaluations": 
+    [
+        "Blue"
+    ],
+    "LSA Course Guide": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Check Financial Aid Status": 
+    [
+        "For Students with a U-M Uniqname"
+    ],
+    "Payroll Tax Forms (W-2, W-4)": 
+    [
+        "Payroll & Compensation"
+    ],
+    "Tableau": null,
+    "Enrollment Connect": 
+    [
+        "For Undergraduates"
+    ],
+    "SignNow E-signature Service": 
+    [
+        "Page"
+    ],
+    "View Financial Aid Award Notices": 
+    [
+        "For New Admits using a Friend Account"
+    ],
+    "TIAA": 
+    [
+        "Manage Retirement Account"
+    ],
+    "Mcard Discounts": null,
+    "Find Scholarships & Financial Aid": 
+    [
+        "Office of Financial Aid"
+    ],
+    "Tuition and Fees": 
+    [
+        "Office of the Registrar"
+    ],
+    "Subscribe to Campus Emergency Alerts": null,
+    "M-Inform Disclosure System": 
+    [
+        "eResearch"
+    ],
+    "Campus Personal Information": 
+    [
+        "Make changes to your info"
+    ],
+    "Housing": 
+    [
+        "Student Life"
+    ],
+    "Manager Self Service": null,
+    "Apply for In-State Tuition": null,
+    "Report Library": 
+    [
+        "M-Reports"
+    ],
+    "University Health Services": 
+    [
+        "On-campus healthcare"
+    ],
+    "U-M Library": null,
+    "Virtual Sites": 
+    [
+        "Access Software Remotely"
+    ],
+    "Alumni Student Records": null,
+    "Set Up Direct Deposit": 
+    [
+        "Payroll & Compensation"
+    ],
+    "Register Your Travel": 
+    [
+        "For Faculty & Staff"
+    ],
+    "GET - Food, Meal Plans, MCard": 
+    [
+        "Housing & Dining"
+    ],
+    "Find Jobs, Internships, & Career Events": 
+    [
+        "Handshake"
+    ],
+    "Google Calendar": null,
+    "Birdi (formerly NoviXus)": 
+    [
+        "Mail Order Pharmacy"
+    ],
+    "OARS": 
+    [
+        "Online Access Request System"
+    ],
+    "Shared Services Center": null,
+    "Holidays & Time Off": 
+    [
+        "Human Resources"
+    ],
+    "Cash Receipt Ticket": null,
+    "BCBSM Member Portal": 
+    [
+        "For U-M Premier Care, PPO, CMM, & CDHP Plans"
+    ],
+    "Find Student Life Jobs": 
+    [
+        "Student Life"
+    ],
+    "LSA Majors & Minors": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Chartfield Converter": null,
+    "Maize & Blue Cupboard": null,
+    "Trade In Tech for Store Credit": 
+    [
+        "Tech Shop"
+    ],
+    "MetLife Legal Plans": 
+    [
+        "Legal Services Plan"
+    ],
+    "MHealthy": null,
+    "Organizational Learning": 
+    [
+        "HR"
+    ],
+    "PubMed @ U-M": 
+    [
+        "with MGet It"
+    ],
+    "Find Off-Campus Housing & Roommates": null,
+    "Google Scholar @ U-M": null,
+    "Sign In to Patient Portal": 
+    [
+        "MyUofMHealth.org"
+    ],
+    "Paydate Calendar": 
+    [
+        "HR"
+    ],
+    "Dining": null,
+    "Fidelity": 
+    [
+        "Manage Retirement Account"
+    ],
+    "M-Compass": null,
+    "Office of Development": 
+    [
+        "Leaders & Best"
+    ],
+    "Group X Fitness Schedule": 
+    [
+        "Rec Sports"
+    ],
+    "Orientation": 
+    [
+        "Office of New Student Programs"
+    ],
+    "Download Michigan App": null,
+    "MyAdvising": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Setup/Manage Two-Factor Weblogin": 
+    [
+        "DUO"
+    ],
+    "MClassrooms": 
+    [
+        "Classroom Database"
+    ],
+    "Finance/Payroll MGMT Reports": 
+    [
+        "Tableau"
+    ],
+    "Michigan Online Giving": null,
+    "Student Employment Application": null,
+    "Wolverine Access Help Center": null,
+    "Give to United Way": 
+    [
+        "For Faculty & Staff"
+    ],
+    "Late Drop/Add Request Status": 
+    [
+        "Backpacking/Registration"
+    ],
+    "Find Volunteer Opportunities": 
+    [
+        "Connect to Community"
+    ],
+    "Inspira Financial": 
+    [
+        "Manage Flexible Spending Account"
+    ],
+    "Events Calendar": 
+    [
+        "Happening @ Michigan"
+    ],
+    "Academic Calendar": 
+    [
+        "Office of the Registrar"
+    ],
+    "Set Up Emergency Contact": null,
+    "Med School Application Guide": 
+    [
+        "University Career Center"
+    ],
+    "Shared Services Center Client Portal": 
+    [
+        "Formerly CaseConnect"
+    ],
+    "HealthEquity - manage Health Savings Account": 
+    [
+        "Enrollment in BCBSM CDHP required"
+    ],
+    "Grant Proposals": 
+    [
+        "eResearch"
+    ],
+    "Connect to WiFi": 
+    [
+        "MSetup"
+    ],
+    "Slack at U-M": null,
+    "Schedule Appointment": 
+    [
+        "University Career Center"
+    ],
+    "Search Library Catalog": null,
+    "Find Student Jobs @ U-M": 
+    [
+        "Student Employment Office"
+    ],
+    "Tech Shop": null,
+    "Health Insurance Plans for Students": 
+    [
+        "University Health Service"
+    ],
+    "Interactive Shadow Tool": 
+    [
+        "Remote IT Support"
+    ],
+    "Rec Sports": null,
+    "Davis Vision by MetLife": 
+    [
+        "Vision Plan"
+    ],
+    "MetLife": 
+    [
+        "Optional Life Insurance"
+    ],
+    "PeoplePay": 
+    [
+        "Payment Decision Tool"
+    ],
+    "Tax Form 1095": null,
+    "Purchase Parking Permit": 
+    [
+        "Logistics, Transportation, & Parking"
+    ],
+    "University Record": 
+    [
+        "News for Faculty, Staff, & Retirees"
+    ],
+    "Set Up Account Recovery": null,
+    "View Dining Nutrition Info": 
+    [
+        "Dining"
+    ],
+    "Remote Office Hours Queue": null,
+    "Schedule Dental Appointment": 
+    [
+        "U-M Dentistry"
+    ],
+    "View 1098-T": 
+    [
+        "Campus Finances"
+    ],
+    "Procurement Services": null,
+    "Michigan Daily": 
+    [
+        "Student Newspaper"
+    ],
+    "PEERRS Training & Information": null,
+    "After Hours & Emergency Ride Home": 
+    [
+        "Logistics, Transportation, & Parking"
+    ],
+    "Athletics": 
+    [
+        "MGoBlue.com"
+    ],
+    "LinkedIn Learning": null,
+    "U-M Research Computing Package": 
+    [
+        "Resource Management Portal"
+    ],
+    "MiChart": null,
+    "Find Course Textbooks": 
+    [
+        "U-M Online Bookstore"
+    ],
+    "Campus Map": 
+    [
+        "Campus Information"
+    ],
+    "Get Connected with SSD": 
+    [
+        "Services for Students with Disabilities"
+    ],
+    "Treasurer's Office": null,
+    "Make Honors Advising Appointment": 
+    [
+        "LSA Honors Program"
+    ],
+    "My Personal Data": 
+    [
+        "ViziBLUE"
+    ],
+    "Brand Standards": 
+    [
+        "Logo Downloads, Policies, & Styles"
+    ],
+    "Bookable Spaces": 
+    [
+        "At the Library"
+    ],
+    "I-20 Request Form": 
+    [
+        "For Continuing/Returning Students"
+    ],
+    "Development Journey": 
+    [
+        "Organizational Learning"
+    ],
+    "Research and Sponsored Projects": null,
+    "Update Alumni Information": null,
+    "Meet with Campus Involvement Advisor": null,
+    "SciFinder": null,
+    "Michigan Care Member Portal": 
+    [
+        "U-M Health Plan"
+    ],
+    "Delta Dental": 
+    [
+        "U-M Dental Plan"
+    ],
+    "University Career Center": null,
+    "IT Help": 
+    [
+        "ITS Service Center"
+    ],
+    "View Career Fairs, Immersions, & Events": 
+    [
+        "Handshake"
+    ],
+    "Get Writing Support": 
+    [
+        "Sweetland Center for Writing"
+    ],
+    "Vax Viewer": 
+    [
+        "Report & view vaccine info"
+    ],
+    "Academic Advising": 
+    [
+        "Campus Information"
+    ],
+    "MCommunity Sponsor System": null,
+    "Engage with your Community": 
+    [
+        "Ginsberg Center"
+    ],
+    "Find Study Spaces": null,
+    "MBus Tracker": 
+    [
+        "Magic Bus"
+    ],
+    "Sensitive Data Guide": 
+    [
+        "U-M Safe Computing"
+    ],
+    "Faculty and Staff Announcements": null,
+    "MICORES": 
+    [
+        "Agilent iLabs"
+    ],
+    "Diploma Information": 
+    [
+        "Office of the Registrar"
+    ],
+    "Prime Therapeutics": 
+    [
+        "Prescription Drug Plan"
+    ],
+    "PsycINFO": 
+    [
+        "with MGet It"
+    ],
+    "Develop Teaching Skills": 
+    [
+        "CRLT - Center for Research on Learning & Teaching"
+    ],
+    "Remote Resource Guide": null,
+    "eForms": 
+    [
+        "Shared Services Center"
+    ],
+    "Togetherall": null,
+    "Regulatory Management": 
+    [
+        "eResearch"
+    ],
+    "ITS Service Status": null,
+    "Connect to VPN": 
+    [
+        "HITS (For Michigan Medicine)",
+        "ITS (For Campus)"
+    ],
+    "Academic Support Resources": 
+    [
+        "LSA Newnan Academic Advising Center"
+    ],
+    "Health Plan Rate Estimator": 
+    [
+        "HR"
+    ],
+    "Career & Education Counseling": 
+    [
+        "CEW+"
+    ],
+    "Research A-Z": 
+    [
+        "For Biomedical & Animal Research"
+    ],
+    "Explore Well-being for U-M Students": 
+    [
+        "Complete campus resources"
+    ],
+    "Staff Handbook": 
+    [
+        "Human Resources"
+    ],
+    "Central Management Console": 
+    [
+        "BusinessObjects Administration"
+    ],
+    "Get Alumni Uniqname": null,
+    "Standard Practice Guide (SPG)": null,
+    "Information for Graduating Students": null,
+    "Counseling and Consultation Services": 
+    [
+        "For Faculty & Staff"
+    ],
+    "Campus Acronym Decoder": 
+    [
+        "Campus Information"
+    ],
+    "Med School Faculty Development Workshops": 
+    [
+        "Michigan Medicine"
+    ],
+    "ITS Software Store": 
+    [
+        "For Faculty & Staff"
+    ],
+    "IT Services": 
+    [
+        "ITS"
+    ],
+    "Find Leadership Opportunities": 
+    [
+        "M-LEAD"
+    ],
+    "Intramural Sports Portal": 
+    [
+        "IMLeagues"
+    ],
+    "Meet with a Wellness Coach": 
+    [
+        "University Health Service"
+    ],
+    "Get Mental Health Help": 
+    [
+        "Counseling & Psychological Services"
+    ],
+    "Resolve Conflicts Peacefully": 
+    [
+        "Office of Student Conflict Resolution (OSCR)"
+    ],
+    "Take Mental Health Screening": 
+    [
+        "Counseling & Psychological Services"
+    ],
+    "Benefits Mentor": 
+    [
+        "Narrative"
+    ],
+    "Anatomage Online Anatomy Software": 
+    [
+        "TableOnCloud"
+    ],
+    "Alumni Online Communities": null,
+    "Library Locations and Hours": null,
+    "Campus Parking": null,
+    "Browse IT Help Docs": 
+    [
+        "ITS Documentation"
+    ],
+    "LSA Administrative Portal": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "LSA Productivity Chrome Extensions": 
+    [
+        "Management Information Systems"
+    ],
+    "Tech Repair": 
+    [
+        "Computer Maintenance & Repair"
+    ],
+    "Discover Research Experts": 
+    [
+        "Michigan Research Experts"
+    ],
+    "Emergency Hardship Program": 
+    [
+        "For Faculty & Staff"
+    ],
+    "U-M Health Response": 
+    [
+        "U-M Policies and Guidance"
+    ],
+    "Report Ethics or Compliance Concern": 
+    [
+        "Compliance Hotline"
+    ],
+    "Lost & Found": 
+    [
+        "Campus Information"
+    ],
+    "Find Research Core Facility": 
+    [
+        "Michigan Research Cores"
+    ],
+    "LSA Transfer Student Program": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Alumni Association": null,
+    "Get Started": 
+    [
+        "Guide to Wolverine Access"
+    ],
+    "Council for Nontraditional Students": 
+    [
+        "COUNTS"
+    ],
+    "Canvas Training": 
+    [
+        "For Faculty & Staff"
+    ],
+    "LSA Course Syllabus Archive": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Report a Campus Climate Concern": 
+    [
+        "Dean of Students"
+    ],
+    "University Unions": null,
+    "View Eligible FSA Expenses": 
+    [
+        "Inspira Financial"
+    ],
+    "Planet Blue Ambassador Program": null,
+    "Michigan Online": 
+    [
+        "Online Learning Opportunities"
+    ],
+    "Go Abroad": 
+    [
+        "Global Michigan"
+    ],
+    "Update Your Personal Information": 
+    [
+        "U-M Employees"
+    ],
+    "Research Ethics & Compliance": null,
+    "Find Student Research Opportunities": 
+    [
+        "Research at U-M"
+    ],
+    "Student Emergency Funds": 
+    [
+        "Office of the Provost"
+    ],
+    "JSTOR": 
+    [
+        "via U-M Library"
+    ],
+    "Find Software": 
+    [
+        "Campus Computing Sites"
+    ],
+    "Spectrum Center": null,
+    "Campus Computing Sites by Feature": null,
+    "Adoption and Insights Portal (AIP)": 
+    [
+        "For Dearborn Faculty & Staff"
+    ],
+    "Adopt Course Textbooks": 
+    [
+        "For Faculty & Staff"
+    ],
+    "Send Wolverine Access Feedback": null,
+    "Ask a Librarian": null,
+    "Lost or Stolen Mcard": 
+    [
+        "DPSS"
+    ],
+    "View or Subscribe to Crime Alerts": 
+    [
+        "DPSS"
+    ],
+    "UMICH Votes": null,
+    "API Directory": null,
+    "eRAM": 
+    [
+        "Animal and controlled substance management"
+    ],
+    "Reaxys": null,
+    "Google Meet": null,
+    "LSA Academic Calendar": 
+    [
+        "Literature, Science, and the Arts"
+    ],
+    "Get Legal Help": 
+    [
+        "Student Legal Services"
+    ],
+    "Authorize Parent/Family to Access My Student Account": null,
+    "Call for Nurse Advice": 
+    [
+        "For Students"
+    ],
+    "Alumni Education Gateway": null,
+    "The Ride": 
+    [
+        "Ann Arbor Area Transportation Authority"
+    ],
+    "Google Chat": null,
+    "Reset Forgotten Password": null,
+    "Join Student Organizations": 
+    [
+        "MaizePages"
+    ],
+    "Write Your Resume": 
+    [
+        "University Career Center"
+    ],
+    "Protect Personal Devices": 
+    [
+        "Safe Computing"
+    ]
+}

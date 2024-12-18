@@ -762,3 +762,9 @@ footer a[href]:hover {
   font-size: 1rem;
   font-weight: 700;
 }
+
+.sub-header {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+}
