@@ -1,14 +1,11 @@
 // script.js
-
 // ==============================
 // Global Variables
 // ==============================
 let linksData = [];
 let sortByRating = true;
-
 const FAVORITES_KEY = 'favoriteLinks';
 let favoriteStatuses = {};
-
 let signedIn = false;
 let userName = "";
 let userEmail = "";
@@ -16,7 +13,6 @@ let userEmail = "";
 // ==============================
 // Favorites Handling
 // ==============================
-
 /**
  * Load favorite statuses from localStorage and initialize favorites.
  */
@@ -36,7 +32,6 @@ function loadFavorites() {
       console.error("Failed to parse favorite links from localStorage.", e);
     }
   }
-
   saveFavorites();
 }
 
@@ -77,7 +72,6 @@ function removeFavorite(link) {
 // ==============================
 // UI Rendering Functions
 // ==============================
-
 /**
  * Render favorited links in a specified container.
  * @param {string} containerId - The ID of the container element.
@@ -86,6 +80,7 @@ function renderFavoritesInContainer(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = "";
+
   const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
 
   if (favoritedLinks.length === 0) {
@@ -121,7 +116,6 @@ function updateAllCardStars() {
     if (!link) return;
     const star = card.querySelector(".favorite-star");
     if (!star) return;
-
     if (isLinkFavorited(link)) {
       star.textContent = "star";
       star.classList.add("favorited");
@@ -148,7 +142,6 @@ function refreshUIAfterFavoriteChange() {
 window.addEventListener("scroll", () => {
   const backToTopButton = document.querySelector(".back-to-top");
   const homeButton = document.querySelector(".home-button");
-
   if (window.scrollY > 200) {
     backToTopButton.style.display = "block";
     homeButton.style.display = "block";
@@ -172,7 +165,6 @@ document.querySelector(".home-button")?.addEventListener("click", () => {
 // ==============================
 // Data Fetching and Initialization
 // ==============================
-
 /**
  * Fetch tasks data and initialize the page.
  */
@@ -209,7 +201,6 @@ function initializePage() {
   if (mostPopularContainer && linksData.length > 0) {
     const sortedByRank = [...linksData].sort((a, b) => b.currentRating - a.currentRating);
     const top4 = sortedByRank.slice(0, 4);
-
     top4.forEach(link => {
       const card = CreateCard(link);
       mostPopularContainer.append(card);
@@ -222,13 +213,11 @@ function initializePage() {
     const sortedByRank = [...linksData].sort((a, b) => b.currentRating - a.currentRating);
     const top10 = sortedByRank.slice(0, 10);
     const next30 = sortedByRank.slice(10, 40);
-
     top10.forEach(link => {
       const card = CreateCard(link);
       card.classList.add("initial-cards");
       allLinksContainer.append(card);
     });
-
     next30.forEach(link => {
       const card = CreateCard(link);
       card.classList.add("additional-cards", "hidden");
@@ -245,7 +234,6 @@ function initializePage() {
   if (allLinksFullContainer) {
     let sortType = "rank";
     let searchTerm = "";
-
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("q")) {
       searchTerm = urlParams.get("q").toLowerCase();
@@ -253,7 +241,6 @@ function initializePage() {
 
     function RenderAllLinksFull() {
       allLinksFullContainer.innerHTML = "";
-
       let linksToShow = [...linksData];
 
       if (sortType === "rank") {
@@ -280,6 +267,7 @@ function initializePage() {
         });
       }
       updateAllCardStars();
+      initializeCardHoverEffects(); // Re-initialize hover effects
     }
 
     const fullSearchInput = document.getElementById("fullSearchInput");
@@ -310,7 +298,6 @@ function initializePage() {
       additionalCards.forEach(card => {
         card.classList.remove("hidden");
       });
-
       showMoreButton.classList.add("hidden");
       showLessButton.classList.remove("hidden");
       showAllButton.classList.remove("hidden");
@@ -321,7 +308,6 @@ function initializePage() {
       additionalCards.forEach(card => {
         card.classList.add("hidden");
       });
-
       showMoreButton.classList.remove("hidden");
       showLessButton.classList.add("hidden");
       showAllButton.classList.add("hidden");
@@ -329,6 +315,10 @@ function initializePage() {
 
     initializeSignInMenu();
     initializeHoverMenus();
+    initializeButtonEffects();
+    initializeCardHoverEffects();
+    initializeNavIconsHoverEffects();
+    initializeFavoritesIconHoverEffects();
   }
 
   // Setup Search Suggestions
@@ -355,7 +345,6 @@ function initializePage() {
     additionalCards.forEach(card => {
       card.classList.remove("hidden");
     });
-
     showMoreButton.classList.add("hidden");
     showLessButton.classList.remove("hidden");
     showAllButton.classList.remove("hidden");
@@ -366,7 +355,6 @@ function initializePage() {
     additionalCards.forEach(card => {
       card.classList.add("hidden");
     });
-
     showMoreButton.classList.remove("hidden");
     showLessButton.classList.add("hidden");
     showAllButton.classList.add("hidden");
@@ -374,12 +362,15 @@ function initializePage() {
 
   initializeSignInMenu();
   initializeHoverMenus();
+  initializeButtonEffects();
+  initializeCardHoverEffects();
+  initializeNavIconsHoverEffects();
+  initializeFavoritesIconHoverEffects();
 }
 
 // ==============================
 // Card Creation
 // ==============================
-
 /**
  * Create a card element for a given link.
  * @param {Object} link - The link object.
@@ -437,6 +428,7 @@ function CreateCard(link) {
   star.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent card click
+
     if (isLinkFavorited(link)) {
       removeFavorite(link);
     } else {
@@ -446,13 +438,29 @@ function CreateCard(link) {
     refreshUIAfterFavoriteChange();
   });
 
+  // Add hover effects to the card
+  card.addEventListener("mouseover", () => {
+    card.style.transform = "translateY(-5px)";
+    const favoriteStar = card.querySelector(".favorite-star");
+    if (favoriteStar) {
+      favoriteStar.style.display = "block";
+    }
+  });
+
+  card.addEventListener("mouseout", () => {
+    card.style.transform = "translateY(0px)";
+    const favoriteStar = card.querySelector(".favorite-star");
+    if (favoriteStar && !isLinkFavorited(link)) {
+      favoriteStar.style.display = "none";
+    }
+  });
+
   return card;
 }
 
 // ==============================
 // Search Suggestions Setup
 // ==============================
-
 /**
  * Setup search suggestions for an input element.
  * @param {HTMLElement} inputElement - The search input element.
@@ -468,7 +476,6 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
 
   const formElement = inputElement.closest("form");
   const searchButton = formElement?.querySelector("button");
-
   searchButton?.addEventListener("click", onSearchButtonClick);
 
   function onInput() {
@@ -477,12 +484,10 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
       hideSuggestions();
       return;
     }
-
     const filtered = linksData.filter(link =>
       (link.title && link.title.toLowerCase().includes(query)) ||
       (link.applicationName && link.applicationName.toLowerCase().includes(query))
     );
-
     buildSuggestions(query, filtered.slice(0, 5));
   }
 
@@ -528,6 +533,7 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
 
   function onKeyDown(e) {
     if (!suggestionsContainer.classList.contains("active")) return;
+
     const maxIndex = suggestionItems.length - 1;
 
     if (e.key === "ArrowDown") {
@@ -583,7 +589,6 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
 // ==============================
 // Sign-In Menu Initialization
 // ==============================
-
 /**
  * Initialize the sign-in menu based on user authentication status.
  */
@@ -638,6 +643,17 @@ function initializeSignInMenu() {
       <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
     `;
   }
+
+  // Add hover effect to sign-in menu items
+  const signInMenuItems = document.querySelectorAll(".sign-in-menu-item");
+  signInMenuItems.forEach(item => {
+    item.addEventListener("mouseover", () => {
+      item.style.backgroundColor = "#f0f0f0";
+    });
+    item.addEventListener("mouseout", () => {
+      item.style.backgroundColor = "transparent";
+    });
+  });
 }
 
 /**
@@ -663,7 +679,6 @@ function signOut() {
 // ==============================
 // Hover/Click Menu Logic
 // ==============================
-
 /**
  * Initialize hover menus for various UI components.
  */
@@ -682,7 +697,6 @@ function initializeHoverMenus() {
 function setupHoverMenu(containerId, menuId) {
   const container = document.getElementById(containerId);
   const menu = document.getElementById(menuId);
-
   let clickedOpen = false;
 
   if (!container || !menu) return;
@@ -699,14 +713,6 @@ function setupHoverMenu(containerId, menuId) {
     }
   });
 
-  // container.addEventListener("mouseout", () => {
-  //   setTimeout(() => {
-  //     if (!clickedOpen && !container.matches(':hover') && !menu.matches(':hover')) {
-  //       menu.style.display = "none";
-  //     }
-  //   }, 200); // Adjust the delay as needed
-  // });
-
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
@@ -714,7 +720,7 @@ function setupHoverMenu(containerId, menuId) {
   });
 
   document.addEventListener("click", (event) => {
-    if (clickedOpen && !container.contains(event.target)) {
+    if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
       clickedOpen = false;
       menu.style.display = "none";
     }
@@ -722,79 +728,131 @@ function setupHoverMenu(containerId, menuId) {
 }
 
 // ==============================
-// Task Loading and Rendering (Optional)
+// Button Hover and Click Effects
 // ==============================
-
 /**
- * Load tasks from a JSON file.
+ * Initialize hover and click effects for buttons.
  */
-function LoadTasks() {
-  fetch("tasks.json")
-    .then(response => response.json())
-    .then(data => {
-      tasks = data;
-      RenderTasks();
-    })
-    .catch(() => console.error("Failed to load tasks.json for tasks"));
-}
-
-/**
- * Render the loaded tasks on the page.
- */
-function RenderTasks() {
-  const container = document.getElementById("all-links-full-container");
-  if (!container || tasks.length === 0) return;
-
-  container.innerHTML = "";
-
-  if (sortByRating) {
-    tasks.sort((a, b) => b.rating - a.rating);
-  } else {
-    tasks.sort((a, b) => a.title.localeCompare(b.title));
-  }
-
-  tasks.forEach(task => {
-    const card = document.createElement("a");
-    card.className = "card";
-    card.href = task.href;
-    card.dataset.uniqueKey = task.uniqueKey;
-    if (task.openInNewWindow) {
-      card.target = "_blank";
-      card.rel = "noopener";
-    }
-
-    const header = document.createElement("h2");
-    header.textContent = task.title;
-    card.appendChild(header);
-
-    const description = document.createElement("p");
-    description.textContent = task.description;
-    card.appendChild(description);
-
-    const rating = document.createElement("p");
-    rating.textContent = `Rating: ${task.rating}`;
-    card.appendChild(rating);
-
-    container.appendChild(card);
+function initializeButtonEffects() {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(button => {
+    button.addEventListener("mouseover", () => {
+      button.style.filter = "brightness(90%)";
+    });
+    button.addEventListener("mouseout", () => {
+      button.style.filter = "brightness(100%)";
+    });
+    button.addEventListener("mousedown", () => {
+      button.style.transform = "scale(0.96)";
+    });
+    button.addEventListener("mouseup", () => {
+      button.style.transform = "scale(1)";
+    });
+    button.addEventListener("mouseleave", () => {
+      button.style.transform = "scale(1)";
+    });
   });
 }
 
-const sortTypeSelector = document.getElementById("toggle");
-if (sortTypeSelector) {
-  sortTypeSelector.addEventListener("change", function () {
-    sortByRating = !sortByRating;
-    RenderTasks();
+// ==============================
+// Card Hover Effects
+// ==============================
+/**
+ * Initialize hover effects for cards.
+ */
+function initializeCardHoverEffects() {
+  const cards = document.querySelectorAll(".card, .it-services-card");
+  cards.forEach(card => {
+    card.addEventListener("mouseover", () => {
+      card.style.transform = "translateY(-5px)";
+      const favoriteStar = card.querySelector(".favorite-star");
+      if (favoriteStar) {
+        favoriteStar.style.display = "block";
+      }
+    });
+    card.addEventListener("mouseout", () => {
+      card.style.transform = "translateY(0px)";
+      const favoriteStar = card.querySelector(".favorite-star");
+      if (favoriteStar && !card.classList.contains("favorited-card")) {
+        favoriteStar.style.display = "none";
+      }
+    });
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  LoadTasks();
-});
+// ==============================
+// Navigation Icons Hover Effects
+// ==============================
+/**
+ * Initialize hover effects for navigation icons.
+ */
+function initializeNavIconsHoverEffects() {
+  const navIconLinks = document.querySelectorAll(".nav-icons a");
+  navIconLinks.forEach(link => {
+    link.addEventListener("mouseover", () => {
+      link.style.color = "#FFCB05";
+    });
+    link.addEventListener("mouseout", () => {
+      link.style.color = "";
+    });
+  });
+}
+
+// ==============================
+// Favorites and Other Icons Hover Effects
+// ==============================
+/**
+ * Initialize hover effects for favorites and other icons.
+ */
+function initializeFavoritesIconHoverEffects() {
+  const iconSelectors = [
+    { selector: ".group-selector a", scale: 1.05 },
+    { selector: ".favorites-icon a", scale: 1.15 },
+    { selector: ".notifications-icon a", scale: 1.15 },
+    { selector: ".home-icon", scale: 1.15 },
+    { selector: ".all-links-icon", scale: 1.12 }
+  ];
+
+  iconSelectors.forEach(iconInfo => {
+    const icons = document.querySelectorAll(iconInfo.selector);
+    icons.forEach(icon => {
+      icon.addEventListener("mouseover", () => {
+        icon.style.transform = `scale(${iconInfo.scale})`;
+        icon.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+      });
+      icon.addEventListener("mouseout", () => {
+        icon.style.transform = "scale(1)";
+        icon.style.boxShadow = "none";
+      });
+    });
+  });
+}
+
+// ==============================
+// Switch and Toggle Effects
+// ==============================
+/**
+ * Initialize switch and toggle effects.
+ */
+function initializeSwitchToggleEffects() {
+  const switches = document.querySelectorAll(".switch input");
+  switches.forEach(switchInput => {
+    const slider = switchInput.nextElementSibling;
+    switchInput.addEventListener("change", () => {
+      if (switchInput.checked) {
+        slider.style.backgroundColor = "#FFCB05";
+        slider.querySelector("::before").style.transform = "translateX(26px)";
+      } else {
+        slider.style.backgroundColor = "#ccc";
+        slider.querySelector("::before").style.transform = "translateX(0)";
+      }
+    });
+  });
+}
 
 // ==============================
 // Modal Functionality
 // ==============================
-
 // Get modal elements
 const preferencesMenu = document.getElementById("preferences-menu");
 const preferencesMenuCloseButton = document.getElementById("preferences-menu-close-button");
@@ -804,13 +862,44 @@ const preferencesMenuCloseButton = document.getElementById("preferences-menu-clo
  */
 function openPreferencesMenu() {
   preferencesMenu.style.display = "block";
+  preferencesMenu.style.opacity = 0;
+  let opacity = 0;
+  const fadeIn = setInterval(() => {
+    opacity += 0.05;
+    preferencesMenu.style.opacity = opacity;
+    if (opacity >= 1) {
+      clearInterval(fadeIn);
+    }
+  }, 10);
+
+  // Slide in animation
+  const content = preferencesMenu.querySelector(".preferences-menu-content");
+  content.style.transform = "translateY(-50px)";
+  let translateY = -50;
+  const slideIn = setInterval(() => {
+    translateY += 2;
+    content.style.transform = `translateY(${translateY}px)`;
+    if (translateY >= 0) {
+      content.style.transform = "translateY(0)";
+      clearInterval(slideIn);
+    }
+  }, 10);
 }
 
 /**
  * Close the preferences modal.
  */
 function closePreferencesMenu() {
-  preferencesMenu.style.display = "none";
+  // Fade out animation
+  let opacity = 1;
+  const fadeOut = setInterval(() => {
+    opacity -= 0.05;
+    preferencesMenu.style.opacity = opacity;
+    if (opacity <= 0) {
+      preferencesMenu.style.display = "none";
+      clearInterval(fadeOut);
+    }
+  }, 10);
 }
 
 // Event listeners for modal functionality
@@ -829,23 +918,18 @@ window.addEventListener("keydown", function (event) {
 // ==============================
 // Favorites Preference Toggle
 // ==============================
-
 // Get references to DOM elements for favorites toggle
 const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
 const heroFavoritesBox = document.querySelector(".hero-favorites-box");
-
 // Load and apply saved favorites preference
 const savedPreference = localStorage.getItem("showFavorites");
 const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
-
 toggleFavoritesCheckbox.checked = showFavorites;
 heroFavoritesBox.style.display = showFavorites ? "block" : "none";
-
 // Event listener for favorites preference change
 toggleFavoritesCheckbox.addEventListener("change", () => {
   const showFavorites = toggleFavoritesCheckbox.checked;
   heroFavoritesBox.style.display = showFavorites ? "block" : "none";
-
   // Save the updated preference to localStorage
   localStorage.setItem("showFavorites", JSON.stringify(showFavorites));
 });
