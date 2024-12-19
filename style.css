@@ -1,8 +1,14 @@
+/* style.css */
+/*
+   NOTE: Do not change card sizes.
+   The code has been arranged to update star states across all displays.
+   We will not alter card dimensions or styling related to size.
+*/
+
 /* ===========================================================
    Reset and Base Styles
    =========================================================== */
 
-/* Apply box-sizing, margin, and padding reset to common elements */
 header,
 nav,
 main,
@@ -21,7 +27,6 @@ li {
   padding: 0;
 }
 
-/* Base styles for the body */
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -32,24 +37,21 @@ body {
   text-align: center;
 }
 
-/* Remove underline from links and inherit color */
 a {
   text-decoration: none;
   color: inherit;
 }
 
 /* ===========================================================
-   Navigation Styles
-   =========================================================== */
+      Navigation Styles
+      =========================================================== */
 
-/* Styles for the navigation bar */
 nav {
   background: #00274C;
   color: #fff;
   padding: 1rem;
 }
 
-/* Container within the navigation for layout */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -57,26 +59,22 @@ nav {
   flex-wrap: wrap;
 }
 
-/* Left and right sections within the navigation */
 .left-section,
 .right-section {
   display: flex;
   align-items: center;
 }
 
-/* Right section specific styles */
 .right-section {
   gap: 1rem;
   height: 30px;
 }
 
-/* Logo link styles */
 .logo-link img {
   height: 40px;
   cursor: pointer;
 }
 
-/* Search form within the navigation */
 .search-form {
   margin-left: 1rem;
   display: inline-flex;
@@ -87,7 +85,6 @@ nav {
   position: relative;
 }
 
-/* Search input field styles */
 .search-form input {
   border: none;
   outline: none;
@@ -95,7 +92,6 @@ nav {
   width: 200px;
 }
 
-/* Search button styles */
 .search-form button {
   background: #FFCB05;
   border: none;
@@ -107,7 +103,6 @@ nav {
   margin-left: 0.5rem;
 }
 
-/* Sign-in button styles */
 .sign-in-button {
   background: #FFCB05;
   border: none;
@@ -124,7 +119,6 @@ nav {
   gap: 0.25rem;
 }
 
-/* Navigation icons list styles */
 .nav-icons {
   list-style: none;
   display: flex;
@@ -135,36 +129,31 @@ nav {
   margin-top: 8.5px;
 }
 
-/* Individual navigation icon item styles */
 .nav-icons li {
   margin: 0 0.25rem;
 }
 
 /* ===========================================================
-   Group Selector Styles
-   =========================================================== */
+      Group Selector Styles
+      =========================================================== */
 
-/* Container for group selector */
 .group-selector {
   display: inline-flex;
   align-items: center;
   position: relative;
 }
 
-/* Current group display styles */
 .current-group {
   margin-right: 0.75rem;
   font-weight: 700;
   font-size: 1em;
 }
 
-/* Toggle button for group selector */
 .group-selector-toggle {
   display: inline-flex;
   align-items: center;
 }
 
-/* Adjustments for current group and icons within toggle */
 .group-selector-toggle .current-group {
   margin-top: -3px;
 }
@@ -173,7 +162,6 @@ nav {
   margin-top: -5px;
 }
 
-/* Dropdown menu for group selector */
 .group-selector-menu {
   position: fixed;
   top: 67px;
@@ -195,7 +183,6 @@ nav {
   font-size: 1.5rem;
 }
 
-/* Header section within group selector menu */
 .group-selector-header {
   width: 100%;
 }
@@ -215,7 +202,6 @@ nav {
   margin-top: 0.5rem;
 }
 
-/* Container for group items */
 .group-items {
   display: flex;
   flex-wrap: wrap;
@@ -224,7 +210,6 @@ nav {
   justify-content: flex-start;
 }
 
-/* Individual group items as links */
 .group-items a {
   display: flex;
   flex-direction: column;
@@ -247,7 +232,6 @@ nav {
   transform: translateY(-5px);
 }
 
-/* Arrow indicator for group selector menu */
 .group-selector-menu::before {
   content: '';
   position: absolute;
@@ -268,7 +252,6 @@ nav {
   margin-bottom: 1rem;
 }
 
-/* Image styles within group selector menu */
 .group-selector-menu img {
   width: 160px;
   height: 160px;
@@ -276,10 +259,9 @@ nav {
 }
 
 /* ===========================================================
-   Hero Section Styles
-   =========================================================== */
+      Hero Section Styles
+      =========================================================== */
 
-/* Hero section container */
 .hero-section {
   position: relative;
   min-height: 80vh;
@@ -296,7 +278,6 @@ nav {
   padding: 2rem;
 }
 
-/* Content within the hero section */
 .hero-content {
   background: rgba(0, 0, 0, 0.6);
   padding: 3rem 2rem;
@@ -306,21 +287,18 @@ nav {
   margin-bottom: 2rem;
 }
 
-/* Heading within hero content */
 .hero-content h1 {
   margin: 0;
   font-size: 3rem;
   font-weight: 700;
 }
 
-/* Image within hero content */
 .hero-content img {
   max-width: 100%;
   height: auto;
   margin-bottom: 1rem;
 }
 
-/* Search form within hero section */
 .hero-search-form {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -328,7 +306,6 @@ nav {
   position: relative;
 }
 
-/* Input field within hero search form */
 .hero-search-form input {
   border: none;
   outline: none;
@@ -339,7 +316,6 @@ nav {
   border-radius: 4px 0 0 4px;
 }
 
-/* Button within hero search form */
 .hero-search-form button {
   background: #FFCB05;
   border: none;
@@ -353,16 +329,31 @@ nav {
   justify-content: center;
 }
 
-/* Icon within hero search button */
 .hero-search-form button .material-icons {
   font-size: 1.5rem;
 }
 
-/* ===========================================================
-   Cards Container and Card Styles
-   =========================================================== */
+/* Hero Favorites Box styling */
+.hero-favorites-box {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
 
-/* Container for cards */
+.hero-favorites-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* ===========================================================
+      Cards Container and Card Styles
+      =========================================================== */
+/* NOTE: Do not change the size of cards. */
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -371,7 +362,6 @@ nav {
   margin-top: 1rem;
 }
 
-/* Specific styles for expandable all-links container */
 .cards-container.all-links-expandable {
   justify-content: center;
   gap: 1rem;
@@ -380,12 +370,11 @@ nav {
   margin-right: 50px;
 }
 
-/* Card sizing for expandable all-links */
 .cards-container.all-links-expandable .card {
+  /* Do not change size */
   flex: 0 1 calc((100% - (4 * 1rem))/5);
 }
 
-/* Specific styles for full all-links container */
 .cards-container.all-links-full {
   display: flex;
   flex-wrap: wrap;
@@ -396,81 +385,10 @@ nav {
   margin-right: 0px;
 }
 
-/* Full search area styles */
-.full-search-area {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  margin: 0 auto;
-}
-
-.full-search-area {
-  padding: 3rem 1rem;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-.full-search-area h1 {
-  margin: 0;
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-.full-search-area h3 {
-  margin: 1rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-/* Full search form styles */
-.full-search-form {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  outline: 1px solid #001F3A;
-  border-radius: 4px 4px 4px 4px;
-}
-
-/* Input within full search form */
-.full-search-form input {
-  border: none;
-  outline: none;
-  font-size: 1.2rem;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 4px 0 0 4px;
-}
-
-/* Button within full search form */
-.full-search-form button {
-  background: #FFCB05;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-  border-radius: 0 4px 4px 0;
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Icon within full search button */
-.full-search-form button .material-icons {
-  font-size: 1.5rem;
-}
-
 /* ===========================================================
-   Content Section Styles
-   =========================================================== */
+      Content Section Styles
+      =========================================================== */
 
-/* General content section styles */
 .content-section {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -478,7 +396,6 @@ nav {
   text-align: center;
 }
 
-/* Heading within content sections */
 .content-section h2 {
   margin-top: 0;
   font-size: 1.5rem;
@@ -487,16 +404,12 @@ nav {
 }
 
 /* ===========================================================
-   Card Styles
-   =========================================================== */
+      Card Styles
+      =========================================================== */
+/* Do not change card sizing */
 
-/* Common styles for all card types */
 .cards-container .card,
-.cards-container .collections-card,
-.cards-container .popular-card,
-.cards-container .link-card-expandable,
-.cards-container .link-card-full,
-.cards-container .it-services-card {
+.it-services-card {
   background: #F5F5F5;
   border-radius: 8px;
   padding: 1rem;
@@ -508,70 +421,31 @@ nav {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   user-select: none;
   position: relative;
-  /* Needed for positioning the favorite star */
 }
 
-/* Specific card width settings */
-.card,
-.popular-card,
-.link-card-expandable,
-.it-services-card {
-  max-width: 200px;
-  width: 100%;
-}
-
-.collections-card {
-  max-width: 260px;
-}
-
-.link-card-full {
-  max-width: 180px;
-  width: 100%;
-}
-
-/* Hover effects for all card types */
 .card:hover,
-.collections-card:hover,
-.popular-card:hover,
-.link-card-expandable:hover,
-.link-card-full:hover,
 .it-services-card:hover {
   transform: translateY(-5px);
   text-decoration: none;
 }
 
-/* Headings within cards */
 .card h3,
-.collections-card h3,
-.popular-card h3,
-.link-card-expandable h3,
-.link-card-full h3,
 .it-services-card h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
   font-weight: 700;
 }
 
-/* Images within cards */
-.card img,
-.collections-card img,
-.link-card-expandable img,
-.link-card-full img,
-.popular-card img {
+.card img {
   max-width: 100%;
   border-radius: 4px;
 }
 
-/* Icon styles within IT services cards */
 .it-services-card .material-icons {
   font-size: 72px;
 }
 
-/* ===========================================================
-   Favorite Links Styles
-   =========================================================== */
-
-/* Favorite Star is hidden by default */
+/* Favorite star */
 .favorite-star {
   position: absolute;
   top: 8px;
@@ -579,37 +453,28 @@ nav {
   cursor: pointer;
   font-size: 24px;
   color: #ccc;
-  /* Default color for empty star */
   transition: color 0.3s ease;
   display: none;
-  /* Hidden by default */
   pointer-events: auto;
-  /* Ensure it's clickable */
 }
 
-/* Show star on card hover */
 .card:hover .favorite-star {
   display: block;
 }
 
-/* Favorited star is always visible */
 .favorite-star.favorited {
   display: block;
   color: #FFCB05;
-  /* Yellow color for favorited star */
 }
 
-/* Favorited card background */
 .favorited-card {
   background-color: #FFF9C4;
-  /* Light yellow background, adjust as needed */
 }
 
 /* ===========================================================
-   Footer Styles
-   =========================================================== */
+      Footer Styles
+      =========================================================== */
 
-/* Footer container styles */
 footer {
   background: #1A1A1A;
   color: #fff;
@@ -617,12 +482,10 @@ footer {
   padding: 2rem 1rem;
 }
 
-/* Hover effect for footer links */
 footer a[href]:hover {
   color: #FFCB05;
 }
 
-/* Top section of the footer */
 .footer-top {
   display: flex;
   flex-wrap: wrap;
@@ -633,7 +496,6 @@ footer a[href]:hover {
   gap: 2rem;
 }
 
-/* Logo section within footer */
 .footer-logo-section {
   display: flex;
   align-items: center;
@@ -645,7 +507,6 @@ footer a[href]:hover {
   height: 200px;
 }
 
-/* Information section within footer */
 .footer-info-section {
   flex: 1;
 }
@@ -656,14 +517,12 @@ footer a[href]:hover {
   font-weight: 700;
 }
 
-/* Columns within footer information section */
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
-/* Individual footer columns */
 .footer-column h4 {
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
@@ -679,7 +538,6 @@ footer a[href]:hover {
   color: #ccc;
 }
 
-/* Bottom section of the footer */
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
@@ -688,10 +546,9 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Back to Top and Home Button Styles
-   =========================================================== */
+      Back to Top and Home Button Styles
+      =========================================================== */
 
-/* Styles for the Back to Top button */
 .back-to-top {
   text-align: center;
   position: fixed;
@@ -708,7 +565,6 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Styles for the Home button */
 .home-button {
   text-align: center;
   position: fixed;
@@ -726,93 +582,22 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Not Implemented Page Styles
-   =========================================================== */
-
-/* Container for the Not Implemented page */
-.not-implemented-container {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-image: url("assets/MPhotos/DarylMBestof22(024).jpg");
-  color: #fff;
-  text-align: center;
-  padding: 2rem;
-}
-
-/* Heading styles within Not Implemented container */
-.not-implemented-container h1 {
-  font-size: 1.5rem;
-  margin: 0 0 1rem 0;
-  font-weight: 700;
-}
-
-/* Paragraph styles within Not Implemented container */
-.not-implemented-container p {
-  margin: 1rem 0;
-  font-size: 1rem;
-}
-
-/* Go back button styles */
-.go-back-button {
-  background: #FFCB05;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  color: #000;
-  border-radius: 4px;
-  text-decoration: none;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  user-select: none;
-}
-
-/* Main section within Not Implemented container */
-.not-implemented-main {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 3rem 3rem;
-  border-radius: 8px;
-  max-width: 800px;
-  width: 100%;
-  margin-bottom: 3rem;
-}
-
-.not-implemented-main h1 {
-  margin: 0;
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-.not-implemented-main p {
-  margin: 1rem 0rem 2rem 0rem;
-}
-
-/* ===========================================================
-   Responsive Styles
-   =========================================================== */
+      Responsive Styles
+      =========================================================== */
 
 @media (max-width: 768px) {
 
-  /* Adjust navigation layout for smaller screens */
   .nav-container {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  /* Make left and right sections full width */
   .left-section,
   .right-section {
     width: 100%;
     justify-content: space-between;
   }
 
-  /* Make search form full width */
   .search-form {
     width: 100%;
     margin: 1rem 0;
@@ -822,18 +607,15 @@ footer a[href]:hover {
     width: 100%;
   }
 
-  /* Adjust navigation icons layout */
   .nav-icons {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
-  /* Hide current group text */
   .current-group {
     display: none;
   }
 
-  /* Adjust group selector menu for smaller screens */
   .group-selector-menu {
     position: static;
     transform: none;
@@ -846,7 +628,6 @@ footer a[href]:hover {
     gap: 1rem;
   }
 
-  /* Adjust group items layout */
   .group-items {
     flex-wrap: wrap;
     justify-content: center;
@@ -866,7 +647,6 @@ footer a[href]:hover {
     height: 40px;
   }
 
-  /* Adjust hero content padding and font size */
   .hero-content {
     padding: 2rem 1rem;
   }
@@ -875,23 +655,20 @@ footer a[href]:hover {
     font-size: 2.5rem;
   }
 
-  /* Adjust hero search form input */
   .hero-search-form input {
     max-width: 100%;
     width: 100%;
   }
 
-  /* Adjust hero search button padding */
   .hero-search-form button {
     padding: 0.75rem 1rem;
   }
 
-  /* Adjust card sizes for smaller screens */
   .card {
+    /* Do not change card size here */
     max-width: 150px;
   }
 
-  /* Adjust footer columns layout */
   .footer-columns {
     flex-direction: column;
     gap: 1rem;
@@ -906,11 +683,7 @@ footer a[href]:hover {
   }
 }
 
-/* ===========================================================
-   Show More/Less Buttons Styles
-   =========================================================== */
-
-/* Show More button styles */
+/* Show More/Less Buttons */
 #show-more {
   margin-top: 1rem;
   background: #00274C;
@@ -927,12 +700,10 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
-/* Utility class to hide elements */
 .hidden {
   display: none;
 }
 
-/* Show Less button styles */
 #show-less {
   margin-top: 1rem;
   background: #00274C;
@@ -949,7 +720,6 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
-/* Show All link styles */
 #show-all {
   margin-top: 1rem;
   background: #00274C;
@@ -966,111 +736,7 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
-/* ===========================================================
-   Sort Dropdown Styles
-   =========================================================== */
-
-/* Sort dropdown select styles */
-#sort-dropdown {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
-
-/* Container for sort toggle elements */
-.sort-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-/* ===========================================================
-   Slider Styles
-   =========================================================== */
-
-/* Container for custom slider */
-.slider-container {
-  position: relative;
-  width: 120px;
-}
-
-/* Range input within slider container */
-.slider-container input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  background: transparent;
-  position: absolute;
-  top: 15px;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-}
-
-/* Track of the slider */
-.slider-track {
-  width: 100%;
-  height: 4px;
-  background-color: #ccc;
-  border-radius: 2px;
-}
-
-/* Thumb of the slider */
-.slider-thumb {
-  position: absolute;
-  top: 7px;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background-color: #FFCB05;
-  border-radius: 50%;
-  transition: left 0.4s ease;
-  pointer-events: all;
-  cursor: pointer;
-}
-
-/* Remove default appearance of slider thumb for WebKit browsers */
-.slider-container input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-/* Remove default appearance of slider thumb for Firefox */
-.slider-container input[type="range"]::-moz-range-thumb {
-  -moz-appearance: none;
-}
-
-/* Labels for the slider */
-.slider-label {
-  position: absolute;
-  top: 25px;
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.slider-label.left {
-  left: 0;
-}
-
-.slider-label.right {
-  right: 0;
-}
-
-#sortLabel {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-/* ===========================================================
-   Search Suggestions Dropdown Styles
-   =========================================================== */
-
-/* Container for search suggestions */
+/* Search suggestions */
 .search-suggestions {
   position: absolute;
   top: 100%;
@@ -1087,12 +753,10 @@ footer a[href]:hover {
   display: none;
 }
 
-/* Display search suggestions when active */
 .search-suggestions.active {
   display: block;
 }
 
-/* Individual search suggestion item */
 .search-suggestion-item {
   padding: 0.5rem;
   cursor: pointer;
@@ -1101,100 +765,22 @@ footer a[href]:hover {
   flex-direction: column;
 }
 
-/* Hover and highlighted state for suggestion items */
 .search-suggestion-item:hover,
 .search-suggestion-item.highlighted {
   background: #00274C;
   color: #fff;
 }
 
-/* ===========================================================
-   Sort Type Selector Styles
-   =========================================================== */
-
-/* Hide sort type selector by default */
-.sort-type-selector {
-  display: none;
-}
-
-/* Container for sort type toggle */
-.sort-type-container {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: fit-content;
-  border: 1.5px solid #00274C;
-  border-radius: 20px;
-  background: white;
-  font-weight: bold;
-  color: #00274C;
-  cursor: pointer;
-}
-
-/* Background for active sort type */
-.sort-type-container::before {
-  content: '';
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  left: 0%;
-  border-radius: 20px;
-  background: #00274C;
-  transition: all 0.3s;
-}
-
-/* Move background based on sort type */
-.sort-type-selector:checked+.sort-type-container::before {
-  left: 50%;
-}
-
-/* Text within sort type container */
-.sort-type-container div {
-  padding: 6px;
-  text-align: center;
-  z-index: 1;
-}
-
-/* Text color adjustments based on sort type */
-.sort-type-selector:checked+.sort-type-container div:first-child {
-  color: #00274C;
-  transition: color 0.3s;
-}
-
-.sort-type-selector:checked+.sort-type-container div:last-child {
-  color: white;
-  transition: color 0.3s;
-}
-
-.sort-type-selector+.sort-type-container div:first-child {
-  color: white;
-  transition: color 0.3s;
-}
-
-.sort-type-selector+.sort-type-container div:last-child {
-  color: #00274C;
-  transition: color 0.3s;
-}
-
-
-/* ===========================================================
-   Favorites Menu Styles
-   =========================================================== */
-
-/* Container for group selector */
+/* Favorites Menu */
 .favorites-icon {
   display: inline-flex;
   align-items: center;
   position: relative;
 }
 
-/* Toggle button for group selector */
 .favorites-menu-toggle {
   display: inline-flex;
   align-items: center;
-}
-
-.favorites-menu-toggle {
   margin-top: -3px;
 }
 
@@ -1202,7 +788,6 @@ footer a[href]:hover {
   margin-top: -5px;
 }
 
-/* Dropdown menu for group selector */
 .favorites-menu {
   position: fixed;
   top: 67px;
@@ -1224,7 +809,6 @@ footer a[href]:hover {
   font-size: 1.5rem;
 }
 
-/* Header section within group selector menu */
 .favorites-menu-header {
   width: 100%;
 }
@@ -1245,7 +829,6 @@ footer a[href]:hover {
   margin-bottom: -15px;
 }
 
-/* Container for group items */
 .favorite-items {
   display: flex;
   flex-wrap: wrap;
@@ -1254,7 +837,6 @@ footer a[href]:hover {
   justify-content: flex-start;
 }
 
-/* Individual group items as links */
 .favorite-items a {
   display: flex;
   flex-direction: column;
@@ -1277,7 +859,6 @@ footer a[href]:hover {
   transform: translateY(-5px);
 }
 
-/* Arrow indicator for group selector menu */
 .favorites-menu::before {
   content: '';
   position: absolute;
@@ -1289,7 +870,6 @@ footer a[href]:hover {
   border-color: transparent transparent #fff transparent;
 }
 
-/* Image styles within group selector menu */
 .favorites-menu img {
   width: 160px;
   height: 160px;
@@ -1297,10 +877,11 @@ footer a[href]:hover {
   background: transparent;
 }
 
-.manange-favorites-button {
+.manage-favorites-button {
+  margin-top: -40px;
   width: 100%;
-  position: absolute;
-  left: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 #manage-favorites {
@@ -1319,31 +900,16 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
-.manage-favorites-button {
-  margin-top: -40px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* ===========================================================
-   Notifications Menu Styles
-   =========================================================== */
-
-/* Container for group selector */
+/* Notifications Menu */
 .notifications-icon {
   display: inline-flex;
   align-items: center;
   position: relative;
 }
 
-/* Toggle button for group selector */
 .notifications-menu-toggle {
   display: inline-flex;
   align-items: center;
-}
-
-.notifications-menu-toggle {
   margin-top: -3px;
 }
 
@@ -1351,7 +917,6 @@ footer a[href]:hover {
   margin-top: -5px;
 }
 
-/* Dropdown menu for group selector */
 .notifications-menu {
   position: fixed;
   top: 67px;
@@ -1373,7 +938,6 @@ footer a[href]:hover {
   font-size: 1.5rem;
 }
 
-/* Header section within group selector menu */
 .notifications-menu-header {
   width: 100%;
 }
@@ -1393,7 +957,6 @@ footer a[href]:hover {
   margin-top: 0.5rem;
 }
 
-/* Container for group items */
 .notifications-items {
   display: flex;
   flex-wrap: wrap;
@@ -1402,7 +965,6 @@ footer a[href]:hover {
   justify-content: flex-start;
 }
 
-/* Individual group items as links */
 .notifications-items a {
   display: flex;
   flex-direction: column;
@@ -1425,7 +987,6 @@ footer a[href]:hover {
   transform: translateY(-5px);
 }
 
-/* Arrow indicator for group selector menu */
 .notifications-menu::before {
   content: '';
   position: absolute;
@@ -1437,9 +998,90 @@ footer a[href]:hover {
   border-color: transparent transparent #fff transparent;
 }
 
-/* Image styles within group selector menu */
-.notifications-menu img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
+/* Sign In Menu */
+.sign-in-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.sign-in-menu {
+  position: fixed;
+  top: 67px;
+  right: 2rem;
+  background: #fff;
+  color: #000;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 240px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-menu-header {
+  width: 100%;
+  text-align: center;
+}
+
+.sign-in-menu-header h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00274C;
+  margin: 10px 0 5px 0;
+}
+
+.sign-in-menu-header p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.sign-in-profile-pic {
+  width: 40px;
+  height: 40px;
+  background: #00274C;
+  color: #FFCB05;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+.sign-in-items {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.sign-in-items .sign-in-menu-item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #00274C;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.sign-in-items .sign-in-menu-item:hover {
+  background: #f0f0f0;
+}
+
+.sign-in-menu::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(+15px);
+  border-width: 7.5px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
 }
