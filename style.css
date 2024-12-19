@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 header,
 nav,
 main,
@@ -31,6 +32,7 @@ a {
   color: inherit;
 }
 
+/* Navigation Styles */
 nav {
   background: #00274C;
   color: #fff;
@@ -97,15 +99,10 @@ nav {
   border-radius: 4px;
   color: #000;
   font-size: 0.9rem;
-  margin: 0 1rem;
+  margin-right: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   height: 30px;
   gap: 0.25rem;
-}
-
-.sign-in-button img {
-  margin: 0 0.25rem;
-  height: 30px;
 }
 
 .nav-icons {
@@ -115,6 +112,7 @@ nav {
   height: 30px;
   margin: 0;
   padding: 0;
+  margin-top: 8.5px;
 }
 
 .nav-icons li {
@@ -122,51 +120,98 @@ nav {
 }
 
 .nav-icons li a img {
-  padding: 0.25rem;
-  border-radius: 4px;
+  padding: 0.5rem;
+  border-radius: 8px;
   background: #FFCB05;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  height: 30px;
+  margin-bottom: 1rem;
 }
 
+/* Group Selector Styles */
 .group-selector {
   display: inline-flex;
   align-items: center;
   position: relative;
-  font-size: 1em;
-  padding: 0.5rem 1rem;
 }
 
 .current-group {
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .group-selector-toggle {
   display: inline-flex;
   align-items: center;
-  font-size: 1.5em;
+}
+
+.group-selector-toggle .current-group {
+  margin-top: -3px;
+}
+
+.group-selector-toggle .material-icons {
+  margin-top: -5px;
 }
 
 .group-selector-menu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  top: 67px;
+  right: 2rem;
   background: #fff;
   color: #000;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  min-width: 350px;
+  width: calc(5 * 218px + 4 * 1rem);
+  min-height: 300px;
   display: none;
-  justify-content: space-around;
-  font-size: 1.4em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.5rem;
 }
 
+.group-selector-header {
+  width: 100%;
+}
+
+.group-selector-header h3 {
+  margin-left: 15px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00274C;
+  text-align: left;
+}
+
+.group-selector-header hr {
+  width: calc(100% - 10px);
+  border: none;
+  border-top: 2px solid #00274C;
+  margin-top: 0.5rem;
+}
+
+/* Container for Group Items */
+.group-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Individual Group Items */
+.group-items a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Group Selector Menu Links */
 .group-selector-menu a {
   display: flex;
   align-items: center;
@@ -175,29 +220,29 @@ nav {
   border-radius: 4px;
   transition: background 0.3s;
   flex-direction: column;
+  font-size: 1.25rem;
 }
 
 .group-selector-menu a:hover {
   background: #f0f0f0;
 }
 
-.group-selector-menu img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 0.5rem;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
+/* Arrow Indicator */
 .group-selector-menu::before {
   content: '';
   position: absolute;
-  top: -10px;
+  top: -15px;
   left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
+  transform: translateX(+344.5px);
+  border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+}
+
+.group-selector-menu img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
 }
 
 /* Hero Section */
@@ -368,6 +413,7 @@ nav {
   font-size: 1.5rem;
 }
 
+/* Content Section */
 .content-section {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -382,6 +428,7 @@ nav {
   margin-bottom: 1rem;
 }
 
+/* Card Styles */
 .cards-container .card,
 .cards-container .collections-card,
 .cards-container .popular-card,
@@ -451,6 +498,7 @@ nav {
   font-size: 72px;
 }
 
+/* Footer Styles */
 footer {
   background: #1A1A1A;
   color: #fff;
@@ -521,6 +569,7 @@ footer a[href]:hover {
   color: #ccc;
 }
 
+/* Back to Top Button */
 .back-to-top {
   text-align: center;
   position: fixed;
@@ -537,6 +586,7 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Home Button */
 .home-button {
   text-align: center;
   position: fixed;
@@ -553,6 +603,7 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Not Implemented Container */
 .not-implemented-container {
   position: relative;
   min-height: 100vh;
@@ -650,15 +701,23 @@ footer a[href]:hover {
     background: transparent;
     padding: 0;
     display: none !important;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .group-items {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .group-items a {
+    width: auto;
+    /* Allow flexibility */
   }
 
   .group-selector-menu a {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 4px;
-    margin: 0.5rem;
     flex-direction: column;
   }
 
@@ -702,6 +761,7 @@ footer a[href]:hover {
   }
 }
 
+/* Show More/Less Buttons */
 #show-more {
   margin-top: 1rem;
   background: #00274C;
@@ -754,6 +814,7 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
+/* Sort Dropdown */
 #sort-dropdown {
   background: #fff;
   border: 1px solid #ccc;
@@ -771,6 +832,7 @@ footer a[href]:hover {
   margin-top: 1rem;
 }
 
+/* Slider Styles */
 .slider-container {
   position: relative;
   width: 120px;
