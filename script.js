@@ -193,7 +193,7 @@ fetch("JSON Files/tasks.json")
     initializePage();
   });
 
-/**
+/*
  * Initialize the page with fetched data and user information.
  */
 function initializePage() {

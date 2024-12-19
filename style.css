@@ -142,19 +142,14 @@ nav {
 }
 
 
-/* Apply hover effects to nav bar icons */
-.nav-icons a {
-  transition: background-color 0.3s ease, transform 0.4s ease;
-}
-
 .group-selector a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
   transform: scale(1.05);
   transition: background-color 0.3s ease, transform 0.4s ease;
 }
 
-.favorites-icon:hover,
-.notifications-icon:hover,
+.favorites-icon a:hover,
+.notifications-icon a:hover,
 .home-icon:hover,
 .all-links-icon:hover {
   transform: scale(1.12);
@@ -163,15 +158,13 @@ nav {
 }
 
 
-.favorites-icon:hover,
-.notifications-icon:hover,
+.favorites-icon a:hover,
+.notifications-icon a:hover,
 .home-icon:hover {
   transform: scale(1.15);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 8px rgba(53, 42, 42, 0.1);
   transition: background-color 0.3s ease, transform .4s ease;
 }
-
-
 
 
 /* Apply hover effects to material icons */
@@ -182,6 +175,7 @@ nav {
 .nav-icons a:hover {
   color: #FFCB05;
 }
+
 
 /* ===========================================================
          Group Selector Styles
