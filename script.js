@@ -1,8 +1,8 @@
 // script.js
 
-// ===========================================================
+// ==============================
 // Global Variables
-// ===========================================================
+// ==============================
 let linksData = [];
 let sortByRating = true;
 
@@ -13,9 +13,13 @@ let signedIn = false;
 let userName = "";
 let userEmail = "";
 
-// ===========================================================
+// ==============================
 // Favorites Handling
-// ===========================================================
+// ==============================
+
+/**
+ * Load favorite statuses from localStorage and initialize favorites.
+ */
 function loadFavorites() {
   linksData.forEach(link => {
     if (favoriteStatuses[link.uniqueKey] === undefined) {
@@ -36,27 +40,48 @@ function loadFavorites() {
   saveFavorites();
 }
 
+/**
+ * Save current favorite statuses to localStorage.
+ */
 function saveFavorites() {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteStatuses));
 }
 
+/**
+ * Check if a link is favorited.
+ * @param {Object} link - The link object.
+ * @returns {boolean} - Favorite status.
+ */
 function isLinkFavorited(link) {
   return favoriteStatuses[link.uniqueKey] || false;
 }
 
+/**
+ * Add a link to favorites.
+ * @param {Object} link - The link object.
+ */
 function addFavorite(link) {
   favoriteStatuses[link.uniqueKey] = true;
   saveFavorites();
 }
 
+/**
+ * Remove a link from favorites.
+ * @param {Object} link - The link object.
+ */
 function removeFavorite(link) {
   favoriteStatuses[link.uniqueKey] = false;
   saveFavorites();
 }
 
-// ===========================================================
-// Reflect Favorites Updates Everywhere
-// ===========================================================
+// ==============================
+// UI Rendering Functions
+// ==============================
+
+/**
+ * Render favorited links in a specified container.
+ * @param {string} containerId - The ID of the container element.
+ */
 function renderFavoritesInContainer(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -75,6 +100,9 @@ function renderFavoritesInContainer(containerId) {
   }
 }
 
+/**
+ * Update all favorite views across the UI.
+ */
 function updateAllFavoritesViews() {
   // Update favorites nav bar container
   renderFavoritesInContainer("favorite-links-container");
@@ -82,8 +110,9 @@ function updateAllFavoritesViews() {
   renderFavoritesInContainer("hero-favorites-container");
 }
 
-// After toggling favorites, we must also update the star icons
-// in all displayed cards across the entire page.
+/**
+ * Update favorite stars on all displayed cards.
+ */
 function updateAllCardStars() {
   const allCards = document.querySelectorAll(".card");
   allCards.forEach(card => {
@@ -105,15 +134,17 @@ function updateAllCardStars() {
   });
 }
 
-// Call this after any favorite toggle
+/**
+ * Refresh UI after a favorite status change.
+ */
 function refreshUIAfterFavoriteChange() {
   updateAllFavoritesViews();
   updateAllCardStars();
 }
 
-// ===========================================================
-// Event Listeners for Scroll
-// ===========================================================
+// ==============================
+// Event Listeners
+// ==============================
 window.addEventListener("scroll", () => {
   const backToTopButton = document.querySelector(".back-to-top");
   const homeButton = document.querySelector(".home-button");
@@ -138,9 +169,13 @@ document.querySelector(".home-button")?.addEventListener("click", () => {
   window.location.href = "index.html";
 });
 
-// ===========================================================
-// Fetch and Initialize Data
-// ===========================================================
+// ==============================
+// Data Fetching and Initialization
+// ==============================
+
+/**
+ * Fetch tasks data and initialize the page.
+ */
 fetch("JSON Files/tasks.json")
   .then(response => {
     if (!response.ok) {
@@ -158,9 +193,9 @@ fetch("JSON Files/tasks.json")
     initializePage();
   });
 
-// ===========================================================
-// Initialize Page
-// ===========================================================
+/**
+ * Initialize the page with fetched data and user information.
+ */
 function initializePage() {
   // For demonstration, set signedIn to true and user info
   signedIn = true;
@@ -341,9 +376,15 @@ function initializePage() {
   initializeHoverMenus();
 }
 
-// ===========================================================
-// Create Card
-// ===========================================================
+// ==============================
+// Card Creation
+// ==============================
+
+/**
+ * Create a card element for a given link.
+ * @param {Object} link - The link object.
+ * @returns {HTMLElement} - The card element.
+ */
 function CreateCard(link) {
   const card = document.createElement("a");
   card.className = "card";
@@ -396,9 +437,15 @@ function CreateCard(link) {
   return card;
 }
 
-// ===========================================================
-// Setup Search Suggestions
-// ===========================================================
+// ==============================
+// Search Suggestions Setup
+// ==============================
+
+/**
+ * Setup search suggestions for an input element.
+ * @param {HTMLElement} inputElement - The search input element.
+ * @param {HTMLElement} suggestionsContainer - The container for suggestions.
+ */
 function SetupSearchSuggestions(inputElement, suggestionsContainer) {
   let currentIndex = -1;
   let suggestionItems = [];
@@ -521,9 +568,13 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
   }
 }
 
-// ===========================================================
-// Sign In Menu Initialization
-// ===========================================================
+// ==============================
+// Sign-In Menu Initialization
+// ==============================
+
+/**
+ * Initialize the sign-in menu based on user authentication status.
+ */
 function initializeSignInMenu() {
   const signInMenu = document.getElementById("sign-in-menu");
   const signInMenuToggle = document.getElementById("sign-in-menu-toggle");
@@ -577,7 +628,9 @@ function initializeSignInMenu() {
   }
 }
 
-// Sign in and Sign out stubs
+/**
+ * Sign in the user.
+ */
 function signIn() {
   signedIn = true;
   userName = "Kaden";
@@ -585,6 +638,9 @@ function signIn() {
   initializeSignInMenu();
 }
 
+/**
+ * Sign out the user.
+ */
 function signOut() {
   signedIn = false;
   userName = "";
@@ -592,10 +648,13 @@ function signOut() {
   initializeSignInMenu();
 }
 
+// ==============================
+// Hover/Click Menu Logic
+// ==============================
 
-// ===========================================================
-// Hover / Click Menu Logic
-// ===========================================================
+/**
+ * Initialize hover menus for various UI components.
+ */
 function initializeHoverMenus() {
   setupHoverMenu("group-selector", "group-selector-menu");
   setupHoverMenu("favorites-icon", "favorites-menu");
@@ -603,6 +662,11 @@ function initializeHoverMenus() {
   setupHoverMenu("sign-in-container", "sign-in-menu");
 }
 
+/**
+ * Setup hover menu for a specific container and menu.
+ * @param {string} containerId - The ID of the container element.
+ * @param {string} menuId - The ID of the menu element.
+ */
 function setupHoverMenu(containerId, menuId) {
   const container = document.getElementById(containerId);
   const menu = document.getElementById(menuId);
@@ -645,9 +709,13 @@ function setupHoverMenu(containerId, menuId) {
   });
 }
 
-// ===========================================================
-// Load and Render Tasks (Optional)
-// ===========================================================
+// ==============================
+// Task Loading and Rendering (Optional)
+// ==============================
+
+/**
+ * Load tasks from a JSON file.
+ */
 function LoadTasks() {
   fetch("tasks.json")
     .then(response => response.json())
@@ -658,6 +726,9 @@ function LoadTasks() {
     .catch(() => console.error("Failed to load tasks.json for tasks"));
 }
 
+/**
+ * Render the loaded tasks on the page.
+ */
 function RenderTasks() {
   const container = document.getElementById("all-links-full-container");
   if (!container || tasks.length === 0) return;
@@ -708,57 +779,57 @@ document.addEventListener("DOMContentLoaded", function () {
   LoadTasks();
 });
 
-
-// ===========================================================
+// ==============================
 // Modal Functionality
-// ===========================================================
+// ==============================
 
-// Get modal element
+// Get modal elements
 const preferencesMenu = document.getElementById("preferences-menu");
-
-// Get close button
 const preferencesMenuCloseButton = document.getElementById("preferences-menu-close-button");
 
-// Function to open modal
+/**
+ * Open the preferences modal.
+ */
 function openPreferencesMenu() {
   preferencesMenu.style.display = "block";
 }
 
-// Function to close modal
+/**
+ * Close the preferences modal.
+ */
 function closePreferencesMenu() {
   preferencesMenu.style.display = "none";
 }
 
-// Event listeners
+// Event listeners for modal functionality
 preferencesMenuCloseButton.addEventListener("click", closePreferencesMenu);
-
-// Close modal when clicking outside the modal content
 window.addEventListener("click", function (event) {
   if (event.target == preferencesMenu) {
     closePreferencesMenu();
   }
 });
-
-// Close modal when pressing the Esc key
 window.addEventListener("keydown", function (event) {
   if (event.key === "Escape" && preferencesMenu.style.display === "block") {
     closePreferencesMenu();
   }
 });
 
-// Get references to DOM elements
+// ==============================
+// Favorites Preference Toggle
+// ==============================
+
+// Get references to DOM elements for favorites toggle
 const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
 const heroFavoritesBox = document.querySelector(".hero-favorites-box");
 
-// Load saved preference from localStorage or default to true
+// Load and apply saved favorites preference
 const savedPreference = localStorage.getItem("showFavorites");
 const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
 
-// Apply the preference
 toggleFavoritesCheckbox.checked = showFavorites;
 heroFavoritesBox.style.display = showFavorites ? "block" : "none";
 
-// Add event listener for checkbox state change
+// Event listener for favorites preference change
 toggleFavoritesCheckbox.addEventListener("change", () => {
   const showFavorites = toggleFavoritesCheckbox.checked;
   heroFavoritesBox.style.display = showFavorites ? "block" : "none";
