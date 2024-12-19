@@ -1354,21 +1354,14 @@ footer a[href]:hover {
 /* The Modal (background) */
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 10000;
-  /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.6);
-  /* Black w/ opacity */
   animation: fadeIn 0.3s;
 }
 
@@ -1376,12 +1369,10 @@ footer a[href]:hover {
 .preferences-menu-content {
   background-color: #fefefe;
   margin: 10% auto;
-  /* 10% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
   max-width: 500px;
-  /* Could be more or less, depending on screen size */
   border-radius: 8px;
   position: relative;
   animation: slideIn 0.3s;
@@ -1390,33 +1381,19 @@ footer a[href]:hover {
 /* Close Button */
 .preferences-menu-close-button {
   color: #aaa;
-  float: right;
+  position: absolute;
+  top: 0px;
+  right: 10px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  margin: 0;
 }
 
 .preferences-menu-close-button:hover,
 .preferences-menu-close-button:focus {
   color: #000;
   text-decoration: none;
-}
-
-/* Open Modal Button */
-.open-modal-button {
-  background-color: #FFCB05;
-  color: #000;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-  margin: 2rem 0;
-}
-
-.open-modal-button:hover {
-  background-color: #e6b800;
 }
 
 /* Animations */
@@ -1447,10 +1424,65 @@ footer a[href]:hover {
     margin: 20% auto;
   }
 
-  .open-modal-button {
-    width: 100%;
-  }
 }
 
-/* Existing styles continue */
-/* ... */
+/* Slider Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked+.slider {
+  background-color: #FFCB05;
+}
+
+input:checked+.slider::before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

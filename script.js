@@ -623,6 +623,14 @@ function setupHoverMenu(containerId, menuId) {
     }
   });
 
+  // container.addEventListener("mouseout", () => {
+  //   setTimeout(() => {
+  //     if (!clickedOpen && !container.matches(':hover') && !menu.matches(':hover')) {
+  //       menu.style.display = "none";
+  //     }
+  //   }, 200); // Adjust the delay as needed
+  // });
+
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
@@ -736,4 +744,25 @@ window.addEventListener("keydown", function (event) {
   if (event.key === "Escape" && preferencesMenu.style.display === "block") {
     closePreferencesMenu();
   }
+});
+
+// Get references to DOM elements
+const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
+const heroFavoritesBox = document.querySelector(".hero-favorites-box");
+
+// Load saved preference from localStorage or default to true
+const savedPreference = localStorage.getItem("showFavorites");
+const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
+
+// Apply the preference
+toggleFavoritesCheckbox.checked = showFavorites;
+heroFavoritesBox.style.display = showFavorites ? "block" : "none";
+
+// Add event listener for checkbox state change
+toggleFavoritesCheckbox.addEventListener("change", () => {
+  const showFavorites = toggleFavoritesCheckbox.checked;
+  heroFavoritesBox.style.display = showFavorites ? "block" : "none";
+
+  // Save the updated preference to localStorage
+  localStorage.setItem("showFavorites", JSON.stringify(showFavorites));
 });
