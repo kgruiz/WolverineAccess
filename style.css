@@ -1343,3 +1343,114 @@ footer a[href]:hover {
   color: #00274C;
   transition: color 0.3s;
 }
+
+/* Existing styles */
+/* ... */
+
+/* ===========================================================
+   Modal Styles
+   =========================================================== */
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10000;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Black w/ opacity */
+  animation: fadeIn 0.3s;
+}
+
+/* Modal Content */
+.preferences-menu-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 10% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  /* Could be more or less, depending on screen size */
+  border-radius: 8px;
+  position: relative;
+  animation: slideIn 0.3s;
+}
+
+/* Close Button */
+.preferences-menu-close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.preferences-menu-close-button:hover,
+.preferences-menu-close-button:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Open Modal Button */
+.open-modal-button {
+  background-color: #FFCB05;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  margin: 2rem 0;
+}
+
+.open-modal-button:hover {
+  background-color: #e6b800;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .preferences-menu-content {
+    width: 90%;
+    margin: 20% auto;
+  }
+
+  .open-modal-button {
+    width: 100%;
+  }
+}
+
+/* Existing styles continue */
+/* ... */

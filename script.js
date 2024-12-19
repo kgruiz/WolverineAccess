@@ -551,7 +551,7 @@ function initializeSignInMenu() {
 
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signOut()">Sign out</button>
-      <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Preferences</button>
+      <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
       <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Send Feedback</button>
     `;
   } else {
@@ -571,7 +571,7 @@ function initializeSignInMenu() {
 
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signIn()">Sign in</button>
-      <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Preferences</button>
+      <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
       <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Send Feedback</button>
     `;
   }
@@ -698,4 +698,42 @@ if (sortTypeSelector) {
 
 document.addEventListener("DOMContentLoaded", function () {
   LoadTasks();
+});
+
+
+// ===========================================================
+// Modal Functionality
+// ===========================================================
+
+// Get modal element
+const preferencesMenu = document.getElementById("preferences-menu");
+
+// Get close button
+const preferencesMenuCloseButton = document.getElementById("preferences-menu-close-button");
+
+// Function to open modal
+function openPreferencesMenu() {
+  preferencesMenu.style.display = "block";
+}
+
+// Function to close modal
+function closePreferencesMenu() {
+  preferencesMenu.style.display = "none";
+}
+
+// Event listeners
+preferencesMenuCloseButton.addEventListener("click", closePreferencesMenu);
+
+// Close modal when clicking outside the modal content
+window.addEventListener("click", function (event) {
+  if (event.target == preferencesMenu) {
+    closePreferencesMenu();
+  }
+});
+
+// Close modal when pressing the Esc key
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && preferencesMenu.style.display === "block") {
+    closePreferencesMenu();
+  }
 });
