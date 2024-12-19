@@ -242,7 +242,6 @@ nav {
   text-align: center;
 }
 
-/* Links within group selector menu */
 .group-selector-menu a {
   display: flex;
   align-items: center;
@@ -413,7 +412,7 @@ nav {
 .full-search-area {
   padding: 3rem 1rem;
   width: 100%;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .full-search-area h1 {
@@ -504,11 +503,13 @@ nav {
   padding: 1rem;
   box-sizing: border-box;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease;
   text-decoration: none;
   color: #000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   user-select: none;
+  position: relative;
+  /* Needed for positioning the favorite star */
 }
 
 /* Specific card width settings */
@@ -565,6 +566,44 @@ nav {
 /* Icon styles within IT services cards */
 .it-services-card .material-icons {
   font-size: 72px;
+}
+
+/* ===========================================================
+   Favorite Links Styles
+   =========================================================== */
+
+/* Favorite Star is hidden by default */
+.favorite-star {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+  /* Default color for empty star */
+  transition: color 0.3s ease;
+  display: none;
+  /* Hidden by default */
+  pointer-events: auto;
+  /* Ensure it's clickable */
+}
+
+/* Show star on card hover */
+.card:hover .favorite-star {
+  display: block;
+}
+
+/* Favorited star is always visible */
+.favorite-star.favorited {
+  display: block;
+  color: #FFCB05;
+  /* Yellow color for favorited star */
+}
+
+/* Favorited card background */
+.favorited-card {
+  background-color: #FFF9C4;
+  /* Light yellow background, adjust as needed */
 }
 
 /* ===========================================================
