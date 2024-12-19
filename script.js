@@ -256,8 +256,6 @@ function initializePage() {
       });
     }
 
-    RenderAllLinksFull();
-
     const toggle = document.getElementById("toggle");
     if (toggle) {
       toggle.addEventListener("change", () => {
@@ -265,6 +263,37 @@ function initializePage() {
         RenderAllLinksFull();
       });
     }
+
+    RenderAllLinksFull();
+
+    const showMoreButton = document.getElementById("show-more");
+    const showLessButton = document.getElementById("show-less");
+    const showAllButton = document.getElementById("show-all");
+
+    showMoreButton?.addEventListener("click", () => {
+      const additionalCards = document.querySelectorAll(".additional-cards");
+      additionalCards.forEach(card => {
+        card.classList.remove("hidden");
+      });
+
+      showMoreButton.classList.add("hidden");
+      showLessButton.classList.remove("hidden");
+      showAllButton.classList.remove("hidden");
+    });
+
+    showLessButton?.addEventListener("click", () => {
+      const additionalCards = document.querySelectorAll(".additional-cards");
+      additionalCards.forEach(card => {
+        card.classList.add("hidden");
+      });
+
+      showMoreButton.classList.remove("hidden");
+      showLessButton.classList.add("hidden");
+      showAllButton.classList.add("hidden");
+    });
+
+    initializeSignInMenu();
+    initializeHoverMenus();
   }
 
   // Setup Search Suggestions
@@ -502,12 +531,24 @@ function initializeSignInMenu() {
   const signInEmail = document.getElementById("sign-in-email");
   const signInProfilePic = document.getElementById("sign-in-profile-pic");
   const signInItems = document.getElementById("sign-in-items");
+  const signInSeparator = document.getElementById("sign-in-separator"); // Added ID to <hr />
 
   if (signedIn) {
     const initials = userName.split(' ').map(n => n[0].toUpperCase()).join('');
     signInProfilePic.textContent = initials;
+    signInProfilePic.style.display = 'block';
     signInName.textContent = userName;
+    signInName.style.display = 'block';
     signInEmail.textContent = userEmail;
+    signInEmail.style.display = 'block';
+    signInSeparator.style.display = 'block';
+
+    // Update sign-in button
+    signInMenuToggle.innerHTML = `
+      <div class="sign-in-profile-pic-button">${initials}</div>
+      <span class="user-name">${userName}</span>
+    `;
+
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signOut()">Sign out</button>
       <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Preferences</button>
@@ -515,8 +556,19 @@ function initializeSignInMenu() {
     `;
   } else {
     signInProfilePic.textContent = '';
+    signInProfilePic.style.display = 'none';
     signInName.textContent = '';
+    signInName.style.display = 'none';
     signInEmail.textContent = '';
+    signInEmail.style.display = 'none';
+    signInSeparator.style.display = 'none';
+
+    // Update sign-in button
+    signInMenuToggle.innerHTML = `
+      <span class="material-icons">account_circle</span>
+      Sign In
+    `;
+
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signIn()">Sign in</button>
       <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Preferences</button>

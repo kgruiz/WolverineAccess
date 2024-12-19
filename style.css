@@ -43,8 +43,8 @@ a {
 }
 
 /* ===========================================================
-      Navigation Styles
-      =========================================================== */
+         Navigation Styles
+         =========================================================== */
 
 nav {
   background: #00274C;
@@ -134,8 +134,8 @@ nav {
 }
 
 /* ===========================================================
-      Group Selector Styles
-      =========================================================== */
+         Group Selector Styles
+         =========================================================== */
 
 .group-selector {
   display: inline-flex;
@@ -259,8 +259,8 @@ nav {
 }
 
 /* ===========================================================
-      Hero Section Styles
-      =========================================================== */
+         Hero Section Styles
+         =========================================================== */
 
 .hero-section {
   position: relative;
@@ -350,8 +350,8 @@ nav {
 }
 
 /* ===========================================================
-      Cards Container and Card Styles
-      =========================================================== */
+         Cards Container and Card Styles
+         =========================================================== */
 /* NOTE: Do not change the size of cards. */
 
 .cards-container {
@@ -386,8 +386,8 @@ nav {
 }
 
 /* ===========================================================
-      Content Section Styles
-      =========================================================== */
+         Content Section Styles
+         =========================================================== */
 
 .content-section {
   padding: 2rem 1rem;
@@ -404,8 +404,8 @@ nav {
 }
 
 /* ===========================================================
-      Card Styles
-      =========================================================== */
+         Card Styles
+         =========================================================== */
 /* Do not change card sizing */
 
 .cards-container .card,
@@ -472,8 +472,8 @@ nav {
 }
 
 /* ===========================================================
-      Footer Styles
-      =========================================================== */
+         Footer Styles
+         =========================================================== */
 
 footer {
   background: #1A1A1A;
@@ -546,8 +546,8 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-      Back to Top and Home Button Styles
-      =========================================================== */
+         Back to Top and Home Button Styles
+         =========================================================== */
 
 .back-to-top {
   text-align: center;
@@ -582,8 +582,8 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-      Responsive Styles
-      =========================================================== */
+         Responsive Styles
+         =========================================================== */
 
 @media (max-width: 768px) {
 
@@ -1080,8 +1080,128 @@ footer a[href]:hover {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(+15px);
+  transform: translateX(+64px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+}
+
+/* New Styles for Sign-In Button when Signed In */
+.sign-in-profile-pic-button {
+  width: 30px;
+  height: 30px;
+  background: #00274C;
+  color: #FFCB05;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ============================
+   Adjusted Sign-In Button Profile Picture
+   ============================ */
+.sign-in-profile-pic-button {
+  width: 25px;
+  /* Reduced size */
+  height: 25px;
+  /* Reduced size */
+  font-size: 0.9rem;
+  /* Slightly smaller font size */
+}
+
+/* ============================
+     Adjusted Drop-Down Menu Profile Picture
+     ============================ */
+.sign-in-profile-pic {
+  width: 40px;
+  height: 40px;
+  background: #00274C;
+  color: #FFCB05;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 2.1;
+  /* Ensures vertical centering */
+  text-align: center;
+  /* Ensures horizontal centering */
+}
+
+/* ===========================================================
+   Not Implemented Page Styles
+   =========================================================== */
+
+/* Container for the Not Implemented page */
+.not-implemented-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: url("assets/MPhotos/DarylMBestof22(024).jpg");
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Heading styles within Not Implemented container */
+.not-implemented-container h1 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+/* Paragraph styles within Not Implemented container */
+.not-implemented-container p {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+/* Go back button styles */
+.go-back-button {
+  background: #FFCB05;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #000;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+/* Main section within Not Implemented container */
+.not-implemented-main {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3rem 3rem;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.not-implemented-main h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.not-implemented-main p {
+  margin: 1rem 0rem 2rem 0rem;
 }

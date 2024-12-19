@@ -123,10 +123,23 @@
           </ul>
 
           <!-- Sign In Button -->
-          <button class="sign-in-button" type="button" onclick="window.location.href='not-implemented.html'">
-            <span class="material-icons">account_circle</span>
-            Sign In
-          </button>
+          <div class="sign-in-container" id="sign-in-container">
+            <button class="sign-in-button" type="button" id="sign-in-menu-toggle">
+              <span class="material-icons">account_circle</span>
+              Sign In
+            </button>
+
+            <div class="sign-in-menu" id="sign-in-menu">
+              <div class="sign-in-menu-header">
+                <div class="sign-in-profile-pic" id="sign-in-profile-pic"></div>
+                <h3 id="sign-in-name"></h3>
+                <p id="sign-in-email"></p>
+                <hr id="sign-in-separator" />
+              </div>
+              <div class="sign-in-items" id="sign-in-items"></div>
+            </div>
+          </div>
+
         </div>
 
       </div>
