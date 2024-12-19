@@ -1,4 +1,8 @@
-/* Reset and Base Styles */
+/* ===========================================================
+   Reset and Base Styles
+   =========================================================== */
+
+/* Apply box-sizing, margin, and padding reset to common elements */
 header,
 nav,
 main,
@@ -17,6 +21,7 @@ li {
   padding: 0;
 }
 
+/* Base styles for the body */
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -27,18 +32,24 @@ body {
   text-align: center;
 }
 
+/* Remove underline from links and inherit color */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Navigation Styles */
+/* ===========================================================
+   Navigation Styles
+   =========================================================== */
+
+/* Styles for the navigation bar */
 nav {
   background: #00274C;
   color: #fff;
   padding: 1rem;
 }
 
+/* Container within the navigation for layout */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -46,22 +57,26 @@ nav {
   flex-wrap: wrap;
 }
 
+/* Left and right sections within the navigation */
 .left-section,
 .right-section {
   display: flex;
   align-items: center;
 }
 
+/* Right section specific styles */
 .right-section {
   gap: 1rem;
   height: 30px;
 }
 
+/* Logo link styles */
 .logo-link img {
   height: 40px;
   cursor: pointer;
 }
 
+/* Search form within the navigation */
 .search-form {
   margin-left: 1rem;
   display: inline-flex;
@@ -72,6 +87,7 @@ nav {
   position: relative;
 }
 
+/* Search input field styles */
 .search-form input {
   border: none;
   outline: none;
@@ -79,6 +95,7 @@ nav {
   width: 200px;
 }
 
+/* Search button styles */
 .search-form button {
   background: #FFCB05;
   border: none;
@@ -90,6 +107,7 @@ nav {
   margin-left: 0.5rem;
 }
 
+/* Sign-in button styles */
 .sign-in-button {
   background: #FFCB05;
   border: none;
@@ -106,6 +124,7 @@ nav {
   gap: 0.25rem;
 }
 
+/* Navigation icons list styles */
 .nav-icons {
   list-style: none;
   display: flex;
@@ -116,10 +135,12 @@ nav {
   margin-top: 8.5px;
 }
 
+/* Individual navigation icon item styles */
 .nav-icons li {
   margin: 0 0.25rem;
 }
 
+/* Styles for images within navigation icons */
 .nav-icons li a img {
   padding: 0.5rem;
   border-radius: 8px;
@@ -129,24 +150,31 @@ nav {
   margin-bottom: 1rem;
 }
 
-/* Group Selector Styles */
+/* ===========================================================
+   Group Selector Styles
+   =========================================================== */
+
+/* Container for group selector */
 .group-selector {
   display: inline-flex;
   align-items: center;
   position: relative;
 }
 
+/* Current group display styles */
 .current-group {
   margin-right: 0.75rem;
   font-weight: 700;
   font-size: 1em;
 }
 
+/* Toggle button for group selector */
 .group-selector-toggle {
   display: inline-flex;
   align-items: center;
 }
 
+/* Adjustments for current group and icons within toggle */
 .group-selector-toggle .current-group {
   margin-top: -3px;
 }
@@ -155,6 +183,7 @@ nav {
   margin-top: -5px;
 }
 
+/* Dropdown menu for group selector */
 .group-selector-menu {
   position: fixed;
   top: 67px;
@@ -176,6 +205,7 @@ nav {
   font-size: 1.5rem;
 }
 
+/* Header section within group selector menu */
 .group-selector-header {
   width: 100%;
 }
@@ -195,7 +225,7 @@ nav {
   margin-top: 0.5rem;
 }
 
-/* Container for Group Items */
+/* Container for group items */
 .group-items {
   display: flex;
   flex-wrap: wrap;
@@ -204,7 +234,7 @@ nav {
   justify-content: flex-start;
 }
 
-/* Individual Group Items */
+/* Individual group items as links */
 .group-items a {
   display: flex;
   flex-direction: column;
@@ -212,7 +242,7 @@ nav {
   text-align: center;
 }
 
-/* Group Selector Menu Links */
+/* Links within group selector menu */
 .group-selector-menu a {
   display: flex;
   align-items: center;
@@ -228,25 +258,30 @@ nav {
   transform: translateY(-5px);
 }
 
-/* Arrow Indicator */
+/* Arrow indicator for group selector menu */
 .group-selector-menu::before {
   content: '';
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(+344.5px);
+  transform: translateX(+312.5px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
 }
 
+/* Image styles within group selector menu */
 .group-selector-menu img {
   width: 160px;
   height: 160px;
   object-fit: cover;
 }
 
-/* Hero Section */
+/* ===========================================================
+   Hero Section Styles
+   =========================================================== */
+
+/* Hero section container */
 .hero-section {
   position: relative;
   min-height: 80vh;
@@ -263,6 +298,7 @@ nav {
   padding: 2rem;
 }
 
+/* Content within the hero section */
 .hero-content {
   background: rgba(0, 0, 0, 0.6);
   padding: 3rem 2rem;
@@ -272,18 +308,21 @@ nav {
   margin-bottom: 2rem;
 }
 
+/* Heading within hero content */
 .hero-content h1 {
   margin: 0;
   font-size: 3rem;
   font-weight: 700;
 }
 
+/* Image within hero content */
 .hero-content img {
   max-width: 100%;
   height: auto;
   margin-bottom: 1rem;
 }
 
+/* Search form within hero section */
 .hero-search-form {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -291,6 +330,7 @@ nav {
   position: relative;
 }
 
+/* Input field within hero search form */
 .hero-search-form input {
   border: none;
   outline: none;
@@ -301,6 +341,7 @@ nav {
   border-radius: 4px 0 0 4px;
 }
 
+/* Button within hero search form */
 .hero-search-form button {
   background: #FFCB05;
   border: none;
@@ -314,11 +355,16 @@ nav {
   justify-content: center;
 }
 
+/* Icon within hero search button */
 .hero-search-form button .material-icons {
   font-size: 1.5rem;
 }
 
-/* Cards Container */
+/* ===========================================================
+   Cards Container and Card Styles
+   =========================================================== */
+
+/* Container for cards */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -327,6 +373,7 @@ nav {
   margin-top: 1rem;
 }
 
+/* Specific styles for expandable all-links container */
 .cards-container.all-links-expandable {
   justify-content: center;
   gap: 1rem;
@@ -335,10 +382,12 @@ nav {
   margin-right: 50px;
 }
 
+/* Card sizing for expandable all-links */
 .cards-container.all-links-expandable .card {
   flex: 0 1 calc((100% - (4 * 1rem))/5);
 }
 
+/* Specific styles for full all-links container */
 .cards-container.all-links-full {
   display: flex;
   flex-wrap: wrap;
@@ -349,6 +398,7 @@ nav {
   margin-right: 0px;
 }
 
+/* Full search area styles */
 .full-search-area {
   position: relative;
   display: flex;
@@ -378,6 +428,7 @@ nav {
   font-weight: 700;
 }
 
+/* Full search form styles */
 .full-search-form {
   margin-top: 1.5rem;
   display: flex;
@@ -388,6 +439,7 @@ nav {
   border-radius: 4px 4px 4px 4px;
 }
 
+/* Input within full search form */
 .full-search-form input {
   border: none;
   outline: none;
@@ -397,6 +449,7 @@ nav {
   border-radius: 4px 0 0 4px;
 }
 
+/* Button within full search form */
 .full-search-form button {
   background: #FFCB05;
   border: none;
@@ -410,11 +463,16 @@ nav {
   justify-content: center;
 }
 
+/* Icon within full search button */
 .full-search-form button .material-icons {
   font-size: 1.5rem;
 }
 
-/* Content Section */
+/* ===========================================================
+   Content Section Styles
+   =========================================================== */
+
+/* General content section styles */
 .content-section {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -422,6 +480,7 @@ nav {
   text-align: center;
 }
 
+/* Heading within content sections */
 .content-section h2 {
   margin-top: 0;
   font-size: 1.5rem;
@@ -429,7 +488,11 @@ nav {
   margin-bottom: 1rem;
 }
 
-/* Card Styles */
+/* ===========================================================
+   Card Styles
+   =========================================================== */
+
+/* Common styles for all card types */
 .cards-container .card,
 .cards-container .collections-card,
 .cards-container .popular-card,
@@ -448,6 +511,7 @@ nav {
   user-select: none;
 }
 
+/* Specific card width settings */
 .card,
 .popular-card,
 .link-card-expandable,
@@ -465,6 +529,7 @@ nav {
   width: 100%;
 }
 
+/* Hover effects for all card types */
 .card:hover,
 .collections-card:hover,
 .popular-card:hover,
@@ -475,6 +540,7 @@ nav {
   text-decoration: none;
 }
 
+/* Headings within cards */
 .card h3,
 .collections-card h3,
 .popular-card h3,
@@ -486,6 +552,7 @@ nav {
   font-weight: 700;
 }
 
+/* Images within cards */
 .card img,
 .collections-card img,
 .link-card-expandable img,
@@ -495,11 +562,16 @@ nav {
   border-radius: 4px;
 }
 
+/* Icon styles within IT services cards */
 .it-services-card .material-icons {
   font-size: 72px;
 }
 
-/* Footer Styles */
+/* ===========================================================
+   Footer Styles
+   =========================================================== */
+
+/* Footer container styles */
 footer {
   background: #1A1A1A;
   color: #fff;
@@ -507,10 +579,12 @@ footer {
   padding: 2rem 1rem;
 }
 
+/* Hover effect for footer links */
 footer a[href]:hover {
   color: #FFCB05;
 }
 
+/* Top section of the footer */
 .footer-top {
   display: flex;
   flex-wrap: wrap;
@@ -521,6 +595,7 @@ footer a[href]:hover {
   gap: 2rem;
 }
 
+/* Logo section within footer */
 .footer-logo-section {
   display: flex;
   align-items: center;
@@ -532,6 +607,7 @@ footer a[href]:hover {
   height: 200px;
 }
 
+/* Information section within footer */
 .footer-info-section {
   flex: 1;
 }
@@ -542,12 +618,14 @@ footer a[href]:hover {
   font-weight: 700;
 }
 
+/* Columns within footer information section */
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
+/* Individual footer columns */
 .footer-column h4 {
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
@@ -563,6 +641,7 @@ footer a[href]:hover {
   color: #ccc;
 }
 
+/* Bottom section of the footer */
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
@@ -570,7 +649,11 @@ footer a[href]:hover {
   color: #ccc;
 }
 
-/* Back to Top Button */
+/* ===========================================================
+   Back to Top and Home Button Styles
+   =========================================================== */
+
+/* Styles for the Back to Top button */
 .back-to-top {
   text-align: center;
   position: fixed;
@@ -587,7 +670,7 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Home Button */
+/* Styles for the Home button */
 .home-button {
   text-align: center;
   position: fixed;
@@ -604,7 +687,11 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Not Implemented Container */
+/* ===========================================================
+   Not Implemented Page Styles
+   =========================================================== */
+
+/* Container for the Not Implemented page */
 .not-implemented-container {
   position: relative;
   min-height: 100vh;
@@ -621,17 +708,20 @@ footer a[href]:hover {
   padding: 2rem;
 }
 
+/* Heading styles within Not Implemented container */
 .not-implemented-container h1 {
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
   font-weight: 700;
 }
 
+/* Paragraph styles within Not Implemented container */
 .not-implemented-container p {
   margin: 1rem 0;
   font-size: 1rem;
 }
 
+/* Go back button styles */
 .go-back-button {
   background: #FFCB05;
   border: none;
@@ -645,6 +735,7 @@ footer a[href]:hover {
   user-select: none;
 }
 
+/* Main section within Not Implemented container */
 .not-implemented-main {
   background: rgba(0, 0, 0, 0.6);
   padding: 3rem 3rem;
@@ -664,19 +755,26 @@ footer a[href]:hover {
   margin: 1rem 0rem 2rem 0rem;
 }
 
-/* Responsive Styles */
+/* ===========================================================
+   Responsive Styles
+   =========================================================== */
+
 @media (max-width: 768px) {
+
+  /* Adjust navigation layout for smaller screens */
   .nav-container {
     flex-direction: column;
     align-items: flex-start;
   }
 
+  /* Make left and right sections full width */
   .left-section,
   .right-section {
     width: 100%;
     justify-content: space-between;
   }
 
+  /* Make search form full width */
   .search-form {
     width: 100%;
     margin: 1rem 0;
@@ -686,15 +784,18 @@ footer a[href]:hover {
     width: 100%;
   }
 
+  /* Adjust navigation icons layout */
   .nav-icons {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
+  /* Hide current group text */
   .current-group {
     display: none;
   }
 
+  /* Adjust group selector menu for smaller screens */
   .group-selector-menu {
     position: static;
     transform: none;
@@ -707,6 +808,7 @@ footer a[href]:hover {
     gap: 1rem;
   }
 
+  /* Adjust group items layout */
   .group-items {
     flex-wrap: wrap;
     justify-content: center;
@@ -726,6 +828,7 @@ footer a[href]:hover {
     height: 40px;
   }
 
+  /* Adjust hero content padding and font size */
   .hero-content {
     padding: 2rem 1rem;
   }
@@ -734,19 +837,23 @@ footer a[href]:hover {
     font-size: 2.5rem;
   }
 
+  /* Adjust hero search form input */
   .hero-search-form input {
     max-width: 100%;
     width: 100%;
   }
 
+  /* Adjust hero search button padding */
   .hero-search-form button {
     padding: 0.75rem 1rem;
   }
 
+  /* Adjust card sizes for smaller screens */
   .card {
     max-width: 150px;
   }
 
+  /* Adjust footer columns layout */
   .footer-columns {
     flex-direction: column;
     gap: 1rem;
@@ -761,7 +868,11 @@ footer a[href]:hover {
   }
 }
 
-/* Show More/Less Buttons */
+/* ===========================================================
+   Show More/Less Buttons Styles
+   =========================================================== */
+
+/* Show More button styles */
 #show-more {
   margin-top: 1rem;
   background: #00274C;
@@ -778,10 +889,12 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
+/* Utility class to hide elements */
 .hidden {
   display: none;
 }
 
+/* Show Less button styles */
 #show-less {
   margin-top: 1rem;
   background: #00274C;
@@ -798,6 +911,7 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
+/* Show All link styles */
 #show-all {
   margin-top: 1rem;
   background: #00274C;
@@ -814,7 +928,11 @@ footer a[href]:hover {
   background: #001F3A;
 }
 
-/* Sort Dropdown */
+/* ===========================================================
+   Sort Dropdown Styles
+   =========================================================== */
+
+/* Sort dropdown select styles */
 #sort-dropdown {
   background: #fff;
   border: 1px solid #ccc;
@@ -825,6 +943,7 @@ footer a[href]:hover {
   cursor: pointer;
 }
 
+/* Container for sort toggle elements */
 .sort-toggle {
   display: flex;
   align-items: center;
@@ -832,12 +951,17 @@ footer a[href]:hover {
   margin-top: 1rem;
 }
 
-/* Slider Styles */
+/* ===========================================================
+   Slider Styles
+   =========================================================== */
+
+/* Container for custom slider */
 .slider-container {
   position: relative;
   width: 120px;
 }
 
+/* Range input within slider container */
 .slider-container input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -851,6 +975,7 @@ footer a[href]:hover {
   pointer-events: none;
 }
 
+/* Track of the slider */
 .slider-track {
   width: 100%;
   height: 4px;
@@ -858,6 +983,7 @@ footer a[href]:hover {
   border-radius: 2px;
 }
 
+/* Thumb of the slider */
 .slider-thumb {
   position: absolute;
   top: 7px;
@@ -871,14 +997,17 @@ footer a[href]:hover {
   cursor: pointer;
 }
 
+/* Remove default appearance of slider thumb for WebKit browsers */
 .slider-container input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
+/* Remove default appearance of slider thumb for Firefox */
 .slider-container input[type="range"]::-moz-range-thumb {
   -moz-appearance: none;
 }
 
+/* Labels for the slider */
 .slider-label {
   position: absolute;
   top: 25px;
@@ -899,13 +1028,11 @@ footer a[href]:hover {
   font-weight: 700;
 }
 
-.sub-header {
-  font-size: 0.9em;
-  color: #555;
-  margin-top: 5px;
-}
+/* ===========================================================
+   Search Suggestions Dropdown Styles
+   =========================================================== */
 
-/* Search Suggestions Dropdown */
+/* Container for search suggestions */
 .search-suggestions {
   position: absolute;
   top: 100%;
@@ -922,10 +1049,12 @@ footer a[href]:hover {
   display: none;
 }
 
+/* Display search suggestions when active */
 .search-suggestions.active {
   display: block;
 }
 
+/* Individual search suggestion item */
 .search-suggestion-item {
   padding: 0.5rem;
   cursor: pointer;
@@ -934,17 +1063,23 @@ footer a[href]:hover {
   flex-direction: column;
 }
 
+/* Hover and highlighted state for suggestion items */
 .search-suggestion-item:hover,
 .search-suggestion-item.highlighted {
   background: #00274C;
   color: #fff;
 }
 
+/* ===========================================================
+   Sort Type Selector Styles
+   =========================================================== */
 
+/* Hide sort type selector by default */
 .sort-type-selector {
   display: none;
 }
 
+/* Container for sort type toggle */
 .sort-type-container {
   position: relative;
   display: grid;
@@ -958,6 +1093,7 @@ footer a[href]:hover {
   cursor: pointer;
 }
 
+/* Background for active sort type */
 .sort-type-container::before {
   content: '';
   position: absolute;
@@ -969,16 +1105,19 @@ footer a[href]:hover {
   transition: all 0.3s;
 }
 
+/* Move background based on sort type */
 .sort-type-selector:checked+.sort-type-container::before {
   left: 50%;
 }
 
+/* Text within sort type container */
 .sort-type-container div {
   padding: 6px;
   text-align: center;
   z-index: 1;
 }
 
+/* Text color adjustments based on sort type */
 .sort-type-selector:checked+.sort-type-container div:first-child {
   color: #00274C;
   transition: color 0.3s;
