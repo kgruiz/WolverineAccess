@@ -25,11 +25,15 @@
             <img src="assets/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
           </a>
 
-          <form class="search-form" action="all-links-full.html" method="get">
-            <input type="search" name="q" placeholder="Search Wolverine Access" aria-label="Search Wolverine Access" />
-            <button type="submit">
+          <form class="search-form" onsubmit="return false;">
+            <input type="search" name="q" placeholder="Search Wolverine Access" aria-label="Search Wolverine Access"
+              class="search-input" id="headerSearchInput" />
+
+            <button type="button" class="search-button">
               <span class="material-icons">search</span>
             </button>
+
+            <div class="search-suggestions" id="headerSearchSuggestions"></div>
           </form>
         </div>
 
@@ -80,6 +84,7 @@
       <form class="full-search-form" onsubmit="return false;">
         <input type="search" name="q" placeholder="Search All Links" aria-label="Search All Links"
           id="fullSearchInput" />
+
         <button type="submit">
           <span class="material-icons">search</span>
         </button>

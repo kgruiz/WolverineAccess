@@ -5,22 +5,30 @@ window.addEventListener("scroll", () => {
   if (window.scrollY > 200) {
     backToTopButton.style.display = "block"
     homeButton.style.display = "block"
-  } else {
+  }
+
+  else {
     backToTopButton.style.display = "none"
     homeButton.style.display = "none"
   }
 })
 
+
 document.querySelector(".back-to-top")?.addEventListener("click", () => {
+
   window.scrollTo({
+
     top: 0,
     behavior: "smooth"
   })
 })
 
+
 document.querySelector(".home-button")?.addEventListener("click", () => {
+
   window.location.href = "index.html"
 })
+
 
 let linksData = []
 let tasks = []
@@ -43,11 +51,14 @@ fetch("JSON Files/tasks.json")
     initializePage()
   });
 
+
 function initializePage() {
   const mostPopularContainer = document.getElementById("most-popular-container")
+
   if (mostPopularContainer && linksData.length > 0) {
     const sortedByRank = [...linksData].sort((a, b) => b.currentRating - a.currentRating)
     const top4 = sortedByRank.slice(0, 4)
+
     top4.forEach(link => {
       const card = CreateCard(link)
       mostPopularContainer.append(card)
@@ -66,6 +77,7 @@ function initializePage() {
       allLinksContainer.append(card)
     })
 
+
     next30.forEach(link => {
       const card = CreateCard(link)
       card.classList.add("additional-cards", "hidden")
@@ -79,32 +91,39 @@ function initializePage() {
     let searchTerm = ""
 
     const urlParams = new URLSearchParams(window.location.search)
-    if (urlParams.has('q')) {
-      searchTerm = urlParams.get('q').toLowerCase()
+    if (urlParams.has("q")) {
+      searchTerm = urlParams.get("q").toLowerCase()
     }
+
 
     function RenderAllLinksFull() {
       allLinksFullContainer.innerHTML = ""
+
       let linksToShow = [...linksData]
 
       if (sortType === "rank") {
         linksToShow.sort((a, b) => b.currentRating - a.currentRating)
-      } else if (sortType === "alphabetical") {
+      }
+
+      else if (sortType === "alphabetical") {
         linksToShow.sort((a, b) => a.title.localeCompare(b.title))
       }
 
+
       if (searchTerm.trim() !== "") {
         linksToShow = linksToShow.filter(link =>
-          link.title.toLowerCase().includes(searchTerm) ||
-          link.applicationName.toLowerCase().includes(searchTerm)
+        ((link.title && link.title.toLowerCase().includes(searchTerm)) ||
+          (link.applicationName && link.applicationName.toLowerCase().includes(searchTerm)))
         )
       }
 
       if (linksToShow.length === 0) {
-        const noResults = document.createElement('p')
+        const noResults = document.createElement("p")
         noResults.textContent = "No results found."
         allLinksFullContainer.appendChild(noResults)
-      } else {
+      }
+
+      else {
         linksToShow.forEach(link => {
           const card = CreateCard(link)
           allLinksFullContainer.append(card)
@@ -112,31 +131,37 @@ function initializePage() {
       }
     }
 
+    const fullSearchInput = document.getElementById("fullSearchInput")
+
+    if (fullSearchInput) {
+      fullSearchInput.value = searchTerm
+      fullSearchInput.addEventListener("input", () => {
+
+        searchTerm = fullSearchInput.value.toLowerCase()
+        RenderAllLinksFull()
+      })
+    }
+
     RenderAllLinksFull()
 
     const toggle = document.getElementById("toggle")
     if (toggle) {
       toggle.addEventListener("change", () => {
+
         if (toggle.checked) {
           sortType = "alphabetical"
-        } else {
+        }
+
+        else {
           sortType = "rank"
         }
-        RenderAllLinksFull()
-      })
-    }
 
-    const fullSearchInput = document.getElementById("fullSearchInput")
-    if (fullSearchInput) {
-      fullSearchInput.value = searchTerm
-      fullSearchInput.addEventListener("input", () => {
-        searchTerm = fullSearchInput.value.toLowerCase()
         RenderAllLinksFull()
       })
     }
   }
 
-  // Setup suggestion handling for index page search bars if present
+
   const headerInput = document.getElementById("headerSearchInput")
   const headerSuggestions = document.getElementById("headerSearchSuggestions")
   const heroInput = document.getElementById("heroSearchInput")
@@ -145,51 +170,61 @@ function initializePage() {
   if (headerInput && headerSuggestions) {
     SetupSearchSuggestions(headerInput, headerSuggestions)
   }
+
   if (heroInput && heroSuggestions) {
     SetupSearchSuggestions(heroInput, heroSuggestions)
   }
+
 
   const showMoreButton = document.getElementById("show-more")
   const showLessButton = document.getElementById("show-less")
   const showAllButton = document.getElementById("show-all")
 
   showMoreButton?.addEventListener("click", () => {
+
     const additionalCards = document.querySelectorAll(".additional-cards")
     additionalCards.forEach(card => {
       card.classList.remove("hidden")
     })
+
     showMoreButton.classList.add("hidden")
     showLessButton.classList.remove("hidden")
     showAllButton.classList.remove("hidden")
   })
 
+
   showLessButton?.addEventListener("click", () => {
+
     const additionalCards = document.querySelectorAll(".additional-cards")
     additionalCards.forEach(card => {
       card.classList.add("hidden")
     })
+
     showMoreButton.classList.remove("hidden")
     showLessButton.classList.add("hidden")
     showAllButton.classList.add("hidden")
   })
 }
 
+
 function CreateCard(link) {
-  const card = document.createElement('a');
-  card.className = 'card';
+  const card = document.createElement("a");
+  card.className = "card";
   card.href = link.href;
+
 
   if (link.openInNewWindow) {
     card.target = "_blank"
     card.rel = "noopener"
   }
 
-  const header = document.createElement('h3');
+
+  const header = document.createElement("h3");
   header.textContent = link.title;
   card.appendChild(header);
 
-  const subHeader = document.createElement('p');
-  subHeader.className = 'sub-header';
+  const subHeader = document.createElement("p");
+  subHeader.className = "sub-header";
   subHeader.textContent = link.applicationName;
   card.appendChild(subHeader);
 
@@ -201,8 +236,9 @@ function CreateCard(link) {
   return card;
 }
 
+
 function LoadTasks() {
-  fetch('tasks.json')
+  fetch("tasks.json")
     .then(response => response.json())
     .then(data => {
       tasks = data;
@@ -210,21 +246,27 @@ function LoadTasks() {
     }).catch(() => console.error("Failed to load tasks.json for tasks"));
 }
 
+
 function RenderTasks() {
-  const container = document.getElementById('all-links-full-container');
+  const container = document.getElementById("all-links-full-container");
   if (!container || tasks.length === 0) return;
 
-  container.innerHTML = '';
+
+  container.innerHTML = "";
+
 
   if (sortByRating) {
     tasks.sort((a, b) => b.rating - a.rating);
-  } else {
+  }
+
+  else {
     tasks.sort((a, b) => a.title.localeCompare(b.title));
   }
 
+
   tasks.forEach(task => {
-    const card = document.createElement('a');
-    card.className = 'card';
+    const card = document.createElement("a");
+    card.className = "card";
     card.href = task.href;
     if (task.openInNewWindow) {
       card.target = "_blank";
@@ -236,75 +278,95 @@ function RenderTasks() {
       <p>${task.description}</p>
       <p>Rating: ${task.rating}</p>
     `;
+
     container.appendChild(card);
   });
 }
 
-const sortTypeSelector = document.getElementById('toggle');
+
+const sortTypeSelector = document.getElementById("toggle");
 if (sortTypeSelector) {
-  sortTypeSelector.addEventListener('change', function () {
+  sortTypeSelector.addEventListener("change", function () {
     sortByRating = !sortByRating;
     RenderTasks();
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener("DOMContentLoaded", function () {
   LoadTasks();
 });
 
-/* Dropdown Logic */
-const groupSelector = document.getElementById('group-selector')
-const groupSelectorToggle = document.getElementById('group-selector-toggle')
-const groupSelectorMenu = document.getElementById('group-selector-menu')
-const currentGroupDisplay = document.getElementById('current-group')
+
+const groupSelector = document.getElementById("group-selector")
+const groupSelectorToggle = document.getElementById("group-selector-toggle")
+const groupSelectorMenu = document.getElementById("group-selector-menu")
+const currentGroupDisplay = document.getElementById("current-group")
 
 let clickedOpen = false
 
-groupSelector?.addEventListener('mouseover', () => {
+groupSelector?.addEventListener("mouseover", () => {
+
   if (!clickedOpen) {
-    groupSelectorMenu.style.display = 'flex'
+    groupSelectorMenu.style.display = "flex"
   }
 })
 
-groupSelector?.addEventListener('mouseout', () => {
+
+groupSelector?.addEventListener("mouseout", () => {
+
   if (!clickedOpen) {
-    groupSelectorMenu.style.display = 'none'
+    groupSelectorMenu.style.display = "none"
   }
 })
 
-groupSelectorToggle?.addEventListener('click', (e) => {
+
+groupSelectorToggle?.addEventListener("click", (e) => {
+
   e.preventDefault()
   clickedOpen = !clickedOpen
-  groupSelectorMenu.style.display = clickedOpen ? 'flex' : 'none'
+  groupSelectorMenu.style.display = clickedOpen ? "flex" : "none"
 })
 
-document.addEventListener('click', (event) => {
+
+document.addEventListener("click", (event) => {
+
   if (clickedOpen && !groupSelector.contains(event.target)) {
     clickedOpen = false
-    groupSelectorMenu.style.display = 'none'
+    groupSelectorMenu.style.display = "none"
   }
 })
 
-const groupSelectorMenuLinks = groupSelectorMenu?.querySelectorAll('a')
+
+const groupSelectorMenuLinks = groupSelectorMenu?.querySelectorAll("a")
 groupSelectorMenuLinks?.forEach(link => {
-  link.addEventListener('click', (e) => {
+  link.addEventListener("click", (e) => {
+
     e.preventDefault()
-    const selectedGroup = link.getAttribute('data-group')
+    const selectedGroup = link.getAttribute("data-group")
     currentGroupDisplay.textContent = selectedGroup
     clickedOpen = false
-    groupSelectorMenu.style.display = 'none'
+    groupSelectorMenu.style.display = "none"
   })
 })
 
 
-/* Search Suggestions Functionality */
 function SetupSearchSuggestions(inputElement, suggestionsContainer) {
   let currentIndex = -1
   let suggestionItems = []
 
   inputElement.addEventListener("input", onInput)
+
   inputElement.addEventListener("keydown", onKeyDown)
+
   document.addEventListener("click", onDocumentClick)
+
+
+  const formElement = inputElement.closest("form")
+  const searchButton = formElement?.querySelector("button")
+
+  searchButton?.addEventListener("click", onSearchButtonClick)
+
 
   function onInput() {
     const query = inputElement.value.trim().toLowerCase()
@@ -313,32 +375,29 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
       return
     }
 
-    // If linksData is empty or not loaded, we still show top suggestion
     const filtered = linksData.filter(link =>
-      link.title?.toLowerCase().includes(query) ||
-      link.applicationName?.toLowerCase().includes(query)
+      (link.title && link.title.toLowerCase().includes(query)) ||
+      (link.applicationName && link.applicationName.toLowerCase().includes(query))
     )
 
     buildSuggestions(query, filtered.slice(0, 5))
   }
+
 
   function buildSuggestions(query, results) {
     suggestionsContainer.innerHTML = ""
     currentIndex = -1
     suggestionItems = []
 
-    // Top item: Search for "query"
     const topItem = document.createElement("div")
     topItem.className = "search-suggestion-item"
     topItem.textContent = `Search for "${inputElement.value.trim()}"`
-
     topItem.addEventListener("click", () => {
       goToSearchPage(inputElement.value.trim())
     })
     suggestionsContainer.appendChild(topItem)
     suggestionItems.push({ element: topItem, isSearchOption: true, link: null })
 
-    // Results
     results.forEach(link => {
       const item = document.createElement("div")
       item.className = "search-suggestion-item"
@@ -351,7 +410,14 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     })
 
     suggestionsContainer.classList.add("active")
+
+    // Highlight the top item by default
+    if (suggestionItems.length > 0) {
+      currentIndex = 0
+      highlightCurrentItem()
+    }
   }
+
 
   function hideSuggestions() {
     suggestionsContainer.innerHTML = ""
@@ -360,39 +426,56 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     suggestionItems = []
   }
 
+
   function onKeyDown(e) {
     if (!suggestionsContainer.classList.contains("active")) return
     const maxIndex = suggestionItems.length - 1
 
     if (e.key === "ArrowDown") {
+
       e.preventDefault()
       currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1
       highlightCurrentItem()
-    } else if (e.key === "ArrowUp") {
+    }
+
+    else if (e.key === "ArrowUp") {
+
       e.preventDefault()
       currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1
       highlightCurrentItem()
-    } else if (e.key === "Enter") {
+    }
+
+    else if (e.key === "Enter") {
+
       e.preventDefault()
       if (currentIndex === -1 || suggestionItems[currentIndex].isSearchOption) {
         goToSearchPage(inputElement.value.trim())
-      } else {
+      }
+
+      else {
         window.location.href = suggestionItems[currentIndex].link
       }
-    } else if (e.key === "Escape") {
+    }
+
+    else if (e.key === "Escape") {
+
       hideSuggestions()
     }
   }
+
 
   function highlightCurrentItem() {
     suggestionItems.forEach((item, index) => {
       if (index === currentIndex) {
         item.element.classList.add("highlighted")
-      } else {
+      }
+
+      else {
         item.element.classList.remove("highlighted")
       }
     })
   }
+
 
   function onDocumentClick(e) {
     if (!suggestionsContainer.contains(e.target) && e.target !== inputElement) {
@@ -400,8 +483,20 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     }
   }
 
+
   function goToSearchPage(query) {
     if (!query) return
     window.location.href = `all-links-full.html?q=${encodeURIComponent(query)}`
+  }
+
+
+  function onSearchButtonClick() {
+    if (currentIndex === -1 || suggestionItems[currentIndex]?.isSearchOption === true) {
+      goToSearchPage(inputElement.value.trim())
+    }
+
+    else {
+      window.location.href = suggestionItems[currentIndex].link
+    }
   }
 }
