@@ -193,7 +193,7 @@ fetch("JSON Files/tasks.json")
     initializePage();
   });
 
-/*
+/**
  * Initialize the page with fetched data and user information.
  */
 function initializePage() {
@@ -421,10 +421,22 @@ function CreateCard(link) {
   }
   card.appendChild(star);
 
+  star.addEventListener("mouseover", () => {
+    star.style.transform = "scale(1.1)";
+    star.style.color = "#FFCB05";
+  });
+
+  star.addEventListener("mouseout", () => {
+    star.style.transform = "scale(1)";
+    star.style.color = "#FFCB05";
+    if (!isLinkFavorited(link)) {
+      star.style.color = "";
+    }
+  });
+
   star.addEventListener("click", (e) => {
     e.preventDefault();
-    e.stopPropagation();
-
+    e.stopPropagation(); // Prevent card click
     if (isLinkFavorited(link)) {
       removeFavorite(link);
     } else {
