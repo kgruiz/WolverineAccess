@@ -93,10 +93,26 @@
             </li>
 
             <!-- Favorite Links Icon -->
-            <li>
-              <a href="not-implemented.html" aria-label="My Favorite Links">
+            <li class="favorites-icon" id="favorites-icon">
+              <a href="#" aria-label="Favorites" class="favorites-menu-toggle" id="favorites-menu-toggle">
                 <span class="material-icons">star</span>
               </a>
+              <div class="favorites-menu" id="favorites-menu">
+                <div class="favorites-menu-header">
+                  <h3>Favorites</h3>
+                  <hr />
+                </div>
+                <div class="favorite-items">
+                  <!-- Favorite Links Section -->
+                  <section class="content-section" aria-label="Favorite Links">
+                    <div class="cards-container" id="favorite-links-container"></div>
+                  </section>
+                  <section class="manage-favorites-button" id="manage-favorites-button">
+                    <button id="manage-favorites" class="manage-favorites"
+                      onclick="window.location.href='not-implemented.html'">Manage All</button>
+                  </section>
+                </div>
+              </div>
             </li>
 
             <!-- All Links Icon -->
@@ -106,11 +122,20 @@
               </a>
             </li>
 
-            <!-- Announcements Icon -->
-            <li>
-              <a href="not-implemented.html" aria-label="Announcements">
+            <!-- Notifications Icon -->
+            <li class="notifications-icon" id="notifications-icon">
+              <a href="#" aria-label="Notifications" class="notifications-menu-toggle" id="notifications-menu-toggle">
                 <span class="material-icons">notifications</span>
               </a>
+              <div class="notifications-menu" id="notifications-menu">
+                <div class="notifications-menu-header">
+                  <h3>Notifications</h3>
+                  <hr />
+                </div>
+                <div class="notifications-items">
+                  No Notifications
+                </div>
+              </div>
             </li>
 
             <!-- Home Icon -->
@@ -163,11 +188,7 @@
       <div class="cards-container" id="most-popular-container"></div>
     </section>
 
-    <!-- Favorite Links Section -->
-    <section class="content-section" aria-label="Favorite Links">
-      <h2>Favorite Links</h2>
-      <div class="cards-container" id="favorite-links-container"></div>
-    </section>
+
 
     <!-- All Links Section with Show More/Less Buttons -->
     <section class="content-section" aria-label="All Links">

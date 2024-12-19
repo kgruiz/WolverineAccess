@@ -140,16 +140,6 @@ nav {
   margin: 0 0.25rem;
 }
 
-/* Styles for images within navigation icons */
-.nav-icons li a img {
-  padding: 0.5rem;
-  border-radius: 8px;
-  background: #FFCB05;
-  cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 1rem;
-}
-
 /* ===========================================================
    Group Selector Styles
    =========================================================== */
@@ -267,6 +257,15 @@ nav {
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+}
+
+.group-selector img {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: #FFCB05;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
 }
 
 /* Image styles within group selector menu */
@@ -1175,4 +1174,272 @@ footer a[href]:hover {
 .sort-type-selector+.sort-type-container div:last-child {
   color: #00274C;
   transition: color 0.3s;
+}
+
+
+/* ===========================================================
+   Favorites Menu Styles
+   =========================================================== */
+
+/* Container for group selector */
+.favorites-icon {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Toggle button for group selector */
+.favorites-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+}
+
+.favorites-menu-toggle {
+  margin-top: -3px;
+}
+
+.favorites-menu-toggle .material-icons {
+  margin-top: -5px;
+}
+
+/* Dropdown menu for group selector */
+.favorites-menu {
+  position: fixed;
+  top: 67px;
+  right: 2rem;
+  background: #fff;
+  color: #000;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: calc(4 * 240px + 4 * 1rem);
+  min-height: 250px;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Header section within group selector menu */
+.favorites-menu-header {
+  width: 100%;
+}
+
+.favorites-menu-header h3 {
+  margin-left: 15px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00274C;
+  text-align: left;
+}
+
+.favorites-menu-header hr {
+  width: calc(100% - 10px);
+  border: none;
+  border-top: 2px solid #00274C;
+  margin-top: 0.5rem;
+  margin-bottom: -15px;
+}
+
+/* Container for group items */
+.favorite-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Individual group items as links */
+.favorite-items a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.favorites-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+  flex-direction: column;
+  font-size: 1.25rem;
+}
+
+.favorites-menu a:hover {
+  transform: translateY(-5px);
+}
+
+/* Arrow indicator for group selector menu */
+.favorites-menu::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(+279.25px);
+  border-width: 7.5px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+/* Image styles within group selector menu */
+.favorites-menu img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  background: transparent;
+}
+
+.manange-favorites-button {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+}
+
+#manage-favorites {
+  margin-top: 1rem;
+  background: #00274C;
+  color: #FFCB05;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+#manage-favorites:hover {
+  background: #001F3A;
+}
+
+.manage-favorites-button {
+  margin-top: -40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===========================================================
+   Notifications Menu Styles
+   =========================================================== */
+
+/* Container for group selector */
+.notifications-icon {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Toggle button for group selector */
+.notifications-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+}
+
+.notifications-menu-toggle {
+  margin-top: -3px;
+}
+
+.notifications-menu-toggle .material-icons {
+  margin-top: -5px;
+}
+
+/* Dropdown menu for group selector */
+.notifications-menu {
+  position: fixed;
+  top: 67px;
+  right: 64.75px;
+  background: #fff;
+  color: #000;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: calc(1 * 160px + 6rem);
+  min-height: 300px;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Header section within group selector menu */
+.notifications-menu-header {
+  width: 100%;
+}
+
+.notifications-menu-header h3 {
+  margin-left: 15px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #00274C;
+  text-align: center;
+}
+
+.notifications-menu-header hr {
+  width: calc(100% - 10px);
+  border: none;
+  border-top: 2px solid #00274C;
+  margin-top: 0.5rem;
+}
+
+/* Container for group items */
+.notifications-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Individual group items as links */
+.notifications-items a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.notifications-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+  flex-direction: column;
+  font-size: 1.25rem;
+}
+
+.notifications-menu a:hover {
+  transform: translateY(-5px);
+}
+
+/* Arrow indicator for group selector menu */
+.notifications-menu::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-8.5px);
+  border-width: 7.5px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+/* Image styles within group selector menu */
+.notifications-menu img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
 }

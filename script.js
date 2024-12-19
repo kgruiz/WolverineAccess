@@ -538,23 +538,23 @@ groupSelectorMenuLinks?.forEach(link => {
   });
 });
 
-// Function to filter links based on selected group
-function filterLinksByGroup(group) {
-  const allLinksContainer = document.getElementById("all-links-container");
-  const allLinkCards = allLinksContainer.querySelectorAll(".card");
+// // Function to filter links based on selected group
+// function filterLinksByGroup(group) {
+//   const allLinksContainer = document.getElementById("all-links-container");
+//   const allLinkCards = allLinksContainer.querySelectorAll(".card");
 
-  allLinkCards.forEach(card => {
-    const uniqueKey = card.dataset.uniqueKey;
-    const link = linksData.find(l => l.uniqueKey === uniqueKey);
-    if (link) {
-      if (group === "All" || (link.collectionName && link.collectionName === group)) {
-        card.style.display = "flex";
-      } else {
-        card.style.display = "none";
-      }
-    }
-  });
-}
+//   allLinkCards.forEach(card => {
+//     const uniqueKey = card.dataset.uniqueKey;
+//     const link = linksData.find(l => l.uniqueKey === uniqueKey);
+//     if (link) {
+//       if (group === "All" || (link.collectionName && link.collectionName === group)) {
+//         card.style.display = "flex";
+//       } else {
+//         card.style.display = "none";
+//       }
+//     }
+//   });
+// }
 
 // ===========================================================
 // Setup Search Suggestions Functionality
@@ -698,3 +698,83 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     }
   }
 }
+
+
+// ===========================================================
+// Favorites Dropdown Functionality
+// ===========================================================
+
+const favoritesIcon = document.getElementById("favorites-icon");
+const favoritesMenuToggle = document.getElementById("favorites-menu-toggle");
+const favoritesMenu = document.getElementById("favorites-menu");
+
+let favoritesClickedOpen = false;
+
+// Show group selector menu on mouse over if not clicked open
+favoritesIcon?.addEventListener("mouseover", () => {
+  if (!favoritesClickedOpen) {
+    favoritesMenu.style.display = "flex";
+  }
+});
+
+// Hide group selector menu on mouse out if not clicked open
+favoritesIcon?.addEventListener("mouseout", () => {
+  if (!favoritesClickedOpen) {
+    favoritesMenu.style.display = "none";
+  }
+});
+
+// Toggle group selector menu on click
+favoritesMenuToggle?.addEventListener("click", (e) => {
+  e.preventDefault();
+  favoritesClickedOpen = !favoritesClickedOpen;
+  favoritesMenu.style.display = favoritesClickedOpen ? "flex" : "none";
+});
+
+// Close group selector menu when clicking outside
+document.addEventListener("click", (event) => {
+  if (favoritesClickedOpen && !favoritesIcon.contains(event.target)) {
+    favoritesClickedOpen = false;
+    favoritesMenu.style.display = "none";
+  }
+});
+
+
+// ===========================================================
+// Notifications Dropdown Functionality
+// ===========================================================
+
+const notificationsIcon = document.getElementById("notifications-icon");
+const notificationsMenuToggle = document.getElementById("notifications-menu-toggle");
+const notificationsMenu = document.getElementById("notifications-menu");
+
+let notificationsClickedOpen = false;
+
+// Show group selector menu on mouse over if not clicked open
+notificationsIcon?.addEventListener("mouseover", () => {
+  if (!notificationsClickedOpen) {
+    notificationsMenu.style.display = "flex";
+  }
+});
+
+// Hide group selector menu on mouse out if not clicked open
+notificationsIcon?.addEventListener("mouseout", () => {
+  if (!notificationsClickedOpen) {
+    notificationsMenu.style.display = "none";
+  }
+});
+
+// Toggle group selector menu on click
+notificationsMenuToggle?.addEventListener("click", (e) => {
+  e.preventDefault();
+  notificationsClickedOpen = !notificationsClickedOpen;
+  notificationsMenu.style.display = notificationsClickedOpen ? "flex" : "none";
+});
+
+// Close group selector menu when clicking outside
+document.addEventListener("click", (event) => {
+  if (notificationsClickedOpen && !notificationsIcon.contains(event.target)) {
+    notificationsClickedOpen = false;
+    notificationsMenu.style.display = "none";
+  }
+});
