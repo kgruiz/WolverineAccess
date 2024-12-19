@@ -552,7 +552,7 @@ function initializeSignInMenu() {
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signOut()">Sign out</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
-      <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Send Feedback</button>
+      <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
     `;
   } else {
     signInProfilePic.textContent = '';
@@ -572,7 +572,7 @@ function initializeSignInMenu() {
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signIn()">Sign in</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
-      <button class="sign-in-menu-item" onclick="window.location.href='not-implemented.html'">Send Feedback</button>
+      <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
     `;
   }
 }
