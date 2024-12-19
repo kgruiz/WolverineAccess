@@ -1204,3 +1204,142 @@ footer a[href]:hover {
 .not-implemented-main p {
   margin: 1rem 0rem 2rem 0rem;
 }
+
+
+/* Full search area styles */
+.full-search-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.full-search-area {
+  padding: 3rem 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.full-search-area h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.full-search-area h3 {
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Full search form styles */
+.full-search-form {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  outline: 1px solid #001F3A;
+  border-radius: 4px 4px 4px 4px;
+}
+
+/* Input within full search form */
+.full-search-form input {
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Button within full search form */
+.full-search-form button {
+  background: #FFCB05;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 0 4px 4px 0;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon within full search button */
+.full-search-form button .material-icons {
+  font-size: 1.5rem;
+}
+
+/* ===========================================================
+   Sort Type Selector Styles
+   =========================================================== */
+
+/* Hide sort type selector by default */
+.sort-type-selector {
+  display: none;
+}
+
+/* Container for sort type toggle */
+.sort-type-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  border: 1.5px solid #00274C;
+  border-radius: 20px;
+  background: white;
+  font-weight: bold;
+  color: #00274C;
+  cursor: pointer;
+}
+
+/* Background for active sort type */
+.sort-type-container::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+  border-radius: 20px;
+  background: #00274C;
+  transition: all 0.3s;
+}
+
+/* Move background based on sort type */
+.sort-type-selector:checked+.sort-type-container::before {
+  left: 50%;
+}
+
+/* Text within sort type container */
+.sort-type-container div {
+  padding: 6px;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Text color adjustments based on sort type */
+.sort-type-selector:checked+.sort-type-container div:first-child {
+  color: #00274C;
+  transition: color 0.3s;
+}
+
+.sort-type-selector:checked+.sort-type-container div:last-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:first-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:last-child {
+  color: #00274C;
+  transition: color 0.3s;
+}

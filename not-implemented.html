@@ -32,13 +32,11 @@
     <nav>
       <div class="nav-container">
 
-        <!-- Left Section: Logo and Search Form -->
         <div class="left-section">
           <a href="index.html" aria-label="Home" class="logo-link">
             <img src="assets/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
           </a>
 
-          <!-- Search Form -->
           <form class="search-form" onsubmit="return false;">
             <input type="search" name="q" placeholder="Search Wolverine Access" aria-label="Search Wolverine Access"
               class="search-input" id="headerSearchInput" />
@@ -47,12 +45,10 @@
               <span class="material-icons">search</span>
             </button>
 
-            <!-- Search Suggestions Dropdown -->
             <div class="search-suggestions" id="headerSearchSuggestions"></div>
           </form>
         </div>
 
-        <!-- Right Section: Navigation Icons and Sign In Button -->
         <div class="right-section">
           <ul class="nav-icons">
 
@@ -67,6 +63,7 @@
                   <h3>Roles</h3>
                   <hr />
                 </div>
+
                 <div class="group-items">
                   <a href="#" data-group="Student">
                     <img src="assets/MPhotos/Seasons/Summer/2021_110.jpg" alt="Student Icon" />
@@ -92,11 +89,28 @@
               </div>
             </li>
 
-            <!-- Favorite Links Icon -->
-            <li>
-              <a href="not-implemented.html" aria-label="My Favorite Links">
+            <!-- Favorites Icon -->
+            <li class="favorites-icon" id="favorites-icon">
+              <a href="#" aria-label="Favorites" class="favorites-menu-toggle" id="favorites-menu-toggle">
                 <span class="material-icons">star</span>
               </a>
+              <div class="favorites-menu" id="favorites-menu">
+                <div class="favorites-menu-header">
+                  <h3>Favorites</h3>
+                  <hr />
+                </div>
+
+                <div class="favorite-items">
+                  <section class="content-section" aria-label="Favorite Links">
+                    <div class="cards-container" id="favorite-links-container"></div>
+                  </section>
+
+                  <section class="manage-favorites-button" id="manage-favorites-button">
+                    <button id="manage-favorites" class="manage-favorites"
+                      onclick="window.location.href='not-implemented.html'">Manage All</button>
+                  </section>
+                </div>
+              </div>
             </li>
 
             <!-- All Links Icon -->
@@ -106,11 +120,20 @@
               </a>
             </li>
 
-            <!-- Announcements Icon -->
-            <li>
-              <a href="not-implemented.html" aria-label="Announcements">
+            <!-- Notifications Icon -->
+            <li class="notifications-icon" id="notifications-icon">
+              <a href="#" aria-label="Notifications" class="notifications-menu-toggle" id="notifications-menu-toggle">
                 <span class="material-icons">notifications</span>
               </a>
+              <div class="notifications-menu" id="notifications-menu">
+                <div class="notifications-menu-header">
+                  <h3>Notifications</h3>
+                  <hr />
+                </div>
+                <div class="notifications-items">
+                  No Notifications
+                </div>
+              </div>
             </li>
 
             <!-- Home Icon -->
@@ -122,10 +145,23 @@
           </ul>
 
           <!-- Sign In Button -->
-          <button class="sign-in-button" type="button" onclick="window.location.href='not-implemented.html'">
-            <span class="material-icons">account_circle</span>
-            Sign In
-          </button>
+          <div class="sign-in-container" id="sign-in-container">
+            <button class="sign-in-button" type="button" id="sign-in-menu-toggle">
+              <span class="material-icons">account_circle</span>
+              Sign In
+            </button>
+
+            <div class="sign-in-menu" id="sign-in-menu">
+              <div class="sign-in-menu-header">
+                <div class="sign-in-profile-pic" id="sign-in-profile-pic"></div>
+                <h3 id="sign-in-name"></h3>
+                <p id="sign-in-email"></p>
+                <hr id="sign-in-separator" />
+              </div>
+              <div class="sign-in-items" id="sign-in-items"></div>
+            </div>
+          </div>
+
         </div>
 
       </div>
