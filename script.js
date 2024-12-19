@@ -243,6 +243,7 @@ groupSelectorMenuLinks.forEach(link => {
     e.preventDefault()
     const selectedGroup = link.getAttribute('data-group')
     currentGroupDisplay.textContent = selectedGroup
+    groupHoverDetector.style.width = `${currentGroupDisplay.textContent.length * 10}px`
     clickedOpen = false
     groupSelectorMenu.style.display = 'none'
   })

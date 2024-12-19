@@ -224,7 +224,7 @@ nav {
 }
 
 .group-selector-menu a:hover {
-  background: #f0f0f0;
+  transform: translateY(-5px);
 }
 
 /* Arrow Indicator */
