@@ -107,7 +107,7 @@ nav {
   cursor: pointer;
   font-size: 0.9rem;
   border-radius: 4px;
-  color: #000;
+  color: #00274C;
   margin-left: 0.5rem;
 }
 
@@ -211,10 +211,9 @@ nav {
   top: 67px;
   right: 2rem;
   background: #fff;
-  color: #000;
+  color: #00274C;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   width: calc(5 * 218px + 4 * 1rem);
   min-height: 300px;
@@ -274,6 +273,8 @@ nav {
 
 .group-selector-menu a:hover {
   transform: translateY(-5px);
+  color: #00274C;
+  box-shadow: none;
 }
 
 .group-selector-menu::before {
@@ -292,7 +293,7 @@ nav {
   border-radius: 8px;
   background: #FFCB05;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
 }
 
@@ -367,7 +368,7 @@ nav {
   cursor: pointer;
   font-size: 1.2rem;
   border-radius: 0 4px 4px 0;
-  color: #000;
+  color: #00274C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -461,7 +462,7 @@ nav {
   text-align: center;
   transition: transform 0.2s ease, background-color 0.3s ease;
   text-decoration: none;
-  color: #000;
+  color: #00274C;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   user-select: none;
   position: relative;
@@ -787,7 +788,7 @@ footer a[href]:hover {
   left: 0;
   right: 0;
   background: #fff;
-  color: #000;
+  color: #00274C;
   border: 1px solid #ddd;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -837,7 +838,7 @@ footer a[href]:hover {
   top: 67px;
   right: 2rem;
   background: #fff;
-  color: #000;
+  color: #00274C;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
@@ -966,7 +967,7 @@ footer a[href]:hover {
   top: 67px;
   right: 64.75px;
   background: #fff;
-  color: #000;
+  color: #00274C;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
@@ -1054,7 +1055,7 @@ footer a[href]:hover {
   top: 67px;
   right: 2rem;
   background: #fff;
-  color: #000;
+  color: #00274C;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
@@ -1227,7 +1228,7 @@ footer a[href]:hover {
   padding: 0.5rem;
   cursor: pointer;
   font-size: 1rem;
-  color: #000;
+  color: #00274C;
   border-radius: 4px;
   text-decoration: none;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -1314,7 +1315,7 @@ footer a[href]:hover {
   cursor: pointer;
   font-size: 1.2rem;
   border-radius: 0 4px 4px 0;
-  color: #000;
+  color: #00274C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1441,7 +1442,7 @@ footer a[href]:hover {
 
 .preferences-menu-close-button:hover,
 .preferences-menu-close-button:focus {
-  color: #000;
+  color: #00274C;
   text-decoration: none;
 }
 
