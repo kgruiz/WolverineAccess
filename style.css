@@ -1,9 +1,4 @@
 /* style.css */
-/*
-   NOTE: Do not change card sizes.
-   The code has been arranged to update star states across all displays.
-   We will not alter card dimensions or styling related to size.
-*/
 
 /* ===========================================================
    Reset and Base Styles
@@ -237,7 +232,7 @@ nav {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(+312px);
+  transform: translateX(+304px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
@@ -864,7 +859,7 @@ footer a[href]:hover {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(+279.25px);
+  transform: translateX(+271.5px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
@@ -992,7 +987,7 @@ footer a[href]:hover {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(-8.5px);
+  transform: translateX(-16px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
@@ -1055,7 +1050,7 @@ footer a[href]:hover {
 
 .sign-in-items {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 
 .sign-in-items .sign-in-menu-item {
@@ -1080,10 +1075,14 @@ footer a[href]:hover {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(+64px);
+  transform: translateX(+60px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+}
+
+.sign-in-menu-header hr {
+  border: 1px solid #00274C;
 }
 
 /* New Styles for Sign-In Button when Signed In */
