@@ -2,45 +2,51 @@
 // Global Variables
 // ===========================================================
 let linksData = [];
-let tasks = [];
 let sortByRating = true;
 
 // Favorites storage key
 const FAVORITES_KEY = 'favoriteLinks';
-let favoriteLinks = [];
+let favoriteStatuses = {};
 
 // ===========================================================
-// Initialize Favorites from localStorage
+// Initialize Favorites from localStorage and tasks.json
 // ===========================================================
 function loadFavorites() {
+  // Initialize favoriteStatuses with the favorite attribute from tasks.json
+  linksData.forEach(link => {
+    favoriteStatuses[link.uniqueKey] = link.favorite;
+  });
+
+  // Load stored favorites from localStorage
   const storedFavorites = localStorage.getItem(FAVORITES_KEY);
   if (storedFavorites) {
     try {
-      favoriteLinks = JSON.parse(storedFavorites);
+      const storedFavoritesObj = JSON.parse(storedFavorites);
+      // Override the favoriteStatuses with stored favorites
+      favoriteStatuses = { ...favoriteStatuses, ...storedFavoritesObj };
     } catch (e) {
       console.error("Failed to parse favorite links from localStorage.", e);
-      favoriteLinks = [];
     }
   }
+
+  saveFavorites();
 }
 
 function saveFavorites() {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteLinks));
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteStatuses));
 }
 
 function isLinkFavorited(link) {
-  return favoriteLinks.some(fav => fav.href === link.href);
+  return favoriteStatuses[link.uniqueKey] || false;
 }
 
 function addFavorite(link) {
-  if (!isLinkFavorited(link)) {
-    favoriteLinks.push(link);
-    saveFavorites();
-  }
+  favoriteStatuses[link.uniqueKey] = true;
+  saveFavorites();
 }
 
 function removeFavorite(link) {
-  favoriteLinks = favoriteLinks.filter(fav => fav.href !== link.href);
+  favoriteStatuses[link.uniqueKey] = false;
   saveFavorites();
 }
 
@@ -102,7 +108,7 @@ fetch("JSON Files/tasks.json")
 // Initialize Page with Data
 // ===========================================================
 function initializePage() {
-  // Load favorites from localStorage
+  // Load favorites from localStorage and tasks.json
   loadFavorites();
 
   // Populate Most Popular Container
@@ -115,6 +121,23 @@ function initializePage() {
       const card = CreateCard(link);
       mostPopularContainer.append(card);
     });
+  }
+
+  // Populate Favorite Links Container
+  const favoriteLinksContainer = document.getElementById("favorite-links-container");
+  if (favoriteLinksContainer && linksData.length > 0) {
+    const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
+
+    if (favoritedLinks.length === 0) {
+      const noFavorites = document.createElement("p");
+      noFavorites.textContent = "No favorite links yet.";
+      favoriteLinksContainer.appendChild(noFavorites);
+    } else {
+      favoritedLinks.forEach(link => {
+        const card = CreateCard(link);
+        favoriteLinksContainer.append(card);
+      });
+    }
   }
 
   // Populate All Links Container with initial and additional cards
@@ -260,6 +283,7 @@ function CreateCard(link) {
   const card = document.createElement("a");
   card.className = "card";
   card.href = link.href;
+  card.dataset.uniqueKey = link.uniqueKey; // Add uniqueKey as a data attribute
 
   // Open link in new window if specified
   if (link.openInNewWindow) {
@@ -306,11 +330,13 @@ function CreateCard(link) {
       star.textContent = "star_border";
       star.classList.remove("favorited");
       card.classList.remove("favorited-card");
+      removeCardFromFavorites(link.uniqueKey);
     } else {
       addFavorite(link);
       star.textContent = "star";
       star.classList.add("favorited");
       card.classList.add("favorited-card");
+      addCardToFavorites(link);
     }
   });
 
@@ -325,19 +351,62 @@ function initializeFavoriteStars() {
   favoriteStars.forEach(star => {
     const card = star.closest(".card");
     if (card) {
-      const linkHref = card.getAttribute("href");
-      const link = linksData.find(l => l.href === linkHref);
+      const uniqueKey = card.dataset.uniqueKey;
+      const link = linksData.find(l => l.uniqueKey === uniqueKey);
       if (link && isLinkFavorited(link)) {
         star.textContent = "star";
         star.classList.add("favorited");
         card.classList.add("favorited-card");
+        addCardToFavorites(link);
       } else {
         star.textContent = "star_border";
         star.classList.remove("favorited");
         card.classList.remove("favorited-card");
+        removeCardFromFavorites(uniqueKey);
       }
     }
   });
+}
+
+// ===========================================================
+// Add Card to Favorite Links Section
+// ===========================================================
+function addCardToFavorites(link) {
+  const favoriteLinksContainer = document.getElementById("favorite-links-container");
+  if (!favoriteLinksContainer) return;
+
+  // Check if the card already exists in the favorites section
+  const existingCard = favoriteLinksContainer.querySelector(`[data-unique-key="${link.uniqueKey}"]`);
+  if (existingCard) return;
+
+  const card = CreateCard(link);
+  favoriteLinksContainer.append(card);
+
+  // Remove "No favorite links yet." message if it exists
+  const noFavoritesMessage = favoriteLinksContainer.querySelector("p");
+  if (noFavoritesMessage && noFavoritesMessage.textContent === "No favorite links yet.") {
+    favoriteLinksContainer.removeChild(noFavoritesMessage);
+  }
+}
+
+// ===========================================================
+// Remove Card from Favorite Links Section
+// ===========================================================
+function removeCardFromFavorites(uniqueKey) {
+  const favoriteLinksContainer = document.getElementById("favorite-links-container");
+  if (!favoriteLinksContainer) return;
+
+  const card = favoriteLinksContainer.querySelector(`[data-unique-key="${uniqueKey}"]`);
+  if (card) {
+    favoriteLinksContainer.removeChild(card);
+
+    // If no favorites left, show a message
+    if (favoriteLinksContainer.children.length === 0) {
+      const noFavorites = document.createElement("p");
+      noFavorites.textContent = "No favorite links yet.";
+      favoriteLinksContainer.appendChild(noFavorites);
+    }
+  }
 }
 
 // ===========================================================
@@ -371,16 +440,26 @@ function RenderTasks() {
     const card = document.createElement("a");
     card.className = "card";
     card.href = task.href;
+    card.dataset.uniqueKey = task.uniqueKey; // Ensure uniqueKey is set
     if (task.openInNewWindow) {
       card.target = "_blank";
       card.rel = "noopener";
     }
 
-    card.innerHTML = `
-      <h2>${task.title}</h2>
-      <p>${task.description}</p>
-      <p>Rating: ${task.rating}</p>
-    `;
+    // Create and append title
+    const header = document.createElement("h2");
+    header.textContent = task.title;
+    card.appendChild(header);
+
+    // Create and append description
+    const description = document.createElement("p");
+    description.textContent = task.description;
+    card.appendChild(description);
+
+    // Create and append rating
+    const rating = document.createElement("p");
+    rating.textContent = `Rating: ${task.rating}`;
+    card.appendChild(rating);
 
     container.appendChild(card);
   });
@@ -454,7 +533,7 @@ groupSelectorMenuLinks?.forEach(link => {
     clickedOpen = false;
     groupSelectorMenu.style.display = "none";
 
-    // Optionally, filter links based on selected group
+    // Filter links based on selected group
     filterLinksByGroup(selectedGroup);
   });
 });
@@ -465,12 +544,14 @@ function filterLinksByGroup(group) {
   const allLinkCards = allLinksContainer.querySelectorAll(".card");
 
   allLinkCards.forEach(card => {
-    const linkHref = card.getAttribute("href");
-    const link = linksData.find(l => l.href === linkHref);
-    if (group === "All" || (link && link.group === group)) {
-      card.style.display = "flex";
-    } else {
-      card.style.display = "none";
+    const uniqueKey = card.dataset.uniqueKey;
+    const link = linksData.find(l => l.uniqueKey === uniqueKey);
+    if (link) {
+      if (group === "All" || (link.collectionName && link.collectionName === group)) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
     }
   });
 }

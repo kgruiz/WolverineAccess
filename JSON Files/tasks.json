@@ -1,6 +1,6 @@
 [
     {
-        "favorite": false,
+        "favorite": true,
         "announcements": 0,
         "collectionName": "Most Popular This Week",
         "title": "Backpack/Register for Classes",
@@ -1207,7 +1207,7 @@
         "openInNewWindow": true,
         "currentRating": 71,
         "alt": "Register Your Travel",
-        "image":"assets/Current/RegisterYourTravel.png",
+        "image": "assets/Current/RegisterYourTravel.png",
         "href": "not-implemented.html"
     },
     {

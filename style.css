@@ -263,7 +263,7 @@ nav {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(+312.5px);
+  transform: translateX(+312px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
