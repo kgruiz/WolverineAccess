@@ -282,9 +282,15 @@ function CreateFavoriteCard(link) {
   });
   card.addEventListener("mouseout", () => {
     optionsIcon.style.display = "none";
+    card.style.transform = "translateY(0px)";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    optionsIcon.style.display = "none";
     optionsMenu.classList.remove("active");
     card.style.transform = "translateY(0px)";
   });
+
 
   return card;
 }
