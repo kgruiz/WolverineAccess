@@ -1420,9 +1420,9 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
- Sort Type Selector Styles
- =========================================================== */
-/* Sort Type Selector Styles */
+   Sort Type Selector Styles
+   =========================================================== */
+
 /* Hide sort type selector by default */
 .sort-type-selector {
   display: none;
@@ -1442,6 +1442,7 @@ footer a[href]:hover {
   cursor: pointer;
 }
 
+/* Background for active sort type */
 .sort-type-container::before {
   content: '';
   position: absolute;
@@ -1450,16 +1451,42 @@ footer a[href]:hover {
   left: 0%;
   border-radius: 20px;
   background: #00274C;
+  transition: all 0.3s;
 }
 
+/* Move background based on sort type */
+.sort-type-selector:checked+.sort-type-container::before {
+  left: 50%;
+}
+
+/* Text within sort type container */
 .sort-type-container div {
   padding: 6px;
   text-align: center;
   z-index: 1;
 }
 
-/* Existing styles */
-/* ... */
+/* Text color adjustments based on sort type */
+.sort-type-selector:checked+.sort-type-container div:first-child {
+  color: #00274C;
+  transition: color 0.3s;
+}
+
+.sort-type-selector:checked+.sort-type-container div:last-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:first-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:last-child {
+  color: #00274C;
+  transition: color 0.3s;
+}
+
 
 /* ===========================================================
  Modal Styles
