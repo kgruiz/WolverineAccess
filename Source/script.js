@@ -834,6 +834,7 @@ function initializeButtonEffects() {
 function initializeCardHoverEffects() {
   const cards = document.querySelectorAll(".card, .it-services-card");
   cards.forEach(card => {
+    card.style.transition = "transform 0.3s ease";
     card.addEventListener("mouseover", () => {
       card.style.transform = "translateY(-5px)";
       const favoriteStar = card.querySelector(".favorite-star");
@@ -889,6 +890,7 @@ function initializeFavoritesIconHoverEffects() {
   iconSelectors.forEach(iconInfo => {
     const icons = document.querySelectorAll(iconInfo.selector);
     icons.forEach(icon => {
+      icon.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
       icon.addEventListener("mouseover", () => {
         icon.style.transform = `scale(${iconInfo.scale})`;
         icon.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
