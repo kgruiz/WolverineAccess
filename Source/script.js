@@ -1308,6 +1308,7 @@ function displayErrorMessage(message) {
     newErrorContainer.style.left = "0";
     newErrorContainer.style.width = "100%";
     newErrorContainer.style.backgroundColor = "#f44336";
+    newErrorContainer.style.opacity = "0.9";
     newErrorContainer.style.color = "#fff";
     newErrorContainer.style.padding = "1rem";
     newErrorContainer.style.textAlign = "center";
@@ -1392,7 +1393,8 @@ function displayLogMessage(message) {
     newLogContainer.style.bottom = "0";
     newLogContainer.style.left = "0";
     newLogContainer.style.width = "100%";
-    newLogContainer.style.backgroundColor = "#4caf50";
+    newLogContainer.style.backgroundColor = "#00274C";
+    newLogContainer.style.opacity = "0.9";
     newLogContainer.style.color = "#fff";
     newLogContainer.style.padding = "1rem";
     newLogContainer.style.textAlign = "center";
@@ -1465,6 +1467,7 @@ function displayWarningMessage(message) {
     newWarningContainer.style.left = "0";
     newWarningContainer.style.width = "100%";
     newWarningContainer.style.backgroundColor = "#ff9800";
+    newWarningContainer.style.opacity = "0.9";
     newWarningContainer.style.color = "#fff";
     newWarningContainer.style.padding = "1rem";
     newWarningContainer.style.textAlign = "center";
