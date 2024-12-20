@@ -576,9 +576,10 @@ nav {
 
 /* Styles for the sign-in dropdown menu */
 .sign-in-menu {
-  position: fixed;
-  top: 67px;
-  right: 2rem;
+  position: absolute;
+  top: +40px;
+  right: -105px;
+  transform: translate(-50%, 0) scale(0);
   background: #fff;
   color: #00274C;
   padding: 1.5rem;
@@ -586,9 +587,13 @@ nav {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   width: 240px;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: calc(100% - 50px) +10px;
 }
 
 /* Header within the sign-in menu */
@@ -656,17 +661,32 @@ nav {
   content: '';
   position: absolute;
   top: -15px;
-  left: 50%;
-  transform: translateX(+60px);
+  right: +35px;
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Divider line in sign-in menu header */
 .sign-in-menu-header hr {
   border: 1px solid #00274C;
 }
+
+
+/* Active state for menu */
+.sign-in-menu.active {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  pointer-events: auto;
+}
+
+.sign-in-menu.active::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
 
 /* --- Styles for Sign-In Button when Signed In --- */
 /* Profile picture button when user is signed in */
