@@ -382,6 +382,7 @@ function initializePage() {
   initializeFavoritesIconHoverEffects();
 }
 
+
 // ==============================
 // Card Creation
 // ==============================
@@ -437,17 +438,47 @@ function CreateCard(link) {
       star.style.color = ""; // Reset to default color
     }
     star.style.transform = "scale(1)";
-
   });
+
+  // Click event for favoriting
   star.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent card click
+
+    // Inside the star click event
     if (isLinkFavorited(link)) {
-      star.style.color = ""; // Reset to default color
+      // Remove from favorites
       removeFavorite(link);
+      star.classList.remove("favorited");
+      card.classList.remove("favorited-card");
+      // Set to outlined star
+      star.innerHTML = outlinedStarSVG;
+
+      // Trigger unfill animation
+      star.classList.add("animate-unfill");
+
+      // Remove the animation class after animation completes
+      star.addEventListener("animationend", () => {
+        star.classList.remove("animate-unfill");
+      }, { once: true });
     } else {
+      // Add to favorites
       addFavorite(link);
+      star.classList.add("favorited");
+      card.classList.add("favorited-card");
+      // Set to filled star
+      star.innerHTML = filledStarSVG;
+
+      // Trigger fill animation
+      star.classList.add("animate-fill");
+
+      // Remove the animation class after animation completes
+      star.addEventListener("animationend", () => {
+        star.classList.remove("animate-fill");
+      }, { once: true });
     }
+
+
     refreshUIAfterFavoriteChange();
   });
 
@@ -469,6 +500,7 @@ function CreateCard(link) {
 
   return card;
 }
+
 
 // ==============================
 // Search Suggestions Setup
