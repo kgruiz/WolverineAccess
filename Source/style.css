@@ -1308,7 +1308,6 @@ footer a[href]:hover {
 }
 
 /* Slider Styles */
-
 /* Container for toggle switches */
 .switch {
   position: relative;
@@ -1333,6 +1332,7 @@ footer a[href]:hover {
   right: 0;
   bottom: 0;
   background-color: #ccc;
+  transition: background-color 0.4s ease;
 }
 
 .slider::before {
@@ -1343,6 +1343,15 @@ footer a[href]:hover {
   left: 4px;
   bottom: 4px;
   background-color: white;
+  transition: transform 0.4s ease;
+}
+
+input:checked+.slider {
+  background-color: #FFCB05;
+}
+
+input:checked+.slider::before {
+  transform: translateX(26px);
 }
 
 /* Rounded sliders */
@@ -1360,6 +1369,7 @@ footer a[href]:hover {
   align-items: center;
   gap: 10px;
 }
+
 
 /* ===========================================================
    Responsive Styles

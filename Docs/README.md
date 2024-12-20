@@ -48,7 +48,7 @@ Before installing, ensure you have the following installed on your machine:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/wolverine-access.git
+   git clone https://github.com/kgruiz/wolverine-access.git
    ```
 
 2. **Navigate to the Project Directory**
@@ -92,7 +92,7 @@ Contributions are welcome! Please follow these steps to contribute to WolverineA
 2. **Clone Your Fork**
 
    ```bash
-   git clone https://github.com/yourusername/wolverine-access.git
+   git clone https://github.com/kgruiz/wolverine-access.git
    ```
 
 3. **Create a New Branch**
