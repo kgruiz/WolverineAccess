@@ -138,7 +138,7 @@ function CreateCard(link) {
 
   // Add hover effect for the star
   star.addEventListener("mouseover", () => {
-    star.style.transform = "scale(1.1)";
+    star.style.transform = "scale(1.2)";
     star.style.color = "#FFCB05"; // Optional: Apply a color highlight
   });
   star.addEventListener("mouseout", () => {
