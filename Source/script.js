@@ -27,6 +27,34 @@ viewBox="0 0 24 24"><path fill="currentColor" d="M22 9.24L14.81 8.63L12 2L9.19
 13.39L15.77 17.67L12 15.4Z"/></svg>`;
 const optionsIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 viewBox="0 0 24 24"><path fill="#555" d="M12 16a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4z"/></svg>`;
+const footballSVG =
+  `<svg width="800px" height="800px" viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g id="line-supplement">
+    <line x1="36" x2="36" y1="4.2" y2="67.7" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="38.9" x2="33.1" y1="35.9" y2="35.9" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="38.9" x2="33.1" y1="30.9" y2="30.9" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="38.9" x2="33.1" y1="40.9" y2="40.9" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="25.6" x2="46.5" y1="58.6" y2="58.6" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="23.6" x2="48.4" y1="16" y2="16" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+  <g id="color">
+    <path fill="#A57939" d="M35.9,4c-11,6.4-18.3,18.3-18.3,31.9S25,61.5,36,67.9h0.1C47,61.5,54.4,49.6,54.4,36 C54.4,22.3,47,10.4,35.9,4"/>
+    <path fill="#6A462F" d="M41.7,8.1c5.8,7.9,9.2,18.8,7.4,29.1C47,48.9,39.6,58.4,29.9,63.5c1.9,1.7,3.9,3.2,6.1,4.5h0.1 c11-6.4,18.3-18.3,18.3-31.9C54.4,25.3,49.1,14.9,41.7,8.1z"/>
+    <line x1="36" x2="36" y1="4.2" y2="67.7" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="38.9" x2="33.1" y1="35.9" y2="35.9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="38.9" x2="33.1" y1="30.9" y2="30.9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="38.9" x2="33.1" y1="40.9" y2="40.9" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="25.6" x2="46.5" y1="58.6" y2="58.6" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line x1="23.6" x2="48.4" y1="16" y2="16" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+  <g id="hair"/>
+  <g id="skin"/>
+  <g id="skin-shadow"/>
+  <g id="line">
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M35.9,4c-11,6.4-18.3,18.3-18.3,31.9S25,61.5,36,67.9h0.1C47,61.5,54.4,49.6,54.4,36C54.4,22.3,47,10.4,35.9,4"/>
+  </g>
+</svg>`
+
 // ==============================
 // Favorites Handling
 // ==============================
@@ -1138,3 +1166,304 @@ toggleFavoritesCheckbox.addEventListener("change", () => {
   // Save the updated preference to localStorage
   localStorage.setItem("showFavorites", JSON.stringify(showFavorites));
 });
+
+
+function animateEllipticalArc(svgString, elementSelector, startX, startY, endX, endY) {
+  // Create a temporary span to hold the SVG
+  const tempSpan = document.createElement("span");
+  tempSpan.innerHTML = svgString;
+  document.body.appendChild(tempSpan);
+
+  const svg = tempSpan.querySelector("svg");
+  if (!svg) {
+    console.error("Invalid SVG string provided.");
+    tempSpan.remove();
+    return;
+  }
+
+  const svgElement = svg.querySelector(elementSelector);
+
+  if (!svgElement) {
+    console.error("Specified element not found in the SVG.");
+    tempSpan.remove();
+    return;
+  }
+
+  // Parameters for the elliptical arc
+  const centerX = (startX + endX) / 2; // Midpoint as center X
+  const centerY = Math.min(startY, endY) - 100; // Offset above midpoint
+  const radiusX = Math.abs(endX - startX) / 2; // Half the width
+  const radiusY = 100; // Fixed vertical radius
+  const duration = 3000; // Duration in milliseconds
+
+  let startTime;
+
+  // Function to fade the SVG in
+  function fadeIn() {
+    svg.style.opacity = 0;
+    svg.style.transition = "opacity 1s";
+    svg.style.opacity = 1;
+  }
+
+  // Function to fade the SVG out
+  function fadeOut() {
+    svg.style.transition = "opacity 1s";
+    svg.style.opacity = 0;
+  }
+
+  // Function to animate the arc
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+
+    const progress = Math.min(elapsed / duration, 1); // Ensure it stops at 100%
+
+    // Calculate the angle in radians (0 to π for a half-circle)
+    const angle = Math.PI * progress;
+
+    // Update the element's position based on the elliptical arc formula
+    const x = centerX + radiusX * Math.cos(angle);
+    const y = centerY + radiusY * Math.sin(angle); // Elliptical path
+
+    if (svgElement.tagName === "circle" || svgElement.tagName === "ellipse") {
+      svgElement.setAttribute("cx", x);
+      svgElement.setAttribute("cy", y);
+    } else if (svgElement.tagName === "rect" || svgElement.tagName === "image") {
+      svgElement.setAttribute("x", x);
+      svgElement.setAttribute("y", y);
+    } else {
+      console.warn("Element type not explicitly handled. Adjust manually if necessary.");
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      // Start fading out after arc animation completes
+      setTimeout(() => {
+        fadeOut();
+        setTimeout(() => {
+          tempSpan.remove(); // Clean up the temporary span after fading out
+        }, 1000);
+      }, 500);
+    }
+  }
+
+  // Start the animation sequence: Fade in, then animate arc
+  fadeIn();
+  setTimeout(() => {
+    requestAnimationFrame(animate);
+  }, 1000);
+}
+
+
+heroLogo = document.getElementById("hero-logo");
+
+if (heroLogo) {
+
+  heroLogo.addEventListener("click", () => {
+
+    let startX = heroLogo.getBoundingClientRect().right + 20;
+    let startY = heroLogo.getBoundingClientRect().bottom - 20;
+    let endX = heroLogo.getBoundingClientRect().left - 20;
+    let endY = heroLogo.getBoundingClientRect().top + 20;
+
+    animateEllipticalArc(footballSVG, startX, startY, endX, endY);
+
+    setTimeout(() => {
+      ball.remove();
+    }, 4000);
+
+  });
+}
+
+/**
+ * Display an error message on the page.
+ * @param {string} message - The error message to display.
+ */
+function displayErrorMessage(message) {
+  const errorContainer = document.getElementById("error-container");
+  if (errorContainer) {
+    errorContainer.textContent = message;
+    errorContainer.style.display = "block";
+  } else {
+    const newErrorContainer = document.createElement("div");
+    newErrorContainer.id = "error-container";
+    newErrorContainer.style.position = "fixed";
+    newErrorContainer.style.bottom = "-100px";
+    newErrorContainer.style.left = "0";
+    newErrorContainer.style.width = "100%";
+    newErrorContainer.style.backgroundColor = "#f44336";
+    newErrorContainer.style.color = "#fff";
+    newErrorContainer.style.padding = "1rem";
+    newErrorContainer.style.textAlign = "center";
+    newErrorContainer.style.zIndex = "10000";
+    newErrorContainer.style.transition = "bottom 0.5s ease";
+    newErrorContainer.textContent = message;
+
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "x";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.right = "10px";
+    closeButton.style.transform = "translateY(-50%)";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+      newErrorContainer.style.bottom = "-100px";
+      setTimeout(() => {
+        newErrorContainer.remove();
+      }, 500);
+    });
+
+    newErrorContainer.appendChild(closeButton);
+    document.body.appendChild(newErrorContainer);
+
+    setTimeout(() => {
+      newErrorContainer.style.bottom = "0";
+    }, 10);
+
+    // Remove the container after 5 seconds
+    setTimeout(() => {
+      newErrorContainer.style.bottom = "-100px";
+      setTimeout(() => {
+        newErrorContainer.remove();
+      }, 500);
+    }, 5000);
+  }
+}
+
+// Override console.error to display error messages on the page
+const originalConsoleError = console.error;
+console.error = function (...args) {
+  originalConsoleError.apply(console, args);
+  displayErrorMessage(args.join(" "));
+};
+
+// Override window.onerror to display uncaught errors on the page
+window.onerror = function (message, source, lineno, colno, error) {
+  displayErrorMessage(`${message} at ${source}:${lineno}:${colno}`);
+  return true; // Prevent the default browser error handling
+};
+
+/**
+ * Display a log message on the page.
+ * @param {string} message - The log message to display.
+ */
+function displayLogMessage(message) {
+  const logContainer = document.getElementById("log-container");
+  if (logContainer) {
+    logContainer.textContent = message;
+    logContainer.style.display = "block";
+  } else {
+    const newLogContainer = document.createElement("div");
+    newLogContainer.id = "log-container";
+    newLogContainer.style.position = "fixed";
+    newLogContainer.style.bottom = "-100px";
+    newLogContainer.style.left = "0";
+    newLogContainer.style.width = "100%";
+    newLogContainer.style.backgroundColor = "#4caf50";
+    newLogContainer.style.color = "#fff";
+    newLogContainer.style.padding = "1rem";
+    newLogContainer.style.textAlign = "center";
+    newLogContainer.style.zIndex = "10000";
+    newLogContainer.style.transition = "bottom 0.5s ease";
+    newLogContainer.textContent = message;
+
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "x";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.right = "10px";
+    closeButton.style.transform = "translateY(-50%)";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+      newLogContainer.style.bottom = "-100px";
+      setTimeout(() => {
+        newLogContainer.remove();
+      }, 500);
+    });
+
+    newLogContainer.appendChild(closeButton);
+    document.body.appendChild(newLogContainer);
+
+    setTimeout(() => {
+      newLogContainer.style.bottom = "0";
+    }, 10);
+
+    // Remove the container after 5 seconds
+    setTimeout(() => {
+      newLogContainer.style.bottom = "-100px";
+      setTimeout(() => {
+        newLogContainer.remove();
+      }, 500);
+    }, 5000);
+  }
+}
+
+/**
+ * Display a warning message on the page.
+ * @param {string} message - The warning message to display.
+ */
+function displayWarningMessage(message) {
+  const warningContainer = document.getElementById("warning-container");
+  if (warningContainer) {
+    warningContainer.textContent = message;
+    warningContainer.style.display = "block";
+  } else {
+    const newWarningContainer = document.createElement("div");
+    newWarningContainer.id = "warning-container";
+    newWarningContainer.style.position = "fixed";
+    newWarningContainer.style.bottom = "-100px";
+    newWarningContainer.style.left = "0";
+    newWarningContainer.style.width = "100%";
+    newWarningContainer.style.backgroundColor = "#ff9800";
+    newWarningContainer.style.color = "#fff";
+    newWarningContainer.style.padding = "1rem";
+    newWarningContainer.style.textAlign = "center";
+    newWarningContainer.style.zIndex = "10000";
+    newWarningContainer.style.transition = "bottom 0.5s ease";
+    newWarningContainer.textContent = message;
+
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "x";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.right = "10px";
+    closeButton.style.transform = "translateY(-50%)";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+      newWarningContainer.style.bottom = "-100px";
+      setTimeout(() => {
+        newWarningContainer.remove();
+      }, 500);
+    });
+
+    newWarningContainer.appendChild(closeButton);
+    document.body.appendChild(newWarningContainer);
+
+    setTimeout(() => {
+      newWarningContainer.style.bottom = "0";
+    }, 10);
+
+    // Remove the container after 5 seconds
+    setTimeout(() => {
+      newWarningContainer.style.bottom = "-100px";
+      setTimeout(() => {
+        newWarningContainer.remove();
+      }, 500);
+    }, 5000);
+  }
+}
+
+// Override console.log to display log messages on the page
+const originalConsoleLog = console.log;
+console.log = function (...args) {
+  originalConsoleLog.apply(console, args);
+  displayLogMessage(args.join(" "));
+};
+
+// Override console.warn to display warning messages on the page
+const originalConsoleWarn = console.warn;
+console.warn = function (...args) {
+  originalConsoleWarn.apply(console, args);
+  displayWarningMessage(args.join(" "));
+};
