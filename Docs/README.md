@@ -1,6 +1,6 @@
 # WolverineAccess
 
-![Wolverine Access Banner](../Assets/Media/WolverineAccessBanner.png)
+![Wolverine Access Banner](Assets/Media/WolverineAccessBanner.png)
 
 ![GitHub Issues](https://img.shields.io/github/issues/kgruiz/WolverineAccess.svg)
 ![GitHub Stars](https://img.shields.io/github/stars/kgruiz/WolverineAccess.svg)
