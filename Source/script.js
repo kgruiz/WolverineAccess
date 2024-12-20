@@ -1275,7 +1275,6 @@ if (heroLogo) {
 
   });
 }
-
 /**
  * Display an error message on the page.
  * @param {string} message - The error message to display.
@@ -1285,11 +1284,27 @@ function displayErrorMessage(message) {
   if (errorContainer) {
     errorContainer.textContent = message;
     errorContainer.style.display = "block";
+
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "x";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.right = "10px";
+    closeButton.style.transform = "translateY(-50%)";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+      errorContainer.style.transform = "translateY(100%)";
+      setTimeout(() => {
+        errorContainer.remove();
+      }, 300);
+    });
+
+    errorContainer.appendChild(closeButton);
   } else {
     const newErrorContainer = document.createElement("div");
     newErrorContainer.id = "error-container";
     newErrorContainer.style.position = "fixed";
-    newErrorContainer.style.bottom = "-100px";
+    newErrorContainer.style.bottom = "0";
     newErrorContainer.style.left = "0";
     newErrorContainer.style.width = "100%";
     newErrorContainer.style.backgroundColor = "#f44336";
@@ -1297,7 +1312,8 @@ function displayErrorMessage(message) {
     newErrorContainer.style.padding = "1rem";
     newErrorContainer.style.textAlign = "center";
     newErrorContainer.style.zIndex = "10000";
-    newErrorContainer.style.transition = "bottom 0.5s ease";
+    newErrorContainer.style.transform = "translateY(100%)";
+    newErrorContainer.style.transition = "transform 0.3s ease";
     newErrorContainer.textContent = message;
 
     const closeButton = document.createElement("span");
@@ -1308,25 +1324,25 @@ function displayErrorMessage(message) {
     closeButton.style.transform = "translateY(-50%)";
     closeButton.style.cursor = "pointer";
     closeButton.addEventListener("click", () => {
-      newErrorContainer.style.bottom = "-100px";
+      newErrorContainer.style.transform = "translateY(100%)";
       setTimeout(() => {
         newErrorContainer.remove();
-      }, 500);
+      }, 300);
     });
 
     newErrorContainer.appendChild(closeButton);
     document.body.appendChild(newErrorContainer);
 
     setTimeout(() => {
-      newErrorContainer.style.bottom = "0";
+      newErrorContainer.style.transform = "translateY(0)";
     }, 10);
 
     // Remove the container after 5 seconds
     setTimeout(() => {
-      newErrorContainer.style.bottom = "-100px";
+      newErrorContainer.style.transform = "translateY(100%)";
       setTimeout(() => {
         newErrorContainer.remove();
-      }, 500);
+      }, 300);
     }, 5000);
   }
 }
@@ -1353,11 +1369,27 @@ function displayLogMessage(message) {
   if (logContainer) {
     logContainer.textContent = message;
     logContainer.style.display = "block";
+
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "x";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.right = "10px";
+    closeButton.style.transform = "translateY(-50%)";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+      logContainer.style.transform = "translateY(100%)";
+      setTimeout(() => {
+        logContainer.remove();
+      }, 300);
+    });
+
+    logContainer.appendChild(closeButton);
   } else {
     const newLogContainer = document.createElement("div");
     newLogContainer.id = "log-container";
     newLogContainer.style.position = "fixed";
-    newLogContainer.style.bottom = "-100px";
+    newLogContainer.style.bottom = "0";
     newLogContainer.style.left = "0";
     newLogContainer.style.width = "100%";
     newLogContainer.style.backgroundColor = "#4caf50";
@@ -1365,7 +1397,8 @@ function displayLogMessage(message) {
     newLogContainer.style.padding = "1rem";
     newLogContainer.style.textAlign = "center";
     newLogContainer.style.zIndex = "10000";
-    newLogContainer.style.transition = "bottom 0.5s ease";
+    newLogContainer.style.transform = "translateY(100%)";
+    newLogContainer.style.transition = "transform 0.3s ease";
     newLogContainer.textContent = message;
 
     const closeButton = document.createElement("span");
@@ -1376,25 +1409,25 @@ function displayLogMessage(message) {
     closeButton.style.transform = "translateY(-50%)";
     closeButton.style.cursor = "pointer";
     closeButton.addEventListener("click", () => {
-      newLogContainer.style.bottom = "-100px";
+      newLogContainer.style.transform = "translateY(100%)";
       setTimeout(() => {
         newLogContainer.remove();
-      }, 500);
+      }, 300);
     });
 
     newLogContainer.appendChild(closeButton);
     document.body.appendChild(newLogContainer);
 
     setTimeout(() => {
-      newLogContainer.style.bottom = "0";
+      newLogContainer.style.transform = "translateY(0)";
     }, 10);
 
     // Remove the container after 5 seconds
     setTimeout(() => {
-      newLogContainer.style.bottom = "-100px";
+      newLogContainer.style.transform = "translateY(100%)";
       setTimeout(() => {
         newLogContainer.remove();
-      }, 500);
+      }, 300);
     }, 5000);
   }
 }
@@ -1408,11 +1441,27 @@ function displayWarningMessage(message) {
   if (warningContainer) {
     warningContainer.textContent = message;
     warningContainer.style.display = "block";
+
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "x";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.right = "10px";
+    closeButton.style.transform = "translateY(-50%)";
+    closeButton.style.cursor = "pointer";
+    closeButton.addEventListener("click", () => {
+      warningContainer.style.transform = "translateY(100%)";
+      setTimeout(() => {
+        warningContainer.remove();
+      }, 300);
+    });
+
+    warningContainer.appendChild(closeButton);
   } else {
     const newWarningContainer = document.createElement("div");
     newWarningContainer.id = "warning-container";
     newWarningContainer.style.position = "fixed";
-    newWarningContainer.style.bottom = "-100px";
+    newWarningContainer.style.bottom = "0";
     newWarningContainer.style.left = "0";
     newWarningContainer.style.width = "100%";
     newWarningContainer.style.backgroundColor = "#ff9800";
@@ -1420,7 +1469,8 @@ function displayWarningMessage(message) {
     newWarningContainer.style.padding = "1rem";
     newWarningContainer.style.textAlign = "center";
     newWarningContainer.style.zIndex = "10000";
-    newWarningContainer.style.transition = "bottom 0.5s ease";
+    newWarningContainer.style.transform = "translateY(100%)";
+    newWarningContainer.style.transition = "transform 0.3s ease";
     newWarningContainer.textContent = message;
 
     const closeButton = document.createElement("span");
@@ -1431,25 +1481,25 @@ function displayWarningMessage(message) {
     closeButton.style.transform = "translateY(-50%)";
     closeButton.style.cursor = "pointer";
     closeButton.addEventListener("click", () => {
-      newWarningContainer.style.bottom = "-100px";
+      newWarningContainer.style.transform = "translateY(100%)";
       setTimeout(() => {
         newWarningContainer.remove();
-      }, 500);
+      }, 300);
     });
 
     newWarningContainer.appendChild(closeButton);
     document.body.appendChild(newWarningContainer);
 
     setTimeout(() => {
-      newWarningContainer.style.bottom = "0";
+      newWarningContainer.style.transform = "translateY(0)";
     }, 10);
 
     // Remove the container after 5 seconds
     setTimeout(() => {
-      newWarningContainer.style.bottom = "-100px";
+      newWarningContainer.style.transform = "translateY(100%)";
       setTimeout(() => {
         newWarningContainer.remove();
-      }, 500);
+      }, 300);
     }, 5000);
   }
 }
