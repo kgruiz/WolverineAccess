@@ -405,11 +405,12 @@ nav {
 }
 
 /* --- Notifications Menu Styles --- */
-/* Container for the notifications icon in navigation */
+/* Container for the notifications icon */
 .notifications-icon {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  position: relative;
+  cursor: pointer;
 }
 
 /* Toggle button for the notifications menu */
@@ -417,6 +418,8 @@ nav {
   display: inline-flex;
   align-items: center;
   margin-top: -3px;
+  transition: color 0.3s ease;
+  transform-origin: center;
 }
 
 /* Adjustments for the notifications menu icon */
@@ -426,9 +429,10 @@ nav {
 
 /* Styles for the notifications dropdown menu */
 .notifications-menu {
-  position: fixed;
-  top: 67px;
-  right: 64.75px;
+  position: absolute;
+  top: +30px;
+  left: 50%;
+  transform: translate(-50%, 0) scale(0);
   background: #fff;
   color: #00274C;
   padding: 1.5rem;
@@ -437,14 +441,35 @@ nav {
   z-index: 1000;
   width: calc(1 * 160px + 6rem);
   min-height: 300px;
-  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
   font-size: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  /* Prevent interaction when hidden */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: top center;
+  /* Expand from the top center */
 }
+
+/* Arrow above the notifications menu */
+.notifications-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  /* Align the arrow just below the icon */
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 
 /* Header within the notifications menu */
 .notifications-menu-header {
@@ -507,6 +532,34 @@ nav {
   border-style: solid;
   border-color: transparent transparent #fff transparent;
 }
+
+/* Active state for menu */
+.notifications-menu.active {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  pointer-events: auto;
+}
+
+.notifications-menu.active::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+
+/* --- Morph Animation on Hover and Click --- */
+
+/* When hovering over the notifications icon, show the menu */
+.notifications-icon:hover .notifications-menu {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  pointer-events: auto;
+}
+
+.notifications-icon:hover .notifications-menu::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
 
 /* ===========================================================
  Sign In Menu Styles
@@ -888,6 +941,43 @@ nav {
   -webkit-mask-size: 200%;
 }
 
+/* Keyframes for the sparkle animation */
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(360deg);
+  }
+}
+
+/* WebKit-compatible keyframes for sparkle animation */
+@-webkit-keyframes sparkle {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1) rotate(180deg);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.5) rotate(360deg);
+  }
+}
+
+
 /* Keyframes for the glow animation */
 @keyframes glowAnimation {
   0% {
@@ -938,7 +1028,7 @@ nav {
 
 /* Class to trigger the unfill animation */
 .favorite-star.animate-unfill {
-  animation: unfillAnimation 0.3s forwards;
+  animation: unfillAnimation .3s forwards;
 }
 
 @-webkit-keyframes shine {

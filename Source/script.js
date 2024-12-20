@@ -160,6 +160,15 @@ function CreateCard(link) {
       card.classList.remove("favorited-card");
       // Set to outlined star
       star.innerHTML = outlinedStarSVG;
+
+      // Trigger unfill animation
+      star.classList.add("animate-unfill");
+
+      // Remove the animation class after animation completes
+      star.addEventListener("animationend", () => {
+        star.classList.remove("animate-unfill");
+      }, { once: true });
+
       // Remove card from favorites containers
       removeCardFromFavoritesContainers(card);
     } else {
@@ -172,7 +181,6 @@ function CreateCard(link) {
 
       // Trigger fill animation
       star.classList.add("animate-fill");
-      star.classList.add("effect-shine");
 
       // Remove the animation class after animation completes
       star.addEventListener("animationend", () => {
@@ -758,7 +766,7 @@ function signOut() {
 function initializeHoverMenus() {
   setupHoverMenu("group-selector", "group-selector-menu");
   setupHoverMenu("favorites-icon", "favorites-menu");
-  setupHoverMenu("notifications-icon", "notifications-menu");
+  // setupHoverMenu("notifications-icon", "notifications-menu");
   setupHoverMenu("sign-in-container", "sign-in-menu");
 }
 
@@ -882,7 +890,7 @@ function initializeFavoritesIconHoverEffects() {
   const iconSelectors = [
     { selector: ".group-selector a", scale: 1.05 },
     { selector: ".favorites-icon a", scale: 1.15 },
-    { selector: ".notifications-icon a", scale: 1.15 },
+    // { selector: ".notifications-icon a", scale: 1.15 },
     { selector: ".home-icon", scale: 1.15 },
     { selector: ".all-links-icon", scale: 1.12 }
   ];
