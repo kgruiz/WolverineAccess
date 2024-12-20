@@ -291,11 +291,12 @@ nav {
   margin-top: -5px;
 }
 
-/* Styles for the favorites dropdown menu */
+/* Favorites menu with dynamically aligned transform-origin */
 .favorites-menu {
-  position: fixed;
-  top: 67px;
-  right: 2rem;
+  position: absolute;
+  top: 30px;
+  left: -266px;
+  transform: translate(-50%, 0) scale(0);
   background: #fff;
   color: #00274C;
   padding: 1.5rem;
@@ -304,13 +305,18 @@ nav {
   z-index: 1000;
   width: calc(4 * 240px + 4 * 1rem);
   min-height: 250px;
-  display: none;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
   font-size: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: calc(100% - 234.25px) +10px;
+  /* Arrow position plus 2 times border width */
 }
 
 /* Header within the favorites menu */
@@ -369,11 +375,12 @@ nav {
   content: '';
   position: absolute;
   top: -15px;
-  left: 50%;
-  transform: translateX(+271.5px);
+  right: +219.25px;
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Images within the favorites menu */
@@ -390,6 +397,18 @@ nav {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+/* Active state for menu */
+.favorites-menu.active {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  pointer-events: auto;
+}
+
+.favorites-menu.active::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
 
 /* Styles for the manage favorites button */
@@ -449,27 +468,9 @@ nav {
   font-size: 1.5rem;
   opacity: 0;
   pointer-events: none;
-  /* Prevent interaction when hidden */
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform-origin: top center;
-  /* Expand from the top center */
 }
-
-/* Arrow above the notifications menu */
-.notifications-menu::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  /* Align the arrow just below the icon */
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  border-width: 0 10px 10px 10px;
-  border-style: solid;
-  border-color: transparent transparent #fff transparent;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
 
 /* Header within the notifications menu */
 .notifications-menu-header {
@@ -527,10 +528,11 @@ nav {
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(-16px);
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Active state for menu */
@@ -544,22 +546,6 @@ nav {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
-
-
-/* --- Morph Animation on Hover and Click --- */
-
-/* When hovering over the notifications icon, show the menu */
-.notifications-icon:hover .notifications-menu {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-  pointer-events: auto;
-}
-
-.notifications-icon:hover .notifications-menu::before {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
 
 /* ===========================================================
  Sign In Menu Styles

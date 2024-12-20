@@ -766,7 +766,7 @@ function signOut() {
 function initializeHoverMenus() {
   setupHoverMenu("group-selector", "group-selector-menu");
   setupHoverMenu("favorites-icon", "favorites-menu");
-  // setupHoverMenu("notifications-icon", "notifications-menu");
+  setupHoverMenu("notifications-icon", "notifications-menu");
   setupHoverMenu("sign-in-container", "sign-in-menu");
 }
 
@@ -783,23 +783,27 @@ function setupHoverMenu(containerId, menuId) {
 
   container.addEventListener("mouseover", () => {
     if (!clickedOpen) {
-      menu.style.display = "flex";
+      menu.classList.add("active");
     }
   });
   container.addEventListener("mouseout", () => {
     if (!clickedOpen) {
-      menu.style.display = "none";
+      if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+      }
     }
   });
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
-    menu.style.display = clickedOpen ? "flex" : "none";
+    menu.classList.add("active");
   });
   document.addEventListener("click", (event) => {
     if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
       clickedOpen = false;
-      menu.style.display = "none";
+      if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+      }
     }
   });
 }
@@ -890,7 +894,7 @@ function initializeFavoritesIconHoverEffects() {
   const iconSelectors = [
     { selector: ".group-selector a", scale: 1.05 },
     { selector: ".favorites-icon a", scale: 1.15 },
-    // { selector: ".notifications-icon a", scale: 1.15 },
+    { selector: ".notifications-icon a", scale: 1.15 },
     { selector: ".home-icon", scale: 1.15 },
     { selector: ".all-links-icon", scale: 1.12 }
   ];
