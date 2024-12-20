@@ -767,7 +767,7 @@ function initializeHoverMenus() {
   setupHoverMenu("group-selector", "group-selector-menu");
   setupHoverMenu("favorites-icon", "favorites-menu");
   setupHoverMenu("notifications-icon", "notifications-menu");
-  setupHoverMenu("sign-in-container", "sign-in-menu");
+  setupSignInHover("sign-in-container", "sign-in-menu", "sign-in-menu-toggle");
 }
 
 /**
@@ -793,11 +793,61 @@ function setupHoverMenu(containerId, menuId) {
       }
     }
   });
+
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
     menu.classList.add("active");
   });
+
+  document.addEventListener("click", (event) => {
+    if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
+      clickedOpen = false;
+      if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+      }
+    }
+  });
+}
+
+function setupSignInHover(containerId, menuId, menuToggle) {
+  const container = document.getElementById(containerId);
+  const menu = document.getElementById(menuId);
+  const toggle = document.getElementById(menuToggle);
+
+  let clickedOpen = false;
+  if (!container || !menu || !toggle) return;
+
+  container.addEventListener("mouseover", () => {
+    if (!clickedOpen) {
+      menu.classList.add("active");
+    }
+  });
+  container.addEventListener("mouseout", () => {
+    if (!clickedOpen) {
+      if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+      }
+    }
+  });
+
+  toggle.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!signedIn) {
+
+      signIn()
+    }
+    clickedOpen = !clickedOpen;
+    menu.classList.add("active");
+  });
+
+  container.addEventListener("click", (e) => {
+    e.preventDefault();
+    clickedOpen = !clickedOpen;
+    menu.classList.add("active");
+  });
+
   document.addEventListener("click", (event) => {
     if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
       clickedOpen = false;
