@@ -85,7 +85,7 @@ function renderFavoritesInContainer(containerId) {
 
   if (favoritedLinks.length === 0) {
     const noFavorites = document.createElement("p");
-    noFavorites.textContent = "No favorite links yet.";
+    noFavorites.textContent = "No pinned links yet.";
     container.appendChild(noFavorites);
   } else {
     favoritedLinks.slice(0, 4).forEach(link => {
@@ -101,8 +101,8 @@ function renderFavoritesInContainer(containerId) {
 function updateAllFavoritesViews() {
   // Update favorites nav bar container
   renderFavoritesInContainer("favorite-links-container");
-  // Update hero favorites container
-  renderFavoritesInContainer("hero-favorites-container");
+  // Update hero pinned container
+  renderFavoritesInContainer("hero-pinned-container");
 }
 
 /**
@@ -920,16 +920,16 @@ window.addEventListener("keydown", function (event) {
 // ==============================
 // Get references to DOM elements for favorites toggle
 const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
-const heroFavoritesBox = document.querySelector(".hero-favorites-box");
+const heroPinnedBox = document.querySelector(".hero-pinned-box");
 // Load and apply saved favorites preference
 const savedPreference = localStorage.getItem("showFavorites");
 const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
 toggleFavoritesCheckbox.checked = showFavorites;
-heroFavoritesBox.style.display = showFavorites ? "block" : "none";
+heroPinnedBox.style.display = showFavorites ? "block" : "none";
 // Event listener for favorites preference change
 toggleFavoritesCheckbox.addEventListener("change", () => {
   const showFavorites = toggleFavoritesCheckbox.checked;
-  heroFavoritesBox.style.display = showFavorites ? "block" : "none";
+  heroPinnedBox.style.display = showFavorites ? "block" : "none";
   // Save the updated preference to localStorage
   localStorage.setItem("showFavorites", JSON.stringify(showFavorites));
 });

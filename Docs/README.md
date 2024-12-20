@@ -76,7 +76,7 @@ After installing and starting the development server, you can access WolverineAc
 ### Common Operations
 
 - **Searching:** Use the search bar in the navigation to find specific services or information.
-- **Managing Favorites:** Click the star icon next to any link to add or remove it from your favorites.
+- **Managing Pinned Items:** Click the star icon next to any link to add or remove it from your pinned items.
 - **Group Selection:** Use the group selector to customize the portal based on your role.
 - **Notifications:** Click the notifications icon to view recent updates and alerts.
 - **Sign In:** Use the sign-in button to access personalized features and settings.

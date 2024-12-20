@@ -725,10 +725,10 @@ nav {
   font-size: 1.5rem;
 }
 
-/* Hero Favorites Box styling */
+/* Hero Pinned Box styling */
 
-/* Container for the favorites box in the hero section */
-.hero-favorites-box {
+/* Container for the pinned box in the hero section */
+.hero-pinned-box {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   padding: 2rem;
@@ -738,8 +738,8 @@ nav {
   text-align: center;
 }
 
-/* Favorites section within the hero */
-.hero-favorites-section {
+/* Pinned section within the hero */
+.hero-pinned-section {
   margin-top: 2rem;
   text-align: center;
 }
