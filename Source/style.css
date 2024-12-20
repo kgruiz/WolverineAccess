@@ -508,7 +508,9 @@ nav {
   border-color: transparent transparent #fff transparent;
 }
 
-/* --- Sign In Menu Styles --- */
+/* ===========================================================
+ Sign In Menu Styles
+ =========================================================== */
 /* Container for the sign-in button/profile picture */
 .sign-in-container {
   display: inline-flex;
@@ -576,7 +578,7 @@ nav {
 /* Menu items in sign-in menu */
 .sign-in-items {
   width: 100%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 /* Individual sign-in menu item */
@@ -803,6 +805,8 @@ nav {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   user-select: none;
   position: relative;
+  width: 200px;
+  /* Ensures all cards have the same fixed width */
 }
 
 /* Heading within cards */
@@ -884,7 +888,6 @@ nav {
   -webkit-mask-size: 200%;
 }
 
-
 /* Keyframes for the glow animation */
 @keyframes glowAnimation {
   0% {
@@ -914,8 +917,6 @@ nav {
     -webkit-filter: drop-shadow(0 0 10px #FFCB05);
   }
 }
-
-
 
 /* Keyframes for the unfill (unfavoriting) animation */
 @keyframes unfillAnimation {
@@ -1346,6 +1347,7 @@ footer a[href]:hover {
 
 /* Existing styles */
 /* ... */
+
 /* ===========================================================
  Modal Styles
  =========================================================== */
@@ -1541,8 +1543,11 @@ input:checked+.slider::before {
     padding: 0.75rem 1rem;
   }
 
-  .card {
-    max-width: 150px;
+  /* Adjusted card width for smaller screens */
+  .cards-container .card,
+  .it-services-card {
+    width: 150px;
+    /* Fixed width for smaller screens */
   }
 
   /* Responsive styles for footer */
