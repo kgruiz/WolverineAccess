@@ -31,27 +31,21 @@
   <header>
     <nav>
       <div class="nav-container">
-
         <div class="left-section">
           <a href="index.html" aria-label="Home" class="logo-link">
             <img src="../Assets/Media/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
           </a>
-
           <form class="search-form" onsubmit="return false;">
             <input type="search" name="q" placeholder="Search Wolverine Access" aria-label="Search Wolverine Access"
               class="search-input" id="headerSearchInput" />
-
             <button type="button" class="search-button">
               <span class="material-icons">search</span>
             </button>
-
             <div class="search-suggestions" id="headerSearchSuggestions"></div>
           </form>
         </div>
-
         <div class="right-section">
           <ul class="nav-icons">
-
             <!-- Group Selector -->
             <li class="group-selector" id="group-selector">
               <a href="#" aria-label="Categories" class="group-selector-toggle" id="group-selector-toggle">
@@ -63,7 +57,6 @@
                   <h3>Roles</h3>
                   <hr />
                 </div>
-
                 <div class="group-items">
                   <a href="#" data-group="Student">
                     <img src="../Assets/Media/MPhotos/Seasons/Summer/2021_110.jpg" alt="Student Icon" />
@@ -88,7 +81,6 @@
                 </div>
               </div>
             </li>
-
             <!-- Favorites Icon -->
             <li class="favorites-icon" id="favorites-icon">
               <a href="#" aria-label="Favorites" class="favorites-menu-toggle" id="favorites-menu-toggle">
@@ -99,12 +91,10 @@
                   <h3>Favorites</h3>
                   <hr />
                 </div>
-
                 <div class="favorite-items">
                   <section class="content-section" aria-label="Favorite Links">
                     <div class="cards-container" id="favorite-links-container"></div>
                   </section>
-
                   <section class="manage-favorites-button" id="manage-favorites-button">
                     <button id="manage-favorites" class="manage-favorites"
                       onclick="window.location.href='not-implemented.html'">Manage All</button>
@@ -112,14 +102,12 @@
                 </div>
               </div>
             </li>
-
             <!-- All Links Icon -->
-            <li>
+            <li class="all-links-icon" id="all-links-icon">
               <a href="all-links-full.html" aria-label="All Links">
                 <span class="material-icons">apps</span>
               </a>
             </li>
-
             <!-- Notifications Icon -->
             <li class="notifications-icon" id="notifications-icon">
               <a href="#" aria-label="Notifications" class="notifications-menu-toggle" id="notifications-menu-toggle">
@@ -135,22 +123,19 @@
                 </div>
               </div>
             </li>
-
             <!-- Home Icon -->
-            <li>
+            <li class="home-icon" id="home-icon">
               <a href="index.html" aria-label="Home">
                 <span class="material-icons">home</span>
               </a>
             </li>
           </ul>
-
           <!-- Sign In Button -->
           <div class="sign-in-container" id="sign-in-container">
             <button class="sign-in-button" type="button" id="sign-in-menu-toggle">
               <span class="material-icons">account_circle</span>
               Sign In
             </button>
-
             <div class="sign-in-menu" id="sign-in-menu">
               <div class="sign-in-menu-header">
                 <div class="sign-in-profile-pic" id="sign-in-profile-pic"></div>
@@ -161,17 +146,13 @@
               <div class="sign-in-items" id="sign-in-items"></div>
             </div>
           </div>
-
         </div>
-
       </div>
     </nav>
-
     <div id="preferences-menu" class="modal">
       <div class="preferences-menu-content">
         <span class="preferences-menu-close-button" id="preferences-menu-close-button">&times;</span>
         <h2>Preferences</h2>
-
         <div class="preference-item">
           <label for="toggleFavoritesCheckbox" class="switch">
             <input type="checkbox" id="toggleFavoritesCheckbox" checked />
@@ -181,7 +162,6 @@
         </div>
       </div>
     </div>
-
   </header>
 
   <!-- Main Content -->
