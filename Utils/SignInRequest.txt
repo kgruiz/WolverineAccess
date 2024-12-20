@@ -1,0 +1,15 @@
+POST /idp/profile/SAML2/POST/SSO HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Accept-Language: en-US,en;q=0.9
+Accept-Encoding: gzip, deflate, br
+Sec-Fetch-Mode: navigate
+Origin: https://weblogin.umich.edu
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.2 Safari/605.1.15
+Referer: https://weblogin.umich.edu/idp/profile/SAML2/POST/SSO?execution=e3s3
+Content-Length: 158
+Connection: keep-alive
+Sec-Fetch-Dest: document
+Cookie: __Host-shib_idp_session=4629cdcf223e643e063f0bd2daa305351a4c2d14a18427fc0d6610a1a8c5aaeb; BIGipServer~IAM-PROD-MACC~SHIBBOLETH_HTTPS=935842701.47873.0000; __Host-JSESSIONID=7035E6F42C0B8FC7E7B71BE1E76AB6FC; cf_clearance=KTkaqiAm5JTVrYKRpgBuR.qcDPbrWo2WHC1Nr5NEtFg-1734655778-1.2.1.1-qNMWOKsbtifvUdm.QDeuGAMxh5Udn_ahRg3K6jkx3z8NzBd6WwCHTpBaRkZkK7Zt1HoAuARIPncvBMoWKYubA.UgIlqjRjttG_shjGcaNcDHXsk8dymwDleTuz5DBzd.hGEi9jXnPfZEfK1ly6mkjIIG_KLmMHYieCj6bdfx09ZOpAmeTYpWMnDR31SABEpbrD_LIYLY_JQD6IBQAPySWn0YvEL4JCFQLx4YVdGa1L6npoBZT_ulqLsi6phrKcW9FkwlJX6NAQKARSfLzhsDe8uT._Tyj41AnWwNDVYSSn_IRXW1GB3Tv1Zgu4IAkF8Wcpks188oqGxmtvaqRwFeceh4GB3kHGLloIJ.HKc0kBpS0QEzirWgXnHD2cruWoO1X6TO1mtffK88p2VqDaODZg; _ce.s=v~503a00984d23947e66d92bf71e74358c771f2389~lcw~1734589364037~vir~new~lva~1734553342906~vpv~0~v11.fhb~1734553752449~v11.lhb~1734553995946~v11.cs~99702~v11.s~a7b0efa0-bdd1-11ef-a720-a3e04fa63076~v11.sla~1734589364086~v11.send~1734589364037~lcw~1734589364086; OptanonConsent=isGpcEnabled=0&datestamp=Thu+Dec+19+2024+01%3A22%3A43+GMT-0500+(Eastern+Standard+Time)&version=202401.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=df0e7407-3a64-42f7-90cb-2fc74911a692&interactionCount=1&landingPath=https%3A%2F%2Fumich.edu%2F&groups=C0001%3A1%2CC0003%3A1%2CBG10%3A1%2CC0004%3A1%2CC0002%3A1
+Priority: u=0, i

@@ -1,0 +1,14 @@
+HTTP/1.1 200 200
+Content-Type: text/html;charset=UTF-8
+Keep-Alive: timeout=5, max=52
+Pragma: no-cache
+Content-Security-Policy: frame-ancestors 'self' https://*.umich.edu https://*.umdearborn.edu https://*.umflint.edu https://*.instructure.com https://*.mdcreporting.org https://mdcreporting.org;, script-src-attr 'unsafe-hashes' 'sha256-ePniVEkSivX/c7XWBGafqh8tSpiRrKiqYeqbG7N1TOE='
+Content-Encoding: gzip
+Transfer-Encoding: chunked
+Cache-Control: no-cache, no-store
+Date: Fri, 20 Dec 2024 07:09:21 GMT
+Connection: Keep-Alive
+X-Frame-Options: DENY
+Vary: Accept-Encoding
+Server: Apache
+Strict-Transport-Security: max-age=63072000;, max-age=0

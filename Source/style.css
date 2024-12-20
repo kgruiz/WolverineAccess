@@ -674,7 +674,6 @@ nav {
   border: 1px solid #00274C;
 }
 
-
 /* Active state for menu */
 .sign-in-menu.active {
   opacity: 1;
@@ -686,7 +685,6 @@ nav {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
-
 
 /* --- Styles for Sign-In Button when Signed In --- */
 /* Profile picture button when user is signed in */
@@ -885,16 +883,33 @@ nav {
   /* Ensures all cards have the same fixed width */
 }
 
+/* Favorite card styles */
+.favorite-card {
+  background: #F5F5F5;
+  border-radius: 8px;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  color: #00274C;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  position: relative;
+  width: 200px;
+}
+
 /* Heading within cards */
 .card h3,
-.it-services-card h3 {
+.it-services-card h3,
+.favorite-card h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
   font-weight: 700;
 }
 
 /* Images within cards */
-.card img {
+.card img,
+.favorite-card img {
   max-width: 100%;
   border-radius: 4px;
 }
@@ -952,11 +967,9 @@ nav {
   filter: drop-shadow(0 0 10px #FFCB05);
   -webkit-filter: drop-shadow(0 0 10px #FFCB05);
   /* WebKit glow */
-
   /* Combined animations */
   animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
   -webkit-animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
-
   /* Shine effect */
   mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
   mask-size: 200%;
@@ -999,7 +1012,6 @@ nav {
     -webkit-transform: scale(0.5) rotate(360deg);
   }
 }
-
 
 /* Keyframes for the glow animation */
 @keyframes glowAnimation {
@@ -1072,6 +1084,52 @@ nav {
   to {
     mask-position: -50%;
   }
+}
+
+/* Styles for options icon in favorite card */
+.options-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #555;
+  display: block;
+  pointer-events: auto;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Options menu */
+.options-menu {
+  position: absolute;
+  top: 30px;
+  right: 8px;
+  background: #fff;
+  color: #00274C;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none;
+  min-width: 150px;
+}
+
+/* Show the options menu when active */
+.options-menu.active {
+  display: block;
+}
+
+/* Options menu items */
+.options-menu-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+/* Hover effect on options menu items */
+.options-menu-item:hover {
+  background-color: #f0f0f0;
 }
 
 /* ===========================================================
@@ -1420,9 +1478,8 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Sort Type Selector Styles
-   =========================================================== */
-
+ Sort Type Selector Styles
+ =========================================================== */
 /* Hide sort type selector by default */
 .sort-type-selector {
   display: none;
@@ -1486,7 +1543,6 @@ footer a[href]:hover {
   color: #00274C;
   transition: color 0.3s;
 }
-
 
 /* ===========================================================
  Modal Styles
@@ -1654,7 +1710,8 @@ input:checked+.slider::before {
 
   /* Adjusted card width for smaller screens */
   .cards-container .card,
-  .it-services-card {
+  .it-services-card,
+  .favorite-card {
     width: 150px;
     /* Fixed width for smaller screens */
   }
@@ -1678,4 +1735,145 @@ input:checked+.slider::before {
     width: 90%;
     margin: 20% auto;
   }
+}
+
+/* Container for the full search area */
+.full-search-area-favorites {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+/* Styles for the full search area */
+.full-search-area-favorites {
+  padding: 3rem 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* Heading in the full search area */
+.full-search-area-favorites h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+/* Subheading in the full search area */
+.full-search-area-favorites h3 {
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* --- Full Search Form Styles --- */
+/* Styles for the full search form */
+.full-search-form-favorites {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  outline: 1px solid #001F3A;
+  border-radius: 4px 4px 4px 4px;
+}
+
+/* Input within full search form */
+.full-search-form-favorites input {
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Button within full search form */
+.full-search-form-favorites button {
+  background: #FFCB05;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 0 4px 4px 0;
+  color: #00274C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon within full search button */
+.full-search-form-favorites button .material-icons {
+  font-size: 1.5rem;
+}
+
+/* ===========================================================
+ Sort Type Selector Styles
+ =========================================================== */
+/* Hide sort type selector by default */
+.sort-type-selector-favorites {
+  display: none;
+}
+
+/* Container for sort type toggle */
+.sort-type-container-favorites {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  border: 1.5px solid #00274C;
+  border-radius: 20px;
+  background: white;
+  font-weight: bold;
+  color: #00274C;
+  cursor: pointer;
+}
+
+/* Background for active sort type */
+.sort-type-container-favorites::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+  border-radius: 20px;
+  background: #00274C;
+  transition: all 0.3s;
+}
+
+/* Move background based on sort type */
+.sort-type-selector-favorites:checked+.sort-type-container-favorites::before {
+  left: 50%;
+}
+
+/* Text within sort type container */
+.sort-type-container-favorites div {
+  padding: 6px;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Text color adjustments based on sort type */
+.sort-type-selector-favorites:checked+.sort-type-container-favorites div:first-child {
+  color: #00274C;
+  transition: color 0.3s;
+}
+
+.sort-type-selector-favorites:checked+.sort-type-container-favorites div:last-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.sort-type-selector-favorites+.sort-type-container-favorites div:first-child {
+  color: white;
+  transition: color 0.3s;
+}
+
+.sort-type-selector-favorites+.sort-type-container-favorites div:last-child {
+  color: #00274C;
+  transition: color 0.3s;
 }

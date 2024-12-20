@@ -9,7 +9,6 @@ let favoriteStatuses = {};
 let signedIn = false;
 let userName = "";
 let userEmail = "";
-
 // ==============================
 // SVG Icons for Favorites
 // ==============================
@@ -18,7 +17,6 @@ viewBox="0 0 24 24"><path fill="#FFCB05" d="M12 17.27L18.18 21L16.54 14.14
 L22 9.24L14.81 8.63L12 2L9.19
 8.63L2 9.24L7.45 14.14L5.82 21
 L12 17.27Z"/></svg>`;
-
 const outlinedStarSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 viewBox="0 0 24 24"><path fill="currentColor" d="M22 9.24L14.81 8.63L12 2L9.19
 8.63L2 9.24L7.45 14.14L5.82 21L12
@@ -27,11 +25,11 @@ viewBox="0 0 24 24"><path fill="currentColor" d="M22 9.24L14.81 8.63L12 2L9.19
 13.39L5.9 10.63L10.29 10.13L12
 6.1L13.71 10.13L18.1 10.63L14.77
 13.39L15.77 17.67L12 15.4Z"/></svg>`;
-
+const optionsIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+viewBox="0 0 24 24"><path fill="#555" d="M12 16a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4z"/></svg>`;
 // ==============================
 // Favorites Handling
 // ==============================
-
 /**
  * Load favorite statuses from localStorage and initialize favorites.
  */
@@ -45,24 +43,20 @@ function loadFavorites() {
       console.error("Failed to parse favorite links from localStorage.", e);
     }
   }
-
   // Initialize favoriteStatuses based on linksData if needed
   linksData.forEach(link => {
     if (favoriteStatuses[link.uniqueKey] === undefined) {
       favoriteStatuses[link.uniqueKey] = link.favorite || false;
     }
   });
-
   saveFavorites();
 }
-
 /**
  * Save current favorite statuses to localStorage.
  */
 function saveFavorites() {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteStatuses));
 }
-
 /**
  * Check if a link is favorited.
  * @param {Object} link - The link object.
@@ -71,7 +65,6 @@ function saveFavorites() {
 function isLinkFavorited(link) {
   return favoriteStatuses[link.uniqueKey] || false;
 }
-
 /**
  * Add a link to favorites.
  * @param {Object} link - The link object.
@@ -80,7 +73,6 @@ function addFavorite(link) {
   favoriteStatuses[link.uniqueKey] = true;
   saveFavorites();
 }
-
 /**
  * Remove a link from favorites.
  * @param {Object} link - The link object.
@@ -89,11 +81,9 @@ function removeFavorite(link) {
   favoriteStatuses[link.uniqueKey] = false;
   saveFavorites();
 }
-
 // ==============================
 // UI Rendering Functions
 // ==============================
-
 /**
  * Create a card element for a given link.
  * @param {Object} link - The link object.
@@ -108,21 +98,17 @@ function CreateCard(link) {
     card.target = "_blank";
     card.rel = "noopener";
   }
-
   const header = document.createElement("h3");
   header.textContent = link.title;
   card.appendChild(header);
-
   const subHeader = document.createElement("p");
   subHeader.className = "sub-header";
   subHeader.textContent = link.applicationName;
   card.appendChild(subHeader);
-
   const img = document.createElement("img");
   img.src = link.image;
   img.alt = link.alt;
   card.appendChild(img);
-
   const star = document.createElement("span");
   star.className = "favorite-star";
   if (isLinkFavorited(link)) {
@@ -135,7 +121,6 @@ function CreateCard(link) {
     star.innerHTML = outlinedStarSVG;
   }
   card.appendChild(star);
-
   // Add hover effect for the star
   star.addEventListener("mouseover", () => {
     star.style.transform = "scale(1.2)";
@@ -147,12 +132,10 @@ function CreateCard(link) {
     }
     star.style.transform = "scale(1)";
   });
-
   // Click event for favoriting
   star.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent card click
-
     if (isLinkFavorited(link)) {
       // Remove from favorites
       removeFavorite(link);
@@ -160,15 +143,12 @@ function CreateCard(link) {
       card.classList.remove("favorited-card");
       // Set to outlined star
       star.innerHTML = outlinedStarSVG;
-
       // Trigger unfill animation
       star.classList.add("animate-unfill");
-
       // Remove the animation class after animation completes
       star.addEventListener("animationend", () => {
         star.classList.remove("animate-unfill");
       }, { once: true });
-
       // Remove card from favorites containers
       removeCardFromFavoritesContainers(card);
     } else {
@@ -178,23 +158,22 @@ function CreateCard(link) {
       card.classList.add("favorited-card");
       // Set to filled star
       star.innerHTML = filledStarSVG;
-
       // Trigger fill animation
       star.classList.add("animate-fill");
-
       // Remove the animation class after animation completes
       star.addEventListener("animationend", () => {
         star.classList.remove("animate-fill");
       }, { once: true });
-
       // Add card to favorites containers
       addCardToFavoritesContainers(card);
     }
-
     // Update the star icon appearance
     updateStarAppearance(star, link);
+    // Re-render favorites if necessary
+    if (typeof RenderFavorites === 'function') {
+      RenderFavorites();
+    }
   });
-
   // Add hover effects to the card
   card.addEventListener("mouseover", () => {
     card.style.transform = "translateY(-5px)";
@@ -210,20 +189,109 @@ function CreateCard(link) {
       favoriteStar.style.display = "none";
     }
   });
+  return card;
+}
+/**
+ * Create a favorite card element for a given link.
+ * @param {Object} link - The link object.
+ * @returns {HTMLElement} - The favorite card element.
+ */
+function CreateFavoriteCard(link) {
+  const card = document.createElement("a");
+  card.className = "favorite-card";
+  card.href = link.href;
+  card.dataset.uniqueKey = link.uniqueKey;
+  if (link.openInNewWindow) {
+    card.target = "_blank";
+    card.rel = "noopener";
+  }
+
+  const header = document.createElement("h3");
+  header.textContent = link.title;
+  card.appendChild(header);
+  const subHeader = document.createElement("p");
+  subHeader.className = "sub-header";
+  subHeader.textContent = link.applicationName;
+  card.appendChild(subHeader);
+  const img = document.createElement("img");
+  img.src = link.image;
+  img.alt = link.alt;
+  card.appendChild(img);
+
+  // Add the options icon (three dots)
+  const optionsIcon = document.createElement("span");
+  optionsIcon.className = "options-icon";
+  optionsIcon.innerHTML = optionsIconSVG;
+  card.appendChild(optionsIcon);
+
+  // Create the options menu
+  const optionsMenu = document.createElement("div");
+  optionsMenu.className = "options-menu";
+  const removeFavoriteOption = document.createElement("div");
+  removeFavoriteOption.className = "options-menu-item";
+  removeFavoriteOption.textContent = "Remove Favorite";
+  optionsMenu.appendChild(removeFavoriteOption);
+
+  // Add the options menu to the card
+  card.appendChild(optionsMenu);
+
+  // Event listener for optionsIcon click to toggle the menu
+  optionsIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent card click
+    optionsMenu.classList.toggle("active");
+  });
+
+  // Event listener for removeFavoriteOption click
+  removeFavoriteOption.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent card click
+
+    // Remove from favorites
+    removeFavorite(link);
+
+    // Update the card UI
+    card.remove();
+
+    // Remove card from other favorites containers
+    removeCardFromFavoritesContainers(card);
+
+    // Re-render the favorites if necessary
+    RenderFavorites();
+  });
+
+  // Close options menu when clicking outside
+  document.addEventListener("click", (event) => {
+    if (!optionsMenu.contains(event.target) && event.target !== optionsIcon) {
+      optionsMenu.classList.remove("active");
+    }
+  });
+
+  // Prevent menu from closing when clicking inside
+  optionsMenu.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Add hover effects to the card
+  card.addEventListener("mouseover", () => {
+    card.style.transform = "translateY(-5px)";
+  });
+  card.addEventListener("mouseout", () => {
+    card.style.transform = "translateY(0px)";
+  });
 
   return card;
 }
-
 /**
  * Add a card to all favorites containers.
  * @param {HTMLElement} card - The card element to add.
  */
 function addCardToFavoritesContainers(card) {
   const favoriteContainers = [
-    document.getElementById("favorite-links-container"),
+    document.getElementById("all-favorites-container"),
+    document.getElementById("favorite-links-nav-container"),
     document.getElementById("hero-pinned-container")
   ];
-
   favoriteContainers.forEach(container => {
     if (container) {
       // Remove "No pinned links yet." if present
@@ -231,35 +299,38 @@ function addCardToFavoritesContainers(card) {
       if (noFavorites && noFavorites.textContent === "No pinned links yet.") {
         container.removeChild(noFavorites);
       }
-
       // Check if the card is already present to avoid duplicates
       if (!container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`)) {
-        const newCard = CreateCard(linksData.find(l => l.uniqueKey === card.dataset.uniqueKey));
+        const link = linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
+        let newCard;
+        if (container.id === "all-favorites-container") {
+          newCard = CreateFavoriteCard(link);
+        } else {
+          newCard = CreateCard(link);
+        }
         container.appendChild(newCard);
       }
     }
   });
 }
-
 /**
  * Remove a card from all favorites containers.
  * @param {HTMLElement} card - The card element to remove.
  */
 function removeCardFromFavoritesContainers(card) {
   const favoriteContainers = [
-    document.getElementById("favorite-links-container"),
+    document.getElementById("all-favorites-container"),
+    document.getElementById("favorite-links-nav-container"),
     document.getElementById("hero-pinned-container")
   ];
-
   favoriteContainers.forEach(container => {
     if (container) {
       const cardToRemove = container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
       if (cardToRemove) {
-        container.removeChild(cardToRemove);
+        cardToRemove.remove();
       }
-
       // If no favorites left, show "No pinned links yet."
-      if (container.querySelectorAll(".card").length === 0) {
+      if (container.querySelectorAll(".card, .favorite-card").length === 0) {
         const noFavorites = document.createElement("p");
         noFavorites.textContent = "No pinned links yet.";
         container.appendChild(noFavorites);
@@ -267,7 +338,6 @@ function removeCardFromFavoritesContainers(card) {
     }
   });
 }
-
 /**
  * Update the star icon's appearance based on favorite status.
  * @param {HTMLElement} star - The star element.
@@ -282,16 +352,15 @@ function updateStarAppearance(star, link) {
     star.classList.remove("favorited");
   }
 }
-
 /**
  * Populate favorites containers based on current favorite statuses.
  */
 function populateFavoritesContainers() {
   const favoriteContainers = [
-    document.getElementById("favorite-links-container"),
+    document.getElementById("all-favorites-container"),
+    document.getElementById("favorite-links-nav-container"),
     document.getElementById("hero-pinned-container")
   ];
-
   favoriteContainers.forEach(container => {
     if (container) {
       container.innerHTML = "";
@@ -302,14 +371,18 @@ function populateFavoritesContainers() {
         container.appendChild(noFavorites);
       } else {
         favoritedLinks.slice(0, 4).forEach(link => {
-          const card = CreateCard(link);
+          let card;
+          if (container.id === "all-favorites-container") {
+            card = CreateFavoriteCard(link);
+          } else {
+            card = CreateCard(link);
+          }
           container.appendChild(card);
         });
       }
     }
   });
 }
-
 // ==============================
 // Event Listeners
 // ==============================
@@ -324,18 +397,15 @@ window.addEventListener("scroll", () => {
     homeButton.style.display = "none";
   }
 });
-
 document.querySelector(".back-to-top")?.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 });
-
 document.querySelector(".home-button")?.addEventListener("click", () => {
   window.location.href = "index.html";
 });
-
 // ==============================
 // Data Fetching and Initialization
 // ==============================
@@ -358,7 +428,6 @@ fetch("../Assets/JSON Files/tasks.json")
     console.error("Error fetching tasks.json.");
     initializePage();
   });
-
 /**
  * Initialize the page with fetched data and user information.
  */
@@ -367,9 +436,7 @@ function initializePage() {
   signedIn = true;
   userName = "Kaden";
   userEmail = "kgruiz@umich.edu";
-
   loadFavorites();
-
   // Populate Most Popular
   const mostPopularContainer = document.getElementById("most-popular-container");
   if (mostPopularContainer && linksData.length > 0) {
@@ -380,7 +447,6 @@ function initializePage() {
       mostPopularContainer.append(card);
     });
   }
-
   // Populate All Links on Index
   const allLinksContainer = document.getElementById("all-links-container");
   if (allLinksContainer && linksData.length > 0) {
@@ -398,10 +464,8 @@ function initializePage() {
       allLinksContainer.append(card);
     });
   }
-
   // Initialize Favorites in Hero and Nav
   populateFavoritesContainers();
-
   // All Links Full Page
   const allLinksFullContainer = document.getElementById("all-links-full-container");
   if (allLinksFullContainer) {
@@ -411,7 +475,6 @@ function initializePage() {
     if (urlParams.has("q")) {
       searchTerm = urlParams.get("q").toLowerCase();
     }
-
     function RenderAllLinksFull() {
       allLinksFullContainer.innerHTML = "";
       let linksToShow = [...linksData];
@@ -439,7 +502,6 @@ function initializePage() {
       // No need to call updateAllCardStars
       initializeCardHoverEffects(); // Re-initialize hover effects
     }
-
     const fullSearchInput = document.getElementById("fullSearchInput");
     if (fullSearchInput) {
       fullSearchInput.value = searchTerm;
@@ -448,7 +510,6 @@ function initializePage() {
         RenderAllLinksFull();
       });
     }
-
     const toggle = document.getElementById("toggle");
     if (toggle) {
       toggle.addEventListener("change", () => {
@@ -456,13 +517,10 @@ function initializePage() {
         RenderAllLinksFull();
       });
     }
-
     RenderAllLinksFull();
-
     const showMoreButton = document.getElementById("show-more");
     const showLessButton = document.getElementById("show-less");
     const showAllButton = document.getElementById("show-all");
-
     showMoreButton?.addEventListener("click", () => {
       const additionalCards = document.querySelectorAll(".additional-cards");
       additionalCards.forEach(card => {
@@ -472,7 +530,6 @@ function initializePage() {
       showLessButton.classList.remove("hidden");
       showAllButton.classList.remove("hidden");
     });
-
     showLessButton?.addEventListener("click", () => {
       const additionalCards = document.querySelectorAll(".additional-cards");
       additionalCards.forEach(card => {
@@ -482,7 +539,6 @@ function initializePage() {
       showLessButton.classList.add("hidden");
       showAllButton.classList.add("hidden");
     });
-
     initializeSignInMenu();
     initializeHoverMenus();
     initializeButtonEffects();
@@ -490,27 +546,80 @@ function initializePage() {
     initializeNavIconsHoverEffects();
     initializeFavoritesIconHoverEffects();
   }
+  // Favorites Manager Page
+  const favoritesManagerContainer = document.getElementById("all-favorites-container");
+  if (favoritesManagerContainer) {
+    let sortType = "rank";
+    let searchTerm = "";
 
+    const fullSearchInputFavorites = document.getElementById("fullSearchInputFavorites");
+    if (fullSearchInputFavorites) {
+      fullSearchInputFavorites.addEventListener("input", () => {
+        searchTerm = fullSearchInputFavorites.value.toLowerCase();
+        RenderFavorites();
+      });
+    }
+
+    const toggleFavorites = document.querySelector(".sort-type-selector-favorites");
+    if (toggleFavorites) {
+      toggleFavorites.addEventListener("change", () => {
+        sortType = toggleFavorites.checked ? "alphabetical" : "rank";
+        RenderFavorites();
+      });
+    }
+
+    function RenderFavorites() {
+      favoritesManagerContainer.innerHTML = "";
+      let favoritedLinks = linksData.filter(link => isLinkFavorited(link));
+
+      if (sortType === "rank") {
+        favoritedLinks.sort((a, b) => b.currentRating - a.currentRating);
+      } else if (sortType === "alphabetical") {
+        favoritedLinks.sort((a, b) => a.title.localeCompare(b.title));
+      }
+
+      if (searchTerm.trim() !== "") {
+        favoritedLinks = favoritedLinks.filter(link =>
+          (link.title && link.title.toLowerCase().includes(searchTerm)) ||
+          (link.applicationName && link.applicationName.toLowerCase().includes(searchTerm))
+        );
+      }
+
+      if (favoritedLinks.length === 0) {
+        const noFavorites = document.createElement("p");
+        noFavorites.textContent = "No pinned links yet.";
+        favoritesManagerContainer.appendChild(noFavorites);
+      } else {
+        favoritedLinks.forEach(link => {
+          const card = CreateFavoriteCard(link);
+          favoritesManagerContainer.appendChild(card);
+        });
+      }
+    }
+
+    RenderFavorites();
+    initializeSignInMenu();
+    initializeHoverMenus();
+    initializeButtonEffects();
+    initializeCardHoverEffects();
+    initializeNavIconsHoverEffects();
+    initializeFavoritesIconHoverEffects();
+  }
   // Setup Search Suggestions
   const headerInput = document.getElementById("headerSearchInput");
   const headerSuggestions = document.getElementById("headerSearchSuggestions");
-
   const heroInput = document.getElementById("heroSearchInput");
   const heroSuggestions = document.getElementById("heroSearchSuggestions");
-
   if (headerInput && headerSuggestions) {
     SetupSearchSuggestions(headerInput, headerSuggestions);
   }
-
   if (heroInput && heroSuggestions) {
     SetupSearchSuggestions(heroInput, heroSuggestions);
   }
-
   // Show More/Less
   const showMoreButton = document.getElementById("show-more");
   const showLessButton = document.getElementById("show-less");
   const showAllButton = document.getElementById("show-all");
-
   showMoreButton?.addEventListener("click", () => {
     const additionalCards = document.querySelectorAll(".additional-cards");
     additionalCards.forEach(card => {
@@ -520,7 +629,6 @@ function initializePage() {
     showLessButton.classList.remove("hidden");
     showAllButton.classList.remove("hidden");
   });
-
   showLessButton?.addEventListener("click", () => {
     const additionalCards = document.querySelectorAll(".additional-cards");
     additionalCards.forEach(card => {
@@ -530,7 +638,6 @@ function initializePage() {
     showLessButton.classList.add("hidden");
     showAllButton.classList.add("hidden");
   });
-
   initializeSignInMenu();
   initializeHoverMenus();
   initializeButtonEffects();
@@ -538,11 +645,9 @@ function initializePage() {
   initializeNavIconsHoverEffects();
   initializeFavoritesIconHoverEffects();
 }
-
 // ==============================
 // Search Suggestions Setup
 // ==============================
-
 /**
  * Setup search suggestions for an input element.
  * @param {HTMLElement} inputElement - The search input element.
@@ -551,35 +656,28 @@ function initializePage() {
 function SetupSearchSuggestions(inputElement, suggestionsContainer) {
   let currentIndex = -1;
   let suggestionItems = [];
-
   inputElement.addEventListener("input", onInput);
   inputElement.addEventListener("keydown", onKeyDown);
   document.addEventListener("click", onDocumentClick);
-
   const formElement = inputElement.closest("form");
   const searchButton = formElement?.querySelector("button");
   searchButton?.addEventListener("click", onSearchButtonClick);
-
   function onInput() {
     const query = inputElement.value.trim().toLowerCase();
     if (!query) {
       hideSuggestions();
       return;
     }
-
     const filtered = linksData.filter(link =>
       (link.title && link.title.toLowerCase().includes(query)) ||
       (link.applicationName && link.applicationName.toLowerCase().includes(query))
     );
-
     buildSuggestions(query, filtered.slice(0, 5));
   }
-
   function buildSuggestions(query, results) {
     suggestionsContainer.innerHTML = "";
     currentIndex = -1;
     suggestionItems = [];
-
     const topItem = document.createElement("div");
     topItem.className = "search-suggestion-item";
     topItem.textContent = `Search for "${inputElement.value.trim()}"`;
@@ -588,7 +686,6 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     });
     suggestionsContainer.appendChild(topItem);
     suggestionItems.push({ element: topItem, isSearchOption: true, link: null });
-
     results.forEach(link => {
       const item = document.createElement("div");
       item.className = "search-suggestion-item";
@@ -599,21 +696,18 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
       suggestionsContainer.appendChild(item);
       suggestionItems.push({ element: item, isSearchOption: false, link: link.href });
     });
-
     suggestionsContainer.classList.add("active");
     if (suggestionItems.length > 0) {
       currentIndex = 0;
       highlightCurrentItem();
     }
   }
-
   function hideSuggestions() {
     suggestionsContainer.innerHTML = "";
     suggestionsContainer.classList.remove("active");
     currentIndex = -1;
     suggestionItems = [];
   }
-
   function onKeyDown(e) {
     if (!suggestionsContainer.classList.contains("active")) return;
     const maxIndex = suggestionItems.length - 1;
@@ -636,7 +730,6 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
       hideSuggestions();
     }
   }
-
   function highlightCurrentItem() {
     suggestionItems.forEach((item, index) => {
       if (index === currentIndex) {
@@ -646,18 +739,15 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
       }
     });
   }
-
   function onDocumentClick(e) {
     if (!suggestionsContainer.contains(e.target) && e.target !== inputElement) {
       hideSuggestions();
     }
   }
-
   function goToSearchPage(query) {
     if (!query) return;
     window.location.href = `all-links-full.html?q=${encodeURIComponent(query)}`;
   }
-
   function onSearchButtonClick() {
     if (currentIndex === -1 || suggestionItems[currentIndex]?.isSearchOption === true) {
       goToSearchPage(inputElement.value.trim());
@@ -666,11 +756,9 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     }
   }
 }
-
 // ==============================
 // Sign-In Menu Initialization
 // ==============================
-
 /**
  * Initialize the sign-in menu based on user authentication status.
  */
@@ -682,7 +770,6 @@ function initializeSignInMenu() {
   const signInProfilePic = document.getElementById("sign-in-profile-pic");
   const signInItems = document.getElementById("sign-in-items");
   const signInSeparator = document.getElementById("sign-in-separator"); // Ensure your <hr /> has this ID
-
   if (signedIn) {
     const initials = userName.split(' ').map(n => n[0].toUpperCase()).join('');
     signInProfilePic.textContent = initials;
@@ -692,17 +779,16 @@ function initializeSignInMenu() {
     signInEmail.textContent = userEmail;
     signInEmail.style.display = 'block';
     signInSeparator.style.display = 'block';
-
     // Update sign-in button
     signInMenuToggle.innerHTML = `
       <div class="sign-in-profile-pic-button">${initials}</div>
       <span class="user-name">${userName}</span>
-    `;
+      `;
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signOut()">Sign out</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
       <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
-    `;
+      `;
   } else {
     signInProfilePic.textContent = '';
     signInProfilePic.style.display = 'none';
@@ -711,19 +797,17 @@ function initializeSignInMenu() {
     signInEmail.textContent = '';
     signInEmail.style.display = 'none';
     signInSeparator.style.display = 'none';
-
     // Update sign-in button
     signInMenuToggle.innerHTML = `
       <span class="material-icons">account_circle</span>
       Sign In
-    `;
+      `;
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signIn()">Sign in</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
       <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
-    `;
+      `;
   }
-
   // Add hover effect to sign-in menu items
   const signInMenuItems = document.querySelectorAll(".sign-in-menu-item");
   signInMenuItems.forEach(item => {
@@ -735,7 +819,6 @@ function initializeSignInMenu() {
     });
   });
 }
-
 /**
  * Sign in the user.
  */
@@ -745,7 +828,6 @@ function signIn() {
   userEmail = "kgruiz@umich.edu";
   initializeSignInMenu();
 }
-
 /**
  * Sign out the user.
  */
@@ -755,11 +837,9 @@ function signOut() {
   userEmail = "";
   initializeSignInMenu();
 }
-
 // ==============================
 // Hover/Click Menu Logic
 // ==============================
-
 /**
  * Initialize hover menus for various UI components.
  */
@@ -769,7 +849,6 @@ function initializeHoverMenus() {
   setupHoverMenu("notifications-icon", "notifications-menu");
   setupSignInHover("sign-in-container", "sign-in-menu", "sign-in-menu-toggle");
 }
-
 /**
  * Setup hover menu for a specific container and menu.
  * @param {string} containerId - The ID of the container element.
@@ -780,7 +859,6 @@ function setupHoverMenu(containerId, menuId) {
   const menu = document.getElementById(menuId);
   let clickedOpen = false;
   if (!container || !menu) return;
-
   container.addEventListener("mouseover", () => {
     if (!clickedOpen) {
       menu.classList.add("active");
@@ -793,13 +871,11 @@ function setupHoverMenu(containerId, menuId) {
       }
     }
   });
-
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
     menu.classList.add("active");
   });
-
   document.addEventListener("click", (event) => {
     if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
       clickedOpen = false;
@@ -809,15 +885,12 @@ function setupHoverMenu(containerId, menuId) {
     }
   });
 }
-
 function setupSignInHover(containerId, menuId, menuToggle) {
   const container = document.getElementById(containerId);
   const menu = document.getElementById(menuId);
   const toggle = document.getElementById(menuToggle);
-
   let clickedOpen = false;
   if (!container || !menu || !toggle) return;
-
   container.addEventListener("mouseover", () => {
     if (!clickedOpen) {
       menu.classList.add("active");
@@ -830,24 +903,19 @@ function setupSignInHover(containerId, menuId, menuToggle) {
       }
     }
   });
-
   toggle.addEventListener("click", (e) => {
     e.preventDefault();
-
     if (!signedIn) {
-
       signIn()
     }
     clickedOpen = !clickedOpen;
     menu.classList.add("active");
   });
-
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
     menu.classList.add("active");
   });
-
   document.addEventListener("click", (event) => {
     if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
       clickedOpen = false;
@@ -857,11 +925,9 @@ function setupSignInHover(containerId, menuId, menuToggle) {
     }
   });
 }
-
 // ==============================
 // Button Hover and Click Effects
 // ==============================
-
 /**
  * Initialize hover and click effects for buttons.
  */
@@ -885,16 +951,14 @@ function initializeButtonEffects() {
     });
   });
 }
-
 // ==============================
 // Card Hover Effects
 // ==============================
-
 /**
  * Initialize hover effects for cards.
  */
 function initializeCardHoverEffects() {
-  const cards = document.querySelectorAll(".card, .it-services-card");
+  const cards = document.querySelectorAll(".card, .it-services-card, .favorite-card");
   cards.forEach(card => {
     card.style.transition = "transform 0.3s ease";
     card.addEventListener("mouseover", () => {
@@ -913,11 +977,9 @@ function initializeCardHoverEffects() {
     });
   });
 }
-
 // ==============================
 // Navigation Icons Hover Effects
 // ==============================
-
 /**
  * Initialize hover effects for navigation icons.
  */
@@ -932,11 +994,9 @@ function initializeNavIconsHoverEffects() {
     });
   });
 }
-
 // ==============================
 // Favorites and Other Icons Hover Effects
 // ==============================
-
 /**
  * Initialize hover effects for favorites and other icons.
  */
@@ -948,7 +1008,6 @@ function initializeFavoritesIconHoverEffects() {
     { selector: ".home-icon", scale: 1.15 },
     { selector: ".all-links-icon", scale: 1.12 }
   ];
-
   iconSelectors.forEach(iconInfo => {
     const icons = document.querySelectorAll(iconInfo.selector);
     icons.forEach(icon => {
@@ -964,11 +1023,9 @@ function initializeFavoritesIconHoverEffects() {
     });
   });
 }
-
 // ==============================
 // Switch and Toggle Effects
 // ==============================
-
 /**
  * Initialize switch and toggle effects.
  */
@@ -987,15 +1044,12 @@ function initializeSwitchToggleEffects() {
     });
   });
 }
-
 // ==============================
 // Modal Functionality
 // ==============================
-
 // Get modal elements
 const preferencesMenu = document.getElementById("preferences-menu");
 const preferencesMenuCloseButton = document.getElementById("preferences-menu-close-button");
-
 /**
  * Open the preferences modal.
  */
@@ -1010,7 +1064,6 @@ function openPreferencesMenu() {
       clearInterval(fadeIn);
     }
   }, 10);
-
   // Slide in animation
   const content = preferencesMenu.querySelector(".preferences-menu-content");
   content.style.transform = "translateY(-50px)";
@@ -1024,7 +1077,6 @@ function openPreferencesMenu() {
     }
   }, 10);
 }
-
 /**
  * Close the preferences modal.
  */
@@ -1040,7 +1092,6 @@ function closePreferencesMenu() {
     }
   }, 10);
 }
-
 // Event listeners for modal functionality
 preferencesMenuCloseButton.addEventListener("click", closePreferencesMenu);
 window.addEventListener("click", function (event) {
@@ -1053,25 +1104,25 @@ window.addEventListener("keydown", function (event) {
     closePreferencesMenu();
   }
 });
-
 // ==============================
 // Favorites Preference Toggle
 // ==============================
-
 // Get references to DOM elements for favorites toggle
 const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
 const heroPinnedBox = document.querySelector(".hero-pinned-box");
-
 // Load and apply saved favorites preference
 const savedPreference = localStorage.getItem("showFavorites");
 const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
 toggleFavoritesCheckbox.checked = showFavorites;
-heroPinnedBox.style.display = showFavorites ? "block" : "none";
-
+if (heroPinnedBox) {
+  heroPinnedBox.style.display = showFavorites ? "block" : "none";
+}
 // Event listener for favorites preference change
 toggleFavoritesCheckbox.addEventListener("change", () => {
   const showFavorites = toggleFavoritesCheckbox.checked;
-  heroPinnedBox.style.display = showFavorites ? "block" : "none";
+  if (heroPinnedBox) {
+    heroPinnedBox.style.display = showFavorites ? "block" : "none";
+  }
   // Save the updated preference to localStorage
   localStorage.setItem("showFavorites", JSON.stringify(showFavorites));
 });
