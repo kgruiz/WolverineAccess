@@ -168,10 +168,10 @@ document.querySelector(".home-button")?.addEventListener("click", () => {
 /**
  * Fetch tasks data and initialize the page.
  */
-fetch("JSON Files/tasks.json")
+fetch("../Assets/JSON Files/tasks.json")
   .then(response => {
     if (!response.ok) {
-      console.error("Failed to load tasks.json. Make sure it exists at JSON Files/tasks.json.");
+      console.error("Failed to load tasks.json. Make sure it exists at ../Assets/JSON Files/tasks.json.");
       return [];
     }
     return response.json();

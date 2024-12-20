@@ -1,14 +1,14 @@
 [
     {
         "header": "Backpack/Register for Classes",
-        "image": "assets/CurrentIcons/Backpack.png",
+        "image": "../Assets/Media/CurrentIcons/Backpack.png",
         "alt": "Register for Classes Icon",
         "href": "not-implemented.html",
         "rank": 1
     },
     {
         "header": "Canvas",
-        "image": "assets/CurrentIcons/CanvasLogo.png",
+        "image": "../Assets/Media/CurrentIcons/CanvasLogo.png",
         "alt": "Canvas Icon",
         "href": "https://canvas.it.umich.edu/",
         "target": "_blank",
@@ -17,7 +17,7 @@
     },
     {
         "header": "Google Mail",
-        "image": "assets/CurrentIcons/GMailLogo.png",
+        "image": "../Assets/Media/CurrentIcons/GMailLogo.png",
         "alt": "Google Mail Icon",
         "href": "https://gmail.com",
         "target": "_blank",
@@ -26,329 +26,329 @@
     },
     {
         "header": "View Final Grades",
-        "image": "assets/CurrentIcons/GPA.png",
+        "image": "../Assets/Media/CurrentIcons/GPA.png",
         "alt": "Grades Icon",
         "href": "not-implemented.html",
         "rank": 4
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 5
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 6
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 7
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 8
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 9
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 10
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 11
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 12
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 13
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 14
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 15
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 16
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 17
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 18
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 19
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 20
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 21
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 22
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 23
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 24
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 25
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 26
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 27
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 28
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 29
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 30
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 31
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 32
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 33
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 34
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 35
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 36
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 37
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 38
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 39
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 40
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 41
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 42
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 43
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 44
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 45
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 46
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 47
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 48
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 49
     },
     {
         "header": "Placeholder",
-        "image": "assets/placeholder.png",
+        "image": "../Assets/Media/placeholder.png",
         "alt": "Placeholder",
         "href": "not-implemented.html",
         "rank": 50

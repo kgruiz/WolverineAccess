@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- all-links-full.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,20 +21,21 @@
   <script src="script.js" defer></script>
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" type="image/png" />
+  <link rel="icon" href="../Assets/Media/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" type="image/png" />
 
   <title>Wolverine Access</title>
 </head>
 
 <body>
 
+  <!-- Header and Navigation -->
   <header>
     <nav>
       <div class="nav-container">
 
         <div class="left-section">
           <a href="index.html" aria-label="Home" class="logo-link">
-            <img src="assets/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
+            <img src="../Assets/Media/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
           </a>
 
           <form class="search-form" onsubmit="return false;">
@@ -66,23 +67,23 @@
 
                 <div class="group-items">
                   <a href="#" data-group="Student">
-                    <img src="assets/MPhotos/Seasons/Summer/2021_110.jpg" alt="Student Icon" />
+                    <img src="../Assets/Media/MPhotos/Seasons/Summer/2021_110.jpg" alt="Student Icon" />
                     Student
                   </a>
                   <a href="#" data-group="Faculty &amp; Staff">
-                    <img src="assets/MPhotos/Seasons/Summer/2021_079.jpg" alt="Faculty & Staff Icon" />
+                    <img src="../Assets/Media/MPhotos/Seasons/Summer/2021_079.jpg" alt="Faculty & Staff Icon" />
                     Faculty &amp; Staff
                   </a>
                   <a href="#" data-group="Parents &amp; Family">
-                    <img src="assets/Family.jpg" alt="Parents &amp; Family Icon" />
+                    <img src="../Assets/Media/Family.jpg" alt="Parents &amp; Family Icon" />
                     Parents &amp; Family
                   </a>
                   <a href="#" data-group="Alumni">
-                    <img src="assets/Alumni.jpg" alt="Alumni Icon" />
+                    <img src="../Assets/Media/Alumni.jpg" alt="Alumni Icon" />
                     Alumni
                   </a>
                   <a href="#" data-group="All">
-                    <img src="assets/MaizeOut.png" alt="All Groups Icon" />
+                    <img src="../Assets/Media/MaizeOut.png" alt="All Groups Icon" />
                     All
                   </a>
                 </div>
@@ -114,7 +115,7 @@
             </li>
 
             <!-- All Links Icon -->
-            <li class="all-links-icon" id="all-links-icon">
+            <li>
               <a href="all-links-full.html" aria-label="All Links">
                 <span class="material-icons">apps</span>
               </a>
@@ -137,7 +138,7 @@
             </li>
 
             <!-- Home Icon -->
-            <li class="home-icon" id="home-icon">
+            <li>
               <a href="index.html" aria-label="Home">
                 <span class="material-icons">home</span>
               </a>
@@ -184,90 +185,54 @@
 
   </header>
 
+  <!-- Main Content -->
   <main>
+    <!-- Full Search Area Section -->
+    <section class="full-search-area" aria-label="Full Search Area">
+      <h1>All Links</h1>
 
+      <!-- Full Search Form -->
+      <form class="full-search-form" onsubmit="return false;">
+        <input type="search" name="q" placeholder="Search All Links" aria-label="Search All Links"
+          id="fullSearchInput" />
 
+        <button type="submit">
+          <span class="material-icons">search</span>
+        </button>
+      </form>
 
-    <section class="hero-section parallax" aria-label="Wolverine Access">
-      <div class="hero-content">
-        <img src="assets/HorizontalLogoKit/U-M_Logo-Horizontal-Hex-reversed.png" alt="University of Michigan Logo" />
-        <h1>Wolverine Access</h1>
-
-        <form class="hero-search-form" onsubmit="return false;">
-          <input type="search" name="q" placeholder="Search (E.g., Canvas, paycheck, class schedule)"
-            aria-label="Search (E.g., Canvas, paycheck, class schedule)" class="search-input" id="heroSearchInput" />
-
-          <button type="button" class="search-button">
-            <span class="material-icons">search</span>
-          </button>
-
-          <div class="search-suggestions" id="heroSearchSuggestions"></div>
-        </form>
-      </div>
-
-      <div class="hero-favorites-box">
-        <section class="hero-favorites-section" aria-label="Favorite Links">
-          <h2>Your Favorites</h2>
-          <div class="cards-container" id="hero-favorites-container"></div>
-        </section>
-      </div>
-
+      <!-- Sort Options -->
+      <h3>Sort By:</h3>
+      <input type="checkbox" id="toggle" class="sort-type-selector" />
+      <label for="toggle" class="sort-type-container">
+        <div>Rank</div>
+        <div>Alphabetical</div>
+      </label>
     </section>
 
-    <section class="content-section" aria-label="Most Popular This Week">
-      <h2>Most Popular This Week</h2>
-      <div class="cards-container" id="most-popular-container"></div>
-    </section>
-
+    <!-- All Links Content Section -->
     <section class="content-section" aria-label="All Links">
-      <h2>All Links</h2>
-      <div class="cards-container all-links-expandable" id="all-links-container"></div>
-
-      <button id="show-more">Show More</button>
-
-      <button id="show-less" class="hidden">Show Less</button>
-
-      <section>
-        <a id="show-all" class="hidden" href="all-links-full.html">Show All</a>
-      </section>
+      <div class="cards-container all-links-full" id="all-links-full-container"></div>
     </section>
-
-    <section class="content-section" aria-label="Information Technology Services">
-      <h2>Information Technology Services</h2>
-      <div class="cards-container">
-        <a href="https://its.umich.edu/help" class="it-services-card">
-          <h3>Help Center</h3>
-          <span class="material-icons">question_answer</span>
-        </a>
-        <a href="https://status.its.umich.edu/" class="it-services-card">
-          <h3>System Status</h3>
-          <span class="material-icons">bar_chart</span>
-        </a>
-        <a href="https://accessibility.umich.edu/wolverineaccess-accessibility" class="it-services-card">
-          <h3>Accessibility</h3>
-          <span class="material-icons">accessibility_new</span>
-        </a>
-        <a href="https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form" class="it-services-card">
-          <h3>Feedback</h3>
-          <span class="material-icons">feedback</span>
-        </a>
-      </div>
-    </section>
-
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-top">
+      <!-- Footer Logo Section -->
       <div class="footer-logo-section">
         <a href="http://umich.edu/" aria-label="University of Michigan Home">
-          <img src="assets/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" alt="University of Michigan Official Logo" />
+          <img src="../Assets/Media/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png"
+            alt="University of Michigan Official Logo" />
         </a>
       </div>
 
+      <!-- Footer Information Section -->
       <div class="footer-info-section">
         <h3><a href="https://its.umich.edu/">Information and Technology Services</a></h3>
         <div class="footer-columns">
 
+          <!-- Get Help Column -->
           <div class="footer-column">
             <h4>Get Help</h4>
             <p><a href="https://documentation.its.umich.edu/node/2322">Wolverine Access Help Center</a></p>
@@ -277,6 +242,7 @@
             <p><span class="material-icons">call</span><a href="tel:1-734-764-4357">734-764-HELP (764-4357)</a></p>
           </div>
 
+          <!-- System Information Column -->
           <div class="footer-column">
             <h4>System Information</h4>
             <p><a href="https://its.umich.edu/help/wolverine-access-hours">Administrative Systems Availability (Hours of
@@ -285,6 +251,7 @@
             <p><a href="https://accessibility.umich.edu/wolverineaccess-accessibility">Accessibility Information</a></p>
           </div>
 
+          <!-- Give Feedback Column -->
           <div class="footer-column">
             <h4>Give Feedback</h4>
             <p><a href="https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form">Contact the
@@ -295,6 +262,7 @@
       </div>
     </div>
 
+    <!-- Footer Bottom Section -->
     <div class="footer-bottom">
       <p>&copy; 2024 <a href="http://regents.umich.edu/">The Regents of the University of Michigan</a> and <a
           href="https://github.com/kgruiz">Kaden Gruizenga</a></p>

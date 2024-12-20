@@ -143,6 +143,6 @@ class ImageMetadataExtractor:
 
 if __name__ == "__main__":
     extractor = ImageMetadataExtractor(
-        "assets/", outputEmptyMetadata=True, outputAsXml=True
+        "../Assets/Media/", outputEmptyMetadata=True, outputAsXml=True
     )
     extractor.ExtractMetadata()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Images>
   <Image>
-    <Path>assets/MPhotos/KinesiologyBldng21(002).jpg</Path>
+    <Path>../Assets/Media/MPhotos/KinesiologyBldng21(002).jpg</Path>
     <Name>KinesiologyBldng21(002).jpg</Name>
     <Metadata>
       <Make>Hasselblad</Make>
@@ -13,7 +13,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusSnow22(21).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusSnow22(21).jpg</Path>
     <Name>UMCampusSnow22(21).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -25,7 +25,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudents29Jul21_110.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudents29Jul21_110.jpg</Path>
     <Name>Stock_SumrStudents29Jul21_110.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -37,7 +37,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_FallMisc21_053.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_FallMisc21_053.jpg</Path>
     <Name>Stock_FallMisc21_053.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -50,7 +50,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SocialFallcolors21_026.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SocialFallcolors21_026.jpg</Path>
     <Name>Stock_SocialFallcolors21_026.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -62,7 +62,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/LSA-WelcomeBkPicnic21(106).jpg</Path>
+    <Path>../Assets/Media/MPhotos/LSA-WelcomeBkPicnic21(106).jpg</Path>
     <Name>LSA-WelcomeBkPicnic21(106).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -75,7 +75,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowFeb21_022.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowFeb21_022.jpg</Path>
     <Name>Stock_SnowFeb21_022.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -88,7 +88,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials_eb(248).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials_eb(248).jpg</Path>
     <Name>CampusAerials_eb(248).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -100,7 +100,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMStockMisc2Dec21_005.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMStockMisc2Dec21_005.jpg</Path>
     <Name>UMStockMisc2Dec21_005.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -112,7 +112,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowdayJan23_079.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowdayJan23_079.jpg</Path>
     <Name>Stock_SnowdayJan23_079.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -125,7 +125,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock2-20(148).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock2-20(148).jpg</Path>
     <Name>UMCampusStock2-20(148).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -138,7 +138,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowFeb21_020.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowFeb21_020.jpg</Path>
     <Name>Stock_SnowFeb21_020.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -151,7 +151,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_FallMisc21_051.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_FallMisc21_051.jpg</Path>
     <Name>Stock_FallMisc21_051.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -164,7 +164,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowdayJan23_124.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowdayJan23_124.jpg</Path>
     <Name>Stock_SnowdayJan23_124.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -177,7 +177,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/TrotterExterior19(030).jpg</Path>
+    <Path>../Assets/Media/MPhotos/TrotterExterior19(030).jpg</Path>
     <Name>TrotterExterior19(030).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -190,7 +190,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock17(066).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock17(066).jpg</Path>
     <Name>UMCampusMiscStock17(066).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -203,7 +203,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UM-MiscStock18(060)1.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UM-MiscStock18(060)1.jpg</Path>
     <Name>UM-MiscStock18(060)1.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -216,7 +216,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock22_SS_220.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock22_SS_220.jpg</Path>
     <Name>UMCampusMiscStock22_SS_220.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -229,7 +229,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudentsJul21_106.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudentsJul21_106.jpg</Path>
     <Name>Stock_SumrStudentsJul21_106.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -241,7 +241,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowFeb21_019.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowFeb21_019.jpg</Path>
     <Name>Stock_SnowFeb21_019.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -254,7 +254,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_FallMisc21_097.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_FallMisc21_097.jpg</Path>
     <Name>Stock_FallMisc21_097.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -266,7 +266,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SocialFallcolors21_008.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SocialFallcolors21_008.jpg</Path>
     <Name>Stock_SocialFallcolors21_008.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -278,7 +278,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowFeb21_030.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowFeb21_030.jpg</Path>
     <Name>Stock_SnowFeb21_030.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -291,7 +291,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/BCTNSpiritDt17(071).jpg</Path>
+    <Path>../Assets/Media/MPhotos/BCTNSpiritDt17(071).jpg</Path>
     <Name>BCTNSpiritDt17(071).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -304,7 +304,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudents29Jul21_076.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudents29Jul21_076.jpg</Path>
     <Name>Stock_SumrStudents29Jul21_076.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -316,7 +316,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/SnowStock16Feb21(027).jpg</Path>
+    <Path>../Assets/Media/MPhotos/SnowStock16Feb21(027).jpg</Path>
     <Name>SnowStock16Feb21(027).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -329,7 +329,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/FBL22_Maryland_361.jpg</Path>
+    <Path>../Assets/Media/MPhotos/FBL22_Maryland_361.jpg</Path>
     <Name>FBL22_Maryland_361.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -343,7 +343,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowdayJan23_123.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowdayJan23_123.jpg</Path>
     <Name>Stock_SnowdayJan23_123.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -356,7 +356,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMS19-DenisMatsuev(046).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMS19-DenisMatsuev(046).jpg</Path>
     <Name>UMS19-DenisMatsuev(046).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -369,7 +369,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(372).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(372).jpg</Path>
     <Name>CampusAerials20(372).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -381,7 +381,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/DedCrmnyBSBNatHistMsm(087).jpg</Path>
+    <Path>../Assets/Media/MPhotos/DedCrmnyBSBNatHistMsm(087).jpg</Path>
     <Name>DedCrmnyBSBNatHistMsm(087).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -393,7 +393,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(299).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(299).jpg</Path>
     <Name>CampusAerials20(299).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -405,7 +405,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(338).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(338).jpg</Path>
     <Name>CampusAerials20(338).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -417,7 +417,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock1-20(86).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock1-20(86).jpg</Path>
     <Name>UMCampusStock1-20(86).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -430,7 +430,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UM-MiscStock18(039)1.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UM-MiscStock18(039)1.jpg</Path>
     <Name>UM-MiscStock18(039)1.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -443,7 +443,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusSnow22(11).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusSnow22(11).jpg</Path>
     <Name>UMCampusSnow22(11).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -455,7 +455,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock22_SS_085.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock22_SS_085.jpg</Path>
     <Name>UMCampusMiscStock22_SS_085.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -468,7 +468,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/FBL18-Indiana-eb(236).jpg</Path>
+    <Path>../Assets/Media/MPhotos/FBL18-Indiana-eb(236).jpg</Path>
     <Name>FBL18-Indiana-eb(236).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -482,7 +482,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/RuthvenFeb22(01).jpg</Path>
+    <Path>../Assets/Media/MPhotos/RuthvenFeb22(01).jpg</Path>
     <Name>RuthvenFeb22(01).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -495,7 +495,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/BioMedRsrch-Panel19(059).jpg</Path>
+    <Path>../Assets/Media/MPhotos/BioMedRsrch-Panel19(059).jpg</Path>
     <Name>BioMedRsrch-Panel19(059).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -507,7 +507,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/NCmornJun15(01).jpg</Path>
+    <Path>../Assets/Media/MPhotos/NCmornJun15(01).jpg</Path>
     <Name>NCmornJun15(01).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -520,7 +520,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMS-VictorsArtsGala18(119).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMS-VictorsArtsGala18(119).jpg</Path>
     <Name>UMS-VictorsArtsGala18(119).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -533,7 +533,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/LurieTower20AnnvCelb16(097).jpg</Path>
+    <Path>../Assets/Media/MPhotos/LurieTower20AnnvCelb16(097).jpg</Path>
     <Name>LurieTower20AnnvCelb16(097).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -546,7 +546,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock2-20(06).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock2-20(06).jpg</Path>
     <Name>UMCampusStock2-20(06).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -559,7 +559,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock1-20(236).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock1-20(236).jpg</Path>
     <Name>UMCampusStock1-20(236).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -572,7 +572,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock22_SS_268.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock22_SS_268.jpg</Path>
     <Name>UMCampusMiscStock22_SS_268.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -585,7 +585,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock22(112).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock22(112).jpg</Path>
     <Name>UMCampusMiscStock22(112).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -598,7 +598,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/BKW11-DetroitMercy(003).jpg</Path>
+    <Path>../Assets/Media/MPhotos/BKW11-DetroitMercy(003).jpg</Path>
     <Name>BKW11-DetroitMercy(003).jpg</Name>
     <Metadata>
       <Make>Canon</Make>
@@ -610,7 +610,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/GGBrownBldgSun15(026).jpg</Path>
+    <Path>../Assets/Media/MPhotos/GGBrownBldgSun15(026).jpg</Path>
     <Name>GGBrownBldgSun15(026).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -622,7 +622,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock1-20(164)A.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock1-20(164)A.jpg</Path>
     <Name>UMCampusStock1-20(164)A.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -635,7 +635,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudents29Jul21_002.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudents29Jul21_002.jpg</Path>
     <Name>Stock_SumrStudents29Jul21_002.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -647,7 +647,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/SchembechlerHall(31).jpg</Path>
+    <Path>../Assets/Media/MPhotos/SchembechlerHall(31).jpg</Path>
     <Name>SchembechlerHall(31).jpg</Name>
     <Metadata>
       <Make>Canon</Make>
@@ -659,7 +659,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStockPhotos21(015).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStockPhotos21(015).jpg</Path>
     <Name>UMCampusStockPhotos21(015).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -672,7 +672,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/FDH19-UConn(148).jpg</Path>
+    <Path>../Assets/Media/MPhotos/FDH19-UConn(148).jpg</Path>
     <Name>FDH19-UConn(148).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -686,7 +686,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowdayJan23_239.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowdayJan23_239.jpg</Path>
     <Name>Stock_SnowdayJan23_239.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -699,7 +699,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudents29Jul21_025.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudents29Jul21_025.jpg</Path>
     <Name>Stock_SumrStudents29Jul21_025.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -711,7 +711,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudents29Jul21_019.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudents29Jul21_019.jpg</Path>
     <Name>Stock_SumrStudents29Jul21_019.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -723,7 +723,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/KinesiologyLab-Hand22(16).jpg</Path>
+    <Path>../Assets/Media/MPhotos/KinesiologyLab-Hand22(16).jpg</Path>
     <Name>KinesiologyLab-Hand22(16).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -736,7 +736,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/SolarEclipse10June21(002).jpg</Path>
+    <Path>../Assets/Media/MPhotos/SolarEclipse10June21(002).jpg</Path>
     <Name>SolarEclipse10June21(002).jpg</Name>
     <Metadata>
       <Make>Canon</Make>
@@ -748,7 +748,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/BurtonTwrAprLght21(193).jpg</Path>
+    <Path>../Assets/Media/MPhotos/BurtonTwrAprLght21(193).jpg</Path>
     <Name>BurtonTwrAprLght21(193).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -760,7 +760,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMMA-Exterior19(023).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMMA-Exterior19(023).jpg</Path>
     <Name>UMMA-Exterior19(023).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -773,7 +773,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock1-20(131).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock1-20(131).jpg</Path>
     <Name>UMCampusStock1-20(131).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -786,7 +786,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMMA-Exterior19(042).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMMA-Exterior19(042).jpg</Path>
     <Name>UMMA-Exterior19(042).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -799,7 +799,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_FallMisc21_001.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_FallMisc21_001.jpg</Path>
     <Name>Stock_FallMisc21_001.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -812,7 +812,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMMA-Exterior19(054).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMMA-Exterior19(054).jpg</Path>
     <Name>UMMA-Exterior19(054).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -825,7 +825,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(213).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(213).jpg</Path>
     <Name>CampusAerials20(213).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -838,7 +838,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UM-MiscStock18(035)1.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UM-MiscStock18(035)1.jpg</Path>
     <Name>UM-MiscStock18(035)1.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -851,7 +851,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(301).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(301).jpg</Path>
     <Name>CampusAerials20(301).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -863,7 +863,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusStock2-20(161).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusStock2-20(161).jpg</Path>
     <Name>UMCampusStock2-20(161).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -876,7 +876,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMMA-Exterior19(032).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMMA-Exterior19(032).jpg</Path>
     <Name>UMMA-Exterior19(032).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -889,7 +889,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SocialFallcolors21_013.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SocialFallcolors21_013.jpg</Path>
     <Name>Stock_SocialFallcolors21_013.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -901,7 +901,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(234).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(234).jpg</Path>
     <Name>CampusAerials20(234).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -914,7 +914,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SumrStudents29Jul21_079.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SumrStudents29Jul21_079.jpg</Path>
     <Name>Stock_SumrStudents29Jul21_079.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -926,7 +926,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SnowdayJan23_066.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SnowdayJan23_066.jpg</Path>
     <Name>Stock_SnowdayJan23_066.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -939,7 +939,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(255).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(255).jpg</Path>
     <Name>CampusAerials20(255).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -951,7 +951,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(310).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(310).jpg</Path>
     <Name>CampusAerials20(310).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -963,7 +963,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock22_SS_204.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock22_SS_204.jpg</Path>
     <Name>UMCampusMiscStock22_SS_204.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -976,7 +976,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/BKM19-MaizedCrisler(019).jpg</Path>
+    <Path>../Assets/Media/MPhotos/BKM19-MaizedCrisler(019).jpg</Path>
     <Name>BKM19-MaizedCrisler(019).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -988,7 +988,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_FallMisc21_071.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_FallMisc21_071.jpg</Path>
     <Name>Stock_FallMisc21_071.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1000,7 +1000,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/LSA-BldgExtn20(54).jpg</Path>
+    <Path>../Assets/Media/MPhotos/LSA-BldgExtn20(54).jpg</Path>
     <Name>LSA-BldgExtn20(54).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1013,7 +1013,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials_eb(006).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials_eb(006).jpg</Path>
     <Name>CampusAerials_eb(006).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -1025,7 +1025,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/1stDayWntrSmstr21(100).jpg</Path>
+    <Path>../Assets/Media/MPhotos/1stDayWntrSmstr21(100).jpg</Path>
     <Name>1stDayWntrSmstr21(100).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1038,7 +1038,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_SpringCampus_032.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_SpringCampus_032.jpg</Path>
     <Name>Stock_SpringCampus_032.jpg</Name>
     <Metadata>
       <XResolution>300.0</XResolution>
@@ -1047,7 +1047,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CovidCampusStockApr20(26).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CovidCampusStockApr20(26).jpg</Path>
     <Name>CovidCampusStockApr20(26).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1060,7 +1060,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMCampusMiscStock17(032).jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMCampusMiscStock17(032).jpg</Path>
     <Name>UMCampusMiscStock17(032).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1073,7 +1073,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMStockMisc2Dec21_008.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMStockMisc2Dec21_008.jpg</Path>
     <Name>UMStockMisc2Dec21_008.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1085,7 +1085,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/SOM19-FGC(100).jpg</Path>
+    <Path>../Assets/Media/MPhotos/SOM19-FGC(100).jpg</Path>
     <Name>SOM19-FGC(100).jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1099,7 +1099,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/OnoInauguration_0457.jpg</Path>
+    <Path>../Assets/Media/MPhotos/OnoInauguration_0457.jpg</Path>
     <Name>OnoInauguration_0457.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1112,7 +1112,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/CampusAerials20(327).jpg</Path>
+    <Path>../Assets/Media/MPhotos/CampusAerials20(327).jpg</Path>
     <Name>CampusAerials20(327).jpg</Name>
     <Metadata>
       <Make>DJI</Make>
@@ -1124,7 +1124,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/Stock_FallMisc21_117.jpg</Path>
+    <Path>../Assets/Media/MPhotos/Stock_FallMisc21_117.jpg</Path>
     <Name>Stock_FallMisc21_117.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>
@@ -1136,7 +1136,7 @@
   </Image>
 
   <Image>
-    <Path>assets/MPhotos/UMStockMisc2Dec21_009.jpg</Path>
+    <Path>../Assets/Media/MPhotos/UMStockMisc2Dec21_009.jpg</Path>
     <Name>UMStockMisc2Dec21_009.jpg</Name>
     <Metadata>
       <Make>NIKON CORPORATION</Make>

@@ -657,7 +657,7 @@ nav {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url("assets/MPhotos/Aerials/2020_310.jpg");
+  background-image: url("../Assets/Media/MPhotos/Aerials/2020_310.jpg");
   color: #fff;
   text-align: center;
   padding: 2rem;
@@ -1082,7 +1082,7 @@ footer a[href]:hover {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url("assets/MPhotos/DarylMBestof22(024).jpg");
+  background-image: url("../Assets/Media/MPhotos/DarylMBestof22(024).jpg");
   color: #fff;
   text-align: center;
   padding: 2rem;
