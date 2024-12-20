@@ -172,9 +172,10 @@ nav {
 
 /* Styles for the group selector dropdown menu */
 .group-selector-menu {
-  position: fixed;
-  top: 67px;
-  right: 2rem;
+  position: absolute;
+  top: 30px;
+  left: -220px;
+  transform: translate(-50%, 0) scale(0);
   background: #fff;
   color: #00274C;
   padding: 1.5rem;
@@ -182,13 +183,29 @@ nav {
   z-index: 1000;
   width: calc(5 * 218px + 4 * 1rem);
   min-height: 300px;
-  display: none;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
   font-size: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: calc(100% - 264px) +10px;
+}
+
+/* Active state for menu */
+.group-selector-menu.active {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  pointer-events: auto;
+}
+
+.group-selector-menu.active::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
 
 /* Header within the group selector menu */
@@ -247,11 +264,11 @@ nav {
   content: '';
   position: absolute;
   top: -15px;
-  left: 50%;
-  transform: translateX(+306.5px);
+  right: +249px;
   border-width: 7.5px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Group selector images */
@@ -1568,37 +1585,6 @@ input:checked+.slider::before {
 
   .current-group {
     display: none;
-  }
-
-  .group-selector-menu {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    background: transparent;
-    padding: 0;
-    display: none !important;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .group-items {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .group-items a {
-    width: auto;
-  }
-
-  .group-selector-menu a {
-    flex-direction: column;
-  }
-
-  .group-selector-menu img {
-    width: 40px;
-    height: 40px;
   }
 
   /* Responsive styles for hero content */
