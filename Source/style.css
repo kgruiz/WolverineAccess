@@ -1,9 +1,7 @@
 /* style.css */
-
 /* ===========================================================
-   Reset and Base Styles
-   =========================================================== */
-
+ Reset and Base Styles
+ =========================================================== */
 /* Reset styles for common elements to provide a consistent baseline */
 header,
 nav,
@@ -41,11 +39,9 @@ a {
 }
 
 /* ===========================================================
-   Navigation and Related Styles
-   =========================================================== */
-
+ Navigation and Related Styles
+ =========================================================== */
 /* Navigation Styles */
-
 /* Styles for the navigation bar */
 nav {
   background: #00274C;
@@ -145,7 +141,6 @@ nav {
 }
 
 /* Group Selector Styles */
-
 /* Container for the group selector in navigation */
 .group-selector {
   display: inline-flex;
@@ -277,7 +272,6 @@ nav {
 }
 
 /* --- Favorites Menu Styles --- */
-
 /* Container for the favorites icon in navigation */
 .favorites-icon {
   display: inline-flex;
@@ -411,7 +405,6 @@ nav {
 }
 
 /* --- Notifications Menu Styles --- */
-
 /* Container for the notifications icon in navigation */
 .notifications-icon {
   display: inline-flex;
@@ -516,7 +509,6 @@ nav {
 }
 
 /* --- Sign In Menu Styles --- */
-
 /* Container for the sign-in button/profile picture */
 .sign-in-container {
   display: inline-flex;
@@ -619,7 +611,6 @@ nav {
 }
 
 /* --- Styles for Sign-In Button when Signed In --- */
-
 /* Profile picture button when user is signed in */
 .sign-in-profile-pic-button {
   width: 25px;
@@ -643,9 +634,8 @@ nav {
 }
 
 /* ===========================================================
-   Hero Section Styles
-   =========================================================== */
-
+ Hero Section Styles
+ =========================================================== */
 /* Styles for the hero section at the top of the page */
 .hero-section {
   position: relative;
@@ -726,7 +716,6 @@ nav {
 }
 
 /* Hero Pinned Box styling */
-
 /* Container for the pinned box in the hero section */
 .hero-pinned-box {
   background: rgba(0, 0, 0, 0.5);
@@ -745,9 +734,8 @@ nav {
 }
 
 /* ===========================================================
-   Content Section Styles
-   =========================================================== */
-
+ Content Section Styles
+ =========================================================== */
 /* Styles for the main content section */
 .content-section {
   padding: 2rem 1rem;
@@ -765,11 +753,9 @@ nav {
 }
 
 /* ===========================================================
-   Cards Container and Card Styles
-   =========================================================== */
-
+ Cards Container and Card Styles
+ =========================================================== */
 /* Cards Container Styles */
-
 /* Container for cards */
 .cards-container {
   display: flex;
@@ -862,9 +848,8 @@ nav {
 }
 
 /* ===========================================================
-   Footer Styles
-   =========================================================== */
-
+ Footer Styles
+ =========================================================== */
 /* Styles for the footer */
 footer {
   background: #1A1A1A;
@@ -948,9 +933,8 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Back to Top and Home Button Styles
-   =========================================================== */
-
+ Back to Top and Home Button Styles
+ =========================================================== */
 /* Styles for the back to top button */
 .back-to-top {
   text-align: center;
@@ -986,9 +970,8 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Show More/Less Button Styles
-   =========================================================== */
-
+ Show More/Less Button Styles
+ =========================================================== */
 /* Styles for the "Show More" button */
 #show-more {
   margin-top: 1rem;
@@ -1031,9 +1014,8 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Search Suggestions Styles
-   =========================================================== */
-
+ Search Suggestions Styles
+ =========================================================== */
 /* Container for search suggestions */
 .search-suggestions {
   position: absolute;
@@ -1066,11 +1048,9 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Not Implemented Page Styles
-   =========================================================== */
-
+ Not Implemented Page Styles
+ =========================================================== */
 /* --- Not Implemented Page Styles --- */
-
 /* Container for the Not Implemented page */
 .not-implemented-container {
   position: relative;
@@ -1138,7 +1118,6 @@ footer a[href]:hover {
 }
 
 /* --- Full Search Area Styles --- */
-
 /* Container for the full search area */
 .full-search-area {
   position: relative;
@@ -1173,7 +1152,6 @@ footer a[href]:hover {
 }
 
 /* --- Full Search Form Styles --- */
-
 /* Styles for the full search form */
 .full-search-form {
   margin-top: 1.5rem;
@@ -1215,11 +1193,9 @@ footer a[href]:hover {
 }
 
 /* ===========================================================
-   Sort Type Selector Styles
-   =========================================================== */
-
+ Sort Type Selector Styles
+ =========================================================== */
 /* Sort Type Selector Styles */
-
 /* Hide sort type selector by default */
 .sort-type-selector {
   display: none;
@@ -1257,11 +1233,9 @@ footer a[href]:hover {
 
 /* Existing styles */
 /* ... */
-
 /* ===========================================================
-   Modal Styles
-   =========================================================== */
-
+ Modal Styles
+ =========================================================== */
 /* The Modal (background) */
 .modal {
   display: none;
@@ -1370,11 +1344,9 @@ input:checked+.slider::before {
   gap: 10px;
 }
 
-
 /* ===========================================================
-   Responsive Styles
-   =========================================================== */
-
+ Responsive Styles
+ =========================================================== */
 @media (max-width: 768px) {
 
   /* Responsive styles for navigation */

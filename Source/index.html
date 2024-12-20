@@ -6,52 +6,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Wolverine Access" />
-
   <!-- Preconnect to Google Fonts for performance -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-
   <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
-
   <!-- JavaScript file -->
   <script src="script.js" defer></script>
-
   <!-- Favicon -->
   <link rel="icon" href="../Assets/Media/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" type="image/png" />
-
   <title>Wolverine Access</title>
 </head>
 
 <body>
-
   <header>
     <nav>
       <div class="nav-container">
-
         <div class="left-section">
           <a href="index.html" aria-label="Home" class="logo-link">
             <img src="../Assets/Media/CurrentIcons/WolverineAccessLogo.png" alt="Wolverine Access Logo" />
           </a>
-
           <form class="search-form" onsubmit="return false;">
             <input type="search" name="q" placeholder="Search Wolverine Access" aria-label="Search Wolverine Access"
               class="search-input" id="headerSearchInput" />
-
             <button type="button" class="search-button">
               <span class="material-icons">search</span>
             </button>
-
             <div class="search-suggestions" id="headerSearchSuggestions"></div>
           </form>
         </div>
-
         <div class="right-section">
           <ul class="nav-icons">
-
             <!-- Group Selector -->
             <li class="group-selector" id="group-selector">
               <a href="#" aria-label="Categories" class="group-selector-toggle" id="group-selector-toggle">
@@ -63,7 +50,6 @@
                   <h3>Roles</h3>
                   <hr />
                 </div>
-
                 <div class="group-items">
                   <a href="#" data-group="Student">
                     <img src="../Assets/Media/MPhotos/Seasons/Summer/2021_110.jpg" alt="Student Icon" />
@@ -88,7 +74,6 @@
                 </div>
               </div>
             </li>
-
             <!-- Favorites Icon -->
             <li class="favorites-icon" id="favorites-icon">
               <a href="#" aria-label="Favorites" class="favorites-menu-toggle" id="favorites-menu-toggle">
@@ -99,12 +84,10 @@
                   <h3>Favorites</h3>
                   <hr />
                 </div>
-
                 <div class="favorite-items">
                   <section class="content-section" aria-label="Favorite Links">
                     <div class="cards-container" id="favorite-links-container"></div>
                   </section>
-
                   <section class="manage-favorites-button" id="manage-favorites-button">
                     <button id="manage-favorites" class="manage-favorites"
                       onclick="window.location.href='not-implemented.html'">Manage All</button>
@@ -112,14 +95,12 @@
                 </div>
               </div>
             </li>
-
             <!-- All Links Icon -->
             <li class="all-links-icon" id="all-links-icon">
               <a href="all-links-full.html" aria-label="All Links">
                 <span class="material-icons">apps</span>
               </a>
             </li>
-
             <!-- Notifications Icon -->
             <li class="notifications-icon" id="notifications-icon">
               <a href="#" aria-label="Notifications" class="notifications-menu-toggle" id="notifications-menu-toggle">
@@ -135,7 +116,6 @@
                 </div>
               </div>
             </li>
-
             <!-- Home Icon -->
             <li class="home-icon" id="home-icon">
               <a href="index.html" aria-label="Home">
@@ -143,14 +123,12 @@
               </a>
             </li>
           </ul>
-
           <!-- Sign In Button -->
           <div class="sign-in-container" id="sign-in-container">
             <button class="sign-in-button" type="button" id="sign-in-menu-toggle">
               <span class="material-icons">account_circle</span>
               Sign In
             </button>
-
             <div class="sign-in-menu" id="sign-in-menu">
               <div class="sign-in-menu-header">
                 <div class="sign-in-profile-pic" id="sign-in-profile-pic"></div>
@@ -161,17 +139,13 @@
               <div class="sign-in-items" id="sign-in-items"></div>
             </div>
           </div>
-
         </div>
-
       </div>
     </nav>
-
     <div id="preferences-menu" class="modal">
       <div class="preferences-menu-content">
         <span class="preferences-menu-close-button" id="preferences-menu-close-button">&times;</span>
         <h2>Preferences</h2>
-
         <div class="preference-item">
           <label for="toggleFavoritesCheckbox" class="switch">
             <input type="checkbox" id="toggleFavoritesCheckbox" checked />
@@ -181,56 +155,42 @@
         </div>
       </div>
     </div>
-
   </header>
-
   <main>
-
     <section class="hero-section parallax" aria-label="Wolverine Access">
       <div class="hero-content">
         <img src="../Assets/Media/HorizontalLogoKit/U-M_Logo-Horizontal-Hex-reversed.png"
           alt="University of Michigan Logo" />
         <h1>Wolverine Access</h1>
-
         <form class="hero-search-form" onsubmit="return false;">
           <input type="search" name="q" placeholder="Search (E.g., Canvas, paycheck, class schedule)"
             aria-label="Search (E.g., Canvas, paycheck, class schedule)" class="search-input" id="heroSearchInput" />
-
           <button type="button" class="search-button">
             <span class="material-icons">search</span>
           </button>
-
           <div class="search-suggestions" id="heroSearchSuggestions"></div>
         </form>
       </div>
-
       <div class="hero-pinned-box">
         <section class="hero-pinned-section" aria-label="Pinned Links">
           <h2>Your Pinned Links</h2>
           <div class="cards-container" id="hero-pinned-container"></div>
         </section>
       </div>
-
     </section>
-
     <section class="content-section" aria-label="Most Popular This Week">
       <h2>Most Popular This Week</h2>
       <div class="cards-container" id="most-popular-container"></div>
     </section>
-
     <section class="content-section" aria-label="All Links">
       <h2>All Links</h2>
       <div class="cards-container all-links-expandable" id="all-links-container"></div>
-
       <button id="show-more">Show More</button>
-
       <button id="show-less" class="hidden">Show Less</button>
-
       <section>
         <a id="show-all" class="hidden" href="all-links-full.html">Show All</a>
       </section>
     </section>
-
     <section class="content-section" aria-label="Information Technology Services">
       <h2>Information Technology Services</h2>
       <div class="cards-container">
@@ -252,9 +212,7 @@
         </a>
       </div>
     </section>
-
   </main>
-
   <footer>
     <div class="footer-top">
       <div class="footer-logo-section">
@@ -263,11 +221,9 @@
             alt="University of Michigan Official Logo" />
         </a>
       </div>
-
       <div class="footer-info-section">
         <h3><a href="https://its.umich.edu/">Information and Technology Services</a></h3>
         <div class="footer-columns">
-
           <div class="footer-column">
             <h4>Get Help</h4>
             <p><a href="https://documentation.its.umich.edu/node/2322">Wolverine Access Help Center</a></p>
@@ -276,7 +232,6 @@
                 href="https://chatsupport.it.umich.edu/">chatsupport.it.umich.edu</a></p>
             <p><span class="material-icons">call</span><a href="tel:1-734-764-4357">734-764-HELP (764-4357)</a></p>
           </div>
-
           <div class="footer-column">
             <h4>System Information</h4>
             <p><a href="https://its.umich.edu/help/wolverine-access-hours">Administrative Systems Availability (Hours of
@@ -284,33 +239,27 @@
             <p><a href="https://status.its.umich.edu/">ITS Service Status</a></p>
             <p><a href="https://accessibility.umich.edu/wolverineaccess-accessibility">Accessibility Information</a></p>
           </div>
-
           <div class="footer-column">
             <h4>Give Feedback</h4>
             <p><a href="https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form">Contact the
                 Wolverine Access Team</a></p>
           </div>
-
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>&copy; 2024 <a href="http://regents.umich.edu/">The Regents of the University of Michigan</a> and <a
           href="https://github.com/kgruiz">Kaden Gruizenga</a></p>
     </div>
   </footer>
-
   <!-- Back to Top Button -->
   <button class="back-to-top" aria-label="Back to Top">
     <span class="material-icons">north</span>
   </button>
-
   <!-- Home Button -->
   <button class="home-button" aria-label="Home">
     <span class="material-icons">home</span>
   </button>
-
 </body>
 
 </html>

@@ -11,6 +11,24 @@ let userName = "";
 let userEmail = "";
 
 // ==============================
+// SVG Icons for Favorites
+// ==============================
+const filledStarSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+viewBox="0 0 24 24"><path fill="#FFCB05" d="M12 17.27L18.18 21L16.54 14.14
+L22 9.24L14.81 8.63L12 2L9.19
+8.63L2 9.24L7.45 14.14L5.82 21
+L12 17.27Z"/></svg>`;
+
+const outlinedStarSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+viewBox="0 0 24 24"><path fill="currentColor" d="M22 9.24L14.81 8.63L12 2L9.19
+8.63L2 9.24L7.45 14.14L5.82 21L12
+17.27L18.18 21L16.54 14.14L22
+9.24ZM12 15.4L8.24 17.67L9.23
+13.39L5.9 10.63L10.29 10.13L12
+6.1L13.71 10.13L18.1 10.63L14.77
+13.39L15.77 17.67L12 15.4Z"/></svg>`;
+
+// ==============================
 // Favorites Handling
 // ==============================
 /**
@@ -80,9 +98,7 @@ function renderFavoritesInContainer(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = "";
-
   const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
-
   if (favoritedLinks.length === 0) {
     const noFavorites = document.createElement("p");
     noFavorites.textContent = "No pinned links yet.";
@@ -117,12 +133,12 @@ function updateAllCardStars() {
     const star = card.querySelector(".favorite-star");
     if (!star) return;
     if (isLinkFavorited(link)) {
-      star.textContent = "star";
-      star.classList.add("favorited");
+      // Set the filled star icon
+      star.innerHTML = filledStarSVG;
       card.classList.add("favorited-card");
     } else {
-      star.textContent = "star_border";
-      star.classList.remove("favorited");
+      // Set the outlined star icon
+      star.innerHTML = outlinedStarSVG;
       card.classList.remove("favorited-card");
     }
   });
@@ -242,20 +258,17 @@ function initializePage() {
     function RenderAllLinksFull() {
       allLinksFullContainer.innerHTML = "";
       let linksToShow = [...linksData];
-
       if (sortType === "rank") {
         linksToShow.sort((a, b) => b.currentRating - a.currentRating);
       } else if (sortType === "alphabetical") {
         linksToShow.sort((a, b) => a.title.localeCompare(b.title));
       }
-
       if (searchTerm.trim() !== "") {
         linksToShow = linksToShow.filter(link =>
         ((link.title && link.title.toLowerCase().includes(searchTerm)) ||
           (link.applicationName && link.applicationName.toLowerCase().includes(searchTerm)))
         );
       }
-
       if (linksToShow.length === 0) {
         const noResults = document.createElement("p");
         noResults.textContent = "No results found.";
@@ -324,6 +337,7 @@ function initializePage() {
   // Setup Search Suggestions
   const headerInput = document.getElementById("headerSearchInput");
   const headerSuggestions = document.getElementById("headerSearchSuggestions");
+
   const heroInput = document.getElementById("heroSearchInput");
   const heroSuggestions = document.getElementById("heroSearchSuggestions");
 
@@ -381,7 +395,6 @@ function CreateCard(link) {
   card.className = "card";
   card.href = link.href;
   card.dataset.uniqueKey = link.uniqueKey;
-
   if (link.openInNewWindow) {
     card.target = "_blank";
     card.rel = "noopener";
@@ -402,39 +415,35 @@ function CreateCard(link) {
   card.appendChild(img);
 
   const star = document.createElement("span");
-  star.className = "material-icons favorite-star";
+  star.className = "favorite-star";
   if (isLinkFavorited(link)) {
-    star.textContent = "star";
+    // Set filled star icon
+    star.innerHTML = filledStarSVG;
     star.classList.add("favorited");
     card.classList.add("favorited-card");
   } else {
-    star.textContent = "star_border";
+    // Set the outlined star icon
+    star.innerHTML = outlinedStarSVG;
   }
   card.appendChild(star);
 
+  // Add hover effect for the star
   star.addEventListener("mouseover", () => {
     star.style.transform = "scale(1.1)";
-    star.style.color = "#FFCB05";
+    star.style.color = "#FFCB05"; // Optional: Apply a color highlight
   });
-
   star.addEventListener("mouseout", () => {
     star.style.transform = "scale(1)";
-    star.style.color = "#FFCB05";
-    if (!isLinkFavorited(link)) {
-      star.style.color = "";
-    }
+    star.style.color = ""; // Reset to default color
   });
-
   star.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent card click
-
     if (isLinkFavorited(link)) {
       removeFavorite(link);
     } else {
       addFavorite(link);
     }
-
     refreshUIAfterFavoriteChange();
   });
 
@@ -446,7 +455,6 @@ function CreateCard(link) {
       favoriteStar.style.display = "block";
     }
   });
-
   card.addEventListener("mouseout", () => {
     card.style.transform = "translateY(0px)";
     const favoriteStar = card.querySelector(".favorite-star");
@@ -484,10 +492,12 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
       hideSuggestions();
       return;
     }
+
     const filtered = linksData.filter(link =>
       (link.title && link.title.toLowerCase().includes(query)) ||
       (link.applicationName && link.applicationName.toLowerCase().includes(query))
     );
+
     buildSuggestions(query, filtered.slice(0, 5));
   }
 
@@ -517,7 +527,6 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
     });
 
     suggestionsContainer.classList.add("active");
-
     if (suggestionItems.length > 0) {
       currentIndex = 0;
       highlightCurrentItem();
@@ -533,9 +542,7 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
 
   function onKeyDown(e) {
     if (!suggestionsContainer.classList.contains("active")) return;
-
     const maxIndex = suggestionItems.length - 1;
-
     if (e.key === "ArrowDown") {
       e.preventDefault();
       currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
@@ -616,7 +623,6 @@ function initializeSignInMenu() {
       <div class="sign-in-profile-pic-button">${initials}</div>
       <span class="user-name">${userName}</span>
     `;
-
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signOut()">Sign out</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
@@ -636,7 +642,6 @@ function initializeSignInMenu() {
       <span class="material-icons">account_circle</span>
       Sign In
     `;
-
     signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signIn()">Sign in</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
@@ -698,7 +703,6 @@ function setupHoverMenu(containerId, menuId) {
   const container = document.getElementById(containerId);
   const menu = document.getElementById(menuId);
   let clickedOpen = false;
-
   if (!container || !menu) return;
 
   container.addEventListener("mouseover", () => {
@@ -706,19 +710,16 @@ function setupHoverMenu(containerId, menuId) {
       menu.style.display = "flex";
     }
   });
-
   container.addEventListener("mouseout", () => {
     if (!clickedOpen) {
       menu.style.display = "none";
     }
   });
-
   container.addEventListener("click", (e) => {
     e.preventDefault();
     clickedOpen = !clickedOpen;
     menu.style.display = clickedOpen ? "flex" : "none";
   });
-
   document.addEventListener("click", (event) => {
     if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
       clickedOpen = false;
@@ -921,11 +922,13 @@ window.addEventListener("keydown", function (event) {
 // Get references to DOM elements for favorites toggle
 const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
 const heroPinnedBox = document.querySelector(".hero-pinned-box");
+
 // Load and apply saved favorites preference
 const savedPreference = localStorage.getItem("showFavorites");
 const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
 toggleFavoritesCheckbox.checked = showFavorites;
 heroPinnedBox.style.display = showFavorites ? "block" : "none";
+
 // Event listener for favorites preference change
 toggleFavoritesCheckbox.addEventListener("change", () => {
   const showFavorites = toggleFavoritesCheckbox.checked;
