@@ -1,9 +1,9 @@
-# WolverineAccess _(wolverine-access)_
+# WolverineAccess
 
 ![Wolverine Access Banner](../Assets/Media/WolverineAccessBanner.png)
 
-![GitHub Issues](https://img.shields.io/github/issues/kgruiz/wolverine-access.svg)
-![GitHub Stars](https://img.shields.io/github/stars/kgruiz/wolverine-access.svg)
+![GitHub Issues](https://img.shields.io/github/issues/kgruiz/WolverineAccess.svg)
+![GitHub Stars](https://img.shields.io/github/stars/kgruiz/WolverineAccess.svg)
 
 WolverineAccess is a modern, user-friendly portal designed to enhance the digital experience for students, faculty, and staff by providing a seamless and efficient interface inspired by the University of Michigan's Wolverine Access.
 
