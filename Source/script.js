@@ -31,16 +31,11 @@ viewBox="0 0 24 24"><path fill="currentColor" d="M22 9.24L14.81 8.63L12 2L9.19
 // ==============================
 // Favorites Handling
 // ==============================
+
 /**
  * Load favorite statuses from localStorage and initialize favorites.
  */
 function loadFavorites() {
-  linksData.forEach(link => {
-    if (favoriteStatuses[link.uniqueKey] === undefined) {
-      favoriteStatuses[link.uniqueKey] = link.favorite || false;
-    }
-  });
-
   const storedFavorites = localStorage.getItem(FAVORITES_KEY);
   if (storedFavorites) {
     try {
@@ -50,6 +45,14 @@ function loadFavorites() {
       console.error("Failed to parse favorite links from localStorage.", e);
     }
   }
+
+  // Initialize favoriteStatuses based on linksData if needed
+  linksData.forEach(link => {
+    if (favoriteStatuses[link.uniqueKey] === undefined) {
+      favoriteStatuses[link.uniqueKey] = link.favorite || false;
+    }
+  });
+
   saveFavorites();
 }
 
@@ -90,66 +93,213 @@ function removeFavorite(link) {
 // ==============================
 // UI Rendering Functions
 // ==============================
+
 /**
- * Render favorited links in a specified container.
- * @param {string} containerId - The ID of the container element.
+ * Create a card element for a given link.
+ * @param {Object} link - The link object.
+ * @returns {HTMLElement} - The card element.
  */
-function renderFavoritesInContainer(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = "";
-  const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
-  if (favoritedLinks.length === 0) {
-    const noFavorites = document.createElement("p");
-    noFavorites.textContent = "No pinned links yet.";
-    container.appendChild(noFavorites);
-  } else {
-    favoritedLinks.slice(0, 4).forEach(link => {
-      const card = CreateCard(link);
-      container.appendChild(card);
-    });
+function CreateCard(link) {
+  const card = document.createElement("a");
+  card.className = "card";
+  card.href = link.href;
+  card.dataset.uniqueKey = link.uniqueKey;
+  if (link.openInNewWindow) {
+    card.target = "_blank";
+    card.rel = "noopener";
   }
-}
 
-/**
- * Update all favorite views across the UI.
- */
-function updateAllFavoritesViews() {
-  // Update favorites nav bar container
-  renderFavoritesInContainer("favorite-links-container");
-  // Update hero pinned container
-  renderFavoritesInContainer("hero-pinned-container");
-}
+  const header = document.createElement("h3");
+  header.textContent = link.title;
+  card.appendChild(header);
 
-/**
- * Update favorite stars on all displayed cards.
- */
-function updateAllCardStars() {
-  const allCards = document.querySelectorAll(".card");
-  allCards.forEach(card => {
-    const uniqueKey = card.dataset.uniqueKey;
-    const link = linksData.find(l => l.uniqueKey === uniqueKey);
-    if (!link) return;
-    const star = card.querySelector(".favorite-star");
-    if (!star) return;
+  const subHeader = document.createElement("p");
+  subHeader.className = "sub-header";
+  subHeader.textContent = link.applicationName;
+  card.appendChild(subHeader);
+
+  const img = document.createElement("img");
+  img.src = link.image;
+  img.alt = link.alt;
+  card.appendChild(img);
+
+  const star = document.createElement("span");
+  star.className = "favorite-star";
+  if (isLinkFavorited(link)) {
+    // Set filled star icon
+    star.innerHTML = filledStarSVG;
+    star.classList.add("favorited");
+    card.classList.add("favorited-card");
+  } else {
+    // Set the outlined star icon
+    star.innerHTML = outlinedStarSVG;
+  }
+  card.appendChild(star);
+
+  // Add hover effect for the star
+  star.addEventListener("mouseover", () => {
+    star.style.transform = "scale(1.1)";
+    star.style.color = "#FFCB05"; // Optional: Apply a color highlight
+  });
+  star.addEventListener("mouseout", () => {
+    if (!isLinkFavorited(link)) {
+      star.style.color = ""; // Reset to default color
+    }
+    star.style.transform = "scale(1)";
+  });
+
+  // Click event for favoriting
+  star.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent card click
+
     if (isLinkFavorited(link)) {
-      // Set the filled star icon
-      star.innerHTML = filledStarSVG;
-      card.classList.add("favorited-card");
-    } else {
-      // Set the outlined star icon
-      star.innerHTML = outlinedStarSVG;
+      // Remove from favorites
+      removeFavorite(link);
+      star.classList.remove("favorited");
       card.classList.remove("favorited-card");
+      // Set to outlined star
+      star.innerHTML = outlinedStarSVG;
+      // Remove card from favorites containers
+      removeCardFromFavoritesContainers(card);
+    } else {
+      // Add to favorites
+      addFavorite(link);
+      star.classList.add("favorited");
+      card.classList.add("favorited-card");
+      // Set to filled star
+      star.innerHTML = filledStarSVG;
+
+      // Trigger fill animation
+      star.classList.add("animate-fill");
+      star.classList.add("effect-shine");
+
+      // Remove the animation class after animation completes
+      star.addEventListener("animationend", () => {
+        star.classList.remove("animate-fill");
+      }, { once: true });
+
+      // Add card to favorites containers
+      addCardToFavoritesContainers(card);
+    }
+
+    // Update the star icon appearance
+    updateStarAppearance(star, link);
+  });
+
+  // Add hover effects to the card
+  card.addEventListener("mouseover", () => {
+    card.style.transform = "translateY(-5px)";
+    const favoriteStar = card.querySelector(".favorite-star");
+    if (favoriteStar) {
+      favoriteStar.style.display = "block";
+    }
+  });
+  card.addEventListener("mouseout", () => {
+    card.style.transform = "translateY(0px)";
+    const favoriteStar = card.querySelector(".favorite-star");
+    if (favoriteStar && !isLinkFavorited(link)) {
+      favoriteStar.style.display = "none";
+    }
+  });
+
+  return card;
+}
+
+/**
+ * Add a card to all favorites containers.
+ * @param {HTMLElement} card - The card element to add.
+ */
+function addCardToFavoritesContainers(card) {
+  const favoriteContainers = [
+    document.getElementById("favorite-links-container"),
+    document.getElementById("hero-pinned-container")
+  ];
+
+  favoriteContainers.forEach(container => {
+    if (container) {
+      // Remove "No pinned links yet." if present
+      const noFavorites = container.querySelector("p");
+      if (noFavorites && noFavorites.textContent === "No pinned links yet.") {
+        container.removeChild(noFavorites);
+      }
+
+      // Check if the card is already present to avoid duplicates
+      if (!container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`)) {
+        const newCard = CreateCard(linksData.find(l => l.uniqueKey === card.dataset.uniqueKey));
+        container.appendChild(newCard);
+      }
     }
   });
 }
 
 /**
- * Refresh UI after a favorite status change.
+ * Remove a card from all favorites containers.
+ * @param {HTMLElement} card - The card element to remove.
  */
-function refreshUIAfterFavoriteChange() {
-  updateAllFavoritesViews();
-  updateAllCardStars();
+function removeCardFromFavoritesContainers(card) {
+  const favoriteContainers = [
+    document.getElementById("favorite-links-container"),
+    document.getElementById("hero-pinned-container")
+  ];
+
+  favoriteContainers.forEach(container => {
+    if (container) {
+      const cardToRemove = container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
+      if (cardToRemove) {
+        container.removeChild(cardToRemove);
+      }
+
+      // If no favorites left, show "No pinned links yet."
+      if (container.querySelectorAll(".card").length === 0) {
+        const noFavorites = document.createElement("p");
+        noFavorites.textContent = "No pinned links yet.";
+        container.appendChild(noFavorites);
+      }
+    }
+  });
+}
+
+/**
+ * Update the star icon's appearance based on favorite status.
+ * @param {HTMLElement} star - The star element.
+ * @param {Object} link - The link object.
+ */
+function updateStarAppearance(star, link) {
+  if (isLinkFavorited(link)) {
+    star.innerHTML = filledStarSVG;
+    star.classList.add("favorited");
+  } else {
+    star.innerHTML = outlinedStarSVG;
+    star.classList.remove("favorited");
+  }
+}
+
+/**
+ * Populate favorites containers based on current favorite statuses.
+ */
+function populateFavoritesContainers() {
+  const favoriteContainers = [
+    document.getElementById("favorite-links-container"),
+    document.getElementById("hero-pinned-container")
+  ];
+
+  favoriteContainers.forEach(container => {
+    if (container) {
+      container.innerHTML = "";
+      const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
+      if (favoritedLinks.length === 0) {
+        const noFavorites = document.createElement("p");
+        noFavorites.textContent = "No pinned links yet.";
+        container.appendChild(noFavorites);
+      } else {
+        favoritedLinks.slice(0, 4).forEach(link => {
+          const card = CreateCard(link);
+          container.appendChild(card);
+        });
+      }
+    }
+  });
 }
 
 // ==============================
@@ -242,8 +392,7 @@ function initializePage() {
   }
 
   // Initialize Favorites in Hero and Nav
-  updateAllFavoritesViews();
-  updateAllCardStars(); // Ensure all cards reflect current favorite state
+  populateFavoritesContainers();
 
   // All Links Full Page
   const allLinksFullContainer = document.getElementById("all-links-full-container");
@@ -279,7 +428,7 @@ function initializePage() {
           allLinksFullContainer.append(card);
         });
       }
-      updateAllCardStars();
+      // No need to call updateAllCardStars
       initializeCardHoverEffects(); // Re-initialize hover effects
     }
 
@@ -382,121 +531,10 @@ function initializePage() {
   initializeFavoritesIconHoverEffects();
 }
 
-
-// ==============================
-/**
- * Create a card element for a given link.
- * @param {Object} link - The link object.
- * @returns {HTMLElement} - The card element.
- */
-function CreateCard(link) {
-  const card = document.createElement("a");
-  card.className = "card";
-  card.href = link.href;
-  card.dataset.uniqueKey = link.uniqueKey;
-  if (link.openInNewWindow) {
-    card.target = "_blank";
-    card.rel = "noopener";
-  }
-
-  const header = document.createElement("h3");
-  header.textContent = link.title;
-  card.appendChild(header);
-
-  const subHeader = document.createElement("p");
-  subHeader.className = "sub-header";
-  subHeader.textContent = link.applicationName;
-  card.appendChild(subHeader);
-
-  const img = document.createElement("img");
-  img.src = link.image;
-  img.alt = link.alt;
-  card.appendChild(img);
-
-  const star = document.createElement("span");
-  star.className = "favorite-star";
-  if (isLinkFavorited(link)) {
-    // Set filled star icon
-    star.innerHTML = filledStarSVG;
-    star.classList.add("favorited");
-    card.classList.add("favorited-card");
-  } else {
-    // Set the outlined star icon
-    star.innerHTML = outlinedStarSVG;
-  }
-  card.appendChild(star);
-
-  // Add hover effect for the star
-  star.addEventListener("mouseover", () => {
-    star.style.transform = "scale(1.1)";
-    star.style.color = "#FFCB05"; // Optional: Apply a color highlight
-  });
-  star.addEventListener("mouseout", () => {
-    if (!isLinkFavorited(link)) {
-      star.style.color = ""; // Reset to default color
-    }
-    star.style.transform = "scale(1)";
-  });
-
-  // Click event for favoriting
-  star.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent card click
-
-    if (isLinkFavorited(link)) {
-      // Remove from favorites
-      removeFavorite(link);
-      star.classList.remove("favorited");
-      card.classList.remove("favorited-card");
-      // Set to outlined star
-      star.innerHTML = outlinedStarSVG;
-    } else {
-      // Add to favorites
-      addFavorite(link);
-      star.classList.add("favorited");
-      card.classList.add("favorited-card");
-      // Set to filled star
-      star.innerHTML = filledStarSVG;
-
-      // Trigger fill animation
-      star.classList.add("animate-fill");
-
-      star.classList.add("effect-shine");
-
-
-      // Remove the animation class after animation completes
-      star.addEventListener("animationend", () => {
-        star.classList.remove("animate-fill");
-      }, { once: true });
-    }
-
-    refreshUIAfterFavoriteChange();
-  });
-
-  // Add hover effects to the card
-  card.addEventListener("mouseover", () => {
-    card.style.transform = "translateY(-5px)";
-    const favoriteStar = card.querySelector(".favorite-star");
-    if (favoriteStar) {
-      favoriteStar.style.display = "block";
-    }
-  });
-  card.addEventListener("mouseout", () => {
-    card.style.transform = "translateY(0px)";
-    const favoriteStar = card.querySelector(".favorite-star");
-    if (favoriteStar && !isLinkFavorited(link)) {
-      favoriteStar.style.display = "none";
-    }
-  });
-
-  return card;
-}
-
-
-
 // ==============================
 // Search Suggestions Setup
 // ==============================
+
 /**
  * Setup search suggestions for an input element.
  * @param {HTMLElement} inputElement - The search input element.
@@ -624,6 +662,7 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
 // ==============================
 // Sign-In Menu Initialization
 // ==============================
+
 /**
  * Initialize the sign-in menu based on user authentication status.
  */
@@ -634,7 +673,7 @@ function initializeSignInMenu() {
   const signInEmail = document.getElementById("sign-in-email");
   const signInProfilePic = document.getElementById("sign-in-profile-pic");
   const signInItems = document.getElementById("sign-in-items");
-  const signInSeparator = document.getElementById("sign-in-separator"); // Added ID to <hr />
+  const signInSeparator = document.getElementById("sign-in-separator"); // Ensure your <hr /> has this ID
 
   if (signedIn) {
     const initials = userName.split(' ').map(n => n[0].toUpperCase()).join('');
@@ -712,6 +751,7 @@ function signOut() {
 // ==============================
 // Hover/Click Menu Logic
 // ==============================
+
 /**
  * Initialize hover menus for various UI components.
  */
@@ -759,6 +799,7 @@ function setupHoverMenu(containerId, menuId) {
 // ==============================
 // Button Hover and Click Effects
 // ==============================
+
 /**
  * Initialize hover and click effects for buttons.
  */
@@ -786,6 +827,7 @@ function initializeButtonEffects() {
 // ==============================
 // Card Hover Effects
 // ==============================
+
 /**
  * Initialize hover effects for cards.
  */
@@ -812,6 +854,7 @@ function initializeCardHoverEffects() {
 // ==============================
 // Navigation Icons Hover Effects
 // ==============================
+
 /**
  * Initialize hover effects for navigation icons.
  */
@@ -830,6 +873,7 @@ function initializeNavIconsHoverEffects() {
 // ==============================
 // Favorites and Other Icons Hover Effects
 // ==============================
+
 /**
  * Initialize hover effects for favorites and other icons.
  */
@@ -860,6 +904,7 @@ function initializeFavoritesIconHoverEffects() {
 // ==============================
 // Switch and Toggle Effects
 // ==============================
+
 /**
  * Initialize switch and toggle effects.
  */
@@ -882,6 +927,7 @@ function initializeSwitchToggleEffects() {
 // ==============================
 // Modal Functionality
 // ==============================
+
 // Get modal elements
 const preferencesMenu = document.getElementById("preferences-menu");
 const preferencesMenuCloseButton = document.getElementById("preferences-menu-close-button");
@@ -947,6 +993,7 @@ window.addEventListener("keydown", function (event) {
 // ==============================
 // Favorites Preference Toggle
 // ==============================
+
 // Get references to DOM elements for favorites toggle
 const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
 const heroPinnedBox = document.querySelector(".hero-pinned-box");
