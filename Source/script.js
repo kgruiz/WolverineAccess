@@ -433,13 +433,17 @@ function CreateCard(link) {
     star.style.color = "#FFCB05"; // Optional: Apply a color highlight
   });
   star.addEventListener("mouseout", () => {
+    if (!isLinkFavorited(link)) {
+      star.style.color = ""; // Reset to default color
+    }
     star.style.transform = "scale(1)";
-    star.style.color = ""; // Reset to default color
+
   });
   star.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent card click
     if (isLinkFavorited(link)) {
+      star.style.color = ""; // Reset to default color
       removeFavorite(link);
     } else {
       addFavorite(link);
