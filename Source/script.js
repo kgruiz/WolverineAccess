@@ -218,11 +218,14 @@ function CreateFavoriteCard(link) {
   img.alt = link.alt;
   card.appendChild(img);
 
+  card.style.transition = "transform 0.3s ease";
+
   // Add the options icon (three dots)
   const optionsIcon = document.createElement("span");
   optionsIcon.className = "options-icon";
   optionsIcon.innerHTML = optionsIconSVG;
   card.appendChild(optionsIcon);
+  optionsIcon.style.display = "none";
 
   // Create the options menu
   const optionsMenu = document.createElement("div");
@@ -274,9 +277,12 @@ function CreateFavoriteCard(link) {
 
   // Add hover effects to the card
   card.addEventListener("mouseover", () => {
+    optionsIcon.style.display = "block";
     card.style.transform = "translateY(-5px)";
   });
   card.addEventListener("mouseout", () => {
+    optionsIcon.style.display = "none";
+    optionsMenu.classList.remove("active");
     card.style.transform = "translateY(0px)";
   });
 
