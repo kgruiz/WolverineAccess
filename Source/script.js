@@ -384,8 +384,6 @@ function initializePage() {
 
 
 // ==============================
-// Card Creation
-// ==============================
 /**
  * Create a card element for a given link.
  * @param {Object} link - The link object.
@@ -445,7 +443,6 @@ function CreateCard(link) {
     e.preventDefault();
     e.stopPropagation(); // Prevent card click
 
-    // Inside the star click event
     if (isLinkFavorited(link)) {
       // Remove from favorites
       removeFavorite(link);
@@ -453,14 +450,6 @@ function CreateCard(link) {
       card.classList.remove("favorited-card");
       // Set to outlined star
       star.innerHTML = outlinedStarSVG;
-
-      // Trigger unfill animation
-      star.classList.add("animate-unfill");
-
-      // Remove the animation class after animation completes
-      star.addEventListener("animationend", () => {
-        star.classList.remove("animate-unfill");
-      }, { once: true });
     } else {
       // Add to favorites
       addFavorite(link);
@@ -472,12 +461,14 @@ function CreateCard(link) {
       // Trigger fill animation
       star.classList.add("animate-fill");
 
+      star.classList.add("effect-shine");
+
+
       // Remove the animation class after animation completes
       star.addEventListener("animationend", () => {
         star.classList.remove("animate-fill");
       }, { once: true });
     }
-
 
     refreshUIAfterFavoriteChange();
   });
@@ -500,6 +491,7 @@ function CreateCard(link) {
 
   return card;
 }
+
 
 
 // ==============================

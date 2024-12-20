@@ -866,10 +866,56 @@ nav {
   }
 }
 
-/* Class to trigger the fill animation */
+/* Class to trigger the fill animation with shine effect */
 .favorite-star.animate-fill {
-  animation: fillAnimation 0.3s forwards;
+  /* Default glow */
+  filter: drop-shadow(0 0 10px #FFCB05);
+  -webkit-filter: drop-shadow(0 0 10px #FFCB05);
+  /* WebKit glow */
+
+  /* Combined animations */
+  animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
+  -webkit-animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
+
+  /* Shine effect */
+  mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+  mask-size: 200%;
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+  -webkit-mask-size: 200%;
 }
+
+
+/* Keyframes for the glow animation */
+@keyframes glowAnimation {
+  0% {
+    filter: drop-shadow(0 0 5px #FFCB05);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 15px #FFCB05) drop-shadow(0 0 30px #FFCB05);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 10px #FFCB05);
+  }
+}
+
+/* WebKit-compatible keyframes */
+@-webkit-keyframes glowAnimation {
+  0% {
+    -webkit-filter: drop-shadow(0 0 5px #FFCB05);
+  }
+
+  50% {
+    -webkit-filter: drop-shadow(0 0 15px #FFCB05) drop-shadow(0 0 30px #FFCB05);
+  }
+
+  100% {
+    -webkit-filter: drop-shadow(0 0 10px #FFCB05);
+  }
+}
+
+
 
 /* Keyframes for the unfill (unfavoriting) animation */
 @keyframes unfillAnimation {
@@ -894,8 +940,25 @@ nav {
   animation: unfillAnimation 0.3s forwards;
 }
 
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 2000%;
+  }
 
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
 
+@keyframes shine {
+  from {
+    mask-position: 200%;
+  }
+
+  to {
+    mask-position: -50%;
+  }
+}
 
 /* ===========================================================
  Footer Styles
