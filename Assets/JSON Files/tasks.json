@@ -1,6 +1,6 @@
 [
     {
-        "favorite": true,
+        "favorite": false,
         "announcements": 0,
         "collectionName": "Most Popular This Week",
         "title": "Backpack/Register for Classes",
@@ -14,7 +14,7 @@
         "currentRating": 1,
         "alt": "Backpack/Register for Classes",
         "image": "../../Assets/Media/Current/BackpackRegisterforClasses.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/backpacking"
     },
     {
         "favorite": false,
@@ -31,7 +31,7 @@
         "currentRating": 2,
         "alt": "Student Business",
         "image": "../../Assets/Media/Current/StudentBusiness.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/student-self-service"
     },
     {
         "favorite": false,
@@ -48,7 +48,7 @@
         "currentRating": 3,
         "alt": "Human Resource Management System",
         "image": "../../Assets/Media/Current/HumanResourceManagementSystem.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mpathways-hrms"
     },
     {
         "favorite": false,
@@ -65,7 +65,7 @@
         "currentRating": 4,
         "alt": "Financials & Physical Resources System",
         "image": "../../Assets/Media/Current/FinancialsAndPhysicalResourcesSystem.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mpathways-fprs"
     },
     {
         "favorite": false,
@@ -82,7 +82,7 @@
         "currentRating": 5,
         "alt": "Student Administration",
         "image": "../../Assets/Media/Current/StudentAdministration.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mpathways-sa"
     },
     {
         "favorite": false,
@@ -99,7 +99,7 @@
         "currentRating": 6,
         "alt": "Employee Self Service",
         "image": "../../Assets/Media/Current/EmployeeSelfService.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/employee-self-service"
     },
     {
         "favorite": false,
@@ -116,7 +116,7 @@
         "currentRating": 7,
         "alt": "Expense Reporting",
         "image": "../../Assets/Media/Current/ExpenseReporting.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/expense-reporting"
     },
     {
         "favorite": false,
@@ -133,7 +133,7 @@
         "currentRating": 8,
         "alt": "New and Prospective Student Business",
         "image": "../../Assets/Media/Current/NewandProspectiveStudentBusiness.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/new-and-prospective-student-business"
     },
     {
         "favorite": false,
@@ -150,7 +150,7 @@
         "currentRating": 9,
         "alt": "Time Reporting",
         "image": "../../Assets/Media/Current/TimeReporting.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/time-reporting"
     },
     {
         "favorite": false,
@@ -167,7 +167,7 @@
         "currentRating": 10,
         "alt": "View Paycheck",
         "image": "../../Assets/Media/Current/ViewPaycheck.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/view-paycheck"
     },
     {
         "favorite": false,
@@ -184,7 +184,7 @@
         "currentRating": 11,
         "alt": "Faculty Business",
         "image": "../../Assets/Media/Current/FacultyBusiness.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/facultybusiness"
     },
     {
         "favorite": false,
@@ -201,7 +201,7 @@
         "currentRating": 12,
         "alt": "View Final Grades",
         "image": "../../Assets/Media/Current/ViewFinalGrades.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/grades"
     },
     {
         "favorite": false,
@@ -237,7 +237,7 @@
         "currentRating": 14,
         "alt": "Data Warehouse",
         "image": "../../Assets/Media/Current/DataWarehouse.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/data-warehouse"
     },
     {
         "favorite": false,
@@ -273,7 +273,7 @@
         "currentRating": 16,
         "alt": "M-Reports",
         "image": "../../Assets/Media/Current/M-Reports.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mreports"
     },
     {
         "favorite": false,
@@ -290,7 +290,7 @@
         "currentRating": 17,
         "alt": "Marketsite+ (Browse Only)",
         "image": "../../Assets/Media/Current/Marketsite+(BrowseOnly).png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/m-marketsite-browse-only"
     },
     {
         "favorite": false,
@@ -307,7 +307,7 @@
         "currentRating": 18,
         "alt": "View/Pay My Student Account",
         "image": "../../Assets/Media/Current/ViewPayMyStudentAccount.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/campus-finances"
     },
     {
         "favorite": false,
@@ -324,7 +324,7 @@
         "currentRating": 19,
         "alt": "View Unofficial Transcript",
         "image": "../../Assets/Media/Current/ViewUnofficialTranscript.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/unofficial-transcript"
     },
     {
         "favorite": false,
@@ -341,7 +341,7 @@
         "currentRating": 20,
         "alt": "Class Schedule",
         "image": "../../Assets/Media/Current/ClassSchedule.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/schedule"
     },
     {
         "favorite": false,
@@ -358,7 +358,7 @@
         "currentRating": 21,
         "alt": "Timesheet Approval",
         "image": "../../Assets/Media/Current/TimesheetApproval.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/timesheetapproval"
     },
     {
         "favorite": false,
@@ -375,7 +375,7 @@
         "currentRating": 22,
         "alt": "eResearch",
         "image": "../../Assets/Media/Current/eResearch.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/eresearch"
     },
     {
         "favorite": false,
@@ -392,7 +392,7 @@
         "currentRating": 23,
         "alt": "Student Center",
         "image": "../../Assets/Media/Current/StudentCenter.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/student-center"
     },
     {
         "favorite": false,
@@ -409,7 +409,7 @@
         "currentRating": 24,
         "alt": "Cornerstone Learning (formerly MLearning)",
         "image": "../../Assets/Media/Current/CornerstoneLearning(formerlyMLearning).png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/cornerstone-learning"
     },
     {
         "favorite": false,
@@ -426,7 +426,7 @@
         "currentRating": 25,
         "alt": "DART",
         "image": "../../Assets/Media/Current/DART.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/dart"
     },
     {
         "favorite": false,
@@ -443,7 +443,7 @@
         "currentRating": 26,
         "alt": "Faculty Center",
         "image": "../../Assets/Media/Current/FacultyCenter.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/faculty-center"
     },
     {
         "favorite": false,
@@ -460,7 +460,7 @@
         "currentRating": 27,
         "alt": "Document Imaging",
         "image": "../../Assets/Media/Current/DocumentImaging.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/document-imaging"
     },
     {
         "favorite": false,
@@ -477,7 +477,7 @@
         "currentRating": 28,
         "alt": "Benefits Self-Service",
         "image": "../../Assets/Media/Current/BenefitsSelf-Service.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/benefits"
     },
     {
         "favorite": false,
@@ -494,7 +494,7 @@
         "currentRating": 29,
         "alt": "Michigan Medicine Email",
         "image": "../../Assets/Media/Current/MichiganMedicineEmail.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/michmed-email"
     },
     {
         "favorite": false,
@@ -511,7 +511,7 @@
         "currentRating": 30,
         "alt": "MPrint",
         "image": "../../Assets/Media/Current/MPrint.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mprint"
     },
     {
         "favorite": false,
@@ -528,7 +528,7 @@
         "currentRating": 31,
         "alt": "LSA Unofficial Audit Checklist",
         "image": "../../Assets/Media/Current/LSAUnofficialAuditChecklist.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/lsa-audit-checklist"
     },
     {
         "favorite": false,
@@ -545,7 +545,7 @@
         "currentRating": 32,
         "alt": "Dropbox at U-M",
         "image": "../../Assets/Media/Current/DropboxatU-M.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/dropbox"
     },
     {
         "favorite": false,
@@ -562,7 +562,7 @@
         "currentRating": 33,
         "alt": "Course & Instructor Ratings",
         "image": "../../Assets/Media/Current/CourseAndInstructorRatings.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/atlas"
     },
     {
         "favorite": false,
@@ -579,7 +579,7 @@
         "currentRating": 34,
         "alt": "Human Subject Incentive Payment Request",
         "image": "../../Assets/Media/Current/HumanSubjectIncentivePaymentRequest.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/hsip"
     },
     {
         "favorite": false,
@@ -596,7 +596,7 @@
         "currentRating": 35,
         "alt": "Travel Booking",
         "image": "../../Assets/Media/Current/TravelBooking.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/travel-booking"
     },
     {
         "favorite": false,
@@ -613,7 +613,7 @@
         "currentRating": 36,
         "alt": "Purchasing Requisitions",
         "image": "../../Assets/Media/Current/PurchasingRequisitions.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/purchase-requisition"
     },
     {
         "favorite": false,
@@ -630,7 +630,7 @@
         "currentRating": 37,
         "alt": "View Current Grades",
         "image": "../../Assets/Media/Current/ViewCurrentGrades.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/canvas-grades"
     },
     {
         "favorite": false,
@@ -647,7 +647,7 @@
         "currentRating": 38,
         "alt": "Qualtrics",
         "image": "../../Assets/Media/Current/Qualtrics.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/qualtrics"
     },
     {
         "favorite": false,
@@ -664,7 +664,7 @@
         "currentRating": 39,
         "alt": "Google Drive",
         "image": "../../Assets/Media/Current/GoogleDrive.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/google-drive"
     },
     {
         "favorite": false,
@@ -681,7 +681,7 @@
         "currentRating": 40,
         "alt": "Order Transcripts/Check Order Status (Ann Arbor)",
         "image": "../../Assets/Media/Current/OrderTranscriptsCheckOrderStatus(AnnArbor).png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/transcript-order-page"
     },
     {
         "favorite": false,
@@ -698,7 +698,7 @@
         "currentRating": 41,
         "alt": "Atlas Schedule Builder",
         "image": "../../Assets/Media/Current/AtlasScheduleBuilder.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/schedule-builder"
     },
     {
         "favorite": false,
@@ -715,7 +715,7 @@
         "currentRating": 42,
         "alt": "Search for Classes",
         "image": "../../Assets/Media/Current/SearchforClasses.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/course-catalog"
     },
     {
         "favorite": false,
@@ -732,7 +732,7 @@
         "currentRating": 43,
         "alt": "Manager Desktop",
         "image": "../../Assets/Media/Current/ManagerDesktop.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/manager-desktop"
     },
     {
         "favorite": false,
@@ -749,7 +749,7 @@
         "currentRating": 44,
         "alt": "My LINC",
         "image": "../../Assets/Media/Current/MyLINC.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/my-linc"
     },
     {
         "favorite": false,
@@ -766,7 +766,7 @@
         "currentRating": 45,
         "alt": "MCommunity",
         "image": "../../Assets/Media/Current/MCommunity.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/directory"
     },
     {
         "favorite": false,
@@ -783,7 +783,7 @@
         "currentRating": 46,
         "alt": "Leave Balances",
         "image": "../../Assets/Media/Current/LeaveBalances.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/leavebalances"
     },
     {
         "favorite": false,
@@ -800,7 +800,7 @@
         "currentRating": 47,
         "alt": "Zoom",
         "image": "../../Assets/Media/Current/Zoom.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/zoom"
     },
     {
         "favorite": false,
@@ -817,7 +817,7 @@
         "currentRating": 48,
         "alt": "M-Passport",
         "image": "../../Assets/Media/Current/M-Passport.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/m-passport"
     },
     {
         "favorite": false,
@@ -834,7 +834,7 @@
         "currentRating": 49,
         "alt": "Teaching Evaluations",
         "image": "../../Assets/Media/Current/TeachingEvaluations.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/teaching-evaluations"
     },
     {
         "favorite": false,
@@ -851,7 +851,7 @@
         "currentRating": 50,
         "alt": "LSA Course Guide",
         "image": "../../Assets/Media/Current/LSACourseGuide.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/lsa-course-guide"
     },
     {
         "favorite": false,
@@ -868,7 +868,7 @@
         "currentRating": 51,
         "alt": "TDNext",
         "image": "../../Assets/Media/Current/TDNext.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/its-servicenow"
     },
     {
         "favorite": false,
@@ -885,7 +885,7 @@
         "currentRating": 52,
         "alt": "Check Financial Aid Status",
         "image": "../../Assets/Media/Current/CheckFinancialAidStatus.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/financial-aid-status"
     },
     {
         "favorite": false,
@@ -902,7 +902,7 @@
         "currentRating": 53,
         "alt": "Payroll Tax Forms (W-2, W-4)",
         "image": "../../Assets/Media/Current/PayrollTaxForms(W-2W-4).png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/tax-forms"
     },
     {
         "favorite": false,
@@ -919,7 +919,7 @@
         "currentRating": 54,
         "alt": "Tableau",
         "image": "../../Assets/Media/Current/Tableau.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/tableau"
     },
     {
         "favorite": false,
@@ -936,7 +936,7 @@
         "currentRating": 55,
         "alt": "Enrollment Connect",
         "image": "../../Assets/Media/Current/EnrollmentConnect.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/enrollment-connect"
     },
     {
         "favorite": false,
@@ -953,7 +953,7 @@
         "currentRating": 56,
         "alt": "SignNow E-signature Service",
         "image": "../../Assets/Media/Current/SignNowE-signatureService.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/signnow-e-signature-service"
     },
     {
         "favorite": false,
@@ -970,7 +970,7 @@
         "currentRating": 57,
         "alt": "View Financial Aid Award Notices",
         "image": "../../Assets/Media/Current/ViewFinancialAidAwardNotices.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/nps-award-notices"
     },
     {
         "favorite": false,
@@ -987,7 +987,7 @@
         "currentRating": 58,
         "alt": "Mcard Discounts",
         "image": "../../Assets/Media/Current/McardDiscounts.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mcard-discounts"
     },
     {
         "favorite": false,
@@ -1004,7 +1004,7 @@
         "currentRating": 59,
         "alt": "Remote Work Approvals",
         "image": "../../Assets/Media/Current/RemoteWorkApprovals.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/remote-work-approvals"
     },
     {
         "favorite": false,
@@ -1021,7 +1021,7 @@
         "currentRating": 60,
         "alt": "Find Scholarships & Financial Aid",
         "image": "../../Assets/Media/Current/FindScholarshipsAndFinancialAid.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/financial-aid"
     },
     {
         "favorite": false,
@@ -1038,7 +1038,7 @@
         "currentRating": 61,
         "alt": "Tuition and Fees",
         "image": "../../Assets/Media/Current/TuitionandFees.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/tuition-and-fees"
     },
     {
         "favorite": false,
@@ -1055,7 +1055,7 @@
         "currentRating": 62,
         "alt": "Campus Personal Information",
         "image": "../../Assets/Media/Current/CampusPersonalInformation.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/campus-personal-info"
     },
     {
         "favorite": false,
@@ -1072,7 +1072,7 @@
         "currentRating": 63,
         "alt": "Housing",
         "image": "../../Assets/Media/Current/Housing.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/housing"
     },
     {
         "favorite": false,
@@ -1089,7 +1089,7 @@
         "currentRating": 64,
         "alt": "Manager Self Service",
         "image": "../../Assets/Media/Current/ManagerSelfService.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/manager-self-service"
     },
     {
         "favorite": false,
@@ -1106,7 +1106,7 @@
         "currentRating": 65,
         "alt": "Apply for In-State Tuition",
         "image": "../../Assets/Media/Current/ApplyforIn-StateTuition.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/apply-for-in-state-tuition"
     },
     {
         "favorite": false,
@@ -1123,7 +1123,7 @@
         "currentRating": 66,
         "alt": "Report Library",
         "image": "../../Assets/Media/Current/ReportLibrary.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/report-library"
     },
     {
         "favorite": false,
@@ -1140,7 +1140,7 @@
         "currentRating": 67,
         "alt": "U-M Library",
         "image": "../../Assets/Media/Current/U-MLibrary.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/umlibrary"
     },
     {
         "favorite": false,
@@ -1157,7 +1157,7 @@
         "currentRating": 68,
         "alt": "Virtual Sites",
         "image": "../../Assets/Media/Current/VirtualSites.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/virtual-sites"
     },
     {
         "favorite": false,
@@ -1174,7 +1174,7 @@
         "currentRating": 69,
         "alt": "Alumni Student Records",
         "image": "../../Assets/Media/Current/AlumniStudentRecords.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/alumni-records"
     },
     {
         "favorite": false,
@@ -1191,7 +1191,7 @@
         "currentRating": 70,
         "alt": "Set Up Direct Deposit",
         "image": "../../Assets/Media/Current/SetUpDirectDeposit.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/direct-deposit"
     },
     {
         "favorite": false,
@@ -1207,8 +1207,11 @@
         "openInNewWindow": true,
         "currentRating": 71,
         "alt": "Register Your Travel",
-        "image": "../../Assets/Media/Current/RegisterYourTravel.png",
-        "href": "not-implemented.html"
+        "image": [
+            "../../Assets/Media/Current/RegisterYourTravel.png",
+            "../../Assets/Media/Current/RegisterYourTravelFaculty.png"
+        ],
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/register-travel-students"
     },
     {
         "favorite": false,
@@ -1225,7 +1228,7 @@
         "currentRating": 72,
         "alt": "GET - Food, Meal Plans, MCard",
         "image": "../../Assets/Media/Current/GET-FoodMealPlansMCard.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/get"
     },
     {
         "favorite": false,
@@ -1242,7 +1245,7 @@
         "currentRating": 73,
         "alt": "Google Calendar",
         "image": "../../Assets/Media/Current/GoogleCalendar.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/calendar"
     },
     {
         "favorite": false,
@@ -1259,7 +1262,7 @@
         "currentRating": 74,
         "alt": "OARS",
         "image": "../../Assets/Media/Current/OARS.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/oars"
     },
     {
         "favorite": false,
@@ -1276,7 +1279,7 @@
         "currentRating": 75,
         "alt": "Shared Services Center",
         "image": "../../Assets/Media/Current/SharedServicesCenter.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/shared-services-center"
     },
     {
         "favorite": false,
@@ -1293,7 +1296,7 @@
         "currentRating": 76,
         "alt": "Holidays & Time Off",
         "image": "../../Assets/Media/Current/HolidaysAndTimeOff.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/holidays-season-days"
     },
     {
         "favorite": false,
@@ -1310,7 +1313,7 @@
         "currentRating": 77,
         "alt": "Cash Receipt Ticket",
         "image": "../../Assets/Media/Current/CashReceiptTicket.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/cash-receipt-ticket"
     },
     {
         "favorite": false,
@@ -1327,7 +1330,7 @@
         "currentRating": 78,
         "alt": "BCBSM Member Portal",
         "image": "../../Assets/Media/Current/BCBSMMemberPortal.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/premier-care"
     },
     {
         "favorite": false,
@@ -1344,7 +1347,7 @@
         "currentRating": 79,
         "alt": "LSA Majors & Minors",
         "image": "../../Assets/Media/Current/LSAMajorsAndMinors.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/lsa-majors-minors"
     },
     {
         "favorite": false,
@@ -1361,7 +1364,7 @@
         "currentRating": 80,
         "alt": "Chartfield Converter",
         "image": "../../Assets/Media/Current/ChartfieldConverter.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/chartfield-converter"
     },
     {
         "favorite": false,
@@ -1378,7 +1381,7 @@
         "currentRating": 81,
         "alt": "Trade In Tech for Store Credit",
         "image": "../../Assets/Media/Current/TradeInTechforStoreCredit.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/tech-trade-in"
     },
     {
         "favorite": false,
@@ -1395,7 +1398,7 @@
         "currentRating": 82,
         "alt": "MetLife Legal Plans",
         "image": "../../Assets/Media/Current/MetLifeLegalPlans.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/legal-services-plan"
     },
     {
         "favorite": false,
@@ -1412,7 +1415,7 @@
         "currentRating": 83,
         "alt": "PubMed @ U-M",
         "image": "../../Assets/Media/Current/PubMedAtU-M.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/pubmed-um"
     },
     {
         "favorite": false,
@@ -1429,7 +1432,7 @@
         "currentRating": 84,
         "alt": "Google Scholar @ U-M",
         "image": "../../Assets/Media/Current/GoogleScholaratU-M.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/google-scholar"
     },
     {
         "favorite": false,
@@ -1446,7 +1449,7 @@
         "currentRating": 85,
         "alt": "Sign In to Patient Portal",
         "image": "../../Assets/Media/Current/SignIntoPatientPortal.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/myuofmhealth"
     },
     {
         "favorite": false,
@@ -1463,7 +1466,7 @@
         "currentRating": 86,
         "alt": "Paydate Calendar",
         "image": "../../Assets/Media/Current/PaydateCalendar.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/paydate-calendar"
     },
     {
         "favorite": false,
@@ -1480,7 +1483,7 @@
         "currentRating": 87,
         "alt": "Dining",
         "image": "../../Assets/Media/Current/Dining.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/dining"
     },
     {
         "favorite": false,
@@ -1497,7 +1500,7 @@
         "currentRating": 88,
         "alt": "Fidelity",
         "image": "../../Assets/Media/Current/Fidelity.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/fidelity-retirement-account"
     },
     {
         "favorite": false,
@@ -1514,7 +1517,7 @@
         "currentRating": 89,
         "alt": "M-Compass",
         "image": "../../Assets/Media/Current/M-Compass.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/m-compass"
     },
     {
         "favorite": false,
@@ -1531,7 +1534,7 @@
         "currentRating": 90,
         "alt": "Office of Development",
         "image": "../../Assets/Media/Current/OfficeofDevelopment.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/office-of-development"
     },
     {
         "favorite": false,
@@ -1548,7 +1551,7 @@
         "currentRating": 91,
         "alt": "Group X Fitness Schedule",
         "image": "../../Assets/Media/Current/GroupXFitnessSchedule.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/group-x"
     },
     {
         "favorite": false,
@@ -1565,7 +1568,7 @@
         "currentRating": 92,
         "alt": "Orientation",
         "image": "../../Assets/Media/Current/Orientation.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/orientation"
     },
     {
         "favorite": false,
@@ -1582,7 +1585,7 @@
         "currentRating": 93,
         "alt": "MyAdvising",
         "image": "../../Assets/Media/Current/MyAdvising.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/myadvising"
     },
     {
         "favorite": false,
@@ -1599,7 +1602,7 @@
         "currentRating": 94,
         "alt": "Setup/Manage Two-Factor Weblogin",
         "image": "../../Assets/Media/Current/SetupManageTwo-FactorWeblogin.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/duo-manage"
     },
     {
         "favorite": false,
@@ -1616,7 +1619,7 @@
         "currentRating": 95,
         "alt": "MClassrooms",
         "image": "../../Assets/Media/Current/MClassrooms.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mclassrooms"
     },
     {
         "favorite": false,
@@ -1633,7 +1636,7 @@
         "currentRating": 96,
         "alt": "Finance/Payroll MGMT Reports",
         "image": "../../Assets/Media/Current/FinancePayrollMGMTReports.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/mgmt-reports"
     },
     {
         "favorite": false,
@@ -1650,7 +1653,7 @@
         "currentRating": 97,
         "alt": "Michigan Online Giving",
         "image": "../../Assets/Media/Current/MichiganOnlineGiving.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/michigan-giving"
     },
     {
         "favorite": false,
@@ -1666,8 +1669,11 @@
         "openInNewWindow": true,
         "currentRating": 98,
         "alt": "Register Your Travel",
-        "image": "../../Assets/Media/Current/RegisterYourTravelFaculty.png",
-        "href": "not-implemented.html"
+        "image": [
+            "../../Assets/Media/Current/RegisterYourTravel.png",
+            "../../Assets/Media/Current/RegisterYourTravelFaculty.png"
+        ],
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/register-travel-facultystaff"
     },
     {
         "favorite": false,
@@ -1684,7 +1690,7 @@
         "currentRating": 99,
         "alt": "Student Employment Application",
         "image": "../../Assets/Media/Current/StudentEmploymentApplication.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/student-employment-application"
     },
     {
         "favorite": false,
@@ -1701,6 +1707,6 @@
         "currentRating": 100,
         "alt": "Wolverine Access Help Center",
         "image": "../../Assets/Media/Current/WolverineAccessHelpCenter.png",
-        "href": "not-implemented.html"
+        "href": "https://wolverineaccess.umich.edu/launch-task/all/maizelink-help"
     }
 ]

@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     currentDir = Path("..").resolve()
 
-    path = Path(currentDir, "../../Assets/JSON Files/tasks.json")
+    path = Path(currentDir, "Assets/JSON Files/currentTasks.json").resolve()
 
     collectionsPath = path.with_stem("collections")
     tasksPath = path.with_stem("tasks")
@@ -106,6 +106,12 @@ if __name__ == "__main__":
                 currentDict["target"] = "_blank"
                 currentDict["rel"] = "noopener"
                 currentDict["href"] = "https://gmail.com"
+
+            else:
+
+                currentDict["href"] = (
+                    f"https://wolverineaccess.umich.edu/launch-task/all/{currentDict['uniqueKey']}"
+                )
 
             newTasksDicts["taskCollections"][collectionNum]["tiles"][
                 tileNum
