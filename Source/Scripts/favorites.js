@@ -66,8 +66,13 @@ export function addFavorite(link) {
  * @param {Object} link - The link object.
  */
 export function removeFavorite(link) {
+    const wasPinned = isLinkPinnedd(link);
     state.favoriteStatuses[link.uniqueKey] = false;
+    removePinned(link)
     saveFavorites();
+    if (wasPinned) {
+        populatePinnedsContainers();
+    }
 }
 
 /**
