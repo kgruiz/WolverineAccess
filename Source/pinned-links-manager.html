@@ -33,6 +33,7 @@
     <!-- HEADER -->
     <!-- Header and Navigation -->
     <header>
+        <!-- HEADER -->
         <nav>
             <div class="nav-container">
                 <div class="left-section">
@@ -154,7 +155,12 @@
                                 <p id="sign-in-email"></p>
                                 <hr id="sign-in-separator" />
                             </div>
-                            <div class="sign-in-items" id="sign-in-items"></div>
+                            <div class="dropdown-items sign-in-items" id="sign-in-items">
+                                <button class="sign-in-menu-item sign-in-item-signed-out">Sign in</button>
+                                <button class="sign-in-menu-item sign-in-item-signed-in">Sign out</button>
+                                <button class="sign-in-menu-item" id="sign-in-preferences-button">Preferences</button>
+                                <button class="sign-in-menu-item" id="sign-in-feedback-button">Send Feedback</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,6 +176,16 @@
                         <span class="slider round"></span>
                     </label>
                     Show Pinned Links
+                </div>
+                <div class="preference-item">
+                    <div class="favorites-num-spinner">
+                        <label for="favorites-num-spinner-box"></label>
+                        <span class="favorites-spinner-next"></span>
+                        <span class="favorites-spinner-prev"></span>
+                        <div id="favorites-num-spinner-box"></div>
+                    </div>
+                    Number of Favorites Shown on Main Page
+                    </label>
                 </div>
             </div>
         </div>

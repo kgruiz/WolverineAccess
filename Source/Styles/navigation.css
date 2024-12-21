@@ -350,6 +350,12 @@ nav {
     transform-origin: calc(100% - 50px) +10px;
 }
 
+/* Sign In Menu Header Styles */
+.sign-in-menu-header h3 {
+    text-align: center;
+}
+
+
 .sign-in-menu::before {
     right: +35px;
     opacity: 0;
