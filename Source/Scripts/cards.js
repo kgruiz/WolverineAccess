@@ -48,6 +48,7 @@ export function CreateCard(link) {
     } else {
         // Set the outlined star icon
         star.innerHTML = outlinedStarSVG;
+        card.classList.remove('favorited-card');
     }
     card.appendChild(star);
     // Add hover effect for the star
@@ -80,6 +81,8 @@ export function CreateCard(link) {
             }, {once: true});
             // Remove card from favorites containers
             removeCardFromFavoritesContainers(card);
+            // Update all instances of the card
+            updateCardAppearance(link);
         } else {
             // Add to favorites
             addFavorite(link);
@@ -95,6 +98,8 @@ export function CreateCard(link) {
             }, {once: true});
             // Add card to favorites containers
             addCardToFavoritesContainers(card);
+            // Update all instances of the card
+            updateCardAppearance(link);
         }
         // Update the star icon appearance
         updateStarAppearance(star, link);
@@ -107,7 +112,7 @@ export function CreateCard(link) {
     card.addEventListener('mouseover', () => {
         card.style.transform = 'translateY(-5px)';
         const favoriteStar = card.querySelector('.favorite-star');
-        if (favoriteStar) {
+        if (favoriteStar && !isLinkFavorited(link)) {
             favoriteStar.style.display = 'block';
         }
     });
@@ -188,7 +193,8 @@ export function CreateFavoriteCard(link) {
 
         // Remove card from other favorites containers
         removeCardFromFavoritesContainers(card);
-
+        // Update all instances of the card
+        updateCardAppearance(link);
         // Re-render the favorites if necessary
         RenderFavorites();
     });
@@ -223,4 +229,29 @@ export function CreateFavoriteCard(link) {
 
 
     return card;
+}
+
+/**
+ * Updates the appearance of all card instances based on the favorite status of a link.
+ * @param {Object} link - The link object to update cards for.
+ */
+function updateCardAppearance(link) {
+    const allCards = document.querySelectorAll(`[data-unique-key="${link.uniqueKey}"]`);
+    allCards.forEach(card => {
+        const star = card.querySelector('.favorite-star');
+        if (star) {
+            if (isLinkFavorited(link)) {
+                star.innerHTML = filledStarSVG;
+                star.classList.add('favorited');
+                card.classList.add('favorited-card');
+                star.style.display = 'block';  // Always show for favorited cards
+            } else {
+                star.innerHTML = outlinedStarSVG;
+                star.classList.remove('favorited');
+                card.classList.remove('favorited-card');
+                star.style.display = 'none';  // Initially hide for unfavorited cards
+            }
+            updateStarAppearance(star, link);
+        }
+    });
 }
