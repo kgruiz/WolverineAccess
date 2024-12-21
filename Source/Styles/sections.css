@@ -24,7 +24,7 @@
     background: rgba(0, 0, 0, 0.6);
     padding: 3rem 2rem;
     border-radius: 8px;
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
     margin-bottom: 2rem;
 }
@@ -80,11 +80,15 @@
 .hero-pinned-box {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    padding: 2rem;
-    max-width: 800px;
+    padding: 0rem 2rem 2rem 2rem;
+    max-width: 1000px;
     width: 100%;
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.hero-pinned-box h2 {
+    margin: 2rem;
 }
 
 .hero-pinned-section {
