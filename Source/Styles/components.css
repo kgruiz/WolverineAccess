@@ -311,7 +311,7 @@
 
 /* Show More/Less Buttons */
 #show-more {
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: #00274C;
     color: #FFCB05;
     border: none;
@@ -326,7 +326,7 @@
 }
 
 #show-less {
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: #00274C;
     color: #FFCB05;
     border: none;
@@ -337,7 +337,7 @@
 }
 
 #show-all {
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: #00274C;
     color: #FFCB05;
     border: none;
