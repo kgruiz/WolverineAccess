@@ -73,6 +73,9 @@ export function removeFavorite(link) {
     if (wasPinned) {
         populatePinnedsContainers();
     }
+    if (typeof populateTopFavorites === 'function') {
+        populateTopFavorites();
+    }
 }
 
 /**
@@ -132,6 +135,9 @@ export function populateFavoritesContainers() {
             }
         }
     });
+    if (typeof populateTopFavorites === 'function') {
+        populateTopFavorites();
+    }
 }
 
 /**
@@ -166,6 +172,9 @@ export function addCardToFavoritesContainers(card) {
             }
         }
     });
+    if (typeof populateTopFavorites === 'function') {
+        populateTopFavorites();
+    }
 }
 
 /**
@@ -193,4 +202,7 @@ export function removeCardFromFavoritesContainers(card) {
             }
         }
     });
+    if (typeof populateTopFavorites === 'function') {
+        populateTopFavorites();
+    }
 }

@@ -66,6 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 mostPopularContainer.append(card);
             });
         }
+        // Populate Top Favorites
+        const topFavoritesContainer = document.getElementById('favorites-container');
+        if (topFavoritesContainer && state.linksData.length > 0) {
+            function populateTopFavorites() {
+                topFavoritesContainer.innerHTML = '';
+                const favoritedLinks =
+                    state.linksData.filter(link => isLinkFavorited(link));
+                const sortedByRank =
+                    [...favoritedLinks].sort((a, b) => b.currentRating - a.currentRating);
+                const top10 = sortedByRank.slice(0, 10);
+
+                top10.forEach((link) => {
+                    const card = CreateCard(link);
+                    topFavoritesContainer.append(card);
+                });
+            }
+            window.populateTopFavorites = populateTopFavorites;
+            populateTopFavorites();
+        }
         // Populate All Links on Index
         const allLinksContainer = document.getElementById('all-links-container');
         if (allLinksContainer && state.linksData.length > 0) {

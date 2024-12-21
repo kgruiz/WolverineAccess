@@ -108,6 +108,9 @@ export function CreateCard(link) {
         if (typeof RenderFavorites === 'function') {
             RenderFavorites();
         }
+        if (typeof populateTopFavorites === 'function') {
+            populateTopFavorites();
+        }
     });
     // Add hover effects to the card
     card.addEventListener('mouseover', () => {
@@ -250,6 +253,9 @@ export function CreateFavoriteCard(link) {
         if (typeof RenderFavorites === 'function') {
             RenderFavorites();
         }
+        if (typeof populateTopFavorites === 'function') {
+            populateTopFavorites();
+        }
     });
 
     // Close options menu when clicking outside
@@ -307,4 +313,7 @@ function updateCardAppearance(link) {
             updateStarAppearance(star, link);
         }
     });
+    if (typeof populateTopFavorites === 'function') {
+        populateTopFavorites();
+    }
 }
