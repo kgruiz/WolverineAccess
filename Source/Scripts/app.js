@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.userName = 'Kaden';
         state.userEmail = 'kgruiz@umich.edu';
         loadFavorites();
+        loadPinneds();
         // Populate Most Popular
         const mostPopularContainer = document.getElementById('most-popular-container');
         if (mostPopularContainer && state.linksData.length > 0) {
@@ -85,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // Initialize Favorites in Hero and Nav
         populateFavoritesContainers();
+        // Initialize Pinned Links
+        populatePinnedsContainers();
         // All Links Full Page
         const allLinksFullContainer = document.getElementById('all-links-full-container');
         if (allLinksFullContainer) {

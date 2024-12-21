@@ -171,59 +171,58 @@ export function CreateFavoriteCard(link) {
     removeFavoriteOption.textContent = 'Remove Favorite';
     optionsMenu.appendChild(removeFavoriteOption);
 
+    let pinOption;
+    if (isLinkPinnedd(link)) {
+        pinOption = document.createElement('div');
+        pinOption.className = 'options-menu-item';
+        pinOption.textContent = 'Remove Pinned';
+        optionsMenu.appendChild(pinOption);
+
+
+    } else {
+        pinOption = document.createElement('div');
+        pinOption.className = 'options-menu-item';
+        pinOption.textContent = 'Add Pinned';
+        optionsMenu.appendChild(pinOption);
+    }
+
 
 
     // Add the options menu to the card
     card.appendChild(optionsMenu);
 
-    if (isLinkPinnedd(link)) {
 
-        const removePinnedOption = document.createElement('div');
-        removePinnedOption.className = 'options-menu-item';
-        removePinnedOption.textContent = 'Remove Pinned';
-        optionsMenu.appendChild(removePinnedOption);
 
-        // Event listener for removeFavoriteOption click
-        removeFavoriteOption.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();  // Prevent card click
+    // Event listener for pinOption click
+    pinOption.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();  // Prevent card click
 
-            // Remove from favorites
+        if (isLinkPinnedd(link)) {
+            // Remove from pinneds
             removePinned(link);
+            pinOption.textContent = 'Add Pinned';
 
-            // Update the card UI
-            card.remove();
-
-            // Remove card from other favorites containers
+            // Remove card from other pinned containers
             removeCardFromPinnedsContainers(card);
-            // Update all instances of the card
             updateCardAppearance(link);
-            // Re-render the favorites if necessary
-            RenderFavorites();
-        });
-    } else {
 
-        const addPinnedOption = document.createElement('div');
-        addPinnedOption.className = 'options-menu-item';
-        addPinnedOption.textContent = 'Add Pinned';
-        optionsMenu.appendChild(addPinnedOption);
-
-        // Event listener for removeFavoriteOption click
-        addPinnedOption.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();  // Prevent card click
-
-            // Remove from favorites
+        } else {
+            // Add to pinneds
             addPinned(link);
-
-            // Remove card from other favorites containers
+            pinOption.textContent = 'Remove Pinned';
+            // Add card to other pinned containers
             addCardToPinnedsContainers(card);
-            // Update all instances of the card
             updateCardAppearance(link);
-            // Re-render the favorites if necessary
+        }
+
+
+        // Re-render the favorites if necessary
+        if (typeof RenderFavorites === 'function') {
             RenderFavorites();
-        });
-    }
+            populatePinnedsContainers();
+        }
+    });
 
     // Event listener for optionsIcon click to toggle the menu
     optionsIcon.addEventListener('click', (e) => {
@@ -248,7 +247,9 @@ export function CreateFavoriteCard(link) {
         // Update all instances of the card
         updateCardAppearance(link);
         // Re-render the favorites if necessary
-        RenderFavorites();
+        if (typeof RenderFavorites === 'function') {
+            RenderFavorites();
+        }
     });
 
     // Close options menu when clicking outside

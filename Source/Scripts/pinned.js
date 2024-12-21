@@ -3,7 +3,7 @@
  * Handles pinneds features and logic within the application.
  */
 
-import {CreateCard} from './cards.js';
+import {CreateCard, CreateFavoriteCard} from './cards.js';
 import {PINNED_KEY, state} from './constants.js';
 
 // ==============================
@@ -77,7 +77,7 @@ export function populatePinnedsContainers() {
     pinnedContainers.forEach(container => {
         if (container) {
             container.innerHTML = '';
-            const pinneddLinks = state.linksData.filter(link => isLinkPinned(link));
+            const pinneddLinks = state.linksData.filter(link => isLinkPinnedd(link));
             if (pinneddLinks.length === 0) {
                 const noPinneds = document.createElement('p');
                 noPinneds.textContent = 'No pinned links yet.';
@@ -85,7 +85,7 @@ export function populatePinnedsContainers() {
             } else {
                 pinneddLinks.slice(0, 4).forEach(link => {
                     let card;
-                    card = CreateCard(link);
+                    card = CreateFavoriteCard(link);
                     container.appendChild(card);
                 });
             }
@@ -113,7 +113,7 @@ export function addCardToPinnedsContainers(card) {
                 const link =
                     state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
                 let newCard;
-                newCard = CreateCard(link);
+                newCard = CreateFavoriteCard(link);
                 container.appendChild(newCard);
             }
         }
@@ -138,7 +138,7 @@ export function removeCardFromPinnedsContainers(card) {
                 cardToRemove.remove();
             }
             // If no pinneds left, show "No pinned links yet."
-            if (container.querySelectorAll('.card, .pinned-card').length === 0) {
+            if (container.querySelectorAll('.card, .favorite-card').length === 0) {
                 const noPinneds = document.createElement('p');
                 noPinneds.textContent = 'No pinned links yet.';
                 container.appendChild(noPinneds);
