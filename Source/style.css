@@ -6,8 +6,8 @@ html {
   scroll-behavior: smooth;
 }
 
-
-/* Reset styles for common elements to provide a consistent baseline */
+/* Reset styles for common elements */
+*,
 header,
 nav,
 main,
@@ -26,6 +26,7 @@ li {
   padding: 0;
 }
 
+
 /* Base styles for the body */
 body {
   margin: 0;
@@ -43,18 +44,18 @@ a {
   color: inherit;
 }
 
+
 /* ===========================================================
  Navigation and Related Styles
  =========================================================== */
-/* Navigation Styles */
-/* Styles for the navigation bar */
+
+/* --- General Navigation Styles --- */
 nav {
   background: #00274C;
   color: #fff;
   padding: 1rem;
 }
 
-/* Container for navigation items */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -62,26 +63,26 @@ nav {
   flex-wrap: wrap;
 }
 
-/* Left and right sections within navigation */
 .left-section,
 .right-section {
   display: flex;
   align-items: center;
 }
 
-/* Right section styles */
 .right-section {
   gap: 1rem;
   height: 30px;
 }
 
-/* Logo image styles */
+
+/* --- Logo Styles --- */
 .logo-link img {
   height: 40px;
   cursor: pointer;
 }
 
-/* Search form styles in navigation */
+
+/* --- Search Form Styles --- */
 .search-form {
   margin-left: 1rem;
   display: inline-flex;
@@ -92,7 +93,6 @@ nav {
   position: relative;
 }
 
-/* Input field within search form */
 .search-form input {
   border: none;
   outline: none;
@@ -100,7 +100,6 @@ nav {
   width: 200px;
 }
 
-/* Search button in navigation */
 .search-form button {
   background: #FFCB05;
   border: none;
@@ -112,7 +111,7 @@ nav {
   margin-left: 0.5rem;
 }
 
-/* Sign-in button in navigation */
+/* --- Sign In Button Styles --- */
 .sign-in-button {
   background: #FFCB05;
   border: none;
@@ -129,7 +128,8 @@ nav {
   gap: 0.25rem;
 }
 
-/* Navigation icons list */
+
+/* --- Nav Icons Styles --- */
 .nav-icons {
   list-style: none;
   display: flex;
@@ -140,54 +140,19 @@ nav {
   margin-top: 8.5px;
 }
 
-/* Individual navigation icons */
 .nav-icons li {
   margin: 0 0.25rem;
 }
 
-/* Group Selector Styles */
-/* Container for the group selector in navigation */
-.group-selector {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-}
-
-/* Styles for the current group display */
-.current-group {
-  margin-right: 0.75rem;
-  font-weight: 700;
-  font-size: 1em;
-}
-
-/* Toggle button for the group selector menu */
-.group-selector-toggle {
-  display: inline-flex;
-  align-items: center;
-}
-
-/* Adjustments for the group selector toggle */
-.group-selector-toggle .current-group {
-  margin-top: -3px;
-}
-
-.group-selector-toggle .material-icons {
-  margin-top: -5px;
-}
-
-/* Styles for the group selector dropdown menu */
-.group-selector-menu {
+/* --- Dropdown Menu Base Styles --- */
+.dropdown-menu {
   position: absolute;
   top: 30px;
-  left: -220px;
-  transform: translate(-50%, 0) scale(0);
   background: #fff;
   color: #00274C;
   padding: 1.5rem;
   border-radius: 8px;
   z-index: 1000;
-  width: calc(5 * 218px + 4 * 1rem);
-  min-height: 300px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -198,28 +163,37 @@ nav {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  transform-origin: calc(100% - 264px) +10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Active state for menu */
-.group-selector-menu.active {
+.dropdown-menu.active {
   opacity: 1;
   transform: translate(-50%, 0) scale(1);
   pointer-events: auto;
 }
 
-.group-selector-menu.active::before {
+.dropdown-menu.active::before {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 
-/* Header within the group selector menu */
-.group-selector-header {
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  border-width: 7.5px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+}
+
+/* --- Dropdown Menu Header Styles --- */
+.dropdown-menu-header {
   width: 100%;
 }
 
-/* Group selector menu heading */
-.group-selector-header h3 {
+.dropdown-menu-header h3 {
   margin-left: 15px;
   font-size: 1.5rem;
   font-weight: 800;
@@ -227,16 +201,15 @@ nav {
   text-align: left;
 }
 
-/* Divider line in group selector menu header */
-.group-selector-header hr {
+.dropdown-menu-header hr {
   width: calc(100% - 10px);
   border: none;
   border-top: 2px solid #00274C;
   margin-top: 0.5rem;
 }
 
-/* Container for group items within the selector menu */
-.group-items {
+/* --- Dropdown Menu Items Styles --- */
+.dropdown-items {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -244,16 +217,14 @@ nav {
   justify-content: flex-start;
 }
 
-/* Styles for group item links */
-.group-items a {
+.dropdown-items a {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* Styles for links within the group selector menu */
-.group-selector-menu a {
+.dropdown-menu a {
   display: flex;
   align-items: center;
   padding: 0.5rem;
@@ -264,19 +235,47 @@ nav {
   font-size: 1.25rem;
 }
 
-/* Arrow above the group selector menu */
-.group-selector-menu::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  right: +249px;
-  border-width: 7.5px;
-  border-style: solid;
-  border-color: transparent transparent #fff transparent;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* --- Menu Toggle Icon Styles --- */
+.menu-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
 }
 
-/* Group selector images */
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-top: -3px;
+}
+
+.menu-toggle .material-icons {
+  margin-top: -5px;
+}
+
+
+/* --- Group Selector Styles --- */
+.group-selector {
+  position: relative;
+}
+
+.group-selector-toggle .current-group {
+  margin-top: -3px;
+}
+
+/* Group Selector Specific Styles */
+.group-selector-menu {
+  left: -220px;
+  transform: translate(-50%, 0) scale(0);
+  width: calc(5 * 218px + 4 * 1rem);
+  min-height: 300px;
+  transform-origin: calc(100% - 264px) +10px;
+}
+
+.group-selector-menu::before {
+  right: +249px;
+}
+
+/* Group Icon Styles */
 .group-selector img {
   padding: 0.5rem;
   border-radius: 8px;
@@ -286,7 +285,6 @@ nav {
   margin-bottom: 1rem;
 }
 
-/* Images within the group selector menu */
 .group-selector-menu img {
   width: 160px;
   height: 160px;
@@ -294,118 +292,27 @@ nav {
 }
 
 /* --- Favorites Menu Styles --- */
-/* Container for the favorites icon in navigation */
+
 .favorites-icon {
-  display: inline-flex;
-  align-items: center;
   position: relative;
 }
 
-/* Toggle button for the favorites menu */
-.favorites-menu-toggle {
-  display: inline-flex;
-  align-items: center;
-  margin-top: -3px;
-}
 
-/* Adjustments for the favorites menu icon */
-.favorites-menu-toggle .material-icons {
-  margin-top: -5px;
-}
-
-/* Favorites menu with dynamically aligned transform-origin */
+/* Favorites Menu Specific Styles */
 .favorites-menu {
-  position: absolute;
-  top: 30px;
   left: -266px;
   transform: translate(-50%, 0) scale(0);
-  background: #fff;
-  color: #00274C;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   width: calc(4 * 240px + 4 * 1rem);
   min-height: 250px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  font-size: 1.5rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   transform-origin: calc(100% - 234.25px) +10px;
   /* Arrow position plus 2 times border width */
 }
 
-/* Header within the favorites menu */
-.favorites-menu-header {
-  width: 100%;
-}
-
-/* Favorites menu heading */
-.favorites-menu-header h3 {
-  margin-left: 15px;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #00274C;
-  text-align: left;
-}
-
-/* Divider line in favorites menu header */
-.favorites-menu-header hr {
-  width: calc(100% - 10px);
-  border: none;
-  border-top: 2px solid #00274C;
-  margin-top: 0.5rem;
-  margin-bottom: -15px;
-}
-
-/* Container for favorite items in the menu */
-.favorite-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  width: 100%;
-  justify-content: flex-start;
-}
-
-/* Styles for favorite item links */
-.favorite-items a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Styles for links within the favorites menu */
-.favorites-menu a {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border-radius: 4px;
-  flex-direction: column;
-  font-size: 1.25rem;
-}
-
-/* Arrow above the favorites menu */
 .favorites-menu::before {
-  content: '';
-  position: absolute;
-  top: -15px;
   right: +219.25px;
-  border-width: 7.5px;
-  border-style: solid;
-  border-color: transparent transparent #fff transparent;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Images within the favorites menu */
 .favorites-menu img {
   width: 160px;
   height: 160px;
@@ -413,7 +320,8 @@ nav {
   background: transparent;
 }
 
-/* Manage favorites button container */
+
+/* Manage Favorites Button Styles */
 .manage-favorites-button {
   margin-top: -40px;
   width: 100%;
@@ -421,19 +329,6 @@ nav {
   justify-content: center;
 }
 
-/* Active state for menu */
-.favorites-menu.active {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-  pointer-events: auto;
-}
-
-.favorites-menu.active::before {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
-/* Styles for the manage favorites button */
 #manage-favorites {
   margin-top: 1rem;
   background: #00274C;
@@ -445,8 +340,10 @@ nav {
   font-size: 1rem;
 }
 
+
+
 /* --- Notifications Menu Styles --- */
-/* Container for the notifications icon */
+
 .notifications-icon {
   position: relative;
   display: inline-flex;
@@ -454,160 +351,57 @@ nav {
   cursor: pointer;
 }
 
-/* Toggle button for the notifications menu */
 .notifications-menu-toggle {
-  display: inline-flex;
-  align-items: center;
-  margin-top: -3px;
   transition: color 0.3s ease;
   transform-origin: center;
 }
 
-/* Adjustments for the notifications menu icon */
-.notifications-menu-toggle .material-icons {
-  margin-top: -5px;
-}
-
-/* Styles for the notifications dropdown menu */
+/* Notifications Menu Specific Styles */
 .notifications-menu {
-  position: absolute;
-  top: +30px;
   left: 50%;
   transform: translate(-50%, 0) scale(0);
-  background: #fff;
-  color: #00274C;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   width: calc(1 * 160px + 6rem);
   min-height: 300px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  font-size: 1.5rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   transform-origin: top center;
 }
 
-/* Header within the notifications menu */
-.notifications-menu-header {
-  width: 100%;
-}
-
-/* Notifications menu heading */
-.notifications-menu-header h3 {
-  margin-left: 15px;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #00274C;
-  text-align: center;
-}
-
-/* Divider line in notifications menu header */
-.notifications-menu-header hr {
-  width: calc(100% - 10px);
-  border: none;
-  border-top: 2px solid #00274C;
-  margin-top: 0.5rem;
-}
-
-/* Container for notification items */
-.notifications-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  width: 100%;
-  justify-content: flex-start;
-}
-
-/* Styles for notification item links */
-.notifications-items a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Styles for links within the notifications menu */
-.notifications-menu a {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border-radius: 4px;
-  flex-direction: column;
-  font-size: 1.25rem;
-}
-
-/* Arrow above the notifications menu */
 .notifications-menu::before {
-  content: '';
-  position: absolute;
-  top: -15px;
   left: 50%;
-  border-width: 7.5px;
-  border-style: solid;
-  border-color: transparent transparent #fff transparent;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Active state for menu */
-.notifications-menu.active {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-  pointer-events: auto;
-}
-
-.notifications-menu.active::before {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
-/* ===========================================================
- Sign In Menu Styles
- =========================================================== */
-/* Container for the sign-in button/profile picture */
+/* --- Sign In Menu Styles --- */
 .sign-in-container {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  position: relative;
 }
 
-/* Styles for the sign-in dropdown menu */
+
+/* Sign In Menu Specific Styles */
 .sign-in-menu {
-  position: absolute;
   top: +40px;
   right: -105px;
   transform: translate(-50%, 0) scale(0);
-  background: #fff;
-  color: #00274C;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   width: 240px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   transform-origin: calc(100% - 50px) +10px;
 }
 
-/* Header within the sign-in menu */
+.sign-in-menu::before {
+  right: +35px;
+  opacity: 0;
+}
+
+
+/* Sign In Header Styles */
 .sign-in-menu-header {
   width: 100%;
   text-align: center;
 }
 
-/* Sign-in menu heading */
 .sign-in-menu-header h3 {
   font-size: 1.5rem;
   font-weight: 800;
@@ -615,14 +409,12 @@ nav {
   margin: 10px 0 5px 0;
 }
 
-/* Paragraph in sign-in menu header */
 .sign-in-menu-header p {
   font-size: 0.9rem;
   margin-bottom: 10px;
   color: #555;
 }
 
-/* Profile picture in sign-in menu */
 .sign-in-profile-pic {
   width: 40px;
   height: 40px;
@@ -636,18 +428,16 @@ nav {
   margin: 0 auto;
   font-size: 1.2rem;
   line-height: 2.1;
-  /* Ensures vertical centering */
   text-align: center;
-  /* Ensures horizontal centering */
 }
 
-/* Menu items in sign-in menu */
+
+/* Sign In Items Styles */
 .sign-in-items {
   width: 100%;
   margin-top: 0.5rem;
 }
 
-/* Individual sign-in menu item */
 .sign-in-items .sign-in-menu-item {
   width: 100%;
   text-align: left;
@@ -661,38 +451,12 @@ nav {
   text-align: left;
 }
 
-/* Arrow above the sign-in menu */
-.sign-in-menu::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  right: +35px;
-  border-width: 7.5px;
-  border-style: solid;
-  border-color: transparent transparent #fff transparent;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Divider line in sign-in menu header */
+/* Sign In Menu Header Styles */
 .sign-in-menu-header hr {
   border: 1px solid #00274C;
 }
 
-/* Active state for menu */
-.sign-in-menu.active {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-  pointer-events: auto;
-}
-
-.sign-in-menu.active::before {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
-/* --- Styles for Sign-In Button when Signed In --- */
-/* Profile picture button when user is signed in */
+/* Profile Pic Button When Signed In */
 .sign-in-profile-pic-button {
   width: 25px;
   height: 25px;
@@ -705,10 +469,9 @@ nav {
   font-weight: 700;
   margin-right: 0.5rem;
   font-size: 0.9rem;
-  /* Slightly smaller font size */
 }
 
-/* User name displayed next to profile picture */
+/* User Name Displayed Next to Profile Pic */
 .user-name {
   font-size: 0.9rem;
   font-weight: 600;
@@ -717,7 +480,7 @@ nav {
 /* ===========================================================
  Hero Section Styles
  =========================================================== */
-/* Styles for the hero section at the top of the page */
+/* Hero Section */
 .hero-section {
   position: relative;
   min-height: 80vh;
@@ -734,7 +497,6 @@ nav {
   padding: 2rem;
 }
 
-/* Content within the hero section */
 .hero-content {
   background: rgba(0, 0, 0, 0.6);
   padding: 3rem 2rem;
@@ -744,21 +506,20 @@ nav {
   margin-bottom: 2rem;
 }
 
-/* Heading within the hero content */
 .hero-content h1 {
   margin: 0;
   font-size: 3rem;
   font-weight: 700;
 }
 
-/* Image within the hero content */
 .hero-content img {
   max-width: 100%;
   height: auto;
   margin-bottom: 1rem;
 }
 
-/* Search form within the hero section */
+
+/* Hero Search Form */
 .hero-search-form {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -766,7 +527,7 @@ nav {
   position: relative;
 }
 
-/* Input field within the hero search form */
+
 .hero-search-form input {
   border: none;
   outline: none;
@@ -777,7 +538,6 @@ nav {
   border-radius: 4px 0 0 4px;
 }
 
-/* Search button within the hero search form */
 .hero-search-form button {
   background: #FFCB05;
   border: none;
@@ -791,13 +551,12 @@ nav {
   justify-content: center;
 }
 
-/* Icon within the hero search button */
 .hero-search-form button .material-icons {
   font-size: 1.5rem;
 }
 
-/* Hero Pinned Box styling */
-/* Container for the pinned box in the hero section */
+
+/* Hero Pinned Box */
 .hero-pinned-box {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
@@ -808,16 +567,15 @@ nav {
   text-align: center;
 }
 
-/* Pinned section within the hero */
 .hero-pinned-section {
   margin-top: 2rem;
   text-align: center;
 }
 
+
 /* ===========================================================
  Content Section Styles
  =========================================================== */
-/* Styles for the main content section */
 .content-section {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -825,7 +583,6 @@ nav {
   text-align: center;
 }
 
-/* Heading within the content section */
 .content-section h2 {
   margin-top: 0;
   font-size: 1.5rem;
@@ -833,11 +590,11 @@ nav {
   margin-bottom: 1rem;
 }
 
+
 /* ===========================================================
  Cards Container and Card Styles
  =========================================================== */
-/* Cards Container Styles */
-/* Container for cards */
+/* --- Cards Container Styles --- */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -846,7 +603,7 @@ nav {
   margin-top: 1rem;
 }
 
-/* Adjusted styles for expandable card container */
+
 .cards-container.all-links-expandable {
   justify-content: center;
   gap: 1rem;
@@ -855,12 +612,12 @@ nav {
   margin-right: 50px;
 }
 
-/* Sizing for cards within expandable container */
+
 .cards-container.all-links-expandable .card {
   flex: 0 1 calc((100% - (4 * 1rem))/5);
 }
 
-/* Styles for full links card container */
+
 .cards-container.all-links-full {
   display: flex;
   flex-wrap: wrap;
@@ -871,24 +628,9 @@ nav {
   margin-right: 0px;
 }
 
-/* Card Styles */
-.cards-container .card,
-.it-services-card {
-  background: #F5F5F5;
-  border-radius: 8px;
-  padding: 1rem;
-  box-sizing: border-box;
-  text-align: center;
-  text-decoration: none;
-  color: #00274C;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  user-select: none;
-  position: relative;
-  width: 200px;
-  /* Ensures all cards have the same fixed width */
-}
-
-/* Favorite card styles */
+/* --- Card Base Styles --- */
+.card,
+.it-services-card,
 .favorite-card {
   background: #F5F5F5;
   border-radius: 8px;
@@ -903,7 +645,6 @@ nav {
   width: 200px;
 }
 
-/* Heading within cards */
 .card h3,
 .it-services-card h3,
 .favorite-card h3 {
@@ -912,19 +653,18 @@ nav {
   font-weight: 700;
 }
 
-/* Images within cards */
 .card img,
 .favorite-card img {
   max-width: 100%;
   border-radius: 4px;
 }
 
-/* Icons within IT services cards */
+
 .it-services-card .material-icons {
   font-size: 72px;
 }
 
-/* Favorite star icon on cards */
+/* --- Favorite Star Styles --- */
 .favorite-star {
   position: absolute;
   top: 8px;
@@ -937,18 +677,17 @@ nav {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* State styles for favorite star when favorited */
+
 .favorite-star.favorited {
   display: block;
   color: #FFCB05;
 }
 
-/* Style for card when favorited */
 .favorited-card {
   background-color: #FFF9C4;
 }
 
-/* Keyframes for the fill (favoriting) animation */
+/* Animation Keyframes */
 @keyframes fillAnimation {
   0% {
     transform: scale(1);
@@ -966,23 +705,18 @@ nav {
   }
 }
 
-/* Class to trigger the fill animation with shine effect */
+
 .favorite-star.animate-fill {
-  /* Default glow */
   filter: drop-shadow(0 0 10px #FFCB05);
   -webkit-filter: drop-shadow(0 0 10px #FFCB05);
-  /* WebKit glow */
-  /* Combined animations */
   animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
   -webkit-animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
-  /* Shine effect */
   mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
   mask-size: 200%;
   -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
   -webkit-mask-size: 200%;
 }
 
-/* Keyframes for the sparkle animation */
 @keyframes sparkle {
   0% {
     opacity: 0;
@@ -1000,7 +734,6 @@ nav {
   }
 }
 
-/* WebKit-compatible keyframes for sparkle animation */
 @-webkit-keyframes sparkle {
   0% {
     opacity: 0;
@@ -1018,7 +751,7 @@ nav {
   }
 }
 
-/* Keyframes for the glow animation */
+
 @keyframes glowAnimation {
   0% {
     filter: drop-shadow(0 0 5px #FFCB05);
@@ -1033,7 +766,6 @@ nav {
   }
 }
 
-/* WebKit-compatible keyframes */
 @-webkit-keyframes glowAnimation {
   0% {
     -webkit-filter: drop-shadow(0 0 5px #FFCB05);
@@ -1048,7 +780,7 @@ nav {
   }
 }
 
-/* Keyframes for the unfill (unfavoriting) animation */
+
 @keyframes unfillAnimation {
   0% {
     transform: scale(1);
@@ -1066,10 +798,11 @@ nav {
   }
 }
 
-/* Class to trigger the unfill animation */
+
 .favorite-star.animate-unfill {
   animation: unfillAnimation .3s forwards;
 }
+
 
 @-webkit-keyframes shine {
   from {
@@ -1091,7 +824,7 @@ nav {
   }
 }
 
-/* Styles for options icon in favorite card */
+/* --- Options Icon & Menu Styles --- */
 .options-icon {
   position: absolute;
   top: 8px;
@@ -1104,7 +837,7 @@ nav {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Options menu */
+
 .options-menu {
   position: absolute;
   top: 30px;
@@ -1119,12 +852,12 @@ nav {
   min-width: 150px;
 }
 
-/* Show the options menu when active */
+
 .options-menu.active {
   display: block;
 }
 
-/* Options menu items */
+
 .options-menu-item {
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -1132,7 +865,7 @@ nav {
   transition: background 0.3s ease;
 }
 
-/* Hover effect on options menu items */
+
 .options-menu-item:hover {
   background-color: #f0f0f0;
 }
@@ -1140,7 +873,6 @@ nav {
 /* ===========================================================
  Footer Styles
  =========================================================== */
-/* Styles for the footer */
 footer {
   background: #1A1A1A;
   color: #fff;
@@ -1148,12 +880,10 @@ footer {
   padding: 2rem 1rem;
 }
 
-/* Footer link hover effect */
 footer a[href]:hover {
   color: #FFCB05;
 }
 
-/* Top section of the footer */
 .footer-top {
   display: flex;
   flex-wrap: wrap;
@@ -1164,7 +894,6 @@ footer a[href]:hover {
   gap: 2rem;
 }
 
-/* Footer logo section */
 .footer-logo-section {
   display: flex;
   align-items: center;
@@ -1172,49 +901,41 @@ footer a[href]:hover {
   margin-right: 2rem;
 }
 
-/* Footer logo image */
 .footer-logo-section img {
   height: 200px;
 }
 
-/* Footer information section */
 .footer-info-section {
   flex: 1;
 }
 
-/* Footer heading */
 .footer-info-section h3 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
   font-weight: 700;
 }
 
-/* Columns within the footer */
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
-/* Individual footer column */
 .footer-column h4 {
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
   font-weight: 700;
 }
 
-/* Paragraphs within footer columns */
 .footer-column p {
   font-size: 0.9rem;
   margin: 0.25rem 0;
 }
 
-/* Links within footer columns */
 .footer-column p a {
   color: #ccc;
 }
 
-/* Bottom section of the footer */
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
@@ -1225,7 +946,6 @@ footer a[href]:hover {
 /* ===========================================================
  Back to Top and Home Button Styles
  =========================================================== */
-/* Styles for the back to top button */
 .back-to-top {
   text-align: center;
   position: fixed;
@@ -1242,7 +962,6 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Styles for the home button */
 .home-button {
   text-align: center;
   position: fixed;
@@ -1259,10 +978,10 @@ footer a[href]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+
 /* ===========================================================
  Show More/Less Button Styles
  =========================================================== */
-/* Styles for the "Show More" button */
 #show-more {
   margin-top: 1rem;
   background: #00274C;
@@ -1274,12 +993,10 @@ footer a[href]:hover {
   font-size: 1rem;
 }
 
-/* Class to hide elements */
 .hidden {
   display: none;
 }
 
-/* Styles for the "Show Less" button */
 #show-less {
   margin-top: 1rem;
   background: #00274C;
@@ -1291,7 +1008,7 @@ footer a[href]:hover {
   font-size: 1rem;
 }
 
-/* Styles for the "Show All" link */
+
 #show-all {
   margin-top: 1rem;
   background: #00274C;
@@ -1306,7 +1023,6 @@ footer a[href]:hover {
 /* ===========================================================
  Search Suggestions Styles
  =========================================================== */
-/* Container for search suggestions */
 .search-suggestions {
   position: absolute;
   top: 100%;
@@ -1323,12 +1039,11 @@ footer a[href]:hover {
   display: none;
 }
 
-/* Active state for search suggestions */
 .search-suggestions.active {
   display: block;
 }
 
-/* Individual search suggestion item */
+
 .search-suggestion-item {
   padding: 0.5rem;
   cursor: pointer;
@@ -1337,11 +1052,11 @@ footer a[href]:hover {
   flex-direction: column;
 }
 
+
 /* ===========================================================
  Not Implemented Page Styles
  =========================================================== */
 /* --- Not Implemented Page Styles --- */
-/* Container for the Not Implemented page */
 .not-implemented-container {
   position: relative;
   min-height: 100vh;
@@ -1358,20 +1073,17 @@ footer a[href]:hover {
   padding: 2rem;
 }
 
-/* Heading styles within Not Implemented container */
 .not-implemented-container h1 {
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
   font-weight: 700;
 }
 
-/* Paragraph styles within Not Implemented container */
 .not-implemented-container p {
   margin: 1rem 0;
   font-size: 1rem;
 }
 
-/* Go back button styles */
 .go-back-button {
   background: #FFCB05;
   border: none;
@@ -1385,7 +1097,6 @@ footer a[href]:hover {
   user-select: none;
 }
 
-/* Main section within Not Implemented container */
 .not-implemented-main {
   background: rgba(0, 0, 0, 0.6);
   padding: 3rem 3rem;
@@ -1395,20 +1106,18 @@ footer a[href]:hover {
   margin-bottom: 3rem;
 }
 
-/* Heading within Not Implemented main section */
 .not-implemented-main h1 {
   margin: 0;
   font-size: 3rem;
   font-weight: 700;
 }
 
-/* Paragraph within Not Implemented main section */
 .not-implemented-main p {
   margin: 1rem 0rem 2rem 0rem;
 }
 
 /* --- Full Search Area Styles --- */
-/* Container for the full search area */
+/* Base styles for full search areas */
 .full-search-area {
   position: relative;
   display: flex;
@@ -1420,29 +1129,31 @@ footer a[href]:hover {
   margin: 0 auto;
 }
 
-/* Styles for the full search area */
+
 .full-search-area {
   padding: 3rem 1rem;
   width: 100%;
   margin-bottom: 0.5rem;
 }
 
-/* Heading in the full search area */
+
 .full-search-area h1 {
   margin: 0;
   font-size: 3rem;
   font-weight: 700;
 }
 
-/* Subheading in the full search area */
+
 .full-search-area h3 {
   margin: 1rem;
   font-size: 1.2rem;
   font-weight: 700;
 }
 
+
+
 /* --- Full Search Form Styles --- */
-/* Styles for the full search form */
+/* Base styles for full search forms */
 .full-search-form {
   margin-top: 1.5rem;
   display: flex;
@@ -1450,10 +1161,11 @@ footer a[href]:hover {
   width: 100%;
   max-width: 600px;
   outline: 1px solid #001F3A;
-  border-radius: 4px 4px 4px 4px;
+  border-radius: 4px;
+  /* Corrected: single value for all corners */
 }
 
-/* Input within full search form */
+
 .full-search-form input {
   border: none;
   outline: none;
@@ -1463,7 +1175,6 @@ footer a[href]:hover {
   border-radius: 4px 0 0 4px;
 }
 
-/* Button within full search form */
 .full-search-form button {
   background: #FFCB05;
   border: none;
@@ -1477,20 +1188,20 @@ footer a[href]:hover {
   justify-content: center;
 }
 
-/* Icon within full search button */
+
 .full-search-form button .material-icons {
   font-size: 1.5rem;
 }
 
+
 /* ===========================================================
- Sort Type Selector Styles
- =========================================================== */
-/* Hide sort type selector by default */
+Sort Type Selector Styles
+=========================================================== */
+/* Base styles for sort type selectors */
 .sort-type-selector {
   display: none;
 }
 
-/* Container for sort type toggle */
 .sort-type-container {
   position: relative;
   display: grid;
@@ -1504,7 +1215,6 @@ footer a[href]:hover {
   cursor: pointer;
 }
 
-/* Background for active sort type */
 .sort-type-container::before {
   content: '';
   position: absolute;
@@ -1516,19 +1226,16 @@ footer a[href]:hover {
   transition: all 0.3s;
 }
 
-/* Move background based on sort type */
-.sort-type-selector:checked+.sort-type-container::before {
-  left: 50%;
-}
-
-/* Text within sort type container */
 .sort-type-container div {
   padding: 6px;
   text-align: center;
   z-index: 1;
 }
 
-/* Text color adjustments based on sort type */
+.sort-type-selector:checked+.sort-type-container::before {
+  left: 50%;
+}
+
 .sort-type-selector:checked+.sort-type-container div:first-child {
   color: #00274C;
   transition: color 0.3s;
@@ -1538,6 +1245,7 @@ footer a[href]:hover {
   color: white;
   transition: color 0.3s;
 }
+
 
 .sort-type-selector+.sort-type-container div:first-child {
   color: white;
@@ -1658,227 +1366,4 @@ input:checked+.slider::before {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-/* ===========================================================
- Responsive Styles
- =========================================================== */
-@media (max-width: 768px) {
-
-  /* Responsive styles for navigation */
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .left-section,
-  .right-section {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .search-form {
-    width: 100%;
-    margin: 1rem 0;
-  }
-
-  .search-form input {
-    width: 100%;
-  }
-
-  .nav-icons {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .current-group {
-    display: none;
-  }
-
-  /* Responsive styles for hero content */
-  .hero-content {
-    padding: 2rem 1rem;
-  }
-
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-search-form input {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .hero-search-form button {
-    padding: 0.75rem 1rem;
-  }
-
-  /* Adjusted card width for smaller screens */
-  .cards-container .card,
-  .it-services-card,
-  .favorite-card {
-    width: 150px;
-    /* Fixed width for smaller screens */
-  }
-
-  /* Responsive styles for footer */
-  .footer-columns {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .footer-info-section h3 {
-    font-size: 1rem;
-  }
-
-  .footer-column h4 {
-    font-size: 0.95rem;
-  }
-
-  /* Responsive adjustments for modal */
-  .preferences-menu-content {
-    width: 90%;
-    margin: 20% auto;
-  }
-}
-
-/* Container for the full search area */
-.full-search-area-favorites {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  margin: 0 auto;
-}
-
-/* Styles for the full search area */
-.full-search-area-favorites {
-  padding: 3rem 1rem;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-/* Heading in the full search area */
-.full-search-area-favorites h1 {
-  margin: 0;
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-/* Subheading in the full search area */
-.full-search-area-favorites h3 {
-  margin: 1rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-/* --- Full Search Form Styles --- */
-/* Styles for the full search form */
-.full-search-form-favorites {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  outline: 1px solid #001F3A;
-  border-radius: 4px 4px 4px 4px;
-}
-
-/* Input within full search form */
-.full-search-form-favorites input {
-  border: none;
-  outline: none;
-  font-size: 1.2rem;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 4px 0 0 4px;
-}
-
-/* Button within full search form */
-.full-search-form-favorites button {
-  background: #FFCB05;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-  border-radius: 0 4px 4px 0;
-  color: #00274C;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Icon within full search button */
-.full-search-form-favorites button .material-icons {
-  font-size: 1.5rem;
-}
-
-/* ===========================================================
- Sort Type Selector Styles
- =========================================================== */
-/* Hide sort type selector by default */
-.sort-type-selector-favorites {
-  display: none;
-}
-
-/* Container for sort type toggle */
-.sort-type-container-favorites {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: fit-content;
-  border: 1.5px solid #00274C;
-  border-radius: 20px;
-  background: white;
-  font-weight: bold;
-  color: #00274C;
-  cursor: pointer;
-}
-
-/* Background for active sort type */
-.sort-type-container-favorites::before {
-  content: '';
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  left: 0%;
-  border-radius: 20px;
-  background: #00274C;
-  transition: all 0.3s;
-}
-
-/* Move background based on sort type */
-.sort-type-selector-favorites:checked+.sort-type-container-favorites::before {
-  left: 50%;
-}
-
-/* Text within sort type container */
-.sort-type-container-favorites div {
-  padding: 6px;
-  text-align: center;
-  z-index: 1;
-}
-
-/* Text color adjustments based on sort type */
-.sort-type-selector-favorites:checked+.sort-type-container-favorites div:first-child {
-  color: #00274C;
-  transition: color 0.3s;
-}
-
-.sort-type-selector-favorites:checked+.sort-type-container-favorites div:last-child {
-  color: white;
-  transition: color 0.3s;
-}
-
-.sort-type-selector-favorites+.sort-type-container-favorites div:first-child {
-  color: white;
-  transition: color 0.3s;
-}
-
-.sort-type-selector-favorites+.sort-type-container-favorites div:last-child {
-  color: #00274C;
-  transition: color 0.3s;
 }

@@ -5,16 +5,16 @@ import {animateEllipticalArc} from './animation.js';
 import {initializeSignInMenu, signIn, signOut} from './auth.js';
 // Import from cards.js
 import {CreateCard, CreateFavoriteCard} from './cards.js';
-import {FAVORITES_KEY, filledStarSVG, footballSVG, optionsIconSVG, outlinedStarSVG, state} from './constants.js';
+import {FAVORITES_KEY, filledStarSVG, footballSVG, optionsIconSVG, outlinedStarSVG, state,} from './constants.js';
 // Import from effects.js
 // Import from error.js
-import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages} from './error.js';
+import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages,} from './error.js';
 // Import from favorites.js
-import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance} from './favorites.js';
+import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance,} from './favorites.js';
 // Import from globalListeners.js
 import {InitializeGlobalListeners} from './globalListeners.js';
 // Import from preference.js
-import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
+import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu,} from './preference.js';
 // Import from search.js
 import {SetupSearchSuggestions} from './search.js';
 
@@ -75,13 +75,21 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
     const menu = document.getElementById(menuId);
     const toggle = document.getElementById(menuToggle);
     let clickedOpen = false;
+    const signInItems = document.getElementById('sign-in-items');
+    const signInItemSignedOut = document.querySelectorAll('.sign-in-item-signed-out');
+    const signInItemSignedIn = document.querySelectorAll('.sign-in-item-signed-in');
+    const preferencesButton = document.getElementById('sign-in-preferences-button');
+    const feedbackButton = document.getElementById('sign-in-feedback-button');
+
     if (!container || !menu || !toggle)
         return;
+
     container.addEventListener('mouseover', () => {
         if (!clickedOpen) {
             menu.classList.add('active');
         }
     });
+
     container.addEventListener('mouseout', () => {
         if (!clickedOpen) {
             if (menu.classList.contains('active')) {
@@ -92,16 +100,40 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
     toggle.addEventListener('click', (e) => {
         e.preventDefault();
         if (!state.signedIn) {
-            signIn()
+            signIn();
         }
         clickedOpen = !clickedOpen;
         menu.classList.add('active');
     });
-    container.addEventListener('click', (e) => {
-        e.preventDefault();
-        clickedOpen = !clickedOpen;
-        menu.classList.add('active');
+
+    signInItemSignedOut.forEach((item) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (!state.signedIn) {
+                signIn();
+            }
+        });
     });
+    signInItemSignedIn.forEach((item) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (state.signedIn) {
+                signOut();
+            }
+        });
+    });
+
+    preferencesButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        openPreferencesMenu();
+    });
+
+    feedbackButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href =
+            'https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form';
+    });
+
     document.addEventListener('click', (event) => {
         if (clickedOpen && !container.contains(event.target) &&
             !menu.contains(event.target)) {
@@ -121,7 +153,7 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
  */
 export function initializeButtonEffects() {
     const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
         button.addEventListener('mouseover', () => {
             button.style.filter = 'brightness(90%)';
         });
@@ -148,7 +180,7 @@ export function initializeButtonEffects() {
  */
 export function initializeCardHoverEffects() {
     const cards = document.querySelectorAll('.card, .it-services-card, .favorite-card');
-    cards.forEach(card => {
+    cards.forEach((card) => {
         card.style.transition = 'transform 0.3s ease';
         card.addEventListener('mouseover', () => {
             card.style.transform = 'translateY(-5px)';
@@ -175,7 +207,7 @@ export function initializeCardHoverEffects() {
  */
 export function initializeNavIconsHoverEffects() {
     const navIconLinks = document.querySelectorAll('.nav-icons a');
-    navIconLinks.forEach(link => {
+    navIconLinks.forEach((link) => {
         link.addEventListener('mouseover', () => {
             link.style.color = '#FFCB05';
         });
@@ -196,11 +228,12 @@ export function initializeFavoritesIconHoverEffects() {
         {selector: '.group-selector a', scale: 1.05},
         {selector: '.favorites-icon a', scale: 1.15},
         {selector: '.notifications-icon a', scale: 1.15},
-        {selector: '.home-icon', scale: 1.15}, {selector: '.all-links-icon', scale: 1.12}
+        {selector: '.home-icon', scale: 1.15},
+        {selector: '.all-links-icon', scale: 1.12},
     ];
-    iconSelectors.forEach(iconInfo => {
+    iconSelectors.forEach((iconInfo) => {
         const icons = document.querySelectorAll(iconInfo.selector);
-        icons.forEach(icon => {
+        icons.forEach((icon) => {
             icon.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
             icon.addEventListener('mouseover', () => {
                 icon.style.transform = `scale(${iconInfo.scale})`;
@@ -222,15 +255,13 @@ export function initializeFavoritesIconHoverEffects() {
  */
 export function initializeSwitchToggleEffects() {
     const switches = document.querySelectorAll('.switch input');
-    switches.forEach(switchInput => {
+    switches.forEach((switchInput) => {
         const slider = switchInput.nextElementSibling;
         switchInput.addEventListener('change', () => {
             if (switchInput.checked) {
                 slider.style.backgroundColor = '#FFCB05';
-                slider.querySelector('::before').style.transform = 'translateX(26px)';
             } else {
                 slider.style.backgroundColor = '#ccc';
-                slider.querySelector('::before').style.transform = 'translateX(0)';
             }
         });
     });

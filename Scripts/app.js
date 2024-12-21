@@ -5,20 +5,19 @@ import {animateEllipticalArc, InitializeAnimation} from './animation.js';
 import {initializeSignInMenu, signIn, signOut} from './auth.js';
 // Import from cards.js
 import {CreateCard, CreateFavoriteCard} from './cards.js';
-import {FAVORITES_KEY, filledStarSVG, footballSVG, optionsIconSVG, outlinedStarSVG, state} from './constants.js';
-import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects, setupHoverMenu, setupSignInHover} from './effects.js';
+import {FAVORITES_KEY, filledStarSVG, footballSVG, optionsIconSVG, outlinedStarSVG, state,} from './constants.js';
+import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects, setupHoverMenu, setupSignInHover,} from './effects.js';
 // Import from effects.js
 // Import from error.js
-import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages} from './error.js';
+import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages,} from './error.js';
 // Import from favorites.js
-import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance} from './favorites.js';
+import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance,} from './favorites.js';
 // Import from globalListeners.js
 import {InitializeGlobalListeners} from './globalListeners.js';
 // Import from preference.js
-import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
+import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu,} from './preference.js';
 // Import from search.js
 import {SetupSearchSuggestions} from './search.js';
-
 
 document.addEventListener('DOMContentLoaded', () => {
     // ==============================
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Fetch tasks data and initialize the page.
      */
     fetch('../Assets/JSON Files/tasks.json')
-        .then(response => {
+        .then((response) => {
             if (!response.ok) {
                 console.error(
                     'Failed to load tasks.json. Make sure it exists at ../Assets/JSON Files/tasks.json.');
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return response.json();
         })
-        .then(data => {
+        .then((data) => {
             state.linksData = data;
             initializePage();
         })
@@ -60,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sortedByRank =
                 [...state.linksData].sort((a, b) => b.currentRating - a.currentRating);
             const top4 = sortedByRank.slice(0, 4);
-            top4.forEach(link => {
+            top4.forEach((link) => {
                 const card = CreateCard(link);
                 mostPopularContainer.append(card);
             });
@@ -72,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 [...state.linksData].sort((a, b) => b.currentRating - a.currentRating);
             const top10 = sortedByRank.slice(0, 10);
             const next30 = sortedByRank.slice(10, 40);
-            top10.forEach(link => {
+            top10.forEach((link) => {
                 const card = CreateCard(link);
                 card.classList.add('initial-cards');
                 allLinksContainer.append(card);
             });
-            next30.forEach(link => {
+            next30.forEach((link) => {
                 const card = CreateCard(link);
                 card.classList.add('additional-cards', 'hidden');
                 allLinksContainer.append(card);
@@ -105,18 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 if (searchTerm.trim() !== '') {
                     linksToShow = linksToShow.filter(
-                        link =>
-                            ((link.title &&
-                              link.title.toLowerCase().includes(searchTerm)) ||
-                             (link.applicationName &&
-                              link.applicationName.toLowerCase().includes(searchTerm))));
+                        (link) =>
+                            (link.title &&
+                             link.title.toLowerCase().includes(searchTerm)) ||
+                            (link.applicationName &&
+                             link.applicationName.toLowerCase().includes(searchTerm)));
                 }
                 if (linksToShow.length === 0) {
                     const noResults = document.createElement('p');
                     noResults.textContent = 'No results found.';
                     allLinksFullContainer.appendChild(noResults);
                 } else {
-                    linksToShow.forEach(link => {
+                    linksToShow.forEach((link) => {
                         const card = CreateCard(link);
                         allLinksFullContainer.append(card);
                     });
@@ -146,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const showAllButton = document.getElementById('show-all');
             showMoreButton?.addEventListener('click', () => {
                 const additionalCards = document.querySelectorAll('.additional-cards');
-                additionalCards.forEach(card => {
+                additionalCards.forEach((card) => {
                     card.classList.remove('hidden');
                 });
                 showMoreButton.classList.add('hidden');
@@ -155,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             showLessButton?.addEventListener('click', () => {
                 const additionalCards = document.querySelectorAll('.additional-cards');
-                additionalCards.forEach(card => {
+                additionalCards.forEach((card) => {
                     card.classList.add('hidden');
                 });
                 showMoreButton.classList.remove('hidden');
@@ -197,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             function RenderFavorites() {
                 favoritesManagerContainer.innerHTML = '';
                 let favoritedLinks =
-                    state.linksData.filter(link => isLinkFavorited(link));
+                    state.linksData.filter((link) => isLinkFavorited(link));
 
                 if (sortType === 'rank') {
                     favoritedLinks.sort((a, b) => b.currentRating - a.currentRating);
@@ -207,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (searchTerm.trim() !== '') {
                     favoritedLinks = favoritedLinks.filter(
-                        link =>
+                        (link) =>
                             (link.title &&
                              link.title.toLowerCase().includes(searchTerm)) ||
                             (link.applicationName &&
@@ -219,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     noFavorites.textContent = 'No pinned links yet.';
                     favoritesManagerContainer.appendChild(noFavorites);
                 } else {
-                    favoritedLinks.forEach(link => {
+                    favoritedLinks.forEach((link) => {
                         const card = CreateFavoriteCard(link);
                         favoritesManagerContainer.appendChild(card);
                     });
@@ -251,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const showAllButton = document.getElementById('show-all');
         showMoreButton?.addEventListener('click', () => {
             const additionalCards = document.querySelectorAll('.additional-cards');
-            additionalCards.forEach(card => {
+            additionalCards.forEach((card) => {
                 card.classList.remove('hidden');
             });
             showMoreButton.classList.add('hidden');
@@ -260,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         showLessButton?.addEventListener('click', () => {
             const additionalCards = document.querySelectorAll('.additional-cards');
-            additionalCards.forEach(card => {
+            additionalCards.forEach((card) => {
                 card.classList.add('hidden');
             });
             showMoreButton.classList.remove('hidden');

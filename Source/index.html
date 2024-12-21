@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,28 +39,28 @@
         <div class="right-section">
           <ul class="nav-icons">
             <!-- Group Selector -->
-            <li class="group-selector" id="group-selector">
-              <a href="#" aria-label="Categories" class="group-selector-toggle" id="group-selector-toggle">
+            <li class="group-selector menu-toggle-icon" id="group-selector">
+              <a href="#" aria-label="Categories" class="group-selector-toggle menu-toggle" id="group-selector-toggle">
                 <span class="current-group" id="current-group">Student</span>
                 <span class="material-icons">groups</span>
               </a>
-              <div class="group-selector-menu" id="group-selector-menu">
-                <div class="group-selector-header">
+              <div class="group-selector-menu dropdown-menu" id="group-selector-menu">
+                <div class="dropdown-menu-header">
                   <h3>Roles</h3>
                   <hr />
                 </div>
-                <div class="group-items">
+                <div class="dropdown-items group-items">
                   <a href="#" data-group="Student">
                     <img src="../Assets/Media/MPhotos/Seasons/Summer/2021_110.jpg" alt="Student Icon" />
                     Student
                   </a>
-                  <a href="#" data-group="Faculty &amp; Staff">
+                  <a href="#" data-group="Faculty & Staff">
                     <img src="../Assets/Media/MPhotos/Seasons/Summer/2021_079.jpg" alt="Faculty & Staff Icon" />
-                    Faculty &amp; Staff
+                    Faculty & Staff
                   </a>
-                  <a href="#" data-group="Parents &amp; Family">
-                    <img src="../Assets/Media/Family.jpg" alt="Parents &amp; Family Icon" />
-                    Parents &amp; Family
+                  <a href="#" data-group="Parents & Family">
+                    <img src="../Assets/Media/Family.jpg" alt="Parents & Family Icon" />
+                    Parents & Family
                   </a>
                   <a href="#" data-group="Alumni">
                     <img src="../Assets/Media/Alumni.jpg" alt="Alumni Icon" />
@@ -75,16 +74,16 @@
               </div>
             </li>
             <!-- Favorites Icon -->
-            <li class="favorites-icon" id="favorites-icon">
-              <a href="#" aria-label="Favorites" class="favorites-menu-toggle" id="favorites-menu-toggle">
+            <li class="favorites-icon menu-toggle-icon" id="favorites-icon">
+              <a href="#" aria-label="Favorites" class="favorites-menu-toggle menu-toggle" id="favorites-menu-toggle">
                 <span class="material-icons">star</span>
               </a>
-              <div class="favorites-menu" id="favorites-menu">
-                <div class="favorites-menu-header">
+              <div class="favorites-menu dropdown-menu" id="favorites-menu">
+                <div class="dropdown-menu-header">
                   <h3>Favorites</h3>
                   <hr />
                 </div>
-                <div class="favorite-items">
+                <div class="dropdown-items favorite-items">
                   <section class="content-section" aria-label="Favorite Links">
                     <div class="cards-container" id="favorite-links-nav-container"></div>
                   </section>
@@ -102,16 +101,17 @@
               </a>
             </li>
             <!-- Notifications Icon -->
-            <li class="notifications-icon" id="notifications-icon">
-              <a href="#" aria-label="Notifications" class="notifications-menu-toggle" id="notifications-menu-toggle">
+            <li class="notifications-icon menu-toggle-icon" id="notifications-icon">
+              <a href="#" aria-label="Notifications" class="notifications-menu-toggle menu-toggle"
+                id="notifications-menu-toggle">
                 <span class="material-icons">notifications</span>
               </a>
-              <div class="notifications-menu" id="notifications-menu">
-                <div class="notifications-menu-header">
+              <div class="notifications-menu dropdown-menu" id="notifications-menu">
+                <div class="dropdown-menu-header">
                   <h3>Notifications</h3>
                   <hr />
                 </div>
-                <div class="notifications-items">
+                <div class="dropdown-items notifications-items">
                   No Notifications
                 </div>
               </div>
@@ -124,19 +124,24 @@
             </li>
           </ul>
           <!-- Sign In Button -->
-          <div class="sign-in-container" id="sign-in-container">
+          <div class="sign-in-container menu-toggle-icon" id="sign-in-container">
             <button class="sign-in-button" type="button" id="sign-in-menu-toggle">
               <span class="material-icons">account_circle</span>
               Sign In
             </button>
-            <div class="sign-in-menu" id="sign-in-menu">
-              <div class="sign-in-menu-header">
+            <div class="sign-in-menu dropdown-menu" id="sign-in-menu">
+              <div class="sign-in-menu-header dropdown-menu-header">
                 <div class="sign-in-profile-pic" id="sign-in-profile-pic"></div>
                 <h3 id="sign-in-name"></h3>
                 <p id="sign-in-email"></p>
                 <hr id="sign-in-separator" />
               </div>
-              <div class="sign-in-items" id="sign-in-items"></div>
+              <div class="dropdown-items sign-in-items" id="sign-in-items">
+                <button class="sign-in-menu-item sign-in-item-signed-out">Sign in</button>
+                <button class="sign-in-menu-item sign-in-item-signed-in">Sign out</button>
+                <button class="sign-in-menu-item" id="sign-in-preferences-button">Preferences</button>
+                <button class="sign-in-menu-item" id="sign-in-feedback-button">Send Feedback</button>
+              </div>
             </div>
           </div>
         </div>
@@ -144,7 +149,7 @@
     </nav>
     <div id="preferences-menu" class="modal">
       <div class="preferences-menu-content">
-        <span class="preferences-menu-close-button" id="preferences-menu-close-button">&times;</span>
+        <span class="preferences-menu-close-button" id="preferences-menu-close-button">×</span>
         <h2>Preferences</h2>
         <div class="preference-item">
           <label for="toggleFavoritesCheckbox" class="switch">
@@ -250,7 +255,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 <a href="http://regents.umich.edu/">The Regents of the University of Michigan</a> and <a
+      <p>© 2024 <a href="http://regents.umich.edu/">The Regents of the University of Michigan</a> and <a
           href="https://github.com/kgruiz">Kaden Gruizenga</a></p>
     </div>
   </footer>
