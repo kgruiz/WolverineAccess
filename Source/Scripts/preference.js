@@ -100,3 +100,74 @@ export function InitializePreferencesToggle() {
         localStorage.setItem('showFavorites', JSON.stringify(showFavorites));
     });
 }
+
+export function initializeFavoritesNumSpinner() {
+    // Initialize elements and variables
+    var favoritesNumSpinnerBox = document.getElementById('favorites-num-spinner-box');
+    for (let i = 0; i < 100; i++) {
+        let span = document.createElement('span');
+        span.textContent = i;
+        favoritesNumSpinnerBox.appendChild(span);
+    }
+
+    var favoritesNumbers = favoritesNumSpinnerBox.getElementsByTagName('span');
+    var favoritesIndex = 0;
+
+    // Function to show the next number
+    function nextFavoritesNum() {
+        favoritesNumbers[favoritesIndex].style.display = 'none';
+        favoritesIndex = (favoritesIndex + 1) % favoritesNumbers.length;
+        favoritesNumbers[favoritesIndex].style.display = 'initial';
+    }
+
+    // Function to show the previous number
+    function prevFavoritesNum() {
+        favoritesNumbers[favoritesIndex].style.display = 'none';
+        favoritesIndex =
+            (favoritesIndex - 1 + favoritesNumbers.length) % favoritesNumbers.length;
+        favoritesNumbers[favoritesIndex].style.display = 'initial';
+    }
+
+    let nextTimeoutId = null;
+    let prevTimeoutId = null;
+
+    const nextButton = document.querySelector('.favorites-spinner-next');
+    const prevButton = document.querySelector('.favorites-spinner-prev');
+
+    // Function to handle the continuous next button
+    function handleNextStart() {
+        nextFavoritesNum();
+        nextTimeoutId = setTimeout(function continuousNext() {
+            nextFavoritesNum();
+            nextTimeoutId = setTimeout(continuousNext, 100);
+        }, 300)
+    }
+
+    // Function to handle the continuous previous button
+    function handlePrevStart() {
+        prevFavoritesNum();
+        prevTimeoutId = setTimeout(function continuousPrev() {
+            prevFavoritesNum();
+            prevTimeoutId = setTimeout(continuousPrev, 100)
+        }, 300);
+    }
+
+    function handleStop() {
+        clearTimeout(nextTimeoutId);
+        clearTimeout(prevTimeoutId);
+    }
+
+    // Attach event listeners for the spinner buttons
+    nextButton.addEventListener('mousedown', handleNextStart);
+    prevButton.addEventListener('mousedown', handlePrevStart);
+    nextButton.addEventListener('mouseup', handleStop);
+    prevButton.addEventListener('mouseup', handleStop);
+    nextButton.addEventListener('mouseleave', handleStop);
+    prevButton.addEventListener('mouseleave', handleStop);
+
+
+    // Prevent selection of number when clicking buttons
+    favoritesNumSpinnerBox.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+    });
+}
