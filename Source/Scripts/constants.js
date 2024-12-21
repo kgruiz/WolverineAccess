@@ -3,26 +3,6 @@
  * Defines shared constants and application-wide state.
  */
 
-// Import from animation.js
-import {animateEllipticalArc} from './animation.js';
-// Import from auth.js
-import {initializeSignInMenu, signIn, signOut} from './auth.js';
-// Import from cards.js
-import {CreateCard, CreateFavoriteCard} from './cards.js';
-// Import from effects.js
-import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects, setupHoverMenu, setupSignInHover} from './effects.js';
-// Import from error.js
-import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages} from './error.js';
-// Import from favorites.js
-import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance} from './favorites.js';
-// Import from globalListeners.js
-import {InitializeGlobalListeners} from './globalListeners.js';
-// Import from preference.js
-import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
-// Import from search.js
-import {SetupSearchSuggestions} from './search.js';
-
-
 // ==============================
 // Global Constants and State
 // ==============================

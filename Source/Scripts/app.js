@@ -7,25 +7,15 @@
 // Application Entry Point
 // ==============================
 
-// Import from constants.js
-// Import from animation.js
-import {animateEllipticalArc, InitializeAnimation} from './animation.js';
-// Import from auth.js
-import {initializeSignInMenu, signIn, signOut} from './auth.js';
-// Import from cards.js
+import {InitializeAnimation} from './animation.js';
+import {initializeSignInMenu} from './auth.js';
 import {CreateCard, CreateFavoriteCard} from './cards.js';
-import {FAVORITES_KEY, filledStarSVG, footballSVG, optionsIconSVG, outlinedStarSVG, state,} from './constants.js';
-import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects, setupHoverMenu, setupSignInHover,} from './effects.js';
-// Import from effects.js
-// Import from error.js
-import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages,} from './error.js';
-// Import from favorites.js
-import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance,} from './favorites.js';
-// Import from globalListeners.js
+import {state} from './constants.js';
+import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects} from './effects.js';
+import {InitializeMessages,} from './error.js';
+import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './favorites.js';
 import {InitializeGlobalListeners} from './globalListeners.js';
-// Import from preference.js
-import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu,} from './preference.js';
-// Import from search.js
+import {InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
 import {SetupSearchSuggestions} from './search.js';
 
 document.addEventListener('DOMContentLoaded', () => {

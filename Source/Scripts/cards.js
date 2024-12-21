@@ -3,25 +3,8 @@
  * Creates and manages card components for the UI.
  */
 
-// Import from constants.js
-// Import from animation.js
-import {animateEllipticalArc} from './animation.js';
-// Import from auth.js
-import {initializeSignInMenu, signIn, signOut} from './auth.js';
-// Import from cards.js
-import {FAVORITES_KEY, filledStarSVG, footballSVG, optionsIconSVG, outlinedStarSVG, state} from './constants.js';
-// Import from effects.js
-import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects, setupHoverMenu, setupSignInHover} from './effects.js';
-// Import from error.js
-import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages} from './error.js';
-// Import from favorites.js
-import {addCardToFavoritesContainers, addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeCardFromFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance} from './favorites.js';
-// Import from globalListeners.js
-import {InitializeGlobalListeners} from './globalListeners.js';
-// Import from preference.js
-import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
-// Import from search.js
-import {SetupSearchSuggestions} from './search.js';
+import {filledStarSVG, optionsIconSVG, outlinedStarSVG} from './constants.js';
+import {addCardToFavoritesContainers, addFavorite, isLinkFavorited, removeCardFromFavoritesContainers, removeFavorite, updateStarAppearance} from './favorites.js';
 
 // ==============================
 // Card Creation and Rendering
