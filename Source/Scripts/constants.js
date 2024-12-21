@@ -1,3 +1,8 @@
+/**
+ * FILE: constants.js
+ * Defines shared constants and application-wide state.
+ */
+
 // Import from animation.js
 import {animateEllipticalArc} from './animation.js';
 // Import from auth.js
@@ -18,6 +23,9 @@ import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesM
 import {SetupSearchSuggestions} from './search.js';
 
 
+// ==============================
+// Global Constants and State
+// ==============================
 
 // ==============================
 // Global Variables

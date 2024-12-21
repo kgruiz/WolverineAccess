@@ -1,3 +1,12 @@
+/**
+ * FILE: app.js
+ * Initializes and orchestrates application functionality.
+ */
+
+// ==============================
+// Application Entry Point
+// ==============================
+
 // Import from constants.js
 // Import from animation.js
 import {animateEllipticalArc, InitializeAnimation} from './animation.js';

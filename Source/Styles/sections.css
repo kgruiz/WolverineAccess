@@ -1,6 +1,8 @@
-/* ===========================================================
- Hero Section Styles
- =========================================================== */
+/**
+ * FILE: sections.css
+ * Styles for heroes, content areas, not-implemented page, and full search features
+ */
+
 /* Hero Section */
 .hero-section {
     position: relative;
@@ -90,9 +92,7 @@
     text-align: center;
 }
 
-/* ===========================================================
- Content Section Styles
- =========================================================== */
+/* Content Section */
 .content-section {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -107,10 +107,7 @@
     margin-bottom: 1rem;
 }
 
-/* ===========================================================
- Not Implemented Page Styles
- =========================================================== */
-/* --- Not Implemented Page Styles --- */
+/* Not Implemented Page */
 .not-implemented-container {
     position: relative;
     min-height: 100vh;
@@ -170,8 +167,7 @@
     margin: 1rem 0rem 2rem 0rem;
 }
 
-/* --- Full Search Area Styles --- */
-/* Base styles for full search areas */
+/* Full Search Area */
 .full-search-area {
     position: relative;
     display: flex;
@@ -201,8 +197,7 @@
     font-weight: 700;
 }
 
-/* --- Full Search Form Styles --- */
-/* Base styles for full search forms */
+/* Full Search Form */
 .full-search-form {
     margin-top: 1.5rem;
     display: flex;

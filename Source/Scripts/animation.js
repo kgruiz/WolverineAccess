@@ -1,3 +1,8 @@
+/**
+ * FILE: animation.js
+ * Controls animations and visual transitions.
+ */
+
 // Import from constants.js
 // Import from animation.js
 // Import from auth.js
@@ -17,6 +22,10 @@ import {InitializeGlobalListeners} from './globalListeners.js';
 import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
 // Import from search.js
 import {SetupSearchSuggestions} from './search.js';
+
+// ==============================
+// Animation Logic
+// ==============================
 
 export function animateEllipticalArc(svgString, startX, startY, endX, endY) {
     console.log('Function called with parameters:',

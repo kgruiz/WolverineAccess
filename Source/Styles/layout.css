@@ -1,6 +1,9 @@
-/* ===========================================================
- Footer Styles
- =========================================================== */
+/**
+ * FILE: layout.css
+ * Defines layout aspects, footer, and sort type selector
+ */
+
+/* Footer Styles */
 footer {
     background: #1A1A1A;
     color: #fff;
@@ -71,10 +74,7 @@ footer a[href]:hover {
     color: #ccc;
 }
 
-/* ===========================================================
-  Sort Type Selector Styles
-  =========================================================== */
-/* Base styles for sort type selectors */
+/* Sort Type Selector */
 .sort-type-selector {
     display: none;
 }

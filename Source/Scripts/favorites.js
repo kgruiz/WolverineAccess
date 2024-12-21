@@ -1,3 +1,8 @@
+/**
+ * FILE: favorites.js
+ * Handles favorites features and logic within the application.
+ */
+
 // Import from constants.js
 // Import from animation.js
 import {animateEllipticalArc} from './animation.js';
@@ -17,6 +22,10 @@ import {InitializeGlobalListeners} from './globalListeners.js';
 import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
 // Import from search.js
 import {SetupSearchSuggestions} from './search.js';
+
+// ==============================
+// Favorites Functionality
+// ==============================
 
 // ==============================
 // Favorites Handling

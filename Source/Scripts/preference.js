@@ -1,3 +1,8 @@
+/**
+ * FILE: preference.js
+ * Manages user preferences throughout the application.
+ */
+
 // Import from constants.js
 // Import from animation.js
 import {animateEllipticalArc} from './animation.js';
@@ -18,6 +23,9 @@ import {InitializeGlobalListeners} from './globalListeners.js';
 import {SetupSearchSuggestions} from './search.js';
 
 
+// ==============================
+// Preferences
+// ==============================
 
 // ==============================
 // Modal Functionality

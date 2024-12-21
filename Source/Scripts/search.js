@@ -1,3 +1,8 @@
+/**
+ * FILE: search.js
+ * Handles search suggestions and navigation to relevant pages
+ */
+
 // Import from constants.js
 // Import from animation.js
 import {animateEllipticalArc} from './animation.js';

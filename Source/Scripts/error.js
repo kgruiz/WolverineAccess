@@ -1,3 +1,8 @@
+/**
+ * FILE: error.js
+ * Manages application errors, warnings, and logs.
+ */
+
 // Import from constants.js
 // Import from animation.js
 import {animateEllipticalArc} from './animation.js';
@@ -17,6 +22,10 @@ import {InitializeGlobalListeners} from './globalListeners.js';
 import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
 // Import from search.js
 import {SetupSearchSuggestions} from './search.js';
+
+// ==============================
+// Error Handling
+// ==============================
 
 /**
  * Display an error message on the page.

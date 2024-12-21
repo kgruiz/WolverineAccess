@@ -1,3 +1,8 @@
+/**
+ * FILE: globalListeners.js
+ * Sets up global event listeners for the application.
+ */
+
 // Import from constants.js
 // Import from animation.js
 import {animateEllipticalArc} from './animation.js';
@@ -17,6 +22,10 @@ import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers
 import {InitializePreferencesMenu, InitializePreferencesToggle, openPreferencesMenu} from './preference.js';
 // Import from search.js
 import {SetupSearchSuggestions} from './search.js';
+
+// ==============================
+// Global Event Handlers
+// ==============================
 
 // ==============================
 // Event Listeners

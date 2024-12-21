@@ -1,3 +1,8 @@
+/**
+ * FILE: main.css
+ * Imports all core style files for WolverineAccess
+ */
+
 @import url("./base.css");
 @import url("./navigation.css");
 @import url("./components.css");
