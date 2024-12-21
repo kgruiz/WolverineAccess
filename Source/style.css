@@ -262,6 +262,11 @@ nav {
   margin-top: -3px;
 }
 
+.current-group {
+
+  margin-right: 10px;
+}
+
 /* Group Selector Specific Styles */
 .group-selector-menu {
   left: -220px;
@@ -403,6 +408,7 @@ nav {
 }
 
 .sign-in-menu-header h3 {
+  text-align: center;
   font-size: 1.5rem;
   font-weight: 800;
   color: #00274C;
