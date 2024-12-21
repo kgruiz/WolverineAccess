@@ -123,3 +123,64 @@ export function populateFavoritesContainers() {
         }
     });
 }
+
+/**
+ * Add a card to all favorites containers.
+ * @param {HTMLElement} card - The card element to add.
+ */
+export function addCardToFavoritesContainers(card) {
+    const favoriteContainers = [
+        document.getElementById('all-favorites-container'),
+        document.getElementById('favorite-links-nav-container'),
+        document.getElementById('hero-pinned-container')
+    ];
+    favoriteContainers.forEach(container => {
+        if (container) {
+            // Remove "No pinned links yet." if present
+            const noFavorites = container.querySelector('p');
+            if (noFavorites && noFavorites.textContent === 'No pinned links yet.') {
+                container.removeChild(noFavorites);
+            }
+            // Check if the card is already present to avoid duplicates
+            if (!container.querySelector(
+                    `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
+                const link =
+                    state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
+                let newCard;
+                if (container.id === 'all-favorites-container') {
+                    newCard = CreateFavoriteCard(link);
+                } else {
+                    newCard = CreateCard(link);
+                }
+                container.appendChild(newCard);
+            }
+        }
+    });
+}
+
+/**
+ * Remove a card from all favorites containers.
+ * @param {HTMLElement} card - The card element to remove.
+ */
+export function removeCardFromFavoritesContainers(card) {
+    const favoriteContainers = [
+        document.getElementById('all-favorites-container'),
+        document.getElementById('favorite-links-nav-container'),
+        document.getElementById('hero-pinned-container')
+    ];
+    favoriteContainers.forEach(container => {
+        if (container) {
+            const cardToRemove =
+                container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
+            if (cardToRemove) {
+                cardToRemove.remove();
+            }
+            // If no favorites left, show "No pinned links yet."
+            if (container.querySelectorAll('.card, .favorite-card').length === 0) {
+                const noFavorites = document.createElement('p');
+                noFavorites.textContent = 'No pinned links yet.';
+                container.appendChild(noFavorites);
+            }
+        }
+    });
+}

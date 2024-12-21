@@ -10,7 +10,7 @@ import {initializeButtonEffects, initializeCardHoverEffects, initializeFavorites
 // Import from error.js
 import {displayErrorMessage, displayLogMessage, displayWarningMessage, InitializeMessages} from './error.js';
 // Import from favorites.js
-import {addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance} from './favorites.js';
+import {addCardToFavoritesContainers, addFavorite, isLinkFavorited, loadFavorites, populateFavoritesContainers, removeCardFromFavoritesContainers, removeFavorite, saveFavorites, updateStarAppearance} from './favorites.js';
 // Import from globalListeners.js
 import {InitializeGlobalListeners} from './globalListeners.js';
 // Import from preference.js
