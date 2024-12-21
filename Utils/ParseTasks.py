@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     currentDir = Path("..").resolve()
 
-    path = Path(currentDir, "../Assets/JSON Files/tasks.json")
+    path = Path(currentDir, "../../Assets/JSON Files/tasks.json")
 
     collectionsPath = path.with_stem("collections")
     tasksPath = path.with_stem("tasks")

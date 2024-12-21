@@ -36,4 +36,4 @@ def RemoveWhiteBackground(imageDir: Path):
         image.save(oldImagePath)
 
 
-RemoveWhiteBackground(Path("../../Assets/Media/Current"))
+RemoveWhiteBackground(Path("../../../Assets/Media/Current"))

@@ -13,7 +13,7 @@
         "openInNewWindow": true,
         "currentRating": 1,
         "alt": "Backpack/Register for Classes",
-        "image": "../Assets/Media/Current/BackpackRegisterforClasses.png",
+        "image": "../../Assets/Media/Current/BackpackRegisterforClasses.png",
         "href": "not-implemented.html"
     },
     {
@@ -30,7 +30,7 @@
         "openInNewWindow": true,
         "currentRating": 2,
         "alt": "Student Business",
-        "image": "../Assets/Media/Current/StudentBusiness.png",
+        "image": "../../Assets/Media/Current/StudentBusiness.png",
         "href": "not-implemented.html"
     },
     {
@@ -47,7 +47,7 @@
         "openInNewWindow": true,
         "currentRating": 3,
         "alt": "Human Resource Management System",
-        "image": "../Assets/Media/Current/HumanResourceManagementSystem.png",
+        "image": "../../Assets/Media/Current/HumanResourceManagementSystem.png",
         "href": "not-implemented.html"
     },
     {
@@ -64,7 +64,7 @@
         "openInNewWindow": true,
         "currentRating": 4,
         "alt": "Financials & Physical Resources System",
-        "image": "../Assets/Media/Current/FinancialsAndPhysicalResourcesSystem.png",
+        "image": "../../Assets/Media/Current/FinancialsAndPhysicalResourcesSystem.png",
         "href": "not-implemented.html"
     },
     {
@@ -81,7 +81,7 @@
         "openInNewWindow": true,
         "currentRating": 5,
         "alt": "Student Administration",
-        "image": "../Assets/Media/Current/StudentAdministration.png",
+        "image": "../../Assets/Media/Current/StudentAdministration.png",
         "href": "not-implemented.html"
     },
     {
@@ -98,7 +98,7 @@
         "openInNewWindow": true,
         "currentRating": 6,
         "alt": "Employee Self Service",
-        "image": "../Assets/Media/Current/EmployeeSelfService.png",
+        "image": "../../Assets/Media/Current/EmployeeSelfService.png",
         "href": "not-implemented.html"
     },
     {
@@ -115,7 +115,7 @@
         "openInNewWindow": true,
         "currentRating": 7,
         "alt": "Expense Reporting",
-        "image": "../Assets/Media/Current/ExpenseReporting.png",
+        "image": "../../Assets/Media/Current/ExpenseReporting.png",
         "href": "not-implemented.html"
     },
     {
@@ -132,7 +132,7 @@
         "openInNewWindow": true,
         "currentRating": 8,
         "alt": "New and Prospective Student Business",
-        "image": "../Assets/Media/Current/NewandProspectiveStudentBusiness.png",
+        "image": "../../Assets/Media/Current/NewandProspectiveStudentBusiness.png",
         "href": "not-implemented.html"
     },
     {
@@ -149,7 +149,7 @@
         "openInNewWindow": true,
         "currentRating": 9,
         "alt": "Time Reporting",
-        "image": "../Assets/Media/Current/TimeReporting.png",
+        "image": "../../Assets/Media/Current/TimeReporting.png",
         "href": "not-implemented.html"
     },
     {
@@ -166,7 +166,7 @@
         "openInNewWindow": true,
         "currentRating": 10,
         "alt": "View Paycheck",
-        "image": "../Assets/Media/Current/ViewPaycheck.png",
+        "image": "../../Assets/Media/Current/ViewPaycheck.png",
         "href": "not-implemented.html"
     },
     {
@@ -183,7 +183,7 @@
         "openInNewWindow": true,
         "currentRating": 11,
         "alt": "Faculty Business",
-        "image": "../Assets/Media/Current/FacultyBusiness.png",
+        "image": "../../Assets/Media/Current/FacultyBusiness.png",
         "href": "not-implemented.html"
     },
     {
@@ -200,7 +200,7 @@
         "openInNewWindow": true,
         "currentRating": 12,
         "alt": "View Final Grades",
-        "image": "../Assets/Media/Current/ViewFinalGrades.png",
+        "image": "../../Assets/Media/Current/ViewFinalGrades.png",
         "href": "not-implemented.html"
     },
     {
@@ -217,7 +217,7 @@
         "openInNewWindow": true,
         "currentRating": 13,
         "alt": "Canvas",
-        "image": "../Assets/Media/Current/Canvas.png",
+        "image": "../../Assets/Media/Current/Canvas.png",
         "href": "https://canvas.it.umich.edu/",
         "target": "_blank",
         "rel": "noopener"
@@ -236,7 +236,7 @@
         "openInNewWindow": true,
         "currentRating": 14,
         "alt": "Data Warehouse",
-        "image": "../Assets/Media/Current/DataWarehouse.png",
+        "image": "../../Assets/Media/Current/DataWarehouse.png",
         "href": "not-implemented.html"
     },
     {
@@ -253,7 +253,7 @@
         "openInNewWindow": true,
         "currentRating": 15,
         "alt": "Google Mail",
-        "image": "../Assets/Media/Current/GoogleMail.png",
+        "image": "../../Assets/Media/Current/GoogleMail.png",
         "href": "https://gmail.com",
         "target": "_blank",
         "rel": "noopener"
@@ -272,7 +272,7 @@
         "openInNewWindow": true,
         "currentRating": 16,
         "alt": "M-Reports",
-        "image": "../Assets/Media/Current/M-Reports.png",
+        "image": "../../Assets/Media/Current/M-Reports.png",
         "href": "not-implemented.html"
     },
     {
@@ -289,7 +289,7 @@
         "openInNewWindow": false,
         "currentRating": 17,
         "alt": "Marketsite+ (Browse Only)",
-        "image": "../Assets/Media/Current/Marketsite+(BrowseOnly).png",
+        "image": "../../Assets/Media/Current/Marketsite+(BrowseOnly).png",
         "href": "not-implemented.html"
     },
     {
@@ -306,7 +306,7 @@
         "openInNewWindow": true,
         "currentRating": 18,
         "alt": "View/Pay My Student Account",
-        "image": "../Assets/Media/Current/ViewPayMyStudentAccount.png",
+        "image": "../../Assets/Media/Current/ViewPayMyStudentAccount.png",
         "href": "not-implemented.html"
     },
     {
@@ -323,7 +323,7 @@
         "openInNewWindow": true,
         "currentRating": 19,
         "alt": "View Unofficial Transcript",
-        "image": "../Assets/Media/Current/ViewUnofficialTranscript.png",
+        "image": "../../Assets/Media/Current/ViewUnofficialTranscript.png",
         "href": "not-implemented.html"
     },
     {
@@ -340,7 +340,7 @@
         "openInNewWindow": true,
         "currentRating": 20,
         "alt": "Class Schedule",
-        "image": "../Assets/Media/Current/ClassSchedule.png",
+        "image": "../../Assets/Media/Current/ClassSchedule.png",
         "href": "not-implemented.html"
     },
     {
@@ -357,7 +357,7 @@
         "openInNewWindow": true,
         "currentRating": 21,
         "alt": "Timesheet Approval",
-        "image": "../Assets/Media/Current/TimesheetApproval.png",
+        "image": "../../Assets/Media/Current/TimesheetApproval.png",
         "href": "not-implemented.html"
     },
     {
@@ -374,7 +374,7 @@
         "openInNewWindow": true,
         "currentRating": 22,
         "alt": "eResearch",
-        "image": "../Assets/Media/Current/eResearch.png",
+        "image": "../../Assets/Media/Current/eResearch.png",
         "href": "not-implemented.html"
     },
     {
@@ -391,7 +391,7 @@
         "openInNewWindow": true,
         "currentRating": 23,
         "alt": "Student Center",
-        "image": "../Assets/Media/Current/StudentCenter.png",
+        "image": "../../Assets/Media/Current/StudentCenter.png",
         "href": "not-implemented.html"
     },
     {
@@ -408,7 +408,7 @@
         "openInNewWindow": true,
         "currentRating": 24,
         "alt": "Cornerstone Learning (formerly MLearning)",
-        "image": "../Assets/Media/Current/CornerstoneLearning(formerlyMLearning).png",
+        "image": "../../Assets/Media/Current/CornerstoneLearning(formerlyMLearning).png",
         "href": "not-implemented.html"
     },
     {
@@ -425,7 +425,7 @@
         "openInNewWindow": true,
         "currentRating": 25,
         "alt": "DART",
-        "image": "../Assets/Media/Current/DART.png",
+        "image": "../../Assets/Media/Current/DART.png",
         "href": "not-implemented.html"
     },
     {
@@ -442,7 +442,7 @@
         "openInNewWindow": true,
         "currentRating": 26,
         "alt": "Faculty Center",
-        "image": "../Assets/Media/Current/FacultyCenter.png",
+        "image": "../../Assets/Media/Current/FacultyCenter.png",
         "href": "not-implemented.html"
     },
     {
@@ -459,7 +459,7 @@
         "openInNewWindow": true,
         "currentRating": 27,
         "alt": "Document Imaging",
-        "image": "../Assets/Media/Current/DocumentImaging.png",
+        "image": "../../Assets/Media/Current/DocumentImaging.png",
         "href": "not-implemented.html"
     },
     {
@@ -476,7 +476,7 @@
         "openInNewWindow": true,
         "currentRating": 28,
         "alt": "Benefits Self-Service",
-        "image": "../Assets/Media/Current/BenefitsSelf-Service.png",
+        "image": "../../Assets/Media/Current/BenefitsSelf-Service.png",
         "href": "not-implemented.html"
     },
     {
@@ -493,7 +493,7 @@
         "openInNewWindow": true,
         "currentRating": 29,
         "alt": "Michigan Medicine Email",
-        "image": "../Assets/Media/Current/MichiganMedicineEmail.png",
+        "image": "../../Assets/Media/Current/MichiganMedicineEmail.png",
         "href": "not-implemented.html"
     },
     {
@@ -510,7 +510,7 @@
         "openInNewWindow": true,
         "currentRating": 30,
         "alt": "MPrint",
-        "image": "../Assets/Media/Current/MPrint.png",
+        "image": "../../Assets/Media/Current/MPrint.png",
         "href": "not-implemented.html"
     },
     {
@@ -527,7 +527,7 @@
         "openInNewWindow": true,
         "currentRating": 31,
         "alt": "LSA Unofficial Audit Checklist",
-        "image": "../Assets/Media/Current/LSAUnofficialAuditChecklist.png",
+        "image": "../../Assets/Media/Current/LSAUnofficialAuditChecklist.png",
         "href": "not-implemented.html"
     },
     {
@@ -544,7 +544,7 @@
         "openInNewWindow": true,
         "currentRating": 32,
         "alt": "Dropbox at U-M",
-        "image": "../Assets/Media/Current/DropboxatU-M.png",
+        "image": "../../Assets/Media/Current/DropboxatU-M.png",
         "href": "not-implemented.html"
     },
     {
@@ -561,7 +561,7 @@
         "openInNewWindow": true,
         "currentRating": 33,
         "alt": "Course & Instructor Ratings",
-        "image": "../Assets/Media/Current/CourseAndInstructorRatings.png",
+        "image": "../../Assets/Media/Current/CourseAndInstructorRatings.png",
         "href": "not-implemented.html"
     },
     {
@@ -578,7 +578,7 @@
         "openInNewWindow": true,
         "currentRating": 34,
         "alt": "Human Subject Incentive Payment Request",
-        "image": "../Assets/Media/Current/HumanSubjectIncentivePaymentRequest.png",
+        "image": "../../Assets/Media/Current/HumanSubjectIncentivePaymentRequest.png",
         "href": "not-implemented.html"
     },
     {
@@ -595,7 +595,7 @@
         "openInNewWindow": true,
         "currentRating": 35,
         "alt": "Travel Booking",
-        "image": "../Assets/Media/Current/TravelBooking.png",
+        "image": "../../Assets/Media/Current/TravelBooking.png",
         "href": "not-implemented.html"
     },
     {
@@ -612,7 +612,7 @@
         "openInNewWindow": true,
         "currentRating": 36,
         "alt": "Purchasing Requisitions",
-        "image": "../Assets/Media/Current/PurchasingRequisitions.png",
+        "image": "../../Assets/Media/Current/PurchasingRequisitions.png",
         "href": "not-implemented.html"
     },
     {
@@ -629,7 +629,7 @@
         "openInNewWindow": true,
         "currentRating": 37,
         "alt": "View Current Grades",
-        "image": "../Assets/Media/Current/ViewCurrentGrades.png",
+        "image": "../../Assets/Media/Current/ViewCurrentGrades.png",
         "href": "not-implemented.html"
     },
     {
@@ -646,7 +646,7 @@
         "openInNewWindow": true,
         "currentRating": 38,
         "alt": "Qualtrics",
-        "image": "../Assets/Media/Current/Qualtrics.png",
+        "image": "../../Assets/Media/Current/Qualtrics.png",
         "href": "not-implemented.html"
     },
     {
@@ -663,7 +663,7 @@
         "openInNewWindow": true,
         "currentRating": 39,
         "alt": "Google Drive",
-        "image": "../Assets/Media/Current/GoogleDrive.png",
+        "image": "../../Assets/Media/Current/GoogleDrive.png",
         "href": "not-implemented.html"
     },
     {
@@ -680,7 +680,7 @@
         "openInNewWindow": false,
         "currentRating": 40,
         "alt": "Order Transcripts/Check Order Status (Ann Arbor)",
-        "image": "../Assets/Media/Current/OrderTranscriptsCheckOrderStatus(AnnArbor).png",
+        "image": "../../Assets/Media/Current/OrderTranscriptsCheckOrderStatus(AnnArbor).png",
         "href": "not-implemented.html"
     },
     {
@@ -697,7 +697,7 @@
         "openInNewWindow": true,
         "currentRating": 41,
         "alt": "Atlas Schedule Builder",
-        "image": "../Assets/Media/Current/AtlasScheduleBuilder.png",
+        "image": "../../Assets/Media/Current/AtlasScheduleBuilder.png",
         "href": "not-implemented.html"
     },
     {
@@ -714,7 +714,7 @@
         "openInNewWindow": true,
         "currentRating": 42,
         "alt": "Search for Classes",
-        "image": "../Assets/Media/Current/SearchforClasses.png",
+        "image": "../../Assets/Media/Current/SearchforClasses.png",
         "href": "not-implemented.html"
     },
     {
@@ -731,7 +731,7 @@
         "openInNewWindow": true,
         "currentRating": 43,
         "alt": "Manager Desktop",
-        "image": "../Assets/Media/Current/ManagerDesktop.png",
+        "image": "../../Assets/Media/Current/ManagerDesktop.png",
         "href": "not-implemented.html"
     },
     {
@@ -748,7 +748,7 @@
         "openInNewWindow": true,
         "currentRating": 44,
         "alt": "My LINC",
-        "image": "../Assets/Media/Current/MyLINC.png",
+        "image": "../../Assets/Media/Current/MyLINC.png",
         "href": "not-implemented.html"
     },
     {
@@ -765,7 +765,7 @@
         "openInNewWindow": true,
         "currentRating": 45,
         "alt": "MCommunity",
-        "image": "../Assets/Media/Current/MCommunity.png",
+        "image": "../../Assets/Media/Current/MCommunity.png",
         "href": "not-implemented.html"
     },
     {
@@ -782,7 +782,7 @@
         "openInNewWindow": true,
         "currentRating": 46,
         "alt": "Leave Balances",
-        "image": "../Assets/Media/Current/LeaveBalances.png",
+        "image": "../../Assets/Media/Current/LeaveBalances.png",
         "href": "not-implemented.html"
     },
     {
@@ -799,7 +799,7 @@
         "openInNewWindow": true,
         "currentRating": 47,
         "alt": "Zoom",
-        "image": "../Assets/Media/Current/Zoom.png",
+        "image": "../../Assets/Media/Current/Zoom.png",
         "href": "not-implemented.html"
     },
     {
@@ -816,7 +816,7 @@
         "openInNewWindow": true,
         "currentRating": 48,
         "alt": "M-Passport",
-        "image": "../Assets/Media/Current/M-Passport.png",
+        "image": "../../Assets/Media/Current/M-Passport.png",
         "href": "not-implemented.html"
     },
     {
@@ -833,7 +833,7 @@
         "openInNewWindow": true,
         "currentRating": 49,
         "alt": "Teaching Evaluations",
-        "image": "../Assets/Media/Current/TeachingEvaluations.png",
+        "image": "../../Assets/Media/Current/TeachingEvaluations.png",
         "href": "not-implemented.html"
     },
     {
@@ -850,7 +850,7 @@
         "openInNewWindow": true,
         "currentRating": 50,
         "alt": "LSA Course Guide",
-        "image": "../Assets/Media/Current/LSACourseGuide.png",
+        "image": "../../Assets/Media/Current/LSACourseGuide.png",
         "href": "not-implemented.html"
     },
     {
@@ -867,7 +867,7 @@
         "openInNewWindow": true,
         "currentRating": 51,
         "alt": "TDNext",
-        "image": "../Assets/Media/Current/TDNext.png",
+        "image": "../../Assets/Media/Current/TDNext.png",
         "href": "not-implemented.html"
     },
     {
@@ -884,7 +884,7 @@
         "openInNewWindow": true,
         "currentRating": 52,
         "alt": "Check Financial Aid Status",
-        "image": "../Assets/Media/Current/CheckFinancialAidStatus.png",
+        "image": "../../Assets/Media/Current/CheckFinancialAidStatus.png",
         "href": "not-implemented.html"
     },
     {
@@ -901,7 +901,7 @@
         "openInNewWindow": true,
         "currentRating": 53,
         "alt": "Payroll Tax Forms (W-2, W-4)",
-        "image": "../Assets/Media/Current/PayrollTaxForms(W-2W-4).png",
+        "image": "../../Assets/Media/Current/PayrollTaxForms(W-2W-4).png",
         "href": "not-implemented.html"
     },
     {
@@ -918,7 +918,7 @@
         "openInNewWindow": true,
         "currentRating": 54,
         "alt": "Tableau",
-        "image": "../Assets/Media/Current/Tableau.png",
+        "image": "../../Assets/Media/Current/Tableau.png",
         "href": "not-implemented.html"
     },
     {
@@ -935,7 +935,7 @@
         "openInNewWindow": true,
         "currentRating": 55,
         "alt": "Enrollment Connect",
-        "image": "../Assets/Media/Current/EnrollmentConnect.png",
+        "image": "../../Assets/Media/Current/EnrollmentConnect.png",
         "href": "not-implemented.html"
     },
     {
@@ -952,7 +952,7 @@
         "openInNewWindow": false,
         "currentRating": 56,
         "alt": "SignNow E-signature Service",
-        "image": "../Assets/Media/Current/SignNowE-signatureService.png",
+        "image": "../../Assets/Media/Current/SignNowE-signatureService.png",
         "href": "not-implemented.html"
     },
     {
@@ -969,7 +969,7 @@
         "openInNewWindow": true,
         "currentRating": 57,
         "alt": "View Financial Aid Award Notices",
-        "image": "../Assets/Media/Current/ViewFinancialAidAwardNotices.png",
+        "image": "../../Assets/Media/Current/ViewFinancialAidAwardNotices.png",
         "href": "not-implemented.html"
     },
     {
@@ -986,7 +986,7 @@
         "openInNewWindow": true,
         "currentRating": 58,
         "alt": "Mcard Discounts",
-        "image": "../Assets/Media/Current/McardDiscounts.png",
+        "image": "../../Assets/Media/Current/McardDiscounts.png",
         "href": "not-implemented.html"
     },
     {
@@ -1003,7 +1003,7 @@
         "openInNewWindow": true,
         "currentRating": 59,
         "alt": "Remote Work Approvals",
-        "image": "../Assets/Media/Current/RemoteWorkApprovals.png",
+        "image": "../../Assets/Media/Current/RemoteWorkApprovals.png",
         "href": "not-implemented.html"
     },
     {
@@ -1020,7 +1020,7 @@
         "openInNewWindow": true,
         "currentRating": 60,
         "alt": "Find Scholarships & Financial Aid",
-        "image": "../Assets/Media/Current/FindScholarshipsAndFinancialAid.png",
+        "image": "../../Assets/Media/Current/FindScholarshipsAndFinancialAid.png",
         "href": "not-implemented.html"
     },
     {
@@ -1037,7 +1037,7 @@
         "openInNewWindow": true,
         "currentRating": 61,
         "alt": "Tuition and Fees",
-        "image": "../Assets/Media/Current/TuitionandFees.png",
+        "image": "../../Assets/Media/Current/TuitionandFees.png",
         "href": "not-implemented.html"
     },
     {
@@ -1054,7 +1054,7 @@
         "openInNewWindow": true,
         "currentRating": 62,
         "alt": "Campus Personal Information",
-        "image": "../Assets/Media/Current/CampusPersonalInformation.png",
+        "image": "../../Assets/Media/Current/CampusPersonalInformation.png",
         "href": "not-implemented.html"
     },
     {
@@ -1071,7 +1071,7 @@
         "openInNewWindow": true,
         "currentRating": 63,
         "alt": "Housing",
-        "image": "../Assets/Media/Current/Housing.png",
+        "image": "../../Assets/Media/Current/Housing.png",
         "href": "not-implemented.html"
     },
     {
@@ -1088,7 +1088,7 @@
         "openInNewWindow": true,
         "currentRating": 64,
         "alt": "Manager Self Service",
-        "image": "../Assets/Media/Current/ManagerSelfService.png",
+        "image": "../../Assets/Media/Current/ManagerSelfService.png",
         "href": "not-implemented.html"
     },
     {
@@ -1105,7 +1105,7 @@
         "openInNewWindow": true,
         "currentRating": 65,
         "alt": "Apply for In-State Tuition",
-        "image": "../Assets/Media/Current/ApplyforIn-StateTuition.png",
+        "image": "../../Assets/Media/Current/ApplyforIn-StateTuition.png",
         "href": "not-implemented.html"
     },
     {
@@ -1122,7 +1122,7 @@
         "openInNewWindow": true,
         "currentRating": 66,
         "alt": "Report Library",
-        "image": "../Assets/Media/Current/ReportLibrary.png",
+        "image": "../../Assets/Media/Current/ReportLibrary.png",
         "href": "not-implemented.html"
     },
     {
@@ -1139,7 +1139,7 @@
         "openInNewWindow": true,
         "currentRating": 67,
         "alt": "U-M Library",
-        "image": "../Assets/Media/Current/U-MLibrary.png",
+        "image": "../../Assets/Media/Current/U-MLibrary.png",
         "href": "not-implemented.html"
     },
     {
@@ -1156,7 +1156,7 @@
         "openInNewWindow": true,
         "currentRating": 68,
         "alt": "Virtual Sites",
-        "image": "../Assets/Media/Current/VirtualSites.png",
+        "image": "../../Assets/Media/Current/VirtualSites.png",
         "href": "not-implemented.html"
     },
     {
@@ -1173,7 +1173,7 @@
         "openInNewWindow": true,
         "currentRating": 69,
         "alt": "Alumni Student Records",
-        "image": "../Assets/Media/Current/AlumniStudentRecords.png",
+        "image": "../../Assets/Media/Current/AlumniStudentRecords.png",
         "href": "not-implemented.html"
     },
     {
@@ -1190,7 +1190,7 @@
         "openInNewWindow": true,
         "currentRating": 70,
         "alt": "Set Up Direct Deposit",
-        "image": "../Assets/Media/Current/SetUpDirectDeposit.png",
+        "image": "../../Assets/Media/Current/SetUpDirectDeposit.png",
         "href": "not-implemented.html"
     },
     {
@@ -1207,7 +1207,7 @@
         "openInNewWindow": true,
         "currentRating": 71,
         "alt": "Register Your Travel",
-        "image": "../Assets/Media/Current/RegisterYourTravel.png",
+        "image": "../../Assets/Media/Current/RegisterYourTravel.png",
         "href": "not-implemented.html"
     },
     {
@@ -1224,7 +1224,7 @@
         "openInNewWindow": true,
         "currentRating": 72,
         "alt": "GET - Food, Meal Plans, MCard",
-        "image": "../Assets/Media/Current/GET-FoodMealPlansMCard.png",
+        "image": "../../Assets/Media/Current/GET-FoodMealPlansMCard.png",
         "href": "not-implemented.html"
     },
     {
@@ -1241,7 +1241,7 @@
         "openInNewWindow": true,
         "currentRating": 73,
         "alt": "Google Calendar",
-        "image": "../Assets/Media/Current/GoogleCalendar.png",
+        "image": "../../Assets/Media/Current/GoogleCalendar.png",
         "href": "not-implemented.html"
     },
     {
@@ -1258,7 +1258,7 @@
         "openInNewWindow": true,
         "currentRating": 74,
         "alt": "OARS",
-        "image": "../Assets/Media/Current/OARS.png",
+        "image": "../../Assets/Media/Current/OARS.png",
         "href": "not-implemented.html"
     },
     {
@@ -1275,7 +1275,7 @@
         "openInNewWindow": true,
         "currentRating": 75,
         "alt": "Shared Services Center",
-        "image": "../Assets/Media/Current/SharedServicesCenter.png",
+        "image": "../../Assets/Media/Current/SharedServicesCenter.png",
         "href": "not-implemented.html"
     },
     {
@@ -1292,7 +1292,7 @@
         "openInNewWindow": true,
         "currentRating": 76,
         "alt": "Holidays & Time Off",
-        "image": "../Assets/Media/Current/HolidaysAndTimeOff.png",
+        "image": "../../Assets/Media/Current/HolidaysAndTimeOff.png",
         "href": "not-implemented.html"
     },
     {
@@ -1309,7 +1309,7 @@
         "openInNewWindow": true,
         "currentRating": 77,
         "alt": "Cash Receipt Ticket",
-        "image": "../Assets/Media/Current/CashReceiptTicket.png",
+        "image": "../../Assets/Media/Current/CashReceiptTicket.png",
         "href": "not-implemented.html"
     },
     {
@@ -1326,7 +1326,7 @@
         "openInNewWindow": true,
         "currentRating": 78,
         "alt": "BCBSM Member Portal",
-        "image": "../Assets/Media/Current/BCBSMMemberPortal.png",
+        "image": "../../Assets/Media/Current/BCBSMMemberPortal.png",
         "href": "not-implemented.html"
     },
     {
@@ -1343,7 +1343,7 @@
         "openInNewWindow": true,
         "currentRating": 79,
         "alt": "LSA Majors & Minors",
-        "image": "../Assets/Media/Current/LSAMajorsAndMinors.png",
+        "image": "../../Assets/Media/Current/LSAMajorsAndMinors.png",
         "href": "not-implemented.html"
     },
     {
@@ -1360,7 +1360,7 @@
         "openInNewWindow": true,
         "currentRating": 80,
         "alt": "Chartfield Converter",
-        "image": "../Assets/Media/Current/ChartfieldConverter.png",
+        "image": "../../Assets/Media/Current/ChartfieldConverter.png",
         "href": "not-implemented.html"
     },
     {
@@ -1377,7 +1377,7 @@
         "openInNewWindow": true,
         "currentRating": 81,
         "alt": "Trade In Tech for Store Credit",
-        "image": "../Assets/Media/Current/TradeInTechforStoreCredit.png",
+        "image": "../../Assets/Media/Current/TradeInTechforStoreCredit.png",
         "href": "not-implemented.html"
     },
     {
@@ -1394,7 +1394,7 @@
         "openInNewWindow": true,
         "currentRating": 82,
         "alt": "MetLife Legal Plans",
-        "image": "../Assets/Media/Current/MetLifeLegalPlans.png",
+        "image": "../../Assets/Media/Current/MetLifeLegalPlans.png",
         "href": "not-implemented.html"
     },
     {
@@ -1411,7 +1411,7 @@
         "openInNewWindow": true,
         "currentRating": 83,
         "alt": "PubMed @ U-M",
-        "image": "../Assets/Media/Current/PubMedAtU-M.png",
+        "image": "../../Assets/Media/Current/PubMedAtU-M.png",
         "href": "not-implemented.html"
     },
     {
@@ -1428,7 +1428,7 @@
         "openInNewWindow": true,
         "currentRating": 84,
         "alt": "Google Scholar @ U-M",
-        "image": "../Assets/Media/Current/GoogleScholaratU-M.png",
+        "image": "../../Assets/Media/Current/GoogleScholaratU-M.png",
         "href": "not-implemented.html"
     },
     {
@@ -1445,7 +1445,7 @@
         "openInNewWindow": true,
         "currentRating": 85,
         "alt": "Sign In to Patient Portal",
-        "image": "../Assets/Media/Current/SignIntoPatientPortal.png",
+        "image": "../../Assets/Media/Current/SignIntoPatientPortal.png",
         "href": "not-implemented.html"
     },
     {
@@ -1462,7 +1462,7 @@
         "openInNewWindow": true,
         "currentRating": 86,
         "alt": "Paydate Calendar",
-        "image": "../Assets/Media/Current/PaydateCalendar.png",
+        "image": "../../Assets/Media/Current/PaydateCalendar.png",
         "href": "not-implemented.html"
     },
     {
@@ -1479,7 +1479,7 @@
         "openInNewWindow": true,
         "currentRating": 87,
         "alt": "Dining",
-        "image": "../Assets/Media/Current/Dining.png",
+        "image": "../../Assets/Media/Current/Dining.png",
         "href": "not-implemented.html"
     },
     {
@@ -1496,7 +1496,7 @@
         "openInNewWindow": true,
         "currentRating": 88,
         "alt": "Fidelity",
-        "image": "../Assets/Media/Current/Fidelity.png",
+        "image": "../../Assets/Media/Current/Fidelity.png",
         "href": "not-implemented.html"
     },
     {
@@ -1513,7 +1513,7 @@
         "openInNewWindow": true,
         "currentRating": 89,
         "alt": "M-Compass",
-        "image": "../Assets/Media/Current/M-Compass.png",
+        "image": "../../Assets/Media/Current/M-Compass.png",
         "href": "not-implemented.html"
     },
     {
@@ -1530,7 +1530,7 @@
         "openInNewWindow": true,
         "currentRating": 90,
         "alt": "Office of Development",
-        "image": "../Assets/Media/Current/OfficeofDevelopment.png",
+        "image": "../../Assets/Media/Current/OfficeofDevelopment.png",
         "href": "not-implemented.html"
     },
     {
@@ -1547,7 +1547,7 @@
         "openInNewWindow": true,
         "currentRating": 91,
         "alt": "Group X Fitness Schedule",
-        "image": "../Assets/Media/Current/GroupXFitnessSchedule.png",
+        "image": "../../Assets/Media/Current/GroupXFitnessSchedule.png",
         "href": "not-implemented.html"
     },
     {
@@ -1564,7 +1564,7 @@
         "openInNewWindow": true,
         "currentRating": 92,
         "alt": "Orientation",
-        "image": "../Assets/Media/Current/Orientation.png",
+        "image": "../../Assets/Media/Current/Orientation.png",
         "href": "not-implemented.html"
     },
     {
@@ -1581,7 +1581,7 @@
         "openInNewWindow": true,
         "currentRating": 93,
         "alt": "MyAdvising",
-        "image": "../Assets/Media/Current/MyAdvising.png",
+        "image": "../../Assets/Media/Current/MyAdvising.png",
         "href": "not-implemented.html"
     },
     {
@@ -1598,7 +1598,7 @@
         "openInNewWindow": true,
         "currentRating": 94,
         "alt": "Setup/Manage Two-Factor Weblogin",
-        "image": "../Assets/Media/Current/SetupManageTwo-FactorWeblogin.png",
+        "image": "../../Assets/Media/Current/SetupManageTwo-FactorWeblogin.png",
         "href": "not-implemented.html"
     },
     {
@@ -1615,7 +1615,7 @@
         "openInNewWindow": true,
         "currentRating": 95,
         "alt": "MClassrooms",
-        "image": "../Assets/Media/Current/MClassrooms.png",
+        "image": "../../Assets/Media/Current/MClassrooms.png",
         "href": "not-implemented.html"
     },
     {
@@ -1632,7 +1632,7 @@
         "openInNewWindow": true,
         "currentRating": 96,
         "alt": "Finance/Payroll MGMT Reports",
-        "image": "../Assets/Media/Current/FinancePayrollMGMTReports.png",
+        "image": "../../Assets/Media/Current/FinancePayrollMGMTReports.png",
         "href": "not-implemented.html"
     },
     {
@@ -1649,7 +1649,7 @@
         "openInNewWindow": true,
         "currentRating": 97,
         "alt": "Michigan Online Giving",
-        "image": "../Assets/Media/Current/MichiganOnlineGiving.png",
+        "image": "../../Assets/Media/Current/MichiganOnlineGiving.png",
         "href": "not-implemented.html"
     },
     {
@@ -1666,7 +1666,7 @@
         "openInNewWindow": true,
         "currentRating": 98,
         "alt": "Register Your Travel",
-        "image": "../Assets/Media/Current/RegisterYourTravelFaculty.png",
+        "image": "../../Assets/Media/Current/RegisterYourTravelFaculty.png",
         "href": "not-implemented.html"
     },
     {
@@ -1683,7 +1683,7 @@
         "openInNewWindow": true,
         "currentRating": 99,
         "alt": "Student Employment Application",
-        "image": "../Assets/Media/Current/StudentEmploymentApplication.png",
+        "image": "../../Assets/Media/Current/StudentEmploymentApplication.png",
         "href": "not-implemented.html"
     },
     {
@@ -1700,7 +1700,7 @@
         "openInNewWindow": true,
         "currentRating": 100,
         "alt": "Wolverine Access Help Center",
-        "image": "../Assets/Media/Current/WolverineAccessHelpCenter.png",
+        "image": "../../Assets/Media/Current/WolverineAccessHelpCenter.png",
         "href": "not-implemented.html"
     }
 ]

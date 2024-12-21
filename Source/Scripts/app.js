@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Fetch tasks data and initialize the page.
      */
-    fetch('../Assets/JSON Files/tasks.json')
+    fetch('../../Assets/JSON Files/tasks.json')
         .then((response) => {
             if (!response.ok) {
                 console.error(
-                    'Failed to load tasks.json. Make sure it exists at ../Assets/JSON Files/tasks.json.');
+                    'Failed to load tasks.json. Make sure it exists at ../../Assets/JSON Files/tasks.json.');
                 return [];
             }
             return response.json();
