@@ -158,7 +158,9 @@
     </nav>
     <div id="preferences-menu" class="modal">
       <div class="preferences-menu-content">
-        <span class="preferences-menu-close-button" id="preferences-menu-close-button">×</span>
+        <span class="preferences-menu-close-button" id="preferences-menu-close-button"><span class="material-icons">
+            close
+          </span></span>
         <h2>Preferences</h2>
         <div class="preference-item">
           <label for="toggleFavoritesCheckbox" class="switch">
@@ -205,10 +207,6 @@
         </section>
       </div>
     </section>
-    <section class="content-section" aria-label="Most Popular This Week">
-      <h2>Most Popular This Week</h2>
-      <div class="cards-container" id="most-popular-container"></div>
-    </section>
     <!-- NEW TOP FAVORITES SECTION -->
     <section class="content-section" aria-label="All Favorites" id="all-favorites-section">
       <h2>Favorites</h2>
@@ -217,6 +215,10 @@
         <button id="manage-favorites" class="manage-favorites"
           onclick="window.location.href='pinned-links-manager.html'">Manage All</button>
       </section>
+    </section>
+    <section class="content-section" aria-label="Most Popular This Week">
+      <h2>Most Popular This Week</h2>
+      <div class="cards-container" id="most-popular-container"></div>
     </section>
     <section class="content-section" aria-label="All Links">
       <h2>All Links</h2>

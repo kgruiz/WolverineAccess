@@ -91,7 +91,7 @@ export function displayLogMessage(message) {
         logContainer.style.display = 'block';
 
         const closeButton = document.createElement('span');
-        closeButton.textContent = 'x';
+        closeButton.innerHTML = '<span class="material-icons">close</span>';
         closeButton.style.position = 'absolute';
         closeButton.style.top = '50%';
         closeButton.style.right = '10px';
@@ -164,7 +164,7 @@ export function displayWarningMessage(message) {
         warningContainer.style.display = 'block';
 
         const closeButton = document.createElement('span');
-        closeButton.textContent = 'x';
+        closeButton.innerHTML = '<span class="material-icons">close</span>';
         closeButton.style.position = 'absolute';
         closeButton.style.top = '50%';
         closeButton.style.right = '10px';
@@ -196,7 +196,7 @@ export function displayWarningMessage(message) {
         newWarningContainer.textContent = message;
 
         const closeButton = document.createElement('span');
-        closeButton.textContent = 'x';
+        closeButton.innerHTML = '<span class="material-icons">close</span>';
         closeButton.style.position = 'absolute';
         closeButton.style.top = '50%';
         closeButton.style.right = '10px';

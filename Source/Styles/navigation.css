@@ -345,7 +345,7 @@ nav {
     transform: translate(-50%, 0) scale(0);
     width: 240px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     transform-origin: calc(100% - 50px) +10px;
 }
@@ -364,7 +364,6 @@ nav {
 /* Sign In Items Styles */
 .sign-in-items {
     width: 100%;
-    margin-top: 0.5rem;
 }
 
 .sign-in-items .sign-in-menu-item {
