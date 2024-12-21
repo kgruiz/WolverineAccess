@@ -5,6 +5,7 @@
 
 import {filledStarSVG, optionsIconSVG, outlinedStarSVG} from './constants.js';
 import {addCardToFavoritesContainers, addFavorite, isLinkFavorited, removeCardFromFavoritesContainers, removeFavorite, updateStarAppearance} from './favorites.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 
 // ==============================
 // Card Creation and Rendering
@@ -170,8 +171,59 @@ export function CreateFavoriteCard(link) {
     removeFavoriteOption.textContent = 'Remove Favorite';
     optionsMenu.appendChild(removeFavoriteOption);
 
+
+
     // Add the options menu to the card
     card.appendChild(optionsMenu);
+
+    if (isLinkPinnedd(link)) {
+
+        const removePinnedOption = document.createElement('div');
+        removePinnedOption.className = 'options-menu-item';
+        removePinnedOption.textContent = 'Remove Pinned';
+        optionsMenu.appendChild(removePinnedOption);
+
+        // Event listener for removeFavoriteOption click
+        removeFavoriteOption.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();  // Prevent card click
+
+            // Remove from favorites
+            removePinned(link);
+
+            // Update the card UI
+            card.remove();
+
+            // Remove card from other favorites containers
+            removeCardFromPinnedsContainers(card);
+            // Update all instances of the card
+            updateCardAppearance(link);
+            // Re-render the favorites if necessary
+            RenderFavorites();
+        });
+    } else {
+
+        const addPinnedOption = document.createElement('div');
+        addPinnedOption.className = 'options-menu-item';
+        addPinnedOption.textContent = 'Add Pinned';
+        optionsMenu.appendChild(addPinnedOption);
+
+        // Event listener for removeFavoriteOption click
+        addPinnedOption.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();  // Prevent card click
+
+            // Remove from favorites
+            addPinned(link);
+
+            // Remove card from other favorites containers
+            addCardToPinnedsContainers(card);
+            // Update all instances of the card
+            updateCardAppearance(link);
+            // Re-render the favorites if necessary
+            RenderFavorites();
+        });
+    }
 
     // Event listener for optionsIcon click to toggle the menu
     optionsIcon.addEventListener('click', (e) => {

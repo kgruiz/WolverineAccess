@@ -5,6 +5,7 @@
 
 import {CreateCard, CreateFavoriteCard} from './cards.js';
 import {FAVORITES_KEY, filledStarSVG, outlinedStarSVG, state} from './constants.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 
 // ==============================
 // Favorites Functionality
@@ -104,7 +105,6 @@ export function populateFavoritesContainers() {
     const favoriteContainers = [
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
-        document.getElementById('hero-pinned-container')
     ];
     favoriteContainers.forEach(container => {
         if (container) {
@@ -112,7 +112,7 @@ export function populateFavoritesContainers() {
             const favoritedLinks = state.linksData.filter(link => isLinkFavorited(link));
             if (favoritedLinks.length === 0) {
                 const noFavorites = document.createElement('p');
-                noFavorites.textContent = 'No pinned links yet.';
+                noFavorites.textContent = 'No favorite links yet.';
                 container.appendChild(noFavorites);
             } else {
                 favoritedLinks.slice(0, 4).forEach(link => {
@@ -137,51 +137,27 @@ export function addCardToFavoritesContainers(card) {
     const favoriteContainers = [
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
-        document.getElementById('hero-pinned-container')
     ];
     favoriteContainers.forEach(container => {
         if (container) {
 
-            if (container.id == 'hero-pinned-container') {
-
-                // Remove "No pinned links yet." if present
-                const noFavorites = container.querySelector('p');
-                if (noFavorites && noFavorites.textContent === 'No pinned links yet.') {
-                    container.removeChild(noFavorites);
+            // Remove "No pinned links yet." if present
+            const noFavorites = container.querySelector('p');
+            if (noFavorites && noFavorites.textContent === 'No favorite links yet.') {
+                container.removeChild(noFavorites);
+            }
+            // Check if the card is already present to avoid duplicates
+            if (!container.querySelector(
+                    `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
+                const link =
+                    state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
+                let newCard;
+                if (container.id === 'all-favorites-container') {
+                    newCard = CreateFavoriteCard(link);
+                } else {
+                    newCard = CreateCard(link);
                 }
-                // Check if the card is already present to avoid duplicates
-                if (!container.querySelector(
-                        `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
-                    const link =
-                        state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
-                    let newCard;
-                    if (container.id === 'all-favorites-container') {
-                        newCard = CreateFavoriteCard(link);
-                    } else {
-                        newCard = CreateCard(link);
-                    }
-                    container.appendChild(newCard);
-                }
-            } else {
-
-                // Remove "No pinned links yet." if present
-                const noFavorites = container.querySelector('p');
-                if (noFavorites && noFavorites.textContent === 'No pinned links yet.') {
-                    container.removeChild(noFavorites);
-                }
-                // Check if the card is already present to avoid duplicates
-                if (!container.querySelector(
-                        `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
-                    const link =
-                        state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
-                    let newCard;
-                    if (container.id === 'all-favorites-container') {
-                        newCard = CreateFavoriteCard(link);
-                    } else {
-                        newCard = CreateCard(link);
-                    }
-                    container.appendChild(newCard);
-                }
+                container.appendChild(newCard);
             }
         }
     });
@@ -195,52 +171,20 @@ export function removeCardFromFavoritesContainers(card) {
     const favoriteContainers = [
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
-        document.getElementById('hero-pinned-container')
     ];
     favoriteContainers.forEach(container => {
         if (container) {
 
-            if (container.id == 'hero-pinned-container') {
-
-
-                const scrollDistanceFromBottom = document.documentElement.scrollHeight -
-                                                 window.scrollY - window.innerHeight;
-
-                const cardToRemove = container.querySelector(
-                    `[data-unique-key="${card.dataset.uniqueKey}"]`);
-                if (cardToRemove) {
-                    cardToRemove.remove();
-                }
-                // If no favorites left, show "No pinned links yet."
-                if (container.querySelectorAll('.card, .favorite-card').length === 0) {
-                    const noFavorites = document.createElement('p');
-                    noFavorites.textContent = 'No pinned links yet.';
-                    container.appendChild(noFavorites);
-                }
-
-                const newScrollDistanceFromBottom =
-                    document.documentElement.scrollHeight - window.scrollY -
-                    window.innerHeight;
-
-                const scrollDifference =
-                    newScrollDistanceFromBottom - scrollDistanceFromBottom;
-
-                document.documentElement.style.scrollBehavior = 'auto';
-                window.scrollBy(0, scrollDifference);
-                document.documentElement.style.scrollBehavior = 'smooth';
-            } else {
-
-                const cardToRemove = container.querySelector(
-                    `[data-unique-key="${card.dataset.uniqueKey}"]`);
-                if (cardToRemove) {
-                    cardToRemove.remove();
-                }
-                // If no favorites left, show "No pinned links yet."
-                if (container.querySelectorAll('.card, .favorite-card').length === 0) {
-                    const noFavorites = document.createElement('p');
-                    noFavorites.textContent = 'No pinned links yet.';
-                    container.appendChild(noFavorites);
-                }
+            const cardToRemove =
+                container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
+            if (cardToRemove) {
+                cardToRemove.remove();
+            }
+            // If no favorites left, show "No pinned links yet."
+            if (container.querySelectorAll('.card, .favorite-card').length === 0) {
+                const noFavorites = document.createElement('p');
+                noFavorites.textContent = 'No favorite links yet.';
+                container.appendChild(noFavorites);
             }
         }
     });

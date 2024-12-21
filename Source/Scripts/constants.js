@@ -14,12 +14,14 @@ export const state = {
     linksData: [],
     sortByRating: true,
     favoriteStatuses: {},
+    pinnedStatuses: {},
     signedIn: false,
     userName: '',
     userEmail: '',
 };
 
 export const FAVORITES_KEY = 'favoriteLinks';
+export const PINNED_KEY = 'pinnedLinks';
 
 // ==============================
 // SVG Icons for Favorites

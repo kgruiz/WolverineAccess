@@ -15,8 +15,10 @@ import {initializeButtonEffects, initializeCardHoverEffects, initializeFavorites
 import {InitializeMessages,} from './error.js';
 import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './favorites.js';
 import {InitializeGlobalListeners} from './globalListeners.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 import {InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
 import {SetupSearchSuggestions} from './search.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // ==============================
