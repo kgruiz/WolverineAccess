@@ -77,10 +77,23 @@ export function removeFavorite(link) {
 export function updateStarAppearance(star, link) {
     if (isLinkFavorited(link)) {
         star.innerHTML = filledStarSVG;
+
         star.classList.add('favorited');
+
+        star.classList.add('animate-fill');
+        // Remove the animation class after animation completes
+        star.addEventListener('animationend', () => {
+            star.classList.remove('animate-fill');
+        }, {once: true});
     } else {
         star.innerHTML = outlinedStarSVG;
         star.classList.remove('favorited');
+
+        star.classList.add('animate-unfill');
+        // Remove the animation class after animation completes
+        star.addEventListener('animationend', () => {
+            star.classList.remove('animate-unfill');
+        }, {once: true});
     }
 }
 
