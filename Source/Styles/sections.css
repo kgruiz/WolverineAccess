@@ -238,3 +238,7 @@
 .full-search-form button .material-icons {
     font-size: 1.5rem;
 }
+
+#all-favorites-section #manage-favorites-button {
+    margin-top: 2rem;
+}

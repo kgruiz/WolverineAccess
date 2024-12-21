@@ -340,11 +340,13 @@
     margin-top: 1rem;
     background: #00274C;
     color: #FFCB05;
+    border: none;
     display: inline-block;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-size: 1rem;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* Search Suggestions */

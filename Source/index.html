@@ -210,9 +210,13 @@
       <div class="cards-container" id="most-popular-container"></div>
     </section>
     <!-- NEW TOP FAVORITES SECTION -->
-    <section class="content-section" aria-label="All Favorites">
+    <section class="content-section" aria-label="All Favorites" id="all-favorites-section">
       <h2>Favorites</h2>
       <div class="cards-container" id="favorites-container"></div>
+      <section class="manage-favorites-button" id="manage-favorites-button">
+        <button id="manage-favorites" class="manage-favorites"
+          onclick="window.location.href='pinned-links-manager.html'">Manage All</button>
+      </section>
     </section>
     <section class="content-section" aria-label="All Links">
       <h2>All Links</h2>
@@ -220,7 +224,7 @@
       <button id="show-more">Show More</button>
       <button id="show-less" class="hidden">Show Less</button>
       <section>
-        <a id="show-all" class="hidden" href="all-links-full.html">Show All</a>
+        <button id="show-all" class="hidden" onclick="window.location.href='all-links-full.html'">Show All</button>
       </section>
     </section>
     <section class="content-section" aria-label="Information Technology Services">
