@@ -1,7 +1,12 @@
-/* style.css */
 /* ===========================================================
  Reset and Base Styles
  =========================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 /* Reset styles for common elements to provide a consistent baseline */
 header,
 nav,

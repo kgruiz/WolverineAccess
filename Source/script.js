@@ -8,6 +8,7 @@ const FAVORITES_KEY = 'favoriteLinks';
 let favoriteStatuses = {};
 let signedIn = false;
 let userName = "";
+
 let userEmail = "";
 // ==============================
 // SVG Icons for Favorites
@@ -444,7 +445,15 @@ document.querySelector(".back-to-top")?.addEventListener("click", () => {
   });
 });
 document.querySelector(".home-button")?.addEventListener("click", () => {
-  window.location.href = "index.html";
+
+  if (window.location.pathname.endsWith("index.html")) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  } else {
+    window.location.href = "index.html";
+  }
 });
 // ==============================
 // Data Fetching and Initialization
