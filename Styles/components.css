@@ -1,0 +1,491 @@
+/* --- Search Form Styles --- */
+.search-form {
+    margin-left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+    position: relative;
+}
+
+.search-form input {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    width: 200px;
+}
+
+.search-form button {
+    background: #FFCB05;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    color: #00274C;
+    margin-left: 0.5rem;
+}
+
+/* --- Sign In Button Styles --- */
+.sign-in-button {
+    background: #FFCB05;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    color: #000;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    height: 30px;
+    gap: 0.25rem;
+}
+
+/* --- Cards Container Styles --- */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cards-container.all-links-expandable {
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+.cards-container.all-links-expandable .card {
+    flex: 0 1 calc((100% - (4 * 1rem))/5);
+}
+
+
+.cards-container.all-links-full {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/* --- Card Base Styles --- */
+.card,
+.it-services-card,
+.favorite-card {
+    background: #F5F5F5;
+    border-radius: 8px;
+    padding: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    color: #00274C;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    position: relative;
+    width: 200px;
+}
+
+.card h3,
+.it-services-card h3,
+.favorite-card h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-weight: 700;
+}
+
+.card img,
+.favorite-card img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.it-services-card .material-icons {
+    font-size: 72px;
+}
+
+/* --- Favorite Star Styles --- */
+.favorite-star {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+    display: none;
+    pointer-events: auto;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-star.favorited {
+    display: block;
+    color: #FFCB05;
+}
+
+.favorited-card {
+    background-color: #FFF9C4;
+}
+
+/* Animation Keyframes */
+@keyframes fillAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+.favorite-star.animate-fill {
+    filter: drop-shadow(0 0 10px #FFCB05);
+    -webkit-filter: drop-shadow(0 0 10px #FFCB05);
+    animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
+    -webkit-animation: fillAnimation 0.3s forwards, shine 1.5s forwards;
+    mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+    mask-size: 200%;
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+    -webkit-mask-size: 200%;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(360deg);
+    }
+}
+
+@-webkit-keyframes sparkle {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.5) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1) rotate(180deg);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(0.5) rotate(360deg);
+    }
+}
+
+@keyframes glowAnimation {
+    0% {
+        filter: drop-shadow(0 0 5px #FFCB05);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px #FFCB05) drop-shadow(0 0 30px #FFCB05);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 10px #FFCB05);
+    }
+}
+
+@-webkit-keyframes glowAnimation {
+    0% {
+        -webkit-filter: drop-shadow(0 0 5px #FFCB05);
+    }
+
+    50% {
+        -webkit-filter: drop-shadow(0 0 15px #FFCB05) drop-shadow(0 0 30px #FFCB05);
+    }
+
+    100% {
+        -webkit-filter: drop-shadow(0 0 10px #FFCB05);
+    }
+}
+
+@keyframes unfillAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+.favorite-star.animate-unfill {
+    animation: unfillAnimation .3s forwards;
+}
+
+@-webkit-keyframes shine {
+    from {
+        -webkit-mask-position: 2000%;
+    }
+
+    to {
+        -webkit-mask-position: -50%;
+    }
+}
+
+@keyframes shine {
+    from {
+        mask-position: 200%;
+    }
+
+    to {
+        mask-position: -50%;
+    }
+}
+
+/* --- Options Icon & Menu Styles --- */
+.options-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #555;
+    display: block;
+    pointer-events: auto;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.options-menu {
+    position: absolute;
+    top: 30px;
+    right: 8px;
+    background: #fff;
+    color: #00274C;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+    min-width: 150px;
+}
+
+.options-menu.active {
+    display: block;
+}
+
+.options-menu-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+.options-menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- Show More/Less Button Styles --- */
+#show-more {
+    margin-top: 1rem;
+    background: #00274C;
+    color: #FFCB05;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#show-less {
+    margin-top: 1rem;
+    background: #00274C;
+    color: #FFCB05;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#show-all {
+    margin-top: 1rem;
+    background: #00274C;
+    color: #FFCB05;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+/* --- Search Suggestions Styles --- */
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    color: #00274C;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 9000;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+.search-suggestions.active {
+    display: block;
+}
+
+.search-suggestion-item {
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* ===========================================================
+ Modal Styles
+ =========================================================== */
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Content */
+.preferences-menu-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Close Button */
+.preferences-menu-close-button {
+    color: #aaa;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Responsive Adjustments for Modal */
+@media (max-width: 768px) {
+    .preferences-menu-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
+/* Styles for preference items */
+.preference-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+/* Slider Styles */
+/* Container for toggle switches */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: background-color 0.4s ease;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.4s ease;
+}
+
+input:checked+.slider {
+    background-color: #FFCB05;
+}
+
+input:checked+.slider::before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round::before {
+    border-radius: 50%;
+}

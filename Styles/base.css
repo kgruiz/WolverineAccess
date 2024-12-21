@@ -1,0 +1,40 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reset styles for common elements */
+*,
+header,
+nav,
+main,
+footer,
+section,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+li {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Base styles for the body */
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #fff;
+    color: #000;
+    text-align: center;
+}

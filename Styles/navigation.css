@@ -1,0 +1,410 @@
+/* --- General Navigation Styles --- */
+nav {
+    background: #00274C;
+    color: #fff;
+    padding: 1rem;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.left-section,
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.right-section {
+    gap: 1rem;
+    height: 30px;
+}
+
+/* --- Logo Styles --- */
+.logo-link img {
+    height: 40px;
+    cursor: pointer;
+}
+
+/* --- Nav Icons Styles --- */
+.nav-icons {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    margin-top: 8.5px;
+}
+
+.nav-icons li {
+    margin: 0 0.25rem;
+}
+
+/* --- Menu Toggle Icon Styles --- */
+.menu-toggle-icon {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-top: -3px;
+}
+
+.menu-toggle .material-icons {
+    margin-top: -5px;
+}
+
+/* --- Group Selector Styles --- */
+.group-selector {
+    position: relative;
+}
+
+.group-selector-toggle .current-group {
+    margin-top: -3px;
+}
+
+.current-group {
+
+    margin-right: 10px;
+}
+
+/* Group Icon Styles */
+.group-selector img {
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: #FFCB05;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+/* --- Notifications Menu Styles --- */
+
+.notifications-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.notifications-menu-toggle {
+    transition: color 0.3s ease;
+    transform-origin: center;
+}
+
+/* --- Sign In Menu Styles --- */
+.sign-in-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Sign In Header Styles */
+.sign-in-menu-header {
+    width: 100%;
+    text-align: center;
+}
+
+.sign-in-menu-header h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #00274C;
+    margin: 10px 0 5px 0;
+}
+
+.sign-in-menu-header p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.sign-in-profile-pic {
+    width: 40px;
+    height: 40px;
+    background: #00274C;
+    color: #FFCB05;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 2.1;
+    text-align: center;
+}
+
+/* Profile Pic Button When Signed In */
+.sign-in-profile-pic-button {
+    width: 25px;
+    height: 25px;
+    background: #00274C;
+    color: #FFCB05;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* User Name Displayed Next to Profile Pic */
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* --- Dropdown Menu Base Styles --- */
+.dropdown-menu {
+    position: absolute;
+    top: 30px;
+    background: #fff;
+    color: #00274C;
+    padding: 1.5rem;
+    border-radius: 8px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+    pointer-events: auto;
+}
+
+.dropdown-menu.active::before {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    border-width: 7.5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+}
+
+/* --- Dropdown Menu Header Styles --- */
+.dropdown-menu-header {
+    width: 100%;
+}
+
+.dropdown-menu-header h3 {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #00274C;
+    text-align: left;
+}
+
+.dropdown-menu-header hr {
+    width: calc(100% - 10px);
+    border: none;
+    border-top: 2px solid #00274C;
+    margin-top: 0.5rem;
+}
+
+/* --- Dropdown Menu Items Styles --- */
+.dropdown-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.dropdown-items a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+    flex-direction: column;
+    font-size: 1.25rem;
+}
+
+/* Group Selector Specific Styles */
+.group-selector-menu {
+    left: -220px;
+    transform: translate(-50%, 0) scale(0);
+    width: calc(5 * 218px + 4 * 1rem);
+    min-height: 300px;
+    transform-origin: calc(100% - 264px) +10px;
+}
+
+.group-selector-menu::before {
+    right: +249px;
+}
+
+.group-selector-menu img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+
+/* --- Favorites Menu Styles --- */
+.favorites-icon {
+    position: relative;
+}
+
+/* Favorites Menu Specific Styles */
+.favorites-menu {
+    left: -266px;
+    transform: translate(-50%, 0) scale(0);
+    width: calc(4 * 240px + 4 * 1rem);
+    min-height: 250px;
+    transform-origin: calc(100% - 234.25px) +10px;
+    /* Arrow position plus 2 times border width */
+}
+
+.favorites-menu::before {
+    right: +219.25px;
+    opacity: 0;
+}
+
+.favorites-menu img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    background: transparent;
+}
+
+/* Manage Favorites Button Styles */
+.manage-favorites-button {
+    margin-top: -40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#manage-favorites {
+    margin-top: 1rem;
+    background: #00274C;
+    color: #FFCB05;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Notifications Menu Specific Styles */
+.notifications-menu {
+    left: 50%;
+    transform: translate(-50%, 0) scale(0);
+    width: calc(1 * 160px + 6rem);
+    min-height: 300px;
+    transform-origin: top center;
+}
+
+.notifications-menu::before {
+    left: 50%;
+    opacity: 0;
+}
+
+/* Sign In Menu Specific Styles */
+.sign-in-menu {
+    top: +40px;
+    right: -105px;
+    transform: translate(-50%, 0) scale(0);
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: calc(100% - 50px) +10px;
+}
+
+.sign-in-menu::before {
+    right: +35px;
+    opacity: 0;
+}
+
+/* Sign In Items Styles */
+.sign-in-items {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.sign-in-items .sign-in-menu-item {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #00274C;
+    border-radius: 4px;
+    text-align: left;
+}
+
+/* Sign In Menu Header Styles */
+.sign-in-menu-header hr {
+    border: 1px solid #00274C;
+}
+
+/* ===========================================================
+   Back to Top and Home Button Styles
+   =========================================================== */
+.back-to-top {
+    text-align: center;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #00274C;
+    color: #FFCB05;
+    border: none;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    border-radius: 4px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.home-button {
+    text-align: center;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background: #00274C;
+    color: #FFCB05;
+    border: none;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    border-radius: 4px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

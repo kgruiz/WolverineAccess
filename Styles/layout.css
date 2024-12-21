@@ -1,0 +1,134 @@
+/* ===========================================================
+ Footer Styles
+ =========================================================== */
+footer {
+    background: #1A1A1A;
+    color: #fff;
+    text-align: left;
+    padding: 2rem 1rem;
+}
+
+footer a[href]:hover {
+    color: #FFCB05;
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.footer-logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+}
+
+.footer-logo-section img {
+    height: 200px;
+}
+
+.footer-info-section {
+    flex: 1;
+}
+
+.footer-info-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-column h4 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+}
+
+.footer-column p a {
+    color: #ccc;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* ===========================================================
+  Sort Type Selector Styles
+  =========================================================== */
+/* Base styles for sort type selectors */
+.sort-type-selector {
+    display: none;
+}
+
+.sort-type-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border: 1.5px solid #00274C;
+    border-radius: 20px;
+    background: white;
+    font-weight: bold;
+    color: #00274C;
+    cursor: pointer;
+}
+
+.sort-type-container::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius: 20px;
+    background: #00274C;
+    transition: all 0.3s;
+}
+
+.sort-type-container div {
+    padding: 6px;
+    text-align: center;
+    z-index: 1;
+}
+
+.sort-type-selector:checked+.sort-type-container::before {
+    left: 50%;
+}
+
+.sort-type-selector:checked+.sort-type-container div:first-child {
+    color: #00274C;
+    transition: color 0.3s;
+}
+
+.sort-type-selector:checked+.sort-type-container div:last-child {
+    color: white;
+    transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:first-child {
+    color: white;
+    transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:last-child {
+    color: #00274C;
+    transition: color 0.3s;
+}

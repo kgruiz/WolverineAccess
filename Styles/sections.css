@@ -1,0 +1,241 @@
+/* ===========================================================
+ Hero Section Styles
+ =========================================================== */
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../Assets/Media/MPhotos/Aerials/2020_310.jpg");
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.hero-content h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-content img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Hero Search Form */
+.hero-search-form {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-search-form input {
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    width: 100%;
+    min-width: 500px;
+    padding: 0.75rem 1rem;
+    border-radius: 4px 0 0 4px;
+}
+
+.hero-search-form button {
+    background: #FFCB05;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 0 4px 4px 0;
+    color: #00274C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-search-form button .material-icons {
+    font-size: 1.5rem;
+}
+
+/* Hero Pinned Box */
+.hero-pinned-box {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero-pinned-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* ===========================================================
+ Content Section Styles
+ =========================================================== */
+.content-section {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-section h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* ===========================================================
+ Not Implemented Page Styles
+ =========================================================== */
+/* --- Not Implemented Page Styles --- */
+.not-implemented-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../Assets/Media/MPhotos/DarylMBestof22(024).jpg");
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+.not-implemented-container h1 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+}
+
+.not-implemented-container p {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.go-back-button {
+    background: #FFCB05;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #00274C;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    user-select: none;
+}
+
+.not-implemented-main {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 3rem 3rem;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.not-implemented-main h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.not-implemented-main p {
+    margin: 1rem 0rem 2rem 0rem;
+}
+
+/* --- Full Search Area Styles --- */
+/* Base styles for full search areas */
+.full-search-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+.full-search-area {
+    padding: 3rem 1rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.full-search-area h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.full-search-area h3 {
+    margin: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* --- Full Search Form Styles --- */
+/* Base styles for full search forms */
+.full-search-form {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    outline: 1px solid #001F3A;
+    border-radius: 4px;
+    /* Corrected: single value for all corners */
+}
+
+.full-search-form input {
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 4px 0 0 4px;
+}
+
+.full-search-form button {
+    background: #FFCB05;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 0 4px 4px 0;
+    color: #00274C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.full-search-form button .material-icons {
+    font-size: 1.5rem;
+}
