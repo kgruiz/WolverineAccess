@@ -7,9 +7,11 @@ let sortByRating = true;
 const FAVORITES_KEY = 'favoriteLinks';
 let favoriteStatuses = {};
 let signedIn = false;
-let userName = "";
+let userName = '';
 
-let userEmail = "";
+
+
+let userEmail = '';
 // ==============================
 // SVG Icons for Favorites
 // ==============================
@@ -29,7 +31,7 @@ viewBox="0 0 24 24"><path fill="currentColor" d="M22 9.24L14.81 8.63L12 2L9.19
 const optionsIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 viewBox="0 0 24 24"><path fill="#555" d="M12 16a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4z"/></svg>`;
 const footballSVG =
-  `<svg width="800px" height="800px" viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    `<svg width="800px" height="800px" viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <g id="line-supplement">
     <line x1="36" x2="36" y1="4.2" y2="67.7" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
     <line x1="38.9" x2="33.1" y1="35.9" y2="35.9" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
@@ -63,53 +65,58 @@ const footballSVG =
  * Load favorite statuses from localStorage and initialize favorites.
  */
 function loadFavorites() {
-  const storedFavorites = localStorage.getItem(FAVORITES_KEY);
-  if (storedFavorites) {
-    try {
-      const storedFavoritesObj = JSON.parse(storedFavorites);
-      favoriteStatuses = { ...favoriteStatuses, ...storedFavoritesObj };
-    } catch (e) {
-      console.error("Failed to parse favorite links from localStorage.", e);
+    const storedFavorites = localStorage.getItem(FAVORITES_KEY);
+    if (storedFavorites) {
+        try {
+            const storedFavoritesObj = JSON.parse(storedFavorites);
+            favoriteStatuses = {...favoriteStatuses, ...storedFavoritesObj};
+        } catch (e) {
+            console.error('Failed to parse favorite links from localStorage.', e);
+        }
     }
-  }
-  // Initialize favoriteStatuses based on linksData if needed
-  linksData.forEach(link => {
-    if (favoriteStatuses[link.uniqueKey] === undefined) {
-      favoriteStatuses[link.uniqueKey] = link.favorite || false;
-    }
-  });
-  saveFavorites();
+    // Initialize favoriteStatuses based on linksData if needed
+    linksData.forEach(link => {
+        if (favoriteStatuses[link.uniqueKey] === undefined) {
+            favoriteStatuses[link.uniqueKey] = link.favorite || false;
+        }
+    });
+    saveFavorites();
 }
+
 /**
  * Save current favorite statuses to localStorage.
  */
 function saveFavorites() {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteStatuses));
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteStatuses));
 }
+
 /**
  * Check if a link is favorited.
  * @param {Object} link - The link object.
  * @returns {boolean} - Favorite status.
  */
 function isLinkFavorited(link) {
-  return favoriteStatuses[link.uniqueKey] || false;
+    return favoriteStatuses[link.uniqueKey] || false;
 }
+
 /**
  * Add a link to favorites.
  * @param {Object} link - The link object.
  */
 function addFavorite(link) {
-  favoriteStatuses[link.uniqueKey] = true;
-  saveFavorites();
+    favoriteStatuses[link.uniqueKey] = true;
+    saveFavorites();
 }
+
 /**
  * Remove a link from favorites.
  * @param {Object} link - The link object.
  */
 function removeFavorite(link) {
-  favoriteStatuses[link.uniqueKey] = false;
-  saveFavorites();
+    favoriteStatuses[link.uniqueKey] = false;
+    saveFavorites();
 }
+
 // ==============================
 // UI Rendering Functions
 // ==============================
@@ -119,341 +126,342 @@ function removeFavorite(link) {
  * @returns {HTMLElement} - The card element.
  */
 function CreateCard(link) {
-  const card = document.createElement("a");
-  card.className = "card";
-  card.href = link.href;
-  card.dataset.uniqueKey = link.uniqueKey;
-  if (link.openInNewWindow) {
-    card.target = "_blank";
-    card.rel = "noopener";
-  }
-  const header = document.createElement("h3");
-  header.textContent = link.title;
-  card.appendChild(header);
-  const subHeader = document.createElement("p");
-  subHeader.className = "sub-header";
-  subHeader.textContent = link.applicationName;
-  card.appendChild(subHeader);
-  const img = document.createElement("img");
-  img.src = link.image;
-  img.alt = link.alt;
-  card.appendChild(img);
-  const star = document.createElement("span");
-  star.className = "favorite-star";
-  if (isLinkFavorited(link)) {
-    // Set filled star icon
-    star.innerHTML = filledStarSVG;
-    star.classList.add("favorited");
-    card.classList.add("favorited-card");
-  } else {
-    // Set the outlined star icon
-    star.innerHTML = outlinedStarSVG;
-  }
-  card.appendChild(star);
-  // Add hover effect for the star
-  star.addEventListener("mouseover", () => {
-    star.style.transform = "scale(1.2)";
-    star.style.color = "#FFCB05"; // Optional: Apply a color highlight
-  });
-  star.addEventListener("mouseout", () => {
-    if (!isLinkFavorited(link)) {
-      star.style.color = ""; // Reset to default color
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = link.href;
+    card.dataset.uniqueKey = link.uniqueKey;
+    if (link.openInNewWindow) {
+        card.target = '_blank';
+        card.rel = 'noopener';
     }
-    star.style.transform = "scale(1)";
-  });
-  // Click event for favoriting
-  star.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent card click
+    const header = document.createElement('h3');
+    header.textContent = link.title;
+    card.appendChild(header);
+    const subHeader = document.createElement('p');
+    subHeader.className = 'sub-header';
+    subHeader.textContent = link.applicationName;
+    card.appendChild(subHeader);
+    const img = document.createElement('img');
+    img.src = link.image;
+    img.alt = link.alt;
+    card.appendChild(img);
+    const star = document.createElement('span');
+    star.className = 'favorite-star';
     if (isLinkFavorited(link)) {
-      // Remove from favorites
-      removeFavorite(link);
-      star.classList.remove("favorited");
-      card.classList.remove("favorited-card");
-      // Set to outlined star
-      star.innerHTML = outlinedStarSVG;
-      // Trigger unfill animation
-      star.classList.add("animate-unfill");
-      // Remove the animation class after animation completes
-      star.addEventListener("animationend", () => {
-        star.classList.remove("animate-unfill");
-      }, { once: true });
-      // Remove card from favorites containers
-      removeCardFromFavoritesContainers(card);
+        // Set filled star icon
+        star.innerHTML = filledStarSVG;
+        star.classList.add('favorited');
+        card.classList.add('favorited-card');
     } else {
-      // Add to favorites
-      addFavorite(link);
-      star.classList.add("favorited");
-      card.classList.add("favorited-card");
-      // Set to filled star
-      star.innerHTML = filledStarSVG;
-      // Trigger fill animation
-      star.classList.add("animate-fill");
-      // Remove the animation class after animation completes
-      star.addEventListener("animationend", () => {
-        star.classList.remove("animate-fill");
-      }, { once: true });
-      // Add card to favorites containers
-      addCardToFavoritesContainers(card);
+        // Set the outlined star icon
+        star.innerHTML = outlinedStarSVG;
     }
-    // Update the star icon appearance
-    updateStarAppearance(star, link);
-    // Re-render favorites if necessary
-    if (typeof RenderFavorites === 'function') {
-      RenderFavorites();
-    }
-  });
-  // Add hover effects to the card
-  card.addEventListener("mouseover", () => {
-    card.style.transform = "translateY(-5px)";
-    const favoriteStar = card.querySelector(".favorite-star");
-    if (favoriteStar) {
-      favoriteStar.style.display = "block";
-    }
-  });
-  card.addEventListener("mouseout", () => {
-    card.style.transform = "translateY(0px)";
-    const favoriteStar = card.querySelector(".favorite-star");
-    if (favoriteStar && !isLinkFavorited(link)) {
-      favoriteStar.style.display = "none";
-    }
-  });
-  return card;
+    card.appendChild(star);
+    // Add hover effect for the star
+    star.addEventListener('mouseover', () => {
+        star.style.transform = 'scale(1.2)';
+        star.style.color = '#FFCB05';  // Optional: Apply a color highlight
+    });
+    star.addEventListener('mouseout', () => {
+        if (!isLinkFavorited(link)) {
+            star.style.color = '';  // Reset to default color
+        }
+        star.style.transform = 'scale(1)';
+    });
+    // Click event for favoriting
+    star.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();  // Prevent card click
+        if (isLinkFavorited(link)) {
+            // Remove from favorites
+            removeFavorite(link);
+            star.classList.remove('favorited');
+            card.classList.remove('favorited-card');
+            // Set to outlined star
+            star.innerHTML = outlinedStarSVG;
+            // Trigger unfill animation
+            star.classList.add('animate-unfill');
+            // Remove the animation class after animation completes
+            star.addEventListener('animationend', () => {
+                star.classList.remove('animate-unfill');
+            }, {once: true});
+            // Remove card from favorites containers
+            removeCardFromFavoritesContainers(card);
+        } else {
+            // Add to favorites
+            addFavorite(link);
+            star.classList.add('favorited');
+            card.classList.add('favorited-card');
+            // Set to filled star
+            star.innerHTML = filledStarSVG;
+            // Trigger fill animation
+            star.classList.add('animate-fill');
+            // Remove the animation class after animation completes
+            star.addEventListener('animationend', () => {
+                star.classList.remove('animate-fill');
+            }, {once: true});
+            // Add card to favorites containers
+            addCardToFavoritesContainers(card);
+        }
+        // Update the star icon appearance
+        updateStarAppearance(star, link);
+        // Re-render favorites if necessary
+        if (typeof RenderFavorites === 'function') {
+            RenderFavorites();
+        }
+    });
+    // Add hover effects to the card
+    card.addEventListener('mouseover', () => {
+        card.style.transform = 'translateY(-5px)';
+        const favoriteStar = card.querySelector('.favorite-star');
+        if (favoriteStar) {
+            favoriteStar.style.display = 'block';
+        }
+    });
+    card.addEventListener('mouseout', () => {
+        card.style.transform = 'translateY(0px)';
+        const favoriteStar = card.querySelector('.favorite-star');
+        if (favoriteStar && !isLinkFavorited(link)) {
+            favoriteStar.style.display = 'none';
+        }
+    });
+    return card;
 }
+
 /**
  * Create a favorite card element for a given link.
  * @param {Object} link - The link object.
  * @returns {HTMLElement} - The favorite card element.
  */
 function CreateFavoriteCard(link) {
-  const card = document.createElement("a");
-  card.className = "favorite-card";
-  card.href = link.href;
-  card.dataset.uniqueKey = link.uniqueKey;
-  if (link.openInNewWindow) {
-    card.target = "_blank";
-    card.rel = "noopener";
-  }
-
-  const header = document.createElement("h3");
-  header.textContent = link.title;
-  card.appendChild(header);
-  const subHeader = document.createElement("p");
-  subHeader.className = "sub-header";
-  subHeader.textContent = link.applicationName;
-  card.appendChild(subHeader);
-  const img = document.createElement("img");
-  img.src = link.image;
-  img.alt = link.alt;
-  card.appendChild(img);
-
-  card.style.transition = "transform 0.3s ease";
-
-  // Add the options icon (three dots)
-  const optionsIcon = document.createElement("span");
-  optionsIcon.className = "options-icon";
-  optionsIcon.innerHTML = optionsIconSVG;
-  card.appendChild(optionsIcon);
-  optionsIcon.style.display = "none";
-
-  // Create the options menu
-  const optionsMenu = document.createElement("div");
-  optionsMenu.className = "options-menu";
-  const removeFavoriteOption = document.createElement("div");
-  removeFavoriteOption.className = "options-menu-item";
-  removeFavoriteOption.textContent = "Remove Favorite";
-  optionsMenu.appendChild(removeFavoriteOption);
-
-  // Add the options menu to the card
-  card.appendChild(optionsMenu);
-
-  // Event listener for optionsIcon click to toggle the menu
-  optionsIcon.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent card click
-    optionsMenu.classList.toggle("active");
-  });
-
-  // Event listener for removeFavoriteOption click
-  removeFavoriteOption.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent card click
-
-    // Remove from favorites
-    removeFavorite(link);
-
-    // Update the card UI
-    card.remove();
-
-    // Remove card from other favorites containers
-    removeCardFromFavoritesContainers(card);
-
-    // Re-render the favorites if necessary
-    RenderFavorites();
-  });
-
-  // Close options menu when clicking outside
-  document.addEventListener("click", (event) => {
-    if (!optionsMenu.contains(event.target) && event.target !== optionsIcon) {
-      optionsMenu.classList.remove("active");
+    const card = document.createElement('a');
+    card.className = 'favorite-card';
+    card.href = link.href;
+    card.dataset.uniqueKey = link.uniqueKey;
+    if (link.openInNewWindow) {
+        card.target = '_blank';
+        card.rel = 'noopener';
     }
-  });
 
-  // Prevent menu from closing when clicking inside
-  optionsMenu.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+    const header = document.createElement('h3');
+    header.textContent = link.title;
+    card.appendChild(header);
+    const subHeader = document.createElement('p');
+    subHeader.className = 'sub-header';
+    subHeader.textContent = link.applicationName;
+    card.appendChild(subHeader);
+    const img = document.createElement('img');
+    img.src = link.image;
+    img.alt = link.alt;
+    card.appendChild(img);
 
-  // Add hover effects to the card
-  card.addEventListener("mouseover", () => {
-    optionsIcon.style.display = "block";
-    card.style.transform = "translateY(-5px)";
-  });
-  card.addEventListener("mouseout", () => {
-    optionsIcon.style.display = "none";
-    card.style.transform = "translateY(0px)";
-  });
+    card.style.transition = 'transform 0.3s ease';
 
-  card.addEventListener("mouseleave", () => {
-    optionsIcon.style.display = "none";
-    optionsMenu.classList.remove("active");
-    card.style.transform = "translateY(0px)";
-  });
+    // Add the options icon (three dots)
+    const optionsIcon = document.createElement('span');
+    optionsIcon.className = 'options-icon';
+    optionsIcon.innerHTML = optionsIconSVG;
+    card.appendChild(optionsIcon);
+    optionsIcon.style.display = 'none';
+
+    // Create the options menu
+    const optionsMenu = document.createElement('div');
+    optionsMenu.className = 'options-menu';
+    const removeFavoriteOption = document.createElement('div');
+    removeFavoriteOption.className = 'options-menu-item';
+    removeFavoriteOption.textContent = 'Remove Favorite';
+    optionsMenu.appendChild(removeFavoriteOption);
+
+    // Add the options menu to the card
+    card.appendChild(optionsMenu);
+
+    // Event listener for optionsIcon click to toggle the menu
+    optionsIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();  // Prevent card click
+        optionsMenu.classList.toggle('active');
+    });
+
+    // Event listener for removeFavoriteOption click
+    removeFavoriteOption.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();  // Prevent card click
+
+        // Remove from favorites
+        removeFavorite(link);
+
+        // Update the card UI
+        card.remove();
+
+        // Remove card from other favorites containers
+        removeCardFromFavoritesContainers(card);
+
+        // Re-render the favorites if necessary
+        RenderFavorites();
+    });
+
+    // Close options menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!optionsMenu.contains(event.target) && event.target !== optionsIcon) {
+            optionsMenu.classList.remove('active');
+        }
+    });
+
+    // Prevent menu from closing when clicking inside
+    optionsMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    // Add hover effects to the card
+    card.addEventListener('mouseover', () => {
+        optionsIcon.style.display = 'block';
+        card.style.transform = 'translateY(-5px)';
+    });
+    card.addEventListener('mouseout', () => {
+        optionsIcon.style.display = 'none';
+        card.style.transform = 'translateY(0px)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        optionsIcon.style.display = 'none';
+        optionsMenu.classList.remove('active');
+        card.style.transform = 'translateY(0px)';
+    });
 
 
-  return card;
+    return card;
 }
+
 /**
  * Add a card to all favorites containers.
  * @param {HTMLElement} card - The card element to add.
  */
 function addCardToFavoritesContainers(card) {
-  const favoriteContainers = [
-    document.getElementById("all-favorites-container"),
-    document.getElementById("favorite-links-nav-container"),
-    document.getElementById("hero-pinned-container")
-  ];
-  favoriteContainers.forEach(container => {
-    if (container) {
-      // Remove "No pinned links yet." if present
-      const noFavorites = container.querySelector("p");
-      if (noFavorites && noFavorites.textContent === "No pinned links yet.") {
-        container.removeChild(noFavorites);
-      }
-      // Check if the card is already present to avoid duplicates
-      if (!container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`)) {
-        const link = linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
-        let newCard;
-        if (container.id === "all-favorites-container") {
-          newCard = CreateFavoriteCard(link);
-        } else {
-          newCard = CreateCard(link);
+    const favoriteContainers = [
+        document.getElementById('all-favorites-container'),
+        document.getElementById('favorite-links-nav-container'),
+        document.getElementById('hero-pinned-container')
+    ];
+    favoriteContainers.forEach(container => {
+        if (container) {
+            // Remove "No pinned links yet." if present
+            const noFavorites = container.querySelector('p');
+            if (noFavorites && noFavorites.textContent === 'No pinned links yet.') {
+                container.removeChild(noFavorites);
+            }
+            // Check if the card is already present to avoid duplicates
+            if (!container.querySelector(
+                    `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
+                const link = linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
+                let newCard;
+                if (container.id === 'all-favorites-container') {
+                    newCard = CreateFavoriteCard(link);
+                } else {
+                    newCard = CreateCard(link);
+                }
+                container.appendChild(newCard);
+            }
         }
-        container.appendChild(newCard);
-      }
-    }
-  });
+    });
 }
+
 /**
  * Remove a card from all favorites containers.
  * @param {HTMLElement} card - The card element to remove.
  */
 function removeCardFromFavoritesContainers(card) {
-  const favoriteContainers = [
-    document.getElementById("all-favorites-container"),
-    document.getElementById("favorite-links-nav-container"),
-    document.getElementById("hero-pinned-container")
-  ];
-  favoriteContainers.forEach(container => {
-    if (container) {
-      const cardToRemove = container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
-      if (cardToRemove) {
-        cardToRemove.remove();
-      }
-      // If no favorites left, show "No pinned links yet."
-      if (container.querySelectorAll(".card, .favorite-card").length === 0) {
-        const noFavorites = document.createElement("p");
-        noFavorites.textContent = "No pinned links yet.";
-        container.appendChild(noFavorites);
-      }
-    }
-  });
+    const favoriteContainers = [
+        document.getElementById('all-favorites-container'),
+        document.getElementById('favorite-links-nav-container'),
+        document.getElementById('hero-pinned-container')
+    ];
+    favoriteContainers.forEach(container => {
+        if (container) {
+            const cardToRemove =
+                container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
+            if (cardToRemove) {
+                cardToRemove.remove();
+            }
+            // If no favorites left, show "No pinned links yet."
+            if (container.querySelectorAll('.card, .favorite-card').length === 0) {
+                const noFavorites = document.createElement('p');
+                noFavorites.textContent = 'No pinned links yet.';
+                container.appendChild(noFavorites);
+            }
+        }
+    });
 }
+
 /**
  * Update the star icon's appearance based on favorite status.
  * @param {HTMLElement} star - The star element.
  * @param {Object} link - The link object.
  */
 function updateStarAppearance(star, link) {
-  if (isLinkFavorited(link)) {
-    star.innerHTML = filledStarSVG;
-    star.classList.add("favorited");
-  } else {
-    star.innerHTML = outlinedStarSVG;
-    star.classList.remove("favorited");
-  }
+    if (isLinkFavorited(link)) {
+        star.innerHTML = filledStarSVG;
+        star.classList.add('favorited');
+    } else {
+        star.innerHTML = outlinedStarSVG;
+        star.classList.remove('favorited');
+    }
 }
+
 /**
  * Populate favorites containers based on current favorite statuses.
  */
 function populateFavoritesContainers() {
-  const favoriteContainers = [
-    document.getElementById("all-favorites-container"),
-    document.getElementById("favorite-links-nav-container"),
-    document.getElementById("hero-pinned-container")
-  ];
-  favoriteContainers.forEach(container => {
-    if (container) {
-      container.innerHTML = "";
-      const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
-      if (favoritedLinks.length === 0) {
-        const noFavorites = document.createElement("p");
-        noFavorites.textContent = "No pinned links yet.";
-        container.appendChild(noFavorites);
-      } else {
-        favoritedLinks.slice(0, 4).forEach(link => {
-          let card;
-          if (container.id === "all-favorites-container") {
-            card = CreateFavoriteCard(link);
-          } else {
-            card = CreateCard(link);
-          }
-          container.appendChild(card);
-        });
-      }
-    }
-  });
+    const favoriteContainers = [
+        document.getElementById('all-favorites-container'),
+        document.getElementById('favorite-links-nav-container'),
+        document.getElementById('hero-pinned-container')
+    ];
+    favoriteContainers.forEach(container => {
+        if (container) {
+            container.innerHTML = '';
+            const favoritedLinks = linksData.filter(link => isLinkFavorited(link));
+            if (favoritedLinks.length === 0) {
+                const noFavorites = document.createElement('p');
+                noFavorites.textContent = 'No pinned links yet.';
+                container.appendChild(noFavorites);
+            } else {
+                favoritedLinks.slice(0, 4).forEach(link => {
+                    let card;
+                    if (container.id === 'all-favorites-container') {
+                        card = CreateFavoriteCard(link);
+                    } else {
+                        card = CreateCard(link);
+                    }
+                    container.appendChild(card);
+                });
+            }
+        }
+    });
 }
+
 // ==============================
 // Event Listeners
 // ==============================
-window.addEventListener("scroll", () => {
-  const backToTopButton = document.querySelector(".back-to-top");
-  const homeButton = document.querySelector(".home-button");
-  if (window.scrollY > 200) {
-    backToTopButton.style.display = "block";
-    homeButton.style.display = "block";
-  } else {
-    backToTopButton.style.display = "none";
-    homeButton.style.display = "none";
-  }
+window.addEventListener('scroll', () => {
+    const backToTopButton = document.querySelector('.back-to-top');
+    const homeButton = document.querySelector('.home-button');
+    if (window.scrollY > 200) {
+        backToTopButton.style.display = 'block';
+        homeButton.style.display = 'block';
+    } else {
+        backToTopButton.style.display = 'none';
+        homeButton.style.display = 'none';
+    }
 });
-document.querySelector(".back-to-top")?.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+document.querySelector('.back-to-top')?.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
 });
-document.querySelector(".home-button")?.addEventListener("click", () => {
-
-  if (window.location.pathname.endsWith("index.html")) {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  } else {
-    window.location.href = "index.html";
-  }
+document.querySelector('.home-button')?.addEventListener('click', () => {
+    if (window.location.pathname.endsWith('index.html')) {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+        window.location.href = 'index.html';
+    }
 });
 // ==============================
 // Data Fetching and Initialization
@@ -461,132 +469,240 @@ document.querySelector(".home-button")?.addEventListener("click", () => {
 /**
  * Fetch tasks data and initialize the page.
  */
-fetch("../Assets/JSON Files/tasks.json")
-  .then(response => {
-    if (!response.ok) {
-      console.error("Failed to load tasks.json. Make sure it exists at ../Assets/JSON Files/tasks.json.");
-      return [];
-    }
-    return response.json();
-  })
-  .then(data => {
-    linksData = data;
-    initializePage();
-  })
-  .catch(() => {
-    console.error("Error fetching tasks.json.");
-    initializePage();
-  });
+fetch('../Assets/JSON Files/tasks.json')
+    .then(response => {
+        if (!response.ok) {
+            console.error(
+                'Failed to load tasks.json. Make sure it exists at ../Assets/JSON Files/tasks.json.');
+            return [];
+        }
+        return response.json();
+    })
+    .then(data => {
+        linksData = data;
+        initializePage();
+    })
+    .catch(() => {
+        console.error('Error fetching tasks.json.');
+        initializePage();
+    });
+
 /**
  * Initialize the page with fetched data and user information.
  */
 function initializePage() {
-  // For demonstration, set signedIn to true and user info
-  signedIn = true;
-  userName = "Kaden";
-  userEmail = "kgruiz@umich.edu";
-  loadFavorites();
-  // Populate Most Popular
-  const mostPopularContainer = document.getElementById("most-popular-container");
-  if (mostPopularContainer && linksData.length > 0) {
-    const sortedByRank = [...linksData].sort((a, b) => b.currentRating - a.currentRating);
-    const top4 = sortedByRank.slice(0, 4);
-    top4.forEach(link => {
-      const card = CreateCard(link);
-      mostPopularContainer.append(card);
-    });
-  }
-  // Populate All Links on Index
-  const allLinksContainer = document.getElementById("all-links-container");
-  if (allLinksContainer && linksData.length > 0) {
-    const sortedByRank = [...linksData].sort((a, b) => b.currentRating - a.currentRating);
-    const top10 = sortedByRank.slice(0, 10);
-    const next30 = sortedByRank.slice(10, 40);
-    top10.forEach(link => {
-      const card = CreateCard(link);
-      card.classList.add("initial-cards");
-      allLinksContainer.append(card);
-    });
-    next30.forEach(link => {
-      const card = CreateCard(link);
-      card.classList.add("additional-cards", "hidden");
-      allLinksContainer.append(card);
-    });
-  }
-  // Initialize Favorites in Hero and Nav
-  populateFavoritesContainers();
-  // All Links Full Page
-  const allLinksFullContainer = document.getElementById("all-links-full-container");
-  if (allLinksFullContainer) {
-    let sortType = "rank";
-    let searchTerm = "";
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("q")) {
-      searchTerm = urlParams.get("q").toLowerCase();
-    }
-    function RenderAllLinksFull() {
-      allLinksFullContainer.innerHTML = "";
-      let linksToShow = [...linksData];
-      if (sortType === "rank") {
-        linksToShow.sort((a, b) => b.currentRating - a.currentRating);
-      } else if (sortType === "alphabetical") {
-        linksToShow.sort((a, b) => a.title.localeCompare(b.title));
-      }
-      if (searchTerm.trim() !== "") {
-        linksToShow = linksToShow.filter(link =>
-        ((link.title && link.title.toLowerCase().includes(searchTerm)) ||
-          (link.applicationName && link.applicationName.toLowerCase().includes(searchTerm)))
-        );
-      }
-      if (linksToShow.length === 0) {
-        const noResults = document.createElement("p");
-        noResults.textContent = "No results found.";
-        allLinksFullContainer.appendChild(noResults);
-      } else {
-        linksToShow.forEach(link => {
-          const card = CreateCard(link);
-          allLinksFullContainer.append(card);
+    // For demonstration, set signedIn to true and user info
+    signedIn = true;
+    userName = 'Kaden';
+    userEmail = 'kgruiz@umich.edu';
+    loadFavorites();
+    // Populate Most Popular
+    const mostPopularContainer = document.getElementById('most-popular-container');
+    if (mostPopularContainer && linksData.length > 0) {
+        const sortedByRank =
+            [...linksData].sort((a, b) => b.currentRating - a.currentRating);
+        const top4 = sortedByRank.slice(0, 4);
+        top4.forEach(link => {
+            const card = CreateCard(link);
+            mostPopularContainer.append(card);
         });
-      }
-      // No need to call updateAllCardStars
-      initializeCardHoverEffects(); // Re-initialize hover effects
     }
-    const fullSearchInput = document.getElementById("fullSearchInput");
-    if (fullSearchInput) {
-      fullSearchInput.value = searchTerm;
-      fullSearchInput.addEventListener("input", () => {
-        searchTerm = fullSearchInput.value.toLowerCase();
+    // Populate All Links on Index
+    const allLinksContainer = document.getElementById('all-links-container');
+    if (allLinksContainer && linksData.length > 0) {
+        const sortedByRank =
+            [...linksData].sort((a, b) => b.currentRating - a.currentRating);
+        const top10 = sortedByRank.slice(0, 10);
+        const next30 = sortedByRank.slice(10, 40);
+        top10.forEach(link => {
+            const card = CreateCard(link);
+            card.classList.add('initial-cards');
+            allLinksContainer.append(card);
+        });
+        next30.forEach(link => {
+            const card = CreateCard(link);
+            card.classList.add('additional-cards', 'hidden');
+            allLinksContainer.append(card);
+        });
+    }
+    // Initialize Favorites in Hero and Nav
+    populateFavoritesContainers();
+    // All Links Full Page
+    const allLinksFullContainer = document.getElementById('all-links-full-container');
+    if (allLinksFullContainer) {
+        let sortType = 'rank';
+        let searchTerm = '';
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('q')) {
+            searchTerm = urlParams.get('q').toLowerCase();
+        }
+
+        function RenderAllLinksFull() {
+            allLinksFullContainer.innerHTML = '';
+            let linksToShow = [...linksData];
+            if (sortType === 'rank') {
+                linksToShow.sort((a, b) => b.currentRating - a.currentRating);
+            } else if (sortType === 'alphabetical') {
+                linksToShow.sort((a, b) => a.title.localeCompare(b.title));
+            }
+            if (searchTerm.trim() !== '') {
+                linksToShow = linksToShow.filter(
+                    link =>
+                        ((link.title && link.title.toLowerCase().includes(searchTerm)) ||
+                         (link.applicationName &&
+                          link.applicationName.toLowerCase().includes(searchTerm))));
+            }
+            if (linksToShow.length === 0) {
+                const noResults = document.createElement('p');
+                noResults.textContent = 'No results found.';
+                allLinksFullContainer.appendChild(noResults);
+            } else {
+                linksToShow.forEach(link => {
+                    const card = CreateCard(link);
+                    allLinksFullContainer.append(card);
+                });
+            }
+            // No need to call updateAllCardStars
+            initializeCardHoverEffects();  // Re-initialize hover effects
+        }
+
+        const fullSearchInput = document.getElementById('fullSearchInput');
+        if (fullSearchInput) {
+            fullSearchInput.value = searchTerm;
+            fullSearchInput.addEventListener('input', () => {
+                searchTerm = fullSearchInput.value.toLowerCase();
+                RenderAllLinksFull();
+            });
+        }
+        const toggle = document.getElementById('toggle');
+        if (toggle) {
+            toggle.addEventListener('change', () => {
+                sortType = toggle.checked ? 'alphabetical' : 'rank';
+                RenderAllLinksFull();
+            });
+        }
         RenderAllLinksFull();
-      });
+        const showMoreButton = document.getElementById('show-more');
+        const showLessButton = document.getElementById('show-less');
+        const showAllButton = document.getElementById('show-all');
+        showMoreButton?.addEventListener('click', () => {
+            const additionalCards = document.querySelectorAll('.additional-cards');
+            additionalCards.forEach(card => {
+                card.classList.remove('hidden');
+            });
+            showMoreButton.classList.add('hidden');
+            showLessButton.classList.remove('hidden');
+            showAllButton.classList.remove('hidden');
+        });
+        showLessButton?.addEventListener('click', () => {
+            const additionalCards = document.querySelectorAll('.additional-cards');
+            additionalCards.forEach(card => {
+                card.classList.add('hidden');
+            });
+            showMoreButton.classList.remove('hidden');
+            showLessButton.classList.add('hidden');
+            showAllButton.classList.add('hidden');
+        });
+        initializeSignInMenu();
+        initializeHoverMenus();
+        initializeButtonEffects();
+        initializeCardHoverEffects();
+        initializeNavIconsHoverEffects();
+        initializeFavoritesIconHoverEffects();
     }
-    const toggle = document.getElementById("toggle");
-    if (toggle) {
-      toggle.addEventListener("change", () => {
-        sortType = toggle.checked ? "alphabetical" : "rank";
-        RenderAllLinksFull();
-      });
+    // Favorites Manager Page
+    const favoritesManagerContainer = document.getElementById('all-favorites-container');
+    if (favoritesManagerContainer) {
+        let sortType = 'rank';
+        let searchTerm = '';
+
+        const fullSearchInputFavorites =
+            document.getElementById('fullSearchInputFavorites');
+        if (fullSearchInputFavorites) {
+            fullSearchInputFavorites.addEventListener('input', () => {
+                searchTerm = fullSearchInputFavorites.value.toLowerCase();
+                RenderFavorites();
+            });
+        }
+
+        const toggleFavorites = document.querySelector('.sort-type-selector-favorites');
+        if (toggleFavorites) {
+            toggleFavorites.addEventListener('change', () => {
+                sortType = toggleFavorites.checked ? 'alphabetical' : 'rank';
+                RenderFavorites();
+            });
+        }
+
+        function RenderFavorites() {
+            favoritesManagerContainer.innerHTML = '';
+            let favoritedLinks = linksData.filter(link => isLinkFavorited(link));
+
+            if (sortType === 'rank') {
+                favoritedLinks.sort((a, b) => b.currentRating - a.currentRating);
+            } else if (sortType === 'alphabetical') {
+                favoritedLinks.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            if (searchTerm.trim() !== '') {
+                favoritedLinks = favoritedLinks.filter(
+                    link =>
+                        (link.title && link.title.toLowerCase().includes(searchTerm)) ||
+                        (link.applicationName &&
+                         link.applicationName.toLowerCase().includes(searchTerm)));
+            }
+
+            if (favoritedLinks.length === 0) {
+                const noFavorites = document.createElement('p');
+                noFavorites.textContent = 'No pinned links yet.';
+                favoritesManagerContainer.appendChild(noFavorites);
+            } else {
+                favoritedLinks.forEach(link => {
+                    const card = CreateFavoriteCard(link);
+                    favoritesManagerContainer.appendChild(card);
+                });
+            }
+        }
+
+        RenderFavorites();
+        initializeSignInMenu();
+        initializeHoverMenus();
+        initializeButtonEffects();
+        initializeCardHoverEffects();
+        initializeNavIconsHoverEffects();
+        initializeFavoritesIconHoverEffects();
     }
-    RenderAllLinksFull();
-    const showMoreButton = document.getElementById("show-more");
-    const showLessButton = document.getElementById("show-less");
-    const showAllButton = document.getElementById("show-all");
-    showMoreButton?.addEventListener("click", () => {
-      const additionalCards = document.querySelectorAll(".additional-cards");
-      additionalCards.forEach(card => {
-        card.classList.remove("hidden");
-      });
-      showMoreButton.classList.add("hidden");
-      showLessButton.classList.remove("hidden");
-      showAllButton.classList.remove("hidden");
+    // Setup Search Suggestions
+    const headerInput = document.getElementById('headerSearchInput');
+    const headerSuggestions = document.getElementById('headerSearchSuggestions');
+    const heroInput = document.getElementById('heroSearchInput');
+    const heroSuggestions = document.getElementById('heroSearchSuggestions');
+    if (headerInput && headerSuggestions) {
+        SetupSearchSuggestions(headerInput, headerSuggestions);
+    }
+    if (heroInput && heroSuggestions) {
+        SetupSearchSuggestions(heroInput, heroSuggestions);
+    }
+    // Show More/Less
+    const showMoreButton = document.getElementById('show-more');
+    const showLessButton = document.getElementById('show-less');
+    const showAllButton = document.getElementById('show-all');
+    showMoreButton?.addEventListener('click', () => {
+        const additionalCards = document.querySelectorAll('.additional-cards');
+        additionalCards.forEach(card => {
+            card.classList.remove('hidden');
+        });
+        showMoreButton.classList.add('hidden');
+        showLessButton.classList.remove('hidden');
+        showAllButton.classList.remove('hidden');
     });
-    showLessButton?.addEventListener("click", () => {
-      const additionalCards = document.querySelectorAll(".additional-cards");
-      additionalCards.forEach(card => {
-        card.classList.add("hidden");
-      });
-      showMoreButton.classList.remove("hidden");
-      showLessButton.classList.add("hidden");
-      showAllButton.classList.add("hidden");
+    showLessButton?.addEventListener('click', () => {
+        const additionalCards = document.querySelectorAll('.additional-cards');
+        additionalCards.forEach(card => {
+            card.classList.add('hidden');
+        });
+        showMoreButton.classList.remove('hidden');
+        showLessButton.classList.add('hidden');
+        showAllButton.classList.add('hidden');
     });
     initializeSignInMenu();
     initializeHoverMenus();
@@ -594,106 +710,8 @@ function initializePage() {
     initializeCardHoverEffects();
     initializeNavIconsHoverEffects();
     initializeFavoritesIconHoverEffects();
-  }
-  // Favorites Manager Page
-  const favoritesManagerContainer = document.getElementById("all-favorites-container");
-  if (favoritesManagerContainer) {
-    let sortType = "rank";
-    let searchTerm = "";
-
-    const fullSearchInputFavorites = document.getElementById("fullSearchInputFavorites");
-    if (fullSearchInputFavorites) {
-      fullSearchInputFavorites.addEventListener("input", () => {
-        searchTerm = fullSearchInputFavorites.value.toLowerCase();
-        RenderFavorites();
-      });
-    }
-
-    const toggleFavorites = document.querySelector(".sort-type-selector-favorites");
-    if (toggleFavorites) {
-      toggleFavorites.addEventListener("change", () => {
-        sortType = toggleFavorites.checked ? "alphabetical" : "rank";
-        RenderFavorites();
-      });
-    }
-
-    function RenderFavorites() {
-      favoritesManagerContainer.innerHTML = "";
-      let favoritedLinks = linksData.filter(link => isLinkFavorited(link));
-
-      if (sortType === "rank") {
-        favoritedLinks.sort((a, b) => b.currentRating - a.currentRating);
-      } else if (sortType === "alphabetical") {
-        favoritedLinks.sort((a, b) => a.title.localeCompare(b.title));
-      }
-
-      if (searchTerm.trim() !== "") {
-        favoritedLinks = favoritedLinks.filter(link =>
-          (link.title && link.title.toLowerCase().includes(searchTerm)) ||
-          (link.applicationName && link.applicationName.toLowerCase().includes(searchTerm))
-        );
-      }
-
-      if (favoritedLinks.length === 0) {
-        const noFavorites = document.createElement("p");
-        noFavorites.textContent = "No pinned links yet.";
-        favoritesManagerContainer.appendChild(noFavorites);
-      } else {
-        favoritedLinks.forEach(link => {
-          const card = CreateFavoriteCard(link);
-          favoritesManagerContainer.appendChild(card);
-        });
-      }
-    }
-
-    RenderFavorites();
-    initializeSignInMenu();
-    initializeHoverMenus();
-    initializeButtonEffects();
-    initializeCardHoverEffects();
-    initializeNavIconsHoverEffects();
-    initializeFavoritesIconHoverEffects();
-  }
-  // Setup Search Suggestions
-  const headerInput = document.getElementById("headerSearchInput");
-  const headerSuggestions = document.getElementById("headerSearchSuggestions");
-  const heroInput = document.getElementById("heroSearchInput");
-  const heroSuggestions = document.getElementById("heroSearchSuggestions");
-  if (headerInput && headerSuggestions) {
-    SetupSearchSuggestions(headerInput, headerSuggestions);
-  }
-  if (heroInput && heroSuggestions) {
-    SetupSearchSuggestions(heroInput, heroSuggestions);
-  }
-  // Show More/Less
-  const showMoreButton = document.getElementById("show-more");
-  const showLessButton = document.getElementById("show-less");
-  const showAllButton = document.getElementById("show-all");
-  showMoreButton?.addEventListener("click", () => {
-    const additionalCards = document.querySelectorAll(".additional-cards");
-    additionalCards.forEach(card => {
-      card.classList.remove("hidden");
-    });
-    showMoreButton.classList.add("hidden");
-    showLessButton.classList.remove("hidden");
-    showAllButton.classList.remove("hidden");
-  });
-  showLessButton?.addEventListener("click", () => {
-    const additionalCards = document.querySelectorAll(".additional-cards");
-    additionalCards.forEach(card => {
-      card.classList.add("hidden");
-    });
-    showMoreButton.classList.remove("hidden");
-    showLessButton.classList.add("hidden");
-    showAllButton.classList.add("hidden");
-  });
-  initializeSignInMenu();
-  initializeHoverMenus();
-  initializeButtonEffects();
-  initializeCardHoverEffects();
-  initializeNavIconsHoverEffects();
-  initializeFavoritesIconHoverEffects();
 }
+
 // ==============================
 // Search Suggestions Setup
 // ==============================
@@ -703,108 +721,120 @@ function initializePage() {
  * @param {HTMLElement} suggestionsContainer - The container for suggestions.
  */
 function SetupSearchSuggestions(inputElement, suggestionsContainer) {
-  let currentIndex = -1;
-  let suggestionItems = [];
-  inputElement.addEventListener("input", onInput);
-  inputElement.addEventListener("keydown", onKeyDown);
-  document.addEventListener("click", onDocumentClick);
-  const formElement = inputElement.closest("form");
-  const searchButton = formElement?.querySelector("button");
-  searchButton?.addEventListener("click", onSearchButtonClick);
-  function onInput() {
-    const query = inputElement.value.trim().toLowerCase();
-    if (!query) {
-      hideSuggestions();
-      return;
+    let currentIndex = -1;
+    let suggestionItems = [];
+    inputElement.addEventListener('input', onInput);
+    inputElement.addEventListener('keydown', onKeyDown);
+    document.addEventListener('click', onDocumentClick);
+    const formElement = inputElement.closest('form');
+    const searchButton = formElement?.querySelector('button');
+    searchButton?.addEventListener('click', onSearchButtonClick);
+
+    function onInput() {
+        const query = inputElement.value.trim().toLowerCase();
+        if (!query) {
+            hideSuggestions();
+            return;
+        }
+        const filtered = linksData.filter(
+            link => (link.title && link.title.toLowerCase().includes(query)) ||
+                    (link.applicationName &&
+                     link.applicationName.toLowerCase().includes(query)));
+        buildSuggestions(query, filtered.slice(0, 5));
     }
-    const filtered = linksData.filter(link =>
-      (link.title && link.title.toLowerCase().includes(query)) ||
-      (link.applicationName && link.applicationName.toLowerCase().includes(query))
-    );
-    buildSuggestions(query, filtered.slice(0, 5));
-  }
-  function buildSuggestions(query, results) {
-    suggestionsContainer.innerHTML = "";
-    currentIndex = -1;
-    suggestionItems = [];
-    const topItem = document.createElement("div");
-    topItem.className = "search-suggestion-item";
-    topItem.textContent = `Search for "${inputElement.value.trim()}"`;
-    topItem.addEventListener("click", () => {
-      goToSearchPage(inputElement.value.trim());
-    });
-    suggestionsContainer.appendChild(topItem);
-    suggestionItems.push({ element: topItem, isSearchOption: true, link: null });
-    results.forEach(link => {
-      const item = document.createElement("div");
-      item.className = "search-suggestion-item";
-      item.textContent = link.title;
-      item.addEventListener("click", () => {
-        window.location.href = link.href;
-      });
-      suggestionsContainer.appendChild(item);
-      suggestionItems.push({ element: item, isSearchOption: false, link: link.href });
-    });
-    suggestionsContainer.classList.add("active");
-    if (suggestionItems.length > 0) {
-      currentIndex = 0;
-      highlightCurrentItem();
+
+    function buildSuggestions(query, results) {
+        suggestionsContainer.innerHTML = '';
+        currentIndex = -1;
+        suggestionItems = [];
+        const topItem = document.createElement('div');
+        topItem.className = 'search-suggestion-item';
+        topItem.textContent = `Search for "${inputElement.value.trim()}"`;
+        topItem.addEventListener('click', () => {
+            goToSearchPage(inputElement.value.trim());
+        });
+        suggestionsContainer.appendChild(topItem);
+        suggestionItems.push({element: topItem, isSearchOption: true, link: null});
+        results.forEach(link => {
+            const item = document.createElement('div');
+            item.className = 'search-suggestion-item';
+            item.textContent = link.title;
+            item.addEventListener('click', () => {
+                window.location.href = link.href;
+            });
+            suggestionsContainer.appendChild(item);
+            suggestionItems.push({element: item, isSearchOption: false, link: link.href});
+        });
+        suggestionsContainer.classList.add('active');
+        if (suggestionItems.length > 0) {
+            currentIndex = 0;
+            highlightCurrentItem();
+        }
     }
-  }
-  function hideSuggestions() {
-    suggestionsContainer.innerHTML = "";
-    suggestionsContainer.classList.remove("active");
-    currentIndex = -1;
-    suggestionItems = [];
-  }
-  function onKeyDown(e) {
-    if (!suggestionsContainer.classList.contains("active")) return;
-    const maxIndex = suggestionItems.length - 1;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
-      highlightCurrentItem();
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1;
-      highlightCurrentItem();
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      if (currentIndex === -1 || suggestionItems[currentIndex].isSearchOption) {
-        goToSearchPage(inputElement.value.trim());
-      } else {
-        window.location.href = suggestionItems[currentIndex].link;
-      }
-    } else if (e.key === "Escape") {
-      hideSuggestions();
+
+    function hideSuggestions() {
+        suggestionsContainer.innerHTML = '';
+        suggestionsContainer.classList.remove('active');
+        currentIndex = -1;
+        suggestionItems = [];
     }
-  }
-  function highlightCurrentItem() {
-    suggestionItems.forEach((item, index) => {
-      if (index === currentIndex) {
-        item.element.classList.add("highlighted");
-      } else {
-        item.element.classList.remove("highlighted");
-      }
-    });
-  }
-  function onDocumentClick(e) {
-    if (!suggestionsContainer.contains(e.target) && e.target !== inputElement) {
-      hideSuggestions();
+
+    function onKeyDown(e) {
+        if (!suggestionsContainer.classList.contains('active'))
+            return;
+        const maxIndex = suggestionItems.length - 1;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
+            highlightCurrentItem();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1;
+            highlightCurrentItem();
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (currentIndex === -1 || suggestionItems[currentIndex].isSearchOption) {
+                goToSearchPage(inputElement.value.trim());
+            } else {
+                window.location.href = suggestionItems[currentIndex].link;
+            }
+        } else if (e.key === 'Escape') {
+            hideSuggestions();
+        }
     }
-  }
-  function goToSearchPage(query) {
-    if (!query) return;
-    window.location.href = `all-links-full.html?q=${encodeURIComponent(query)}`;
-  }
-  function onSearchButtonClick() {
-    if (currentIndex === -1 || suggestionItems[currentIndex]?.isSearchOption === true) {
-      goToSearchPage(inputElement.value.trim());
-    } else {
-      window.location.href = suggestionItems[currentIndex].link;
+
+    function highlightCurrentItem() {
+        suggestionItems.forEach((item, index) => {
+            if (index === currentIndex) {
+                item.element.classList.add('highlighted');
+            } else {
+                item.element.classList.remove('highlighted');
+            }
+        });
     }
-  }
+
+    function onDocumentClick(e) {
+        if (!suggestionsContainer.contains(e.target) && e.target !== inputElement) {
+            hideSuggestions();
+        }
+    }
+
+    function goToSearchPage(query) {
+        if (!query)
+            return;
+        window.location.href = `all-links-full.html?q=${encodeURIComponent(query)}`;
+    }
+
+    function onSearchButtonClick() {
+        if (currentIndex === -1 ||
+            suggestionItems[currentIndex]?.isSearchOption === true) {
+            goToSearchPage(inputElement.value.trim());
+        } else {
+            window.location.href = suggestionItems[currentIndex].link;
+        }
+    }
 }
+
 // ==============================
 // Sign-In Menu Initialization
 // ==============================
@@ -812,80 +842,84 @@ function SetupSearchSuggestions(inputElement, suggestionsContainer) {
  * Initialize the sign-in menu based on user authentication status.
  */
 function initializeSignInMenu() {
-  const signInMenu = document.getElementById("sign-in-menu");
-  const signInMenuToggle = document.getElementById("sign-in-menu-toggle");
-  const signInName = document.getElementById("sign-in-name");
-  const signInEmail = document.getElementById("sign-in-email");
-  const signInProfilePic = document.getElementById("sign-in-profile-pic");
-  const signInItems = document.getElementById("sign-in-items");
-  const signInSeparator = document.getElementById("sign-in-separator"); // Ensure your <hr /> has this ID
-  if (signedIn) {
-    const initials = userName.split(' ').map(n => n[0].toUpperCase()).join('');
-    signInProfilePic.textContent = initials;
-    signInProfilePic.style.display = 'block';
-    signInName.textContent = userName;
-    signInName.style.display = 'block';
-    signInEmail.textContent = userEmail;
-    signInEmail.style.display = 'block';
-    signInSeparator.style.display = 'block';
-    // Update sign-in button
-    signInMenuToggle.innerHTML = `
+    const signInMenu = document.getElementById('sign-in-menu');
+    const signInMenuToggle = document.getElementById('sign-in-menu-toggle');
+    const signInName = document.getElementById('sign-in-name');
+    const signInEmail = document.getElementById('sign-in-email');
+    const signInProfilePic = document.getElementById('sign-in-profile-pic');
+    const signInItems = document.getElementById('sign-in-items');
+    const signInSeparator =
+        document.getElementById('sign-in-separator');  // Ensure your <hr /> has this ID
+    if (signedIn) {
+        const initials = userName.split(' ').map(n => n[0].toUpperCase()).join('');
+        signInProfilePic.textContent = initials;
+        signInProfilePic.style.display = 'block';
+        signInName.textContent = userName;
+        signInName.style.display = 'block';
+        signInEmail.textContent = userEmail;
+        signInEmail.style.display = 'block';
+        signInSeparator.style.display = 'block';
+        // Update sign-in button
+        signInMenuToggle.innerHTML = `
       <div class="sign-in-profile-pic-button">${initials}</div>
       <span class="user-name">${userName}</span>
       `;
-    signInItems.innerHTML = `
+        signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signOut()">Sign out</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
       <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
       `;
-  } else {
-    signInProfilePic.textContent = '';
-    signInProfilePic.style.display = 'none';
-    signInName.textContent = '';
-    signInName.style.display = 'none';
-    signInEmail.textContent = '';
-    signInEmail.style.display = 'none';
-    signInSeparator.style.display = 'none';
-    // Update sign-in button
-    signInMenuToggle.innerHTML = `
+    } else {
+        signInProfilePic.textContent = '';
+        signInProfilePic.style.display = 'none';
+        signInName.textContent = '';
+        signInName.style.display = 'none';
+        signInEmail.textContent = '';
+        signInEmail.style.display = 'none';
+        signInSeparator.style.display = 'none';
+        // Update sign-in button
+        signInMenuToggle.innerHTML = `
       <span class="material-icons">account_circle</span>
       Sign In
       `;
-    signInItems.innerHTML = `
+        signInItems.innerHTML = `
       <button class="sign-in-menu-item" onclick="signIn()">Sign in</button>
       <button class="sign-in-menu-item" onclick="openPreferencesMenu()">Preferences</button>
       <button class="sign-in-menu-item" onclick="window.location.href='https://its.umich.edu/computing/web-mobile/new-wolverine-access/contact-form'">Send Feedback</button>
       `;
-  }
-  // Add hover effect to sign-in menu items
-  const signInMenuItems = document.querySelectorAll(".sign-in-menu-item");
-  signInMenuItems.forEach(item => {
-    item.addEventListener("mouseover", () => {
-      item.style.backgroundColor = "#f0f0f0";
+    }
+    // Add hover effect to sign-in menu items
+    const signInMenuItems = document.querySelectorAll('.sign-in-menu-item');
+    signInMenuItems.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            item.style.backgroundColor = '#f0f0f0';
+        });
+        item.addEventListener('mouseout', () => {
+            item.style.backgroundColor = 'transparent';
+        });
     });
-    item.addEventListener("mouseout", () => {
-      item.style.backgroundColor = "transparent";
-    });
-  });
 }
+
 /**
  * Sign in the user.
  */
 function signIn() {
-  signedIn = true;
-  userName = "Kaden";
-  userEmail = "kgruiz@umich.edu";
-  initializeSignInMenu();
+    signedIn = true;
+    userName = 'Kaden';
+    userEmail = 'kgruiz@umich.edu';
+    initializeSignInMenu();
 }
+
 /**
  * Sign out the user.
  */
 function signOut() {
-  signedIn = false;
-  userName = "";
-  userEmail = "";
-  initializeSignInMenu();
+    signedIn = false;
+    userName = '';
+    userEmail = '';
+    initializeSignInMenu();
 }
+
 // ==============================
 // Hover/Click Menu Logic
 // ==============================
@@ -893,87 +927,94 @@ function signOut() {
  * Initialize hover menus for various UI components.
  */
 function initializeHoverMenus() {
-  setupHoverMenu("group-selector", "group-selector-menu");
-  setupHoverMenu("favorites-icon", "favorites-menu");
-  setupHoverMenu("notifications-icon", "notifications-menu");
-  setupSignInHover("sign-in-container", "sign-in-menu", "sign-in-menu-toggle");
+    setupHoverMenu('group-selector', 'group-selector-menu');
+    setupHoverMenu('favorites-icon', 'favorites-menu');
+    setupHoverMenu('notifications-icon', 'notifications-menu');
+    setupSignInHover('sign-in-container', 'sign-in-menu', 'sign-in-menu-toggle');
 }
+
 /**
  * Setup hover menu for a specific container and menu.
  * @param {string} containerId - The ID of the container element.
  * @param {string} menuId - The ID of the menu element.
  */
 function setupHoverMenu(containerId, menuId) {
-  const container = document.getElementById(containerId);
-  const menu = document.getElementById(menuId);
-  let clickedOpen = false;
-  if (!container || !menu) return;
-  container.addEventListener("mouseover", () => {
-    if (!clickedOpen) {
-      menu.classList.add("active");
-    }
-  });
-  container.addEventListener("mouseout", () => {
-    if (!clickedOpen) {
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-      }
-    }
-  });
-  container.addEventListener("click", (e) => {
-    e.preventDefault();
-    clickedOpen = !clickedOpen;
-    menu.classList.add("active");
-  });
-  document.addEventListener("click", (event) => {
-    if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
-      clickedOpen = false;
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-      }
-    }
-  });
+    const container = document.getElementById(containerId);
+    const menu = document.getElementById(menuId);
+    let clickedOpen = false;
+    if (!container || !menu)
+        return;
+    container.addEventListener('mouseover', () => {
+        if (!clickedOpen) {
+            menu.classList.add('active');
+        }
+    });
+    container.addEventListener('mouseout', () => {
+        if (!clickedOpen) {
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        }
+    });
+    container.addEventListener('click', (e) => {
+        e.preventDefault();
+        clickedOpen = !clickedOpen;
+        menu.classList.add('active');
+    });
+    document.addEventListener('click', (event) => {
+        if (clickedOpen && !container.contains(event.target) &&
+            !menu.contains(event.target)) {
+            clickedOpen = false;
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        }
+    });
 }
+
 function setupSignInHover(containerId, menuId, menuToggle) {
-  const container = document.getElementById(containerId);
-  const menu = document.getElementById(menuId);
-  const toggle = document.getElementById(menuToggle);
-  let clickedOpen = false;
-  if (!container || !menu || !toggle) return;
-  container.addEventListener("mouseover", () => {
-    if (!clickedOpen) {
-      menu.classList.add("active");
-    }
-  });
-  container.addEventListener("mouseout", () => {
-    if (!clickedOpen) {
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-      }
-    }
-  });
-  toggle.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (!signedIn) {
-      signIn()
-    }
-    clickedOpen = !clickedOpen;
-    menu.classList.add("active");
-  });
-  container.addEventListener("click", (e) => {
-    e.preventDefault();
-    clickedOpen = !clickedOpen;
-    menu.classList.add("active");
-  });
-  document.addEventListener("click", (event) => {
-    if (clickedOpen && !container.contains(event.target) && !menu.contains(event.target)) {
-      clickedOpen = false;
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-      }
-    }
-  });
+    const container = document.getElementById(containerId);
+    const menu = document.getElementById(menuId);
+    const toggle = document.getElementById(menuToggle);
+    let clickedOpen = false;
+    if (!container || !menu || !toggle)
+        return;
+    container.addEventListener('mouseover', () => {
+        if (!clickedOpen) {
+            menu.classList.add('active');
+        }
+    });
+    container.addEventListener('mouseout', () => {
+        if (!clickedOpen) {
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        }
+    });
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!signedIn) {
+            signIn()
+        }
+        clickedOpen = !clickedOpen;
+        menu.classList.add('active');
+    });
+    container.addEventListener('click', (e) => {
+        e.preventDefault();
+        clickedOpen = !clickedOpen;
+        menu.classList.add('active');
+    });
+    document.addEventListener('click', (event) => {
+        if (clickedOpen && !container.contains(event.target) &&
+            !menu.contains(event.target)) {
+            clickedOpen = false;
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        }
+    });
 }
+
 // ==============================
 // Button Hover and Click Effects
 // ==============================
@@ -981,25 +1022,26 @@ function setupSignInHover(containerId, menuId, menuToggle) {
  * Initialize hover and click effects for buttons.
  */
 function initializeButtonEffects() {
-  const buttons = document.querySelectorAll("button");
-  buttons.forEach(button => {
-    button.addEventListener("mouseover", () => {
-      button.style.filter = "brightness(90%)";
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('mouseover', () => {
+            button.style.filter = 'brightness(90%)';
+        });
+        button.addEventListener('mouseout', () => {
+            button.style.filter = 'brightness(100%)';
+        });
+        button.addEventListener('mousedown', () => {
+            button.style.transform = 'scale(0.96)';
+        });
+        button.addEventListener('mouseup', () => {
+            button.style.transform = 'scale(1)';
+        });
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'scale(1)';
+        });
     });
-    button.addEventListener("mouseout", () => {
-      button.style.filter = "brightness(100%)";
-    });
-    button.addEventListener("mousedown", () => {
-      button.style.transform = "scale(0.96)";
-    });
-    button.addEventListener("mouseup", () => {
-      button.style.transform = "scale(1)";
-    });
-    button.addEventListener("mouseleave", () => {
-      button.style.transform = "scale(1)";
-    });
-  });
 }
+
 // ==============================
 // Card Hover Effects
 // ==============================
@@ -1007,25 +1049,26 @@ function initializeButtonEffects() {
  * Initialize hover effects for cards.
  */
 function initializeCardHoverEffects() {
-  const cards = document.querySelectorAll(".card, .it-services-card, .favorite-card");
-  cards.forEach(card => {
-    card.style.transition = "transform 0.3s ease";
-    card.addEventListener("mouseover", () => {
-      card.style.transform = "translateY(-5px)";
-      const favoriteStar = card.querySelector(".favorite-star");
-      if (favoriteStar) {
-        favoriteStar.style.display = "block";
-      }
+    const cards = document.querySelectorAll('.card, .it-services-card, .favorite-card');
+    cards.forEach(card => {
+        card.style.transition = 'transform 0.3s ease';
+        card.addEventListener('mouseover', () => {
+            card.style.transform = 'translateY(-5px)';
+            const favoriteStar = card.querySelector('.favorite-star');
+            if (favoriteStar) {
+                favoriteStar.style.display = 'block';
+            }
+        });
+        card.addEventListener('mouseout', () => {
+            card.style.transform = 'translateY(0px)';
+            const favoriteStar = card.querySelector('.favorite-star');
+            if (favoriteStar && !card.classList.contains('favorited-card')) {
+                favoriteStar.style.display = 'none';
+            }
+        });
     });
-    card.addEventListener("mouseout", () => {
-      card.style.transform = "translateY(0px)";
-      const favoriteStar = card.querySelector(".favorite-star");
-      if (favoriteStar && !card.classList.contains("favorited-card")) {
-        favoriteStar.style.display = "none";
-      }
-    });
-  });
 }
+
 // ==============================
 // Navigation Icons Hover Effects
 // ==============================
@@ -1033,16 +1076,17 @@ function initializeCardHoverEffects() {
  * Initialize hover effects for navigation icons.
  */
 function initializeNavIconsHoverEffects() {
-  const navIconLinks = document.querySelectorAll(".nav-icons a");
-  navIconLinks.forEach(link => {
-    link.addEventListener("mouseover", () => {
-      link.style.color = "#FFCB05";
+    const navIconLinks = document.querySelectorAll('.nav-icons a');
+    navIconLinks.forEach(link => {
+        link.addEventListener('mouseover', () => {
+            link.style.color = '#FFCB05';
+        });
+        link.addEventListener('mouseout', () => {
+            link.style.color = '';
+        });
     });
-    link.addEventListener("mouseout", () => {
-      link.style.color = "";
-    });
-  });
 }
+
 // ==============================
 // Favorites and Other Icons Hover Effects
 // ==============================
@@ -1050,28 +1094,28 @@ function initializeNavIconsHoverEffects() {
  * Initialize hover effects for favorites and other icons.
  */
 function initializeFavoritesIconHoverEffects() {
-  const iconSelectors = [
-    { selector: ".group-selector a", scale: 1.05 },
-    { selector: ".favorites-icon a", scale: 1.15 },
-    { selector: ".notifications-icon a", scale: 1.15 },
-    { selector: ".home-icon", scale: 1.15 },
-    { selector: ".all-links-icon", scale: 1.12 }
-  ];
-  iconSelectors.forEach(iconInfo => {
-    const icons = document.querySelectorAll(iconInfo.selector);
-    icons.forEach(icon => {
-      icon.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-      icon.addEventListener("mouseover", () => {
-        icon.style.transform = `scale(${iconInfo.scale})`;
-        icon.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
-      });
-      icon.addEventListener("mouseout", () => {
-        icon.style.transform = "scale(1)";
-        icon.style.boxShadow = "none";
-      });
+    const iconSelectors = [
+        {selector: '.group-selector a', scale: 1.05},
+        {selector: '.favorites-icon a', scale: 1.15},
+        {selector: '.notifications-icon a', scale: 1.15},
+        {selector: '.home-icon', scale: 1.15}, {selector: '.all-links-icon', scale: 1.12}
+    ];
+    iconSelectors.forEach(iconInfo => {
+        const icons = document.querySelectorAll(iconInfo.selector);
+        icons.forEach(icon => {
+            icon.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            icon.addEventListener('mouseover', () => {
+                icon.style.transform = `scale(${iconInfo.scale})`;
+                icon.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            });
+            icon.addEventListener('mouseout', () => {
+                icon.style.transform = 'scale(1)';
+                icon.style.boxShadow = 'none';
+            });
+        });
     });
-  });
 }
+
 // ==============================
 // Switch and Toggle Effects
 // ==============================
@@ -1079,345 +1123,353 @@ function initializeFavoritesIconHoverEffects() {
  * Initialize switch and toggle effects.
  */
 function initializeSwitchToggleEffects() {
-  const switches = document.querySelectorAll(".switch input");
-  switches.forEach(switchInput => {
-    const slider = switchInput.nextElementSibling;
-    switchInput.addEventListener("change", () => {
-      if (switchInput.checked) {
-        slider.style.backgroundColor = "#FFCB05";
-        slider.querySelector("::before").style.transform = "translateX(26px)";
-      } else {
-        slider.style.backgroundColor = "#ccc";
-        slider.querySelector("::before").style.transform = "translateX(0)";
-      }
+    const switches = document.querySelectorAll('.switch input');
+    switches.forEach(switchInput => {
+        const slider = switchInput.nextElementSibling;
+        switchInput.addEventListener('change', () => {
+            if (switchInput.checked) {
+                slider.style.backgroundColor = '#FFCB05';
+                slider.querySelector('::before').style.transform = 'translateX(26px)';
+            } else {
+                slider.style.backgroundColor = '#ccc';
+                slider.querySelector('::before').style.transform = 'translateX(0)';
+            }
+        });
     });
-  });
 }
+
 // ==============================
 // Modal Functionality
 // ==============================
 // Get modal elements
-const preferencesMenu = document.getElementById("preferences-menu");
-const preferencesMenuCloseButton = document.getElementById("preferences-menu-close-button");
+const preferencesMenu = document.getElementById('preferences-menu');
+const preferencesMenuCloseButton =
+    document.getElementById('preferences-menu-close-button');
+
 /**
  * Open the preferences modal.
  */
 function openPreferencesMenu() {
-  preferencesMenu.style.display = "block";
-  preferencesMenu.style.opacity = 0;
-  let opacity = 0;
-  const fadeIn = setInterval(() => {
-    opacity += 0.05;
-    preferencesMenu.style.opacity = opacity;
-    if (opacity >= 1) {
-      clearInterval(fadeIn);
-    }
-  }, 10);
-  // Slide in animation
-  const content = preferencesMenu.querySelector(".preferences-menu-content");
-  content.style.transform = "translateY(-50px)";
-  let translateY = -50;
-  const slideIn = setInterval(() => {
-    translateY += 2;
-    content.style.transform = `translateY(${translateY}px)`;
-    if (translateY >= 0) {
-      content.style.transform = "translateY(0)";
-      clearInterval(slideIn);
-    }
-  }, 10);
+    preferencesMenu.style.display = 'block';
+    preferencesMenu.style.opacity = 0;
+    let opacity = 0;
+    const fadeIn = setInterval(() => {
+        opacity += 0.05;
+        preferencesMenu.style.opacity = opacity;
+        if (opacity >= 1) {
+            clearInterval(fadeIn);
+        }
+    }, 10);
+    // Slide in animation
+    const content = preferencesMenu.querySelector('.preferences-menu-content');
+    content.style.transform = 'translateY(-50px)';
+    let translateY = -50;
+    const slideIn = setInterval(() => {
+        translateY += 2;
+        content.style.transform = `translateY(${translateY}px)`;
+        if (translateY >= 0) {
+            content.style.transform = 'translateY(0)';
+            clearInterval(slideIn);
+        }
+    }, 10);
 }
+
 /**
  * Close the preferences modal.
  */
 function closePreferencesMenu() {
-  // Fade out animation
-  let opacity = 1;
-  const fadeOut = setInterval(() => {
-    opacity -= 0.05;
-    preferencesMenu.style.opacity = opacity;
-    if (opacity <= 0) {
-      preferencesMenu.style.display = "none";
-      clearInterval(fadeOut);
-    }
-  }, 10);
+    // Fade out animation
+    let opacity = 1;
+    const fadeOut = setInterval(() => {
+        opacity -= 0.05;
+        preferencesMenu.style.opacity = opacity;
+        if (opacity <= 0) {
+            preferencesMenu.style.display = 'none';
+            clearInterval(fadeOut);
+        }
+    }, 10);
 }
+
 // Event listeners for modal functionality
-preferencesMenuCloseButton.addEventListener("click", closePreferencesMenu);
-window.addEventListener("click", function (event) {
-  if (event.target == preferencesMenu) {
-    closePreferencesMenu();
-  }
+preferencesMenuCloseButton.addEventListener('click', closePreferencesMenu);
+window.addEventListener('click', function(event) {
+    if (event.target == preferencesMenu) {
+        closePreferencesMenu();
+    }
 });
-window.addEventListener("keydown", function (event) {
-  if (event.key === "Escape" && preferencesMenu.style.display === "block") {
-    closePreferencesMenu();
-  }
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && preferencesMenu.style.display === 'block') {
+        closePreferencesMenu();
+    }
 });
 // ==============================
 // Favorites Preference Toggle
 // ==============================
 // Get references to DOM elements for favorites toggle
-const toggleFavoritesCheckbox = document.getElementById("toggleFavoritesCheckbox");
-const heroPinnedBox = document.querySelector(".hero-pinned-box");
+const toggleFavoritesCheckbox = document.getElementById('toggleFavoritesCheckbox');
+const heroPinnedBox = document.querySelector('.hero-pinned-box');
 // Load and apply saved favorites preference
-const savedPreference = localStorage.getItem("showFavorites");
+const savedPreference = localStorage.getItem('showFavorites');
 const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
 toggleFavoritesCheckbox.checked = showFavorites;
 if (heroPinnedBox) {
-  heroPinnedBox.style.display = showFavorites ? "block" : "none";
+    heroPinnedBox.style.display = showFavorites ? 'block' : 'none';
 }
 // Event listener for favorites preference change
-toggleFavoritesCheckbox.addEventListener("change", () => {
-  const showFavorites = toggleFavoritesCheckbox.checked;
-  if (heroPinnedBox) {
-    heroPinnedBox.style.display = showFavorites ? "block" : "none";
-  }
-  // Save the updated preference to localStorage
-  localStorage.setItem("showFavorites", JSON.stringify(showFavorites));
-}); function animateEllipticalArc(svgString, startX, startY, endX, endY) {
-  console.log("Function called with parameters:", { svgString, startX, startY, endX, endY });
+toggleFavoritesCheckbox.addEventListener('change', () => {
+    const showFavorites = toggleFavoritesCheckbox.checked;
+    if (heroPinnedBox) {
+        heroPinnedBox.style.display = showFavorites ? 'block' : 'none';
+    }
+    // Save the updated preference to localStorage
+    localStorage.setItem('showFavorites', JSON.stringify(showFavorites));
+});
 
-  // Create a temporary span to hold the SVG
-  const tempSpan = document.createElement("span");
-  console.log("Created temporary span to hold SVG.");
+function animateEllipticalArc(svgString, startX, startY, endX, endY) {
+    console.log('Function called with parameters:',
+                {svgString, startX, startY, endX, endY});
 
-  tempSpan.innerHTML = svgString;
-  console.log("Inserted SVG string into temporary span.");
+    // Create a temporary span to hold the SVG
+    const tempSpan = document.createElement('span');
+    console.log('Created temporary span to hold SVG.');
 
-  // Append the tempSpan to the body first to ensure the SVG is part of the DOM
-  document.body.appendChild(tempSpan);
-  console.log("Temporary span appended to the document body.");
+    tempSpan.innerHTML = svgString;
+    console.log('Inserted SVG string into temporary span.');
 
-  const svg = tempSpan.querySelector("svg");
+    // Append the tempSpan to the body first to ensure the SVG is part of the DOM
+    document.body.appendChild(tempSpan);
+    console.log('Temporary span appended to the document body.');
 
-  if (!svg) {
-    console.error("Invalid SVG string provided. No <svg> element found.");
-    tempSpan.remove();
-    console.log("Temporary span removed due to invalid SVG.");
-    return;
-  }
+    const svg = tempSpan.querySelector('svg');
 
-  console.log("SVG element successfully retrieved:", svg);
-
-  // Style the temporary span for positioning and visibility
-  tempSpan.style.position = "fixed"; // Position absolutely for precise control
-  tempSpan.style.left = `${startX}px`; // Set initial X position
-  tempSpan.style.top = `${startY}px`;  // Set initial Y position
-  tempSpan.style.display = "inline-block";
-  tempSpan.style.transition = "transform 3s linear, opacity 1s"; // Smooth animation
-  tempSpan.style.opacity = 0; // Start hidden for fade-in
-  tempSpan.style.pointerEvents = "none"; // Allow clicks through the SVG
-
-  console.log("Styled temporary span for absolute positioning and initial opacity.");
-
-  // Optional: Add a border to the SVG for debugging (remove in production)
-  // tempSpan.style.border = "2px solid black";
-  // tempSpan.style.padding = "5px";
-
-  // Parameters for the elliptical arc
-  const centerX = (startX + endX) / 2;
-  const centerY = Math.min(startY, endY) - 100; // Adjust as needed
-  const radiusX = Math.abs(endX - startX) / 2;
-  const radiusY = 100; // Adjust as needed for the desired ellipse
-  const duration = 3000; // Duration in milliseconds
-
-  console.log("Calculated animation parameters:", { centerX, centerY, radiusX, radiusY, duration });
-
-  let startTime;
-
-  // Function to fade the SVG in
-  function fadeIn() {
-    console.log("Fade-in initiated.");
-    tempSpan.style.opacity = 1;
-    console.log("SVG fade-in complete.");
-  }
-
-  // Function to fade the SVG out
-  function fadeOut() {
-    console.log("Fade-out initiated.");
-    tempSpan.style.opacity = 0;
-    console.log("SVG fade-out complete.");
-  }
-
-  // Function to animate the arc
-  function animate(timestamp) {
-    if (!startTime) {
-      startTime = timestamp;
-      console.log("Animation start time set to:", startTime);
+    if (!svg) {
+        console.error('Invalid SVG string provided. No <svg> element found.');
+        tempSpan.remove();
+        console.log('Temporary span removed due to invalid SVG.');
+        return;
     }
 
-    const elapsed = timestamp - startTime;
-    console.log("Elapsed time:", elapsed);
+    console.log('SVG element successfully retrieved:', svg);
 
-    const progress = Math.min(elapsed / duration, 1); // Ensure it stops at 100%
-    console.log("Animation progress:", progress);
+    // Style the temporary span for positioning and visibility
+    tempSpan.style.position = 'fixed';    // Position absolutely for precise control
+    tempSpan.style.left = `${startX}px`;  // Set initial X position
+    tempSpan.style.top = `${startY}px`;   // Set initial Y position
+    tempSpan.style.display = 'inline-block';
+    tempSpan.style.transition = 'transform 3s linear, opacity 1s';  // Smooth animation
+    tempSpan.style.opacity = 0;             // Start hidden for fade-in
+    tempSpan.style.pointerEvents = 'none';  // Allow clicks through the SVG
 
-    // Calculate the angle in radians (0 to π for a half-circle)
-    const angle = Math.PI * progress;
-    console.log("Calculated angle (radians):", angle);
+    console.log('Styled temporary span for absolute positioning and initial opacity.');
 
-    // Update the SVG's position based on the elliptical arc formula
-    const x = centerX + radiusX * Math.cos(angle) - startX; // Relative movement
-    const y = centerY + radiusY * Math.sin(angle) - startY; // Relative movement
-    console.log("Calculated relative position on arc:", { x, y });
+    // Optional: Add a border to the SVG for debugging (remove in production)
+    // tempSpan.style.border = "2px solid black";
+    // tempSpan.style.padding = "5px";
 
-    tempSpan.style.transform = `translate(${x}px, ${y}px)`;
-    console.log("Updated temporary span transform to:", tempSpan.style.transform);
+    // Parameters for the elliptical arc
+    const centerX = (startX + endX) / 2;
+    const centerY = Math.min(startY, endY) - 100;  // Adjust as needed
+    const radiusX = Math.abs(endX - startX) / 2;
+    const radiusY = 100;    // Adjust as needed for the desired ellipse
+    const duration = 3000;  // Duration in milliseconds
 
-    if (progress < 1) {
-      console.log("Animation progress < 1, requesting next frame.");
-      requestAnimationFrame(animate);
-    } else {
-      console.log("Animation complete.");
-      setTimeout(() => {
-        console.log("Starting fade-out after animation completion.");
-        fadeOut();
-        setTimeout(() => {
-          console.log("Removing temporary span after fade-out.");
-          tempSpan.remove();
-        }, 1000); // Wait for fade-out transition to complete
-      }, 500); // Optional delay before fading out
+    console.log('Calculated animation parameters:',
+                {centerX, centerY, radiusX, radiusY, duration});
+
+    let startTime;
+
+    // Function to fade the SVG in
+    function fadeIn() {
+        console.log('Fade-in initiated.');
+        tempSpan.style.opacity = 1;
+        console.log('SVG fade-in complete.');
     }
-  }
 
-  // Start the animation sequence: Fade in, then animate arc
-  console.log("Initiating fade-in.");
-  fadeIn();
+    // Function to fade the SVG out
+    function fadeOut() {
+        console.log('Fade-out initiated.');
+        tempSpan.style.opacity = 0;
+        console.log('SVG fade-out complete.');
+    }
 
-  setTimeout(() => {
-    console.log("Starting animation after fade-in.");
-    requestAnimationFrame(animate);
-  }, 1000); // Wait for fade-in to complete before starting animation
+    // Function to animate the arc
+    function animate(timestamp) {
+        if (!startTime) {
+            startTime = timestamp;
+            console.log('Animation start time set to:', startTime);
+        }
+
+        const elapsed = timestamp - startTime;
+        console.log('Elapsed time:', elapsed);
+
+        const progress = Math.min(elapsed / duration, 1);  // Ensure it stops at 100%
+        console.log('Animation progress:', progress);
+
+        // Calculate the angle in radians (0 to π for a half-circle)
+        const angle = Math.PI * progress;
+        console.log('Calculated angle (radians):', angle);
+
+        // Update the SVG's position based on the elliptical arc formula
+        const x = centerX + radiusX * Math.cos(angle) - startX;  // Relative movement
+        const y = centerY + radiusY * Math.sin(angle) - startY;  // Relative movement
+        console.log('Calculated relative position on arc:', {x, y});
+
+        tempSpan.style.transform = `translate(${x}px, ${y}px)`;
+        console.log('Updated temporary span transform to:', tempSpan.style.transform);
+
+        if (progress < 1) {
+            console.log('Animation progress < 1, requesting next frame.');
+            requestAnimationFrame(animate);
+        } else {
+            console.log('Animation complete.');
+            setTimeout(() => {
+                console.log('Starting fade-out after animation completion.');
+                fadeOut();
+                setTimeout(() => {
+                    console.log('Removing temporary span after fade-out.');
+                    tempSpan.remove();
+                }, 1000);  // Wait for fade-out transition to complete
+            }, 500);       // Optional delay before fading out
+        }
+    }
+
+    // Start the animation sequence: Fade in, then animate arc
+    console.log('Initiating fade-in.');
+    fadeIn();
+
+    setTimeout(() => {
+        console.log('Starting animation after fade-in.');
+        requestAnimationFrame(animate);
+    }, 1000);  // Wait for fade-in to complete before starting animation
 }
 
-heroLogo = document.getElementById("hero-logo");
+heroLogo = document.getElementById('hero-logo');
 
 if (heroLogo) {
 
-  heroLogo.addEventListener("click", () => {
+    heroLogo.addEventListener('click', () => {
+        let startX = heroLogo.getBoundingClientRect().right + 20;
+        let startY = heroLogo.getBoundingClientRect().bottom - 20;
+        let endX = heroLogo.getBoundingClientRect().left - 20;
+        let endY = heroLogo.getBoundingClientRect().top + 20;
 
-    let startX = heroLogo.getBoundingClientRect().right + 20;
-    let startY = heroLogo.getBoundingClientRect().bottom - 20;
-    let endX = heroLogo.getBoundingClientRect().left - 20;
-    let endY = heroLogo.getBoundingClientRect().top + 20;
 
+        // Create a large rectangle at the start point
+        const startRect = document.createElement('div');
+        startRect.style.position = 'absolute';
+        startRect.style.left = `${startX - 50}px`;
+        startRect.style.top = `${startY - 50}px`;
+        startRect.style.width = '100px';
+        startRect.style.height = '100px';
+        startRect.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+        startRect.style.zIndex = '1000';
+        document.body.appendChild(startRect);
 
-    // Create a large rectangle at the start point
-    const startRect = document.createElement("div");
-    startRect.style.position = "absolute";
-    startRect.style.left = `${startX - 50}px`;
-    startRect.style.top = `${startY - 50}px`;
-    startRect.style.width = "100px";
-    startRect.style.height = "100px";
-    startRect.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
-    startRect.style.zIndex = "1000";
-    document.body.appendChild(startRect);
+        // Create a large rectangle at the end point
+        const endRect = document.createElement('div');
+        endRect.style.position = 'absolute';
+        endRect.style.left = `${endX - 50}px`;
+        endRect.style.top = `${endY - 50}px`;
+        endRect.style.width = '100px';
+        endRect.style.height = '100px';
+        endRect.style.backgroundColor = 'rgba(0, 0, 255, 0.5)';
+        endRect.style.zIndex = '1000';
+        document.body.appendChild(endRect);
 
-    // Create a large rectangle at the end point
-    const endRect = document.createElement("div");
-    endRect.style.position = "absolute";
-    endRect.style.left = `${endX - 50}px`;
-    endRect.style.top = `${endY - 50}px`;
-    endRect.style.width = "100px";
-    endRect.style.height = "100px";
-    endRect.style.backgroundColor = "rgba(0, 0, 255, 0.5)";
-    endRect.style.zIndex = "1000";
-    document.body.appendChild(endRect);
+        // Remove the rectangles after 10 seconds
+        setTimeout(() => {
+            startRect.remove();
+            endRect.remove();
+        }, 10000);
 
-    // Remove the rectangles after 10 seconds
-    setTimeout(() => {
-      startRect.remove();
-      endRect.remove();
-    }, 10000);
-
-    animateEllipticalArc(footballSVG, startX, startY, endX, endY);
-
-  });
+        animateEllipticalArc(footballSVG, startX, startY, endX, endY);
+    });
 }
+
 /**
  * Display an error message on the page.
  * @param {string} message - The error message to display.
  */
 function displayErrorMessage(message) {
-  const errorContainer = document.getElementById("error-container");
-  if (errorContainer) {
-    errorContainer.textContent = message;
-    errorContainer.style.display = "block";
+    const errorContainer = document.getElementById('error-container');
+    if (errorContainer) {
+        errorContainer.textContent = message;
+        errorContainer.style.display = 'block';
 
-    const closeButton = document.createElement("span");
-    closeButton.textContent = "x";
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "50%";
-    closeButton.style.right = "10px";
-    closeButton.style.transform = "translateY(-50%)";
-    closeButton.style.cursor = "pointer";
-    closeButton.addEventListener("click", () => {
-      errorContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        errorContainer.remove();
-      }, 300);
-    });
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '50%';
+        closeButton.style.right = '10px';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            errorContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                errorContainer.remove();
+            }, 300);
+        });
 
-    errorContainer.appendChild(closeButton);
-  } else {
-    const newErrorContainer = document.createElement("div");
-    newErrorContainer.id = "error-container";
-    newErrorContainer.style.position = "fixed";
-    newErrorContainer.style.bottom = "0";
-    newErrorContainer.style.left = "0";
-    newErrorContainer.style.width = "100%";
-    newErrorContainer.style.backgroundColor = "#f44336";
-    newErrorContainer.style.opacity = "0.9";
-    newErrorContainer.style.color = "#fff";
-    newErrorContainer.style.padding = "1rem";
-    newErrorContainer.style.textAlign = "center";
-    newErrorContainer.style.zIndex = "10000";
-    newErrorContainer.style.transform = "translateY(100%)";
-    newErrorContainer.style.transition = "transform 0.3s ease";
-    newErrorContainer.textContent = message;
+        errorContainer.appendChild(closeButton);
+    } else {
+        const newErrorContainer = document.createElement('div');
+        newErrorContainer.id = 'error-container';
+        newErrorContainer.style.position = 'fixed';
+        newErrorContainer.style.bottom = '0';
+        newErrorContainer.style.left = '0';
+        newErrorContainer.style.width = '100%';
+        newErrorContainer.style.backgroundColor = '#f44336';
+        newErrorContainer.style.opacity = '0.9';
+        newErrorContainer.style.color = '#fff';
+        newErrorContainer.style.padding = '1rem';
+        newErrorContainer.style.textAlign = 'center';
+        newErrorContainer.style.zIndex = '10000';
+        newErrorContainer.style.transform = 'translateY(100%)';
+        newErrorContainer.style.transition = 'transform 0.3s ease';
+        newErrorContainer.textContent = message;
 
-    const closeButton = document.createElement("span");
-    closeButton.textContent = "x";
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "50%";
-    closeButton.style.right = "10px";
-    closeButton.style.transform = "translateY(-50%)";
-    closeButton.style.cursor = "pointer";
-    closeButton.addEventListener("click", () => {
-      newErrorContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        newErrorContainer.remove();
-      }, 300);
-    });
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '50%';
+        closeButton.style.right = '10px';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            newErrorContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                newErrorContainer.remove();
+            }, 300);
+        });
 
-    newErrorContainer.appendChild(closeButton);
-    document.body.appendChild(newErrorContainer);
+        newErrorContainer.appendChild(closeButton);
+        document.body.appendChild(newErrorContainer);
 
-    setTimeout(() => {
-      newErrorContainer.style.transform = "translateY(0)";
-    }, 10);
+        setTimeout(() => {
+            newErrorContainer.style.transform = 'translateY(0)';
+        }, 10);
 
-    // Remove the container after 5 seconds
-    setTimeout(() => {
-      newErrorContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        newErrorContainer.remove();
-      }, 300);
-    }, 5000);
-  }
+        // Remove the container after 5 seconds
+        setTimeout(() => {
+            newErrorContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                newErrorContainer.remove();
+            }, 300);
+        }, 5000);
+    }
 }
 
 // Override console.error to display error messages on the page
 const originalConsoleError = console.error;
-console.error = function (...args) {
-  originalConsoleError.apply(console, args);
-  displayErrorMessage(args.join(" "));
+console.error = function(...args) {
+    originalConsoleError.apply(console, args);
+    displayErrorMessage(args.join(' '));
 };
 
 // Override window.onerror to display uncaught errors on the page
-window.onerror = function (message, source, lineno, colno, error) {
-  displayErrorMessage(`${message} at ${source}:${lineno}:${colno}`);
-  return true; // Prevent the default browser error handling
+window.onerror = function(message, source, lineno, colno, error) {
+    displayErrorMessage(`${message} at ${source}:${lineno}:${colno}`);
+    return true;  // Prevent the default browser error handling
 };
 
 /**
@@ -1425,72 +1477,72 @@ window.onerror = function (message, source, lineno, colno, error) {
  * @param {string} message - The log message to display.
  */
 function displayLogMessage(message) {
-  const logContainer = document.getElementById("log-container");
-  if (logContainer) {
-    logContainer.textContent = message;
-    logContainer.style.display = "block";
+    const logContainer = document.getElementById('log-container');
+    if (logContainer) {
+        logContainer.textContent = message;
+        logContainer.style.display = 'block';
 
-    const closeButton = document.createElement("span");
-    closeButton.textContent = "x";
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "50%";
-    closeButton.style.right = "10px";
-    closeButton.style.transform = "translateY(-50%)";
-    closeButton.style.cursor = "pointer";
-    closeButton.addEventListener("click", () => {
-      logContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        logContainer.remove();
-      }, 300);
-    });
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '50%';
+        closeButton.style.right = '10px';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            logContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                logContainer.remove();
+            }, 300);
+        });
 
-    logContainer.appendChild(closeButton);
-  } else {
-    const newLogContainer = document.createElement("div");
-    newLogContainer.id = "log-container";
-    newLogContainer.style.position = "fixed";
-    newLogContainer.style.bottom = "0";
-    newLogContainer.style.left = "0";
-    newLogContainer.style.width = "100%";
-    newLogContainer.style.backgroundColor = "#00274C";
-    newLogContainer.style.opacity = "0.9";
-    newLogContainer.style.color = "#fff";
-    newLogContainer.style.padding = "1rem";
-    newLogContainer.style.textAlign = "center";
-    newLogContainer.style.zIndex = "10000";
-    newLogContainer.style.transform = "translateY(100%)";
-    newLogContainer.style.transition = "transform 0.3s ease";
-    newLogContainer.textContent = message;
+        logContainer.appendChild(closeButton);
+    } else {
+        const newLogContainer = document.createElement('div');
+        newLogContainer.id = 'log-container';
+        newLogContainer.style.position = 'fixed';
+        newLogContainer.style.bottom = '0';
+        newLogContainer.style.left = '0';
+        newLogContainer.style.width = '100%';
+        newLogContainer.style.backgroundColor = '#00274C';
+        newLogContainer.style.opacity = '0.9';
+        newLogContainer.style.color = '#fff';
+        newLogContainer.style.padding = '1rem';
+        newLogContainer.style.textAlign = 'center';
+        newLogContainer.style.zIndex = '10000';
+        newLogContainer.style.transform = 'translateY(100%)';
+        newLogContainer.style.transition = 'transform 0.3s ease';
+        newLogContainer.textContent = message;
 
-    const closeButton = document.createElement("span");
-    closeButton.textContent = "x";
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "50%";
-    closeButton.style.right = "10px";
-    closeButton.style.transform = "translateY(-50%)";
-    closeButton.style.cursor = "pointer";
-    closeButton.addEventListener("click", () => {
-      newLogContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        newLogContainer.remove();
-      }, 300);
-    });
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '50%';
+        closeButton.style.right = '10px';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            newLogContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                newLogContainer.remove();
+            }, 300);
+        });
 
-    newLogContainer.appendChild(closeButton);
-    document.body.appendChild(newLogContainer);
+        newLogContainer.appendChild(closeButton);
+        document.body.appendChild(newLogContainer);
 
-    setTimeout(() => {
-      newLogContainer.style.transform = "translateY(0)";
-    }, 10);
+        setTimeout(() => {
+            newLogContainer.style.transform = 'translateY(0)';
+        }, 10);
 
-    // Remove the container after 5 seconds
-    setTimeout(() => {
-      newLogContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        newLogContainer.remove();
-      }, 300);
-    }, 5000);
-  }
+        // Remove the container after 5 seconds
+        setTimeout(() => {
+            newLogContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                newLogContainer.remove();
+            }, 300);
+        }, 5000);
+    }
 }
 
 /**
@@ -1498,84 +1550,84 @@ function displayLogMessage(message) {
  * @param {string} message - The warning message to display.
  */
 function displayWarningMessage(message) {
-  const warningContainer = document.getElementById("warning-container");
-  if (warningContainer) {
-    warningContainer.textContent = message;
-    warningContainer.style.display = "block";
+    const warningContainer = document.getElementById('warning-container');
+    if (warningContainer) {
+        warningContainer.textContent = message;
+        warningContainer.style.display = 'block';
 
-    const closeButton = document.createElement("span");
-    closeButton.textContent = "x";
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "50%";
-    closeButton.style.right = "10px";
-    closeButton.style.transform = "translateY(-50%)";
-    closeButton.style.cursor = "pointer";
-    closeButton.addEventListener("click", () => {
-      warningContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        warningContainer.remove();
-      }, 300);
-    });
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '50%';
+        closeButton.style.right = '10px';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            warningContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                warningContainer.remove();
+            }, 300);
+        });
 
-    warningContainer.appendChild(closeButton);
-  } else {
-    const newWarningContainer = document.createElement("div");
-    newWarningContainer.id = "warning-container";
-    newWarningContainer.style.position = "fixed";
-    newWarningContainer.style.bottom = "0";
-    newWarningContainer.style.left = "0";
-    newWarningContainer.style.width = "100%";
-    newWarningContainer.style.backgroundColor = "#ff9800";
-    newWarningContainer.style.opacity = "0.9";
-    newWarningContainer.style.color = "#fff";
-    newWarningContainer.style.padding = "1rem";
-    newWarningContainer.style.textAlign = "center";
-    newWarningContainer.style.zIndex = "10000";
-    newWarningContainer.style.transform = "translateY(100%)";
-    newWarningContainer.style.transition = "transform 0.3s ease";
-    newWarningContainer.textContent = message;
+        warningContainer.appendChild(closeButton);
+    } else {
+        const newWarningContainer = document.createElement('div');
+        newWarningContainer.id = 'warning-container';
+        newWarningContainer.style.position = 'fixed';
+        newWarningContainer.style.bottom = '0';
+        newWarningContainer.style.left = '0';
+        newWarningContainer.style.width = '100%';
+        newWarningContainer.style.backgroundColor = '#ff9800';
+        newWarningContainer.style.opacity = '0.9';
+        newWarningContainer.style.color = '#fff';
+        newWarningContainer.style.padding = '1rem';
+        newWarningContainer.style.textAlign = 'center';
+        newWarningContainer.style.zIndex = '10000';
+        newWarningContainer.style.transform = 'translateY(100%)';
+        newWarningContainer.style.transition = 'transform 0.3s ease';
+        newWarningContainer.textContent = message;
 
-    const closeButton = document.createElement("span");
-    closeButton.textContent = "x";
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "50%";
-    closeButton.style.right = "10px";
-    closeButton.style.transform = "translateY(-50%)";
-    closeButton.style.cursor = "pointer";
-    closeButton.addEventListener("click", () => {
-      newWarningContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        newWarningContainer.remove();
-      }, 300);
-    });
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '50%';
+        closeButton.style.right = '10px';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            newWarningContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                newWarningContainer.remove();
+            }, 300);
+        });
 
-    newWarningContainer.appendChild(closeButton);
-    document.body.appendChild(newWarningContainer);
+        newWarningContainer.appendChild(closeButton);
+        document.body.appendChild(newWarningContainer);
 
-    setTimeout(() => {
-      newWarningContainer.style.transform = "translateY(0)";
-    }, 10);
+        setTimeout(() => {
+            newWarningContainer.style.transform = 'translateY(0)';
+        }, 10);
 
-    // Remove the container after 5 seconds
-    setTimeout(() => {
-      newWarningContainer.style.transform = "translateY(100%)";
-      setTimeout(() => {
-        newWarningContainer.remove();
-      }, 300);
-    }, 5000);
-  }
+        // Remove the container after 5 seconds
+        setTimeout(() => {
+            newWarningContainer.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                newWarningContainer.remove();
+            }, 300);
+        }, 5000);
+    }
 }
 
 // Override console.log to display log messages on the page
 const originalConsoleLog = console.log;
-console.log = function (...args) {
-  originalConsoleLog.apply(console, args);
-  displayLogMessage(args.join(" "));
+console.log = function(...args) {
+    originalConsoleLog.apply(console, args);
+    displayLogMessage(args.join(' '));
 };
 
 // Override console.warn to display warning messages on the page
 const originalConsoleWarn = console.warn;
-console.warn = function (...args) {
-  originalConsoleWarn.apply(console, args);
-  displayWarningMessage(args.join(" "));
+console.warn = function(...args) {
+    originalConsoleWarn.apply(console, args);
+    displayWarningMessage(args.join(' '));
 };
