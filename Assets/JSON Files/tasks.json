@@ -1207,10 +1207,7 @@
         "openInNewWindow": true,
         "currentRating": 71,
         "alt": "Register Your Travel",
-        "image": [
-            "../../Assets/Media/Current/RegisterYourTravel.png",
-            "../../Assets/Media/Current/RegisterYourTravelFaculty.png"
-        ],
+        "image": "../../Assets/Media/Current/RegisterYourTravel.png",
         "href": "https://wolverineaccess.umich.edu/launch-task/all/register-travel-students"
     },
     {
@@ -1669,10 +1666,7 @@
         "openInNewWindow": true,
         "currentRating": 98,
         "alt": "Register Your Travel",
-        "image": [
-            "../../Assets/Media/Current/RegisterYourTravel.png",
-            "../../Assets/Media/Current/RegisterYourTravelFaculty.png"
-        ],
+        "image": "../../Assets/Media/Current/RegisterYourTravelFaculty.png",
         "href": "https://wolverineaccess.umich.edu/launch-task/all/register-travel-facultystaff"
     },
     {
