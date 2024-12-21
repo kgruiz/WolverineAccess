@@ -131,9 +131,6 @@ export function addCardToFavoritesContainers(card) {
 
             if (container.id == 'hero-pinned-container') {
 
-
-                const totalScrollHeight = document.documentElement.scrollHeight;
-
                 // Remove "No pinned links yet." if present
                 const noFavorites = container.querySelector('p');
                 if (noFavorites && noFavorites.textContent === 'No pinned links yet.') {
@@ -152,15 +149,6 @@ export function addCardToFavoritesContainers(card) {
                     }
                     container.appendChild(newCard);
                 }
-
-                const newTotalScrollHeight = document.documentElement.scrollHeight;
-
-                const scrollDifference = newTotalScrollHeight - totalScrollHeight;
-
-                document.documentElement.style.scrollBehavior = 'auto';
-                window.scrollBy(0, scrollDifference);
-                document.documentElement.style.scrollBehavior = 'smooth';
-
             } else {
 
                 // Remove "No pinned links yet." if present

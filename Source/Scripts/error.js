@@ -149,7 +149,7 @@ export function displayLogMessage(message) {
             setTimeout(() => {
                 newLogContainer.remove();
             }, 300);
-        }, 5000);
+        }, 15000);
     }
 }
 
