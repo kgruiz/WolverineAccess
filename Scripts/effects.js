@@ -80,6 +80,7 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
     const signInItemSignedIn = document.querySelectorAll('.sign-in-item-signed-in');
     const preferencesButton = document.getElementById('sign-in-preferences-button');
     const feedbackButton = document.getElementById('sign-in-feedback-button');
+    const preferencesMenu = document.getElementById('preferences-menu');
 
     if (!container || !menu || !toggle)
         return;
@@ -136,7 +137,7 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
 
     document.addEventListener('click', (event) => {
         if (clickedOpen && !container.contains(event.target) &&
-            !menu.contains(event.target)) {
+            !menu.contains(event.target) && !preferencesMenu.contains(event.target)) {
             clickedOpen = false;
             if (menu.classList.contains('active')) {
                 menu.classList.remove('active');
