@@ -75,9 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     state.linksData.filter(link => isLinkFavorited(link));
                 const sortedByRank =
                     [...favoritedLinks].sort((a, b) => b.currentRating - a.currentRating);
-                const top10 = sortedByRank.slice(0, 10);
+                // Load maxFavoritesDisplay from localStorage
+                const maxFavoritesDisplay = localStorage.getItem('maxFavoritesDisplay');
+                let numToDisplay =
+                    maxFavoritesDisplay ? parseInt(maxFavoritesDisplay, 10) : 4;
+                if (maxFavoritesDisplay == 0) {
+                    numToDisplay = Infinity;
+                }
+                const topFavorites = sortedByRank.slice(0, numToDisplay);
 
-                top10.forEach((link) => {
+                topFavorites.forEach((link) => {
                     const card = CreateCard(link);
                     topFavoritesContainer.append(card);
                 });

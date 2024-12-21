@@ -114,16 +114,24 @@ export function populateFavoritesContainers() {
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
     ];
+    // Load maxFavoritesDisplay from localStorage
+    const maxFavoritesDisplay = localStorage.getItem('maxFavoritesDisplay');
+    let numToDisplay = maxFavoritesDisplay ? parseInt(maxFavoritesDisplay, 10) : 4;
+    if (maxFavoritesDisplay == 0) {
+        numToDisplay = Infinity;
+    }
+
     favoriteContainers.forEach(container => {
         if (container) {
-            container.innerHTML = '';
+            const currentCards = container.querySelectorAll('.card, .favorite-card');
             const favoritedLinks = state.linksData.filter(link => isLinkFavorited(link));
+            container.innerHTML = '';
             if (favoritedLinks.length === 0) {
                 const noFavorites = document.createElement('p');
                 noFavorites.textContent = 'No favorite links yet.';
                 container.appendChild(noFavorites);
             } else {
-                favoritedLinks.slice(0, 4).forEach(link => {
+                favoritedLinks.slice(0, numToDisplay).forEach(link => {
                     let card;
                     if (container.id === 'all-favorites-container') {
                         card = CreateFavoriteCard(link);
@@ -149,6 +157,12 @@ export function addCardToFavoritesContainers(card) {
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
     ];
+    // Load maxFavoritesDisplay from localStorage
+    const maxFavoritesDisplay = localStorage.getItem('maxFavoritesDisplay');
+    let numToDisplay = maxFavoritesDisplay ? parseInt(maxFavoritesDisplay, 10) : 4;
+    if (maxFavoritesDisplay == 0) {
+        numToDisplay = Infinity;
+    }
     favoriteContainers.forEach(container => {
         if (container) {
 
@@ -158,17 +172,21 @@ export function addCardToFavoritesContainers(card) {
                 container.removeChild(noFavorites);
             }
             // Check if the card is already present to avoid duplicates
+            // Check if the card is already present to avoid duplicates
             if (!container.querySelector(
                     `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
-                const link =
-                    state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
-                let newCard;
-                if (container.id === 'all-favorites-container') {
-                    newCard = CreateFavoriteCard(link);
-                } else {
-                    newCard = CreateCard(link);
+                const currentCards = container.querySelectorAll('.card, .favorite-card');
+                if (currentCards.length < numToDisplay) {
+                    const link =
+                        state.linksData.find(l => l.uniqueKey === card.dataset.uniqueKey);
+                    let newCard;
+                    if (container.id === 'all-favorites-container') {
+                        newCard = CreateFavoriteCard(link);
+                    } else {
+                        newCard = CreateCard(link);
+                    }
+                    container.appendChild(newCard);
                 }
-                container.appendChild(newCard);
             }
         }
     });

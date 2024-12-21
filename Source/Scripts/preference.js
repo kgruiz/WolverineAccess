@@ -104,7 +104,11 @@ export function InitializePreferencesToggle() {
 export function initializeFavoritesNumSpinner() {
     // Initialize elements and variables
     var favoritesNumSpinnerBox = document.getElementById('favorites-num-spinner-box');
-    for (let i = 0; i < 100; i++) {
+    // Add 'All' as the first option
+    let allSpan = document.createElement('span');
+    allSpan.textContent = 'All';
+    favoritesNumSpinnerBox.appendChild(allSpan);
+    for (let i = 1; i < 100; i++) {  // Start from 1 since 'All' is at index 0
         let span = document.createElement('span');
         span.textContent = i;
         favoritesNumSpinnerBox.appendChild(span);
@@ -112,12 +116,23 @@ export function initializeFavoritesNumSpinner() {
 
     var favoritesNumbers = favoritesNumSpinnerBox.getElementsByTagName('span');
     var favoritesIndex = 0;
+    // Load saved value and set initial favorites index
+    const savedFavoritesNum = localStorage.getItem('maxFavoritesDisplay');
+    if (savedFavoritesNum !== null) {
+        favoritesIndex = parseInt(savedFavoritesNum);
+    }
+    for (let i = 0; i < favoritesNumbers.length; i++) {
+        favoritesNumbers[i].style.display = 'none';
+    }
+    favoritesNumbers[favoritesIndex].style.display = 'initial';
 
     // Function to show the next number
     function nextFavoritesNum() {
         favoritesNumbers[favoritesIndex].style.display = 'none';
         favoritesIndex = (favoritesIndex + 1) % favoritesNumbers.length;
         favoritesNumbers[favoritesIndex].style.display = 'initial';
+        saveMaxFavoritesDisplay();
+        updateFavoritesDisplay();
     }
 
     // Function to show the previous number
@@ -126,6 +141,12 @@ export function initializeFavoritesNumSpinner() {
         favoritesIndex =
             (favoritesIndex - 1 + favoritesNumbers.length) % favoritesNumbers.length;
         favoritesNumbers[favoritesIndex].style.display = 'initial';
+        saveMaxFavoritesDisplay();
+        updateFavoritesDisplay();
+    }
+
+    function saveMaxFavoritesDisplay() {
+        localStorage.setItem('maxFavoritesDisplay', JSON.stringify(favoritesIndex));
     }
 
     let nextTimeoutId = null;
@@ -170,4 +191,14 @@ export function initializeFavoritesNumSpinner() {
     favoritesNumSpinnerBox.addEventListener('mousedown', function(e) {
         e.preventDefault();
     });
+}
+
+// Add this function to trigger updates to the UI
+function updateFavoritesDisplay() {
+    if (typeof populateFavoritesContainers === 'function') {
+        populateFavoritesContainers();
+    }
+    if (typeof populateTopFavorites === 'function') {
+        populateTopFavorites();
+    }
 }
