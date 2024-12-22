@@ -45,7 +45,7 @@ export const optionsIconSVG =
     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 viewBox="0 0 24 24"><path fill="#555" d="M12 16a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4z"/></svg>`;
 export const footballSVG =
-    `<svg width="800px" height="800px" viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    `<svg width="150px" height="150px" viewBox="0 0 72 72" id="emoji" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <g id="line-supplement">
     <line x1="36" x2="36" y1="4.2" y2="67.7" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
     <line x1="38.9" x2="33.1" y1="35.9" y2="35.9" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>

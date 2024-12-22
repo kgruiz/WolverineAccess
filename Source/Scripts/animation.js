@@ -1,58 +1,49 @@
+/**
+ * FILE: animation.js
+ * Controls animations and visual transitions.
+ */
+
+import {footballSVG} from './constants.js';
+
 // script.js
 
 export function InitializeAnimation(heroLogo) {
     const container = heroLogo
 
-    // Define Path Data
-    const pathData = 'M50,350 Q300,50 550,200';
+    // Get the dimensions of the hero logo
+    const heroRect = container.getBoundingClientRect();
+    const startX = 20;                  // Start a bit inside from the left
+    const startY = 20;                  // Start a bit inside from the top
+    const endX = heroRect.width - 20;   // End a bit inside from the right
+    const endY = heroRect.height - 20;  // End a bit inside from the bottom
 
     // Create Trajectory SVG
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.setAttribute('class', 'trajectory');
-    svg.setAttribute('width', '600');
-    svg.setAttribute('height', '400');
+    svg.setAttribute('width', heroRect.width);    // Match container width
+    svg.setAttribute('height', heroRect.height);  // Match container height
 
-    const path = document.createElementNS(svgNS, 'path');
-    path.setAttribute('d', pathData);
-    path.setAttribute('stroke', '#888');  // Visible trajectory
-    path.setAttribute('stroke-width', '2');
-    path.setAttribute('fill', 'none');
-
-    svg.appendChild(path);
     container.appendChild(svg);
 
-    // Create Ball
+    // Create Ball with SVG String
     const ball = document.createElement('div');
     ball.classList.add('ball');
-
-    const ballSVG = document.createElementNS(svgNS, 'svg');
-    ballSVG.setAttribute('width', '30');
-    ballSVG.setAttribute('height', '30');
-
-    const circle = document.createElementNS(svgNS, 'circle');
-    circle.setAttribute('cx', '15');
-    circle.setAttribute('cy', '15');
-    circle.setAttribute('r', '15');
-    circle.setAttribute('fill', '#ff5722');
-
-    ballSVG.appendChild(circle);
-    ball.appendChild(ballSVG);
+    ball.innerHTML = footballSVG;
     container.appendChild(ball);
 
-    // Set opacity to 0 for all elements
-    svg.style.opacity = '0';
-    ball.style.opacity = '0';
+    // Position the ball initially at the start of the path
+    ball.style.top = `${startY}px`;
+    ball.style.left = `${startX}px`;
 
-    // Set the same path for CSS Motion Path
-    ball.style.offsetPath = `path('${pathData}')`;
+    // Set initial opacity of elements to 0
+    ball.style.opacity = '0';
 
     // Animation Trigger
     heroLogo.addEventListener('click', () => {
         // Remove animate class if already present
         ball.classList.remove('animate');
 
-        svg.style.opacity = '1';
         ball.style.opacity = '1';
 
         // Trigger reflow to restart animation
@@ -65,7 +56,7 @@ export function InitializeAnimation(heroLogo) {
     // Remove animate class after animation ends to allow re-triggering
     ball.addEventListener('animationend', () => {
         ball.classList.remove('animate');
-        svg.style.opacity = '0';
+
         ball.style.opacity = '0';
     });
 }

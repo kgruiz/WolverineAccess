@@ -1,24 +1,10 @@
-.trajectory {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-}
-
-.trajectory path {
-    stroke: #888;
-    /* Visible trajectory */
-    stroke-width: 2;
-    fill: none;
-}
-
 .ball {
     position: absolute;
+    transform: rotate(90deg);
     top: 0;
     left: 0;
-    width: 30px;
-    height: 30px;
-    offset-path: path('M50,350 Q300,50 550,200');
+    offset-path: path('M300,35 Q820,-30 1100,160');
+    /* Adjusted path */
     offset-rotate: auto;
 }
 
