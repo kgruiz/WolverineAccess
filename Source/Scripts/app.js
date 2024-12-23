@@ -350,7 +350,10 @@ document.addEventListener('DOMContentLoaded', () => {
         InitializePreferencesToggle();
         InitializePreferencesMenu();
         initializeFavoritesNumSpinner();
-        InitializeAnimation(heroLogo);
+
+        if (window.location.pathname.includes('index.html')) {
+            InitializeAnimation(heroLogo);
+        }
 
         // Check if we are on the class-schedule page
         if (window.location.pathname.includes('class-schedule.html')) {

@@ -3,7 +3,7 @@
     transform: rotate(90deg);
     top: 0;
     left: 0;
-    offset-path: path('M300,35 Q820,-150 1100,130');
+    offset-path: path('M300,120 Q820,-100 1100,200');
     /* Adjusted path */
     offset-rotate: auto;
 }
