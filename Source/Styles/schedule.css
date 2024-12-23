@@ -121,6 +121,7 @@
     /* Light blue */
     border: 1px solid #00274C;
     padding: 2px;
+    margin: 1px;
     font-size: 0.8rem;
     overflow: hidden;
     box-sizing: border-box;
@@ -135,7 +136,7 @@
 }
 
 .class-block:hover {
-    background-color: #87CEFA;
+    background-color: #02396d;
     /* Sky blue */
 }
 

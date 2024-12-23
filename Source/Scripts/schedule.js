@@ -214,8 +214,8 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Configuration Variables
-    const startTime = '08:00AM';  // 8 AM
-    const endTime = '09:00PM';    // 9 PM
+    const startTime = '09:00AM';  // 8 AM
+    const endTime = '07:00PM';    // 9 PM
     const interval = 30;          // 30 minutes
     const calendarHeight = 800;   // Fixed calendar height in pixels
     const timeColumnWidth = 100;  // Fixed width for the time column in pixels
