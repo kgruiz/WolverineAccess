@@ -456,9 +456,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const showLocation = toggleLocation.checked;
                 const showTime = toggleShowTime.checked;
                 // Initialize time spinners and pass RenderClassSchedule
-                timeSpinners = initializeTimeSpinners(
-                    RenderClassSchedule, showTimePostfix, showClassTitle, showInstructor,
-                    showLocation, showTime)
+                timeSpinners =
+                    initializeTimeSpinners(RenderClassSchedule, showTimePostfix)
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
@@ -479,6 +478,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const dayCheckboxes = document.querySelectorAll('input[name="schedule-day"]');
             dayCheckboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', updateClassSchedule);
+            });
+
+
+            const toggleTimePostfix = document.getElementById('toggleTimePostfix');
+            const toggleClassTitle = document.getElementById('toggleClassTitle');
+            const toggleInstructor = document.getElementById('toggleInstructor');
+            const toggleLocation = document.getElementById('toggleLocation');
+            const toggleShowTime = document.getElementById('toggleShowTime');
+
+            // Event listeners for toggle switches
+            const toggleElements = [
+                toggleTimePostfix, toggleClassTitle, toggleInstructor, toggleLocation,
+                toggleShowTime
+            ];
+
+            toggleElements.forEach(toggle => {
+                toggle.addEventListener('change', updateClassSchedule);
             });
         }
     }

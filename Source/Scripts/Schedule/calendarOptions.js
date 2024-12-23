@@ -7,9 +7,7 @@ import {state} from '../constants.js'
 
 import {Class, Section} from './class.js';  // Import Class and Section
 
-export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
-                                       showClassTitle, showInstructor, showLocation,
-                                       showTime) {
+export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix) {
 
     function initializeStartTimeSpinner() {
         // Initialize elements and variables
@@ -21,8 +19,11 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
             for (let minute = 0; minute < 60; minute += 30) {
                 let period = hour < 12 ? 'AM' : 'PM';
                 let displayHour = hour % 12 === 0 ? 12 : hour % 12;
-                let timeString = `${String(displayHour).padStart(2, '0')}:${
-                    String(minute).padStart(2, '0')} ${period}`;
+                let timeString = showTimePostfix ?
+                                     `${String(displayHour).padStart(2, '0')}:${
+                                         String(minute).padStart(2, '0')} ${period}` :
+                                     `${String(hour).padStart(2, '0')}:${
+                                         String(minute).padStart(2, '0')}`;
                 let span = document.createElement('span');
                 span.textContent = timeString;
                 startTimeSpinnerBox.appendChild(span);
@@ -36,13 +37,25 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
             startTimeNumbers[i].style.display = 'none';
         }
 
-        let eightAM = Array.from(startTimeNumbers)
-                          .findIndex(span => span.textContent === '08:00 AM');
 
-        eightAM = eightAM !== -1 ? eightAM : 0;
+        if (showTimePostfix) {
+            let eightAM = Array.from(startTimeNumbers)
+                              .findIndex(span => span.textContent === '08:00 AM');
+
+            eightAM = eightAM !== -1 ? eightAM : 0;
 
 
-        startTimesIndex = eightAM;
+            startTimesIndex = eightAM;
+        } else {
+
+            let eightAM = Array.from(startTimeNumbers)
+                              .findIndex(span => span.textContent === '08:00');
+
+            eightAM = eightAM !== -1 ? eightAM : 0;
+
+
+            startTimesIndex = eightAM;
+        }
 
         startTimeNumbers[startTimesIndex].style.display = 'initial';
 
@@ -73,6 +86,18 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
+
+                const toggleTimePostfix = document.getElementById('toggleTimePostfix');
+                const toggleClassTitle = document.getElementById('toggleClassTitle');
+                const toggleInstructor = document.getElementById('toggleInstructor');
+                const toggleLocation = document.getElementById('toggleLocation');
+                const toggleShowTime = document.getElementById('toggleShowTime');
+
+                const showTimePostfix = toggleTimePostfix.checked;
+                const showClassTitle = toggleClassTitle.checked;
+                const showInstructor = toggleInstructor.checked;
+                const showLocation = toggleLocation.checked;
+                const showTime = toggleShowTime.checked;
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
@@ -109,6 +134,18 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
+
+                const toggleTimePostfix = document.getElementById('toggleTimePostfix');
+                const toggleClassTitle = document.getElementById('toggleClassTitle');
+                const toggleInstructor = document.getElementById('toggleInstructor');
+                const toggleLocation = document.getElementById('toggleLocation');
+                const toggleShowTime = document.getElementById('toggleShowTime');
+
+                const showTimePostfix = toggleTimePostfix.checked;
+                const showClassTitle = toggleClassTitle.checked;
+                const showInstructor = toggleInstructor.checked;
+                const showLocation = toggleLocation.checked;
+                const showTime = toggleShowTime.checked;
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
@@ -184,8 +221,11 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
             for (let minute = 0; minute < 60; minute += 30) {
                 let period = hour < 12 ? 'AM' : 'PM';
                 let displayHour = hour % 12 === 0 ? 12 : hour % 12;
-                let timeString = `${String(displayHour).padStart(2, '0')}:${
-                    String(minute).padStart(2, '0')} ${period}`;
+                let timeString = showTimePostfix ?
+                                     `${String(displayHour).padStart(2, '0')}:${
+                                         String(minute).padStart(2, '0')} ${period}` :
+                                     `${String(hour).padStart(2, '0')}:${
+                                         String(minute).padStart(2, '0')}`;
                 let span = document.createElement('span');
                 span.textContent = timeString;
                 endTimeSpinnerBox.appendChild(span);
@@ -199,12 +239,21 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
             endTimeNumbers[i].style.display = 'none';
         }
 
-        let fivePM =
-            Array.from(endTimeNumbers).findIndex(span => span.textContent === '05:00 PM');
+        if (showTimePostfix) {
+            let fivePM = Array.from(endTimeNumbers)
+                             .findIndex(span => span.textContent === '05:00 PM');
 
-        fivePM = fivePM !== -1 ? fivePM : 0;
+            fivePM = fivePM !== -1 ? fivePM : 0;
 
-        endTimesIndex = fivePM;
+            endTimesIndex = fivePM;
+        } else {
+            let fivePM = Array.from(endTimeNumbers)
+                             .findIndex(span => span.textContent === '17:00');
+
+            fivePM = fivePM !== -1 ? fivePM : 0;
+
+            endTimesIndex = fivePM;
+        }
 
         endTimeNumbers[endTimesIndex].style.display = 'initial';
 
@@ -234,6 +283,18 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
+
+                const toggleTimePostfix = document.getElementById('toggleTimePostfix');
+                const toggleClassTitle = document.getElementById('toggleClassTitle');
+                const toggleInstructor = document.getElementById('toggleInstructor');
+                const toggleLocation = document.getElementById('toggleLocation');
+                const toggleShowTime = document.getElementById('toggleShowTime');
+
+                const showTimePostfix = toggleTimePostfix.checked;
+                const showClassTitle = toggleClassTitle.checked;
+                const showInstructor = toggleInstructor.checked;
+                const showLocation = toggleLocation.checked;
+                const showTime = toggleShowTime.checked;
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
@@ -269,6 +330,18 @@ export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
+
+                const toggleTimePostfix = document.getElementById('toggleTimePostfix');
+                const toggleClassTitle = document.getElementById('toggleClassTitle');
+                const toggleInstructor = document.getElementById('toggleInstructor');
+                const toggleLocation = document.getElementById('toggleLocation');
+                const toggleShowTime = document.getElementById('toggleShowTime');
+
+                const showTimePostfix = toggleTimePostfix.checked;
+                const showClassTitle = toggleClassTitle.checked;
+                const showInstructor = toggleInstructor.checked;
+                const showLocation = toggleLocation.checked;
+                const showTime = toggleShowTime.checked;
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,

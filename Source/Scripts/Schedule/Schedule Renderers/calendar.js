@@ -15,15 +15,19 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Configuration Variables
-    const tempStartTime = getSelectedStartTime();
-    const tempEndTime = getSelectedEndTime();
+    let tempStartTime = getSelectedStartTime();
+    let tempEndTime = getSelectedEndTime();
     const interval = 30;          // 30 minutes
     const calendarHeight = 700;   // Fixed calendar height in pixels
     const timeColumnWidth = 100;  // Fixed width for the time column in pixels
 
 
-    const startTime = tempStartTime.replace(/\s+/g, '');
-    const endTime = tempEndTime.replace(/\s+/g, '');
+    tempStartTime = tempStartTime.replace(/\s+/g, '');
+    tempEndTime = tempEndTime.replace(/\s+/g, '');
+
+    // Ensure start and end times are always treated as AM/PM before parsing
+    const startTime = convertToAmPm(tempStartTime);
+    const endTime = convertToAmPm(tempEndTime);
 
     // Days of the week mapping
     const abbreviatedDays = {
@@ -44,7 +48,28 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
         return;
     }
 
-    // Helper function to parse time strings
+    // Helper function to convert time to AM/PM format if needed
+    function convertToAmPm(timeStr) {
+        // Check if the time string looks like 24-hour format
+        if (/^(\d{1,2}):(\d{2})$/.test(timeStr.trim())) {
+            let [hour, minute] = timeStr.trim().split(':').map(Number);
+            let meridiem = 'AM'
+            if (hour >= 12) {
+                meridiem = 'PM';
+                if (hour > 12) {
+                    hour -= 12;
+                }
+            }
+            if (hour === 0) {
+                hour = 12;
+            }
+            return `${hour}:${String(minute).padStart(2, '0')}${meridiem}`
+        }
+        // If not 24 hour, assume it's already in AM/PM
+        return timeStr.trim();
+    }
+
+    // Helper function to parse time strings (always AM/PM)
     function parseTime(timeStr) {
         const match = timeStr.trim().match(/^(\d{1,2}):(\d{2})(AM|PM)$/i);
         if (!match) {
@@ -288,18 +313,36 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
                     classBlockContent = `${classBlockContent} ${section.room}`
                 }
                 if (showTime) {
-                    const [startHour, startMinute] = startTimeStr.split(':')
-                    const [endHour, endMinute] = endTimeStr.split(':')
                     let newStart = startTimeStr;
                     let newEnd = endTimeStr;
-                    if (showTimePostfix) {
-                        newStart = `${startHour}:${startMinute.slice(0, 2)}`;
-                        newEnd = `${endHour}:${endMinute.slice(0, 2)}`;
+                    if (!showTimePostfix) {
+                        const [startHour, startMinute, startMeridiem] =
+                            startTimeStr.match(/(\d{1,2}):(\d{2})(AM|PM)/i).slice(1);
+                        const [endHour, endMinute, endMeridiem] =
+                            endTimeStr.match(/(\d{1,2}):(\d{2})(AM|PM)/i).slice(1);
+
+                        const startHour24 = (startMeridiem.toUpperCase() === 'PM' &&
+                                             parseInt(startHour, 10) !== 12) ?
+                                                parseInt(startHour, 10) + 12 :
+                                            (startMeridiem.toUpperCase() === 'AM' &&
+                                             parseInt(startHour, 10) === 12) ?
+                                                0 :
+                                                parseInt(startHour, 10);
+                        const endHour24 = (endMeridiem.toUpperCase() === 'PM' &&
+                                           parseInt(endHour, 10) !== 12) ?
+                                              parseInt(endHour, 10) + 12 :
+                                          (endMeridiem.toUpperCase() === 'AM' &&
+                                           parseInt(endHour, 10) === 12) ?
+                                              0 :
+                                              parseInt(endHour, 10)
+
+                        newStart =
+                            `${String(startHour24).padStart(2, '0')}:${startMinute}`;
+                        newEnd = `${String(endHour24).padStart(2, '0')}:${endMinute}`;
                     }
                     classBlockContent = `${classBlockContent} ${newStart} - ${newEnd}`
                 }
                 classBlock.textContent = classBlockContent;
-
 
                 // Calculate top position within the cell
                 const minutesIntoSlot = startMinutes % interval;
