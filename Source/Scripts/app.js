@@ -17,7 +17,7 @@ import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './fav
 import {InitializeGlobalListeners} from './globalListeners.js';
 import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
-import {RenderClassSchedule} from './schedule.js'
+import {initializeTimeSpinners, RenderClassSchedule} from './schedule.js'
 import {SetupSearchSuggestions} from './search.js';
 
 
@@ -357,9 +357,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.location.pathname.includes('class-schedule.html')) {
 
+            initializeTimeSpinners();
+
             const daysSelectorWrapper = document.querySelector('.days-selector-wrapper');
+            const startTimeSpinnerWrapper =
+                document.getElementById('start-time-spinner-wrapper');
+            const endTimeSpinnerWrapper =
+                document.getElementById('end-time-spinner-wrapper');
 
             daysSelectorWrapper.style.display = 'none';
+            startTimeSpinnerWrapper.style.display = 'none';
+            endTimeSpinnerWrapper.style.display = 'none';
+
 
             function updateClassSchedule() {
                 // Get the currently selected view type
@@ -370,9 +379,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (viewType === 'calendar') {
 
                     daysSelectorWrapper.style.display = 'flex';
+                    startTimeSpinnerWrapper.style.display = 'flex';
+                    endTimeSpinnerWrapper.style.display = 'flex';
                 } else {
 
                     daysSelectorWrapper.style.display = 'none';
+                    startTimeSpinnerWrapper.style.display = 'none';
+                    endTimeSpinnerWrapper.style.display = 'none';
                 }
 
                 // Get all selected day checkboxes

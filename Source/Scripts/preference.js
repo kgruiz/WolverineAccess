@@ -103,7 +103,7 @@ export function InitializePreferencesToggle() {
 
 export function initializeFavoritesNumSpinner() {
     // Initialize elements and variables
-    var favoritesNumSpinnerBox = document.getElementById('favorites-num-spinner-box');
+    let favoritesNumSpinnerBox = document.getElementById('favorites-num-spinner-box');
     // Add 'All' as the first option
     let allSpan = document.createElement('span');
     allSpan.textContent = 'All';
@@ -114,8 +114,8 @@ export function initializeFavoritesNumSpinner() {
         favoritesNumSpinnerBox.appendChild(span);
     }
 
-    var favoritesNumbers = favoritesNumSpinnerBox.getElementsByTagName('span');
-    var favoritesIndex = 0;
+    let favoritesNumbers = favoritesNumSpinnerBox.getElementsByTagName('span');
+    let favoritesIndex = 0;
     // Load saved value and set initial favorites index
     const savedFavoritesNum = localStorage.getItem('maxFavoritesDisplay');
     if (savedFavoritesNum !== null) {
