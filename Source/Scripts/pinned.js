@@ -43,11 +43,11 @@ export function savePinneds() {
 }
 
 /**
- * Check if a link is pinnedd.
+ * Check if a link is pinned.
  * @param {Object} link - The link object.
  * @returns {boolean} - Pinned status.
  */
-export function isLinkPinnedd(link) {
+export function isLinkPinned(link) {
     return state.pinnedStatuses[link.uniqueKey] || false;
 }
 
@@ -77,13 +77,13 @@ export function populatePinnedsContainers() {
     pinnedContainers.forEach(container => {
         if (container) {
             container.innerHTML = '';
-            const pinneddLinks = state.linksData.filter(link => isLinkPinnedd(link));
-            if (pinneddLinks.length === 0) {
+            const pinnedLinks = state.linksData.filter(link => isLinkPinned(link));
+            if (pinnedLinks.length === 0) {
                 const noPinneds = document.createElement('p');
                 noPinneds.textContent = 'No pinned links yet.';
                 container.appendChild(noPinneds);
             } else {
-                pinneddLinks.slice(0, 4).forEach(link => {
+                pinnedLinks.slice(0, 4).forEach(link => {
                     let card;
                     card = CreateFavoriteCard(link);
                     container.appendChild(card);

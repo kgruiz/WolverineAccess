@@ -15,9 +15,10 @@ import {initializeButtonEffects, initializeCardHoverEffects, initializeFavorites
 import {InitializeMessages,} from './error.js';
 import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './favorites.js';
 import {InitializeGlobalListeners} from './globalListeners.js';
-import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
-import {InitializePrinterFriendlyButton, initializeTimeSpinners, RenderClassSchedule} from './schedule.js'
+import {initializeTimeSpinners} from './Schedule/calendarOptions.js';
+import {InitializePrinterFriendlyButton, RenderClassSchedule} from './Schedule/schedule.js'
 import {SetupSearchSuggestions} from './search.js';
 
 
@@ -357,13 +358,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.location.pathname.includes('class-schedule.html')) {
 
-            // Initialize time spinners and pass RenderClassSchedule
-            const timeSpinners = initializeTimeSpinners(RenderClassSchedule);
-            InitializePrinterFriendlyButton();
-
             const calendarViewOptions = document.querySelector('.calendar-view-options');
 
             calendarViewOptions.style.display = 'none';
+
+            // Initialize time spinners and pass RenderClassSchedule
+            const timeSpinners = initializeTimeSpinners(RenderClassSchedule);
+            InitializePrinterFriendlyButton();
 
 
             function updateClassSchedule() {

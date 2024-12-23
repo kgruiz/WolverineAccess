@@ -5,7 +5,7 @@
 
 import {CreateCard, CreateFavoriteCard} from './cards.js';
 import {FAVORITES_KEY, filledStarSVG, outlinedStarSVG, state} from './constants.js';
-import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 
 // ==============================
 // Favorites Functionality
@@ -66,7 +66,7 @@ export function addFavorite(link) {
  * @param {Object} link - The link object.
  */
 export function removeFavorite(link) {
-    const wasPinned = isLinkPinnedd(link);
+    const wasPinned = isLinkPinned(link);
     state.favoriteStatuses[link.uniqueKey] = false;
     removePinned(link)
     saveFavorites();

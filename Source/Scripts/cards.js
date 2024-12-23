@@ -5,7 +5,7 @@
 
 import {filledStarSVG, optionsIconSVG, outlinedStarSVG} from './constants.js';
 import {addCardToFavoritesContainers, addFavorite, isLinkFavorited, removeCardFromFavoritesContainers, removeFavorite, updateStarAppearance} from './favorites.js';
-import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 
 // ==============================
 // Card Creation and Rendering
@@ -175,7 +175,7 @@ export function CreateFavoriteCard(link) {
     optionsMenu.appendChild(removeFavoriteOption);
 
     let pinOption;
-    if (isLinkPinnedd(link)) {
+    if (isLinkPinned(link)) {
         pinOption = document.createElement('div');
         pinOption.className = 'options-menu-item';
         pinOption.textContent = 'Remove Pinned';
@@ -201,7 +201,7 @@ export function CreateFavoriteCard(link) {
         e.preventDefault();
         e.stopPropagation();  // Prevent card click
 
-        if (isLinkPinnedd(link)) {
+        if (isLinkPinned(link)) {
             // Remove from pinneds
             removePinned(link);
             pinOption.textContent = 'Add Pinned';
