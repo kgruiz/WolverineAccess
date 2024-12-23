@@ -361,15 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const timeSpinners = initializeTimeSpinners(RenderClassSchedule);
             InitializePrinterFriendlyButton();
 
-            const daysSelectorWrapper = document.querySelector('.days-selector-wrapper');
-            const startTimeSpinnerWrapper =
-                document.getElementById('start-time-spinner-wrapper');
-            const endTimeSpinnerWrapper =
-                document.getElementById('end-time-spinner-wrapper');
+            const calendarViewOptions = document.querySelector('.calendar-view-options');
 
-            daysSelectorWrapper.style.display = 'none';
-            startTimeSpinnerWrapper.style.display = 'none';
-            endTimeSpinnerWrapper.style.display = 'none';
+            calendarViewOptions.style.display = 'none';
 
 
             function updateClassSchedule() {
@@ -380,14 +374,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (viewType === 'calendar') {
 
-                    daysSelectorWrapper.style.display = 'flex';
-                    startTimeSpinnerWrapper.style.display = 'flex';
-                    endTimeSpinnerWrapper.style.display = 'flex';
+                    calendarViewOptions.style.display = 'flex';
                 } else {
 
-                    daysSelectorWrapper.style.display = 'none';
-                    startTimeSpinnerWrapper.style.display = 'none';
-                    endTimeSpinnerWrapper.style.display = 'none';
+                    calendarViewOptions.style.display = 'none';
                 }
 
                 // Get all selected day checkboxes
@@ -407,7 +397,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-                RenderClassSchedule('kgruiz', viewType, selectedDays);
+
+
+                const toggleTimePostfix = document.getElementById('toggleTimePostfix');
+                const toggleClassTitle = document.getElementById('toggleClassTitle');
+                const toggleInstructor = document.getElementById('toggleInstructor');
+                const toggleLocation = document.getElementById('toggleLocation');
+                const toggleShowTime = document.getElementById('toggleShowTime');
+
+                const showTimePostfix = toggleTimePostfix.checked;
+                const showClassTitle = toggleClassTitle.checked;
+                const showInstructor = toggleInstructor.checked;
+                const showLocation = toggleLocation.checked;
+                const showTime = toggleShowTime.checked;
+
+                RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
+                                    showClassTitle, showInstructor, showLocation,
+                                    showTime);
             }
 
             updateClassSchedule();

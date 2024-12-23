@@ -490,3 +490,40 @@
     margin: 5px;
     margin-right: 10px;
 }
+
+#calendarToggleOptions {
+
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+}
+
+.calendarToggleOption {
+
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.calendarToggleOption h3 {
+
+    margin-bottom: 0.5rem;
+}
+
+.calendar-view-options {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    border: 2px solid #00274C;
+    border-radius: 10px;
+    padding: 2rem;
+}

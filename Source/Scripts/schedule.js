@@ -21,7 +21,9 @@ function ReadClassSchedules(jsonPath) {
         });
 }
 
-export function RenderClassSchedule(uniqName, viewType, selectedDays) {
+export function RenderClassSchedule(uniqName, viewType, selectedDays, showTimePostfix,
+                                    showClassTitle, showInstructor, showLocation,
+                                    showTime) {
     const jsonPath = '../../Assets/JSON Files/classSchedules.json';
 
     ReadClassSchedules(jsonPath)
@@ -41,7 +43,9 @@ export function RenderClassSchedule(uniqName, viewType, selectedDays) {
                 } else if (viewType === 'list') {
                     RenderListView(schedule, scheduleViewContainer);
                 } else if (viewType === 'calendar') {
-                    RenderCalendarView(schedule, scheduleViewContainer, selectedDays);
+                    RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
+                                       showTimePostfix, showClassTitle, showInstructor,
+                                       showLocation, showTime);
                 } else {
                     console.error(`Invalid view type "${viewType}"`);
                 }
@@ -207,7 +211,9 @@ function RenderListView(schedule, scheduleViewContainer) {
     });
 }
 
-function RenderCalendarView(schedule, scheduleViewContainer, selectedDays) {
+function RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
+                            showTimePostfix, showClassTitle, showInstructor, showLocation,
+                            showTime) {
     // Set styles specific to calendar view
     scheduleViewContainer.style.width = '85%';      // Adjust as needed
     scheduleViewContainer.style.display = 'block';  // Ensure block display
@@ -944,12 +950,14 @@ export function InitializePrinterFriendlyButton() {
 
     printButton.addEventListener('click', () => {
         const scheduleViewContainer = document.querySelector('.schedule-view-container');
+
         if (!scheduleViewContainer) {
             console.error('Schedule view container not found.');
             return;
         }
 
         const printWindow = window.open('', '_blank');
+
         if (!printWindow) {
             console.error('Failed to open print window.');
             return;
@@ -958,7 +966,7 @@ export function InitializePrinterFriendlyButton() {
         printWindow.document.write('<html><head><title>Print Schedule</title>');
         printWindow.document.write(`<style>
                 body { font-family: sans-serif; margin: 10px; }
-                .print-container { width: 90%; max-width: 1000px; margin: 0 auto; }
+                .print-container { width: 90%; max-width: 1200px; margin: 0 auto; }
                 h2 { font-size: 1.2em; margin-bottom: 5px; }
                 table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
                 th, td { border: 1px solid #ddd; padding: 6px; text-align: left; font-size: 0.9em; word-break: break-word; }
