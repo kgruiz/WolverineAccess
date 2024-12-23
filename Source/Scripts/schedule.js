@@ -35,15 +35,18 @@ export function RenderClassSchedule(uniqName, viewType) {
                 // Clear the content
                 scheduleViewContainer.innerHTML = '';
 
-
-
                 if (viewType == 'table') {
 
                     RenderTableView(schedule, scheduleViewContainer);
                 } else if (viewType == 'list') {
 
                     RenderListView(schedule, scheduleViewContainer);
-                } else {
+                } else if (viewType == 'calendar') {
+
+                    RenderCalendarView(schedule, scheduleViewContainer);
+                }
+
+                else {
 
                     console.error(`Invalid view type ${viewType}`)
                 }
@@ -185,4 +188,11 @@ function RenderListView(schedule, scheduleViewContainer) {
         // Append the course container to the schedule container
         scheduleViewContainer.appendChild(courseContainer);
     });
+}
+
+function RenderCalendarView(schedule, scheduleViewContainer) {
+
+    const header = document.createElement('h1');
+    header.textContent = 'Calendar view not implemented';
+    scheduleViewContainer.appendChild(header);
 }

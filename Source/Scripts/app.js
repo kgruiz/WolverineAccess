@@ -355,39 +355,24 @@ document.addEventListener('DOMContentLoaded', () => {
             InitializeAnimation(heroLogo);
         }
 
-        // Check if we are on the class-schedule page
         if (window.location.pathname.includes('class-schedule.html')) {
 
-            // Retrieve the initially selected view type
             const initialRadio =
                 document.querySelector('input[name="schedule-view"]:checked');
-            const initialViewType = initialRadio ?
-                                        initialRadio.value :
-                                        'list';  // Default to 'list' if none selected
+            const initialViewType = initialRadio ? initialRadio.value : 'list';
 
-            // Call the RenderClassSchedule function with the initial view type
             RenderClassSchedule('kgruiz', initialViewType);
-            console.log(`Initial selected view type: ${initialViewType}`);
 
-            // Select all radio buttons within the 'schedule-view' group
             const scheduleViewRadios =
                 document.querySelectorAll('input[name="schedule-view"]');
 
-            // Add a 'change' event listener to each radio button
             scheduleViewRadios.forEach(radio => {
                 radio.addEventListener('change', () => {
-                    // Retrieve the currently selected view type
                     const selectedRadio =
                         document.querySelector('input[name="schedule-view"]:checked');
-                    const viewType = selectedRadio ?
-                                         selectedRadio.value :
-                                         'list';  // Default to 'list' if none selected
+                    const viewType = selectedRadio ? selectedRadio.value : 'list';
 
-                    // Call the RenderClassSchedule function with the selected view type
                     RenderClassSchedule('kgruiz', viewType);
-
-                    // Optional: Log the selected view type for debugging
-                    console.log(`Selected view type: ${viewType}`);
                 });
             });
         }
