@@ -74,7 +74,7 @@ function resetContainerStyles(container) {
 
 function RenderTableView(schedule, scheduleViewContainer) {
     // Set styles specific to table view
-    scheduleViewContainer.style.width = '80%';
+    scheduleViewContainer.style.width = '85%';
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Create a table to display the schedule
@@ -209,14 +209,14 @@ function RenderListView(schedule, scheduleViewContainer) {
 
 function RenderCalendarView(schedule, scheduleViewContainer, selectedDays) {
     // Set styles specific to calendar view
-    scheduleViewContainer.style.width = '80%';      // Adjust as needed
+    scheduleViewContainer.style.width = '85%';      // Adjust as needed
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Configuration Variables
     const tempStartTime = getSelectedStartTime();
     const tempEndTime = getSelectedEndTime();
     const interval = 30;          // 30 minutes
-    const calendarHeight = 800;   // Fixed calendar height in pixels
+    const calendarHeight = 700;   // Fixed calendar height in pixels
     const timeColumnWidth = 100;  // Fixed width for the time column in pixels
 
 
