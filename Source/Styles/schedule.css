@@ -12,6 +12,22 @@
     padding: 2rem;
 }
 
+.schedule-view-options {
+
+    position: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 2rem;
+    width: 70%;
+    box-sizing: border-box;
+    border: 3px solid #00274C;
+    border-radius: 7px;
+
+}
+
 .schedule-view-container {
     position: relative;
     display: flex;
@@ -35,12 +51,17 @@
     font-size: 1rem;
 }
 
+
 /* Style for Class Schedule Table */
 .class-schedule-table {
     width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #00274C;
-    outline: 3px solid #00274C;
+    border-collapse: separate;
+    border: 2px solid #00274C;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-spacing: 0;
+    display: block;
+    overflow-x: auto;
 }
 
 .class-schedule-table th,
@@ -60,10 +81,25 @@
     background-color: #f9f9f9;
 }
 
-/* Optional: Responsive table */
-.class-schedule-table {
-    display: block;
-    overflow-x: auto;
+/* Rounded Corners for Specific Cells */
+.class-schedule-table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+    border-left: none;
+}
+
+.class-schedule-table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+
+.class-schedule-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+    border-left: none;
+}
+
+.class-schedule-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+    border-right: none;
 }
 
 /* Course Container Styling */
@@ -72,7 +108,8 @@
     padding: 10px;
     border: 1px solid #ddd;
     background-color: #fff;
-    border-radius: 4px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 /* Course Details Table Styling */
@@ -81,9 +118,10 @@
 }
 
 /* Sections Table Styling */
-.sections-table th {
-    background-color: #f2f2f2;
-    text-align: left;
+.sections-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .sections-table th,
@@ -92,33 +130,79 @@
     padding: 8px;
 }
 
-/* Calendar Table Styling */
+.sections-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.sections-table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.sections-table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.sections-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.sections-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+
+/* Calendar table styling */
+.calendar-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #00274C;
+    border-radius: 10px;
+    overflow: hidden;
+    table-layout: fixed;
+    height: 800px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Cell Borders */
 .calendar-table th,
 .calendar-table td {
     border: 1px solid #ddd;
     padding: 0;
-    vertical-align: top;
     position: relative;
     box-sizing: border-box;
 }
 
+/* Header Styling */
 .calendar-table th {
     background-color: #f2f2f2;
     font-weight: bold;
-    height: 40px;
-    /* Header height */
     text-align: center;
+    padding: 8px;
 }
 
-.calendar-table td {
-    padding: 0;
-    box-sizing: border-box;
+.calendar-table th:first-child {
+    border-left: none;
 }
 
-/* Class Block Styling */
+.calendar-table th:last-child {
+    border-right: none;
+    border-bottom: none;
+}
+
+.calendar-table tr:last-child td:first-child {
+    border-left: none;
+}
+
+.calendar-table tr:last-child td:last-child {
+    border-right: none;
+    border-bottom: none;
+}
+
+
 .class-block {
     background-color: #00274C;
-    /* Light blue */
     border: 1px solid #00274C;
     padding: 2px;
     margin: 1px;
@@ -130,54 +214,26 @@
     color: #ffffff;
     font-weight: 500;
     position: absolute;
-    /* Position absolutely within the cell */
     left: 0;
     right: 0;
 }
 
 .class-block:hover {
     background-color: #02396d;
-    /* Sky blue */
 }
 
-/* Table Views Styling */
-.class-schedule-table,
-.course-details-table,
-.sections-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.calendar-table th:first-child {
+    border-left: 2px solid #00274C;
 }
 
-.class-schedule-table th,
-.class-schedule-table td,
-.course-details-table th,
-.course-details-table td,
-.sections-table th,
-.sections-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    box-sizing: border-box;
+.calendar-table th:last-child {
+    border-right: 2px solid #00274C;
 }
 
-.class-schedule-table th,
-.course-details-table th,
-.sections-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+.calendar-table tr:last-child td {
+    border-bottom: 2px solid #00274C;
 }
 
-.class-schedule-table tbody tr:nth-child(even),
-.sections-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* Updated Calendar Time Cell Styling */
 .calendar-table td:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    border-left: 2px solid #00274C;
 }

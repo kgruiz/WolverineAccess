@@ -214,7 +214,7 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Configuration Variables
-    const startTime = '09:00AM';  // 8 AM
+    const startTime = '08:00AM';  // 8 AM
     const endTime = '07:00PM';    // 9 PM
     const interval = 30;          // 30 minutes
     const calendarHeight = 800;   // Fixed calendar height in pixels
@@ -315,7 +315,6 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
     const calendarTable = document.createElement('table');
     calendarTable.classList.add('calendar-table');
     calendarTable.style.width = '100%';
-    calendarTable.style.borderCollapse = 'collapse';
     calendarTable.style.height = `${calendarHeight}px`;
     calendarTable.style.tableLayout = 'fixed';  // Ensures fixed column widths
 
@@ -326,6 +325,8 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
     const timeHeader = document.createElement('th');
     timeHeader.textContent = 'Time';
     timeHeader.style.border = '1px solid #ddd';
+    timeHeader.style.borderRight = '2px solid #00274C';
+    timeHeader.style.zIndex = '10000';
     timeHeader.style.padding = '8px';
     timeHeader.style.backgroundColor = '#f9f9f9';
     timeHeader.style.width = `${timeColumnWidth}px`;
@@ -366,7 +367,9 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
         timeCell.style.border = (time.endsWith(':00')) ?
                                     '2px solid #ddd' :
                                     '1px solid #eee';  // Thicker border for hour
+        timeCell.style.borderRight = '2px solid #00274C'
         timeCell.style.padding = '8px';
+        timeCell.style.zIndex = '10000';
         timeCell.style.height = `${cellHeight}px`;
         timeCell.style.verticalAlign = 'top';
         timeCell.style.width = `${timeColumnWidth}px`;  // Fixed width
@@ -477,6 +480,8 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
                 // Set height based on duration
                 classBlock.style.height =
                     `${span * cellHeight - 4}px`;  // Subtracting for borders/margins
+
+                classBlock.style.zIndex = 5000;
 
                 // Append to the cell
                 targetCell.appendChild(classBlock);
