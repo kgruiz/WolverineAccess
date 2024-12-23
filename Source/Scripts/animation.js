@@ -5,8 +5,6 @@
 
 import {footballSVG} from './constants.js';
 
-// script.js
-
 export function InitializeAnimation(heroLogo) {
     const container = heroLogo
 

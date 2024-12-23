@@ -1,4 +1,15 @@
-export function initializeTimeSpinners(RenderClassSchedule) {
+/**
+ * FILE: calendarOptions.js
+ * Initializes and manages calendar time spinners.
+ */
+
+import {state} from '../constants.js'
+
+import {Class, Section} from './class.js';  // Import Class and Section
+
+export function initializeTimeSpinners(RenderClassSchedule, showTimePostfix,
+                                       showClassTitle, showInstructor, showLocation,
+                                       showTime) {
 
     function initializeStartTimeSpinner() {
         // Initialize elements and variables
@@ -62,7 +73,10 @@ export function initializeTimeSpinners(RenderClassSchedule) {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-                RenderClassSchedule('kgruiz', viewType, selectedDays)
+
+                RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
+                                    showClassTitle, showInstructor, showLocation,
+                                    showTime, state.classSchedules);
             } else {
                 startTimeNumbers[startTimesIndex].style.display = 'initial';
             }
@@ -95,7 +109,10 @@ export function initializeTimeSpinners(RenderClassSchedule) {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-                RenderClassSchedule('kgruiz', viewType, selectedDays)
+
+                RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
+                                    showClassTitle, showInstructor, showLocation,
+                                    showTime, state.classSchedules);
             } else {
                 startTimeNumbers[startTimesIndex].style.display = 'initial';
             }
@@ -217,7 +234,10 @@ export function initializeTimeSpinners(RenderClassSchedule) {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-                RenderClassSchedule('kgruiz', viewType, selectedDays)
+
+                RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
+                                    showClassTitle, showInstructor, showLocation,
+                                    showTime, state.classSchedules);
             } else {
                 endTimeNumbers[endTimesIndex].style.display = 'initial';
             }
@@ -249,7 +269,10 @@ export function initializeTimeSpinners(RenderClassSchedule) {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-                RenderClassSchedule('kgruiz', viewType, selectedDays)
+
+                RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
+                                    showClassTitle, showInstructor, showLocation,
+                                    showTime, state.classSchedules);
             } else {
                 endTimeNumbers[endTimesIndex].style.display = 'initial';
             }

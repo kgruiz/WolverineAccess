@@ -1,3 +1,8 @@
+/**
+ * FILE: table.js
+ * Renders the schedule in a table view.
+ */
+
 export function RenderTableView(schedule, scheduleViewContainer) {
     // Set styles specific to table view
     scheduleViewContainer.style.width = '85%';
@@ -31,12 +36,12 @@ export function RenderTableView(schedule, scheduleViewContainer) {
                 <td>${course.status}</td>
                 <td>${course.units}</td>
                 <td>${course.grading}</td>
-                <td>${section.section}</td>
-                <td>${section.instruction_mode}</td>
-                <td>${section.days_and_times}</td>
+                <td>${section.sectionNum}</td>
+                <td>${section.instructionMode}</td>
+                <td>${section.daysAndTimes}</td>
                 <td>${section.room}</td>
                 <td>${section.instructor}</td>
-                <td>${section.start_end_date}</td>
+                <td>${section.startEndDate}</td>
             `;
             tableBody.appendChild(row);
         });

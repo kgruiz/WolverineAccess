@@ -18,59 +18,102 @@ import {InitializeGlobalListeners} from './globalListeners.js';
 import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
 import {initializeTimeSpinners} from './Schedule/calendarOptions.js';
-import {InitializePrinterFriendlyButton, RenderClassSchedule} from './Schedule/schedule.js'
+import {Class, Section} from './Schedule/class.js';
+import {InitializePrinterFriendlyButton, RenderClassSchedule} from './Schedule/schedule.js';
 import {SetupSearchSuggestions} from './search.js';
-
 
 document.addEventListener('DOMContentLoaded', () => {
     // ==============================
     // Data Fetching and Initialization
     // ==============================
-    /**
-     * Fetch tasks data and initialize the page.
-     */
-    fetch('../../Assets/JSON Files/tasks.json')
-        .then((response) => {
-            if (!response.ok) {
-                // Attempt to extract error details from the response body
-                return response.text().then((text) => {
-                    let errorDetails = text;
-                    try {
-                        // Try parsing as JSON for structured error messages
-                        const json = JSON.parse(text);
-                        errorDetails = JSON.stringify(json, null, 2);
-                    } catch (e) {
-                        // If not JSON, keep the plain text
-                    }
 
-                    // Construct a detailed error message as a plain string
-                    const detailedErrorMessage =
-                        `Failed to load tasks.json.\n` +
-                        `Status: ${response.status} ${response.statusText}\n` +
-                        `Details:\n${errorDetails}`;
+    // Create a promise that resolves when both fetches are complete
+    Promise
+        .all([
+            fetch('../../Assets/JSON Files/tasks.json').then((response) => {
+                if (!response.ok) {
+                    // Attempt to extract error details from the response body
+                    return response.text().then((text) => {
+                        let errorDetails = text;
+                        try {
+                            // Try parsing as JSON for structured error messages
+                            const json = JSON.parse(text);
+                            errorDetails = JSON.stringify(json, null, 2);
+                        } catch (e) {
+                            // If not JSON, keep the plain text
+                        }
 
-                    // Log the detailed error to the console
-                    console.error(detailedErrorMessage);
+                        // Construct a detailed error message as a plain string
+                        const detailedErrorMessage =
+                            `Failed to load tasks.json.\n` +
+                            `Status: ${response.status} ${response.statusText}\n` +
+                            `Details:\n${errorDetails}`;
 
-                    // Display the detailed error message on the page
-                    displayErrorMessage(detailedErrorMessage);
+                        // Log the detailed error to the console
+                        console.error(detailedErrorMessage);
 
-                    // Reject the promise to skip the next `.then()`
-                    return Promise.reject(new Error('Failed to load tasks.json'));
-                });
+                        // Display the detailed error message on the page
+                        displayErrorMessage(detailedErrorMessage);
+
+                        // Reject the promise to skip the next \`.then()\`
+                        return Promise.reject(new Error('Failed to load tasks.json'));
+                    });
+                }
+                // If response is OK, parse it as JSON
+                return response.json();
+            }),
+            fetch('../../../Assets/JSON Files/classSchedules.json').then((response) => {
+                if (!response.ok) {
+                    return response.text().then((text) => {
+                        const detailedErrorMessage =
+                            `Failed to load classSchedules.json\n` +
+                            `Status: ${response.status} ${response.statusText}\n` +
+                            `Details:\n${text}`
+
+                        console.error(detailedErrorMessage);
+                        displayErrorMessage(detailedErrorMessage);
+
+                        return Promise.reject(
+                            new Error('Failed to load classSchedules.json'))
+                    })
+                }
+                return response.json();
+            })
+        ])
+        .then(([tasksData, schedulesData]) => {
+            // Successfully fetched and parsed both data files
+
+            // Parse task Data
+            state.linksData = tasksData;
+
+            // Initialize the state for class schedules
+            state.classSchedules = {};
+            for (const uniqName in schedulesData) {
+                if (schedulesData.hasOwnProperty(uniqName)) {
+                    const scheduleData = schedulesData[uniqName];
+                    const courses = scheduleData.courses.map(courseData => {
+                        const sections = courseData.sections.map(sectionData => {
+                            return new Section(
+                                sectionData.class_nbr, sectionData.instruction_mode,
+                                sectionData.section, sectionData.component,
+                                sectionData.days_and_times, sectionData.room,
+                                sectionData.instructor, sectionData.start_end_date);
+                        });
+                        return new Class(courseData.course, courseData.status,
+                                         courseData.units, courseData.grading, sections);
+                    })
+                    state.classSchedules[uniqName] = {courses: courses};
+                }
             }
-            // If response is OK, parse it as JSON
-            return response.json();
-        })
-        .then((data) => {
-            // Successfully fetched and parsed data
-            state.linksData = data;
+
+
+            // Now that all data is ready, initialize the page
             initializePage();
         })
         .catch((error) => {
             // Handle network errors or rejected promises from above
             const detailedErrorMessage =
-                `Error fetching tasks.json.\n` +
+                `Error during data fetching.\n` +
                 `Message: ${error.message}\n` +
                 `Stack:\n${error.stack || 'No stack trace available.'}`;
 
@@ -83,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Initialize the page even if fetching fails, adjust as needed
             initializePage();
         });
+
 
 
     /**
@@ -362,8 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             calendarViewOptions.style.display = 'none';
 
-            // Initialize time spinners and pass RenderClassSchedule
-            const timeSpinners = initializeTimeSpinners(RenderClassSchedule);
+            let timeSpinners;
+
             InitializePrinterFriendlyButton();
 
 
@@ -411,11 +455,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const showInstructor = toggleInstructor.checked;
                 const showLocation = toggleLocation.checked;
                 const showTime = toggleShowTime.checked;
+                // Initialize time spinners and pass RenderClassSchedule
+                timeSpinners = initializeTimeSpinners(
+                    RenderClassSchedule, showTimePostfix, showClassTitle, showInstructor,
+                    showLocation, showTime)
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
-                                    showTime);
+                                    showTime, state.classSchedules);
             }
+
 
             updateClassSchedule();
 
@@ -434,3 +483,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+function displayErrorMessage(message) {
+    const errorContainer = document.getElementById('error-message-container');
+    if (errorContainer) {
+        errorContainer.textContent = message;
+        errorContainer.style.display = 'block';
+    } else {
+        console.error('Error container not found:', message);
+    }
+}

@@ -1,8 +1,15 @@
+/**
+ * FILE: calendar.js
+ * Renders the schedule in a calendar view.
+ */
+
 import {getSelectedEndTime, getSelectedStartTime} from '../calendarOptions.js';
+import {Class, Section} from '../class.js';  // Import Class and Section
 
 export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
                                    showTimePostfix, showClassTitle, showInstructor,
                                    showLocation, showTime) {
+
     // Set styles specific to calendar view
     scheduleViewContainer.style.width = '85%';      // Adjust as needed
     scheduleViewContainer.style.display = 'block';  // Ensure block display
@@ -202,11 +209,10 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
         course.sections.forEach(section => {
             // Correctly split the days and time range using regex to handle different
             // dash types and extra spaces
-            const splitResult = section.days_and_times.trim().match(
+            const splitResult = section.daysAndTimes.trim().match(
                 /^([A-Za-z]+)\s+(\d{1,2}:\d{2}(?:AM|PM))\s*[-–—]\s*(\d{1,2}:\d{2}(?:AM|PM))$/i);
             if (!splitResult) {
-                console.error(
-                    `Invalid days_and_times format: "${section.days_and_times}"`);
+                console.error(`Invalid days_and_times format: "${section.daysAndTimes}"`);
                 return;
             }
 
@@ -222,7 +228,7 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
 
             if (startMinutes === null || endMinutes === null) {
                 console.error(`Skipping section due to invalid time format: "${
-                    section.days_and_times}"`);
+                    section.daysAndTimes}"`);
                 return;
             }
 
@@ -268,7 +274,32 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
                 // Create a class block
                 const classBlock = document.createElement('div');
                 classBlock.classList.add('class-block');
-                classBlock.textContent = `${course.course} (${section.component})`;
+                let classBlockContent = `${course.course} (${section.component})`;
+
+                if (showClassTitle) {
+                    classBlockContent = `${course.course} (${section.component})`;
+                } else {
+                    classBlockContent = `(${section.component})`
+                }
+                if (showInstructor) {
+                    classBlockContent = `${classBlockContent} ${section.instructor}`
+                }
+                if (showLocation) {
+                    classBlockContent = `${classBlockContent} ${section.room}`
+                }
+                if (showTime) {
+                    const [startHour, startMinute] = startTimeStr.split(':')
+                    const [endHour, endMinute] = endTimeStr.split(':')
+                    let newStart = startTimeStr;
+                    let newEnd = endTimeStr;
+                    if (showTimePostfix) {
+                        newStart = `${startHour}:${startMinute.slice(0, 2)}`;
+                        newEnd = `${endHour}:${endMinute.slice(0, 2)}`;
+                    }
+                    classBlockContent = `${classBlockContent} ${newStart} - ${newEnd}`
+                }
+                classBlock.textContent = classBlockContent;
+
 
                 // Calculate top position within the cell
                 const minutesIntoSlot = startMinutes % interval;

@@ -1,3 +1,8 @@
+/**
+ * FILE: list.js
+ * Renders the schedule in a list view.
+ */
+
 export function RenderListView(schedule, scheduleViewContainer) {
     // Set styles specific to list view
     scheduleViewContainer.style.width = '80%';
@@ -66,14 +71,14 @@ export function RenderListView(schedule, scheduleViewContainer) {
         course.sections.forEach((section) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${section.class_nbr}</td>
-                <td>${section.instruction_mode}</td>
-                <td>${section.section}</td>
+                <td>${section.classNum}</td>
+                <td>${section.instructionMode}</td>
+                <td>${section.sectionNum}</td>
                 <td>${section.component}</td>
-                <td>${section.days_and_times}</td>
+                <td>${section.daysAndTimes}</td>
                 <td>${section.room}</td>
                 <td>${section.instructor}</td>
-                <td>${section.start_end_date}</td>
+                <td>${section.startEndDate}</td>
             `;
             tableBody.appendChild(row);
         });

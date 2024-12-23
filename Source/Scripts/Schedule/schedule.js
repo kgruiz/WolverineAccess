@@ -1,69 +1,42 @@
 /**
  * FILE: schedule.js
+ * Main script for rendering class schedules.
  */
 
 import {RenderCalendarView} from './Schedule Renderers/calendar.js';
 import {RenderListView} from './Schedule Renderers/list.js';
 import {RenderTableView} from './Schedule Renderers/table.js';
 
-function ReadClassSchedules(jsonPath) {
-    const fileName = jsonPath.split('/').pop();
-
-    return fetch(jsonPath)
-        .then((response) => {
-            if (!response.ok) {
-                console.error(
-                    `Failed to load ${fileName}. Make sure it exists at ${jsonPath}.`);
-                return [];  // Return an empty array or appropriate fallback
-            }
-            return response.json();
-        })
-        .catch((error) => {
-            console.error(
-                `Error fetching ${fileName}. Make sure it exists at ${jsonPath}.`, error);
-            return [];  // Return an empty array or appropriate fallback
-        });
-}
-
 export function RenderClassSchedule(uniqName, viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
-                                    showTime) {
-    const jsonPath = '../../../Assets/JSON Files/classSchedules.json';
+                                    showTime, classSchedules) {
 
-    ReadClassSchedules(jsonPath)
-        .then((schedules) => {
-            const schedule = schedules[uniqName];
-            const scheduleViewContainer =
-                document.querySelector('.schedule-view-container');
+    const schedule = classSchedules[uniqName];
+    const scheduleViewContainer = document.querySelector('.schedule-view-container');
 
-            if (schedule) {
-                // Clear the content and reset styles
-                scheduleViewContainer.innerHTML = '';
-                resetContainerStyles(scheduleViewContainer);
+    if (schedule) {
+        // Clear the content and reset styles
+        scheduleViewContainer.innerHTML = '';
+        resetContainerStyles(scheduleViewContainer);
 
-                // Render the selected view
-                if (viewType === 'table') {
-                    RenderTableView(schedule, scheduleViewContainer);
-                } else if (viewType === 'list') {
-                    RenderListView(schedule, scheduleViewContainer);
-                } else if (viewType === 'calendar') {
-                    RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
-                                       showTimePostfix, showClassTitle, showInstructor,
-                                       showLocation, showTime);
-                } else {
-                    console.error(`Invalid view type "${viewType}"`);
-                }
+        // Render the selected view
+        if (viewType === 'table') {
+            RenderTableView(schedule, scheduleViewContainer);
+        } else if (viewType === 'list') {
+            RenderListView(schedule, scheduleViewContainer);
+        } else if (viewType === 'calendar') {
+            RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
+                               showTimePostfix, showClassTitle, showInstructor,
+                               showLocation, showTime);
+        } else {
+            console.error(`Invalid view type "${viewType}"`);
+        }
 
-            } else {
-                const noScheduleMessage = document.createElement('p');
-                noScheduleMessage.textContent = 'No class schedule could be found';
-                scheduleViewContainer.appendChild(noScheduleMessage);
-            }
-        })
-        .catch((error) => {
-            console.error(`Failed to render schedule for "${uniqName}": ${
-                error.message}\nStack trace: ${error.stack}`);
-        });
+    } else {
+        const noScheduleMessage = document.createElement('p');
+        noScheduleMessage.textContent = 'No class schedule could be found';
+        scheduleViewContainer.appendChild(noScheduleMessage);
+    }
 }
 
 // Helper function to reset container styles
