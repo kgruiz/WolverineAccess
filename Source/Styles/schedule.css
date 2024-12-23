@@ -3,11 +3,35 @@
  */
 
 
+.schedule-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.schedule-container h1 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+}
+
+.schedule-container p {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
 /* Style for Class Schedule Table */
 .class-schedule-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border: 1px #00274C;
+    outline: 3px solid #00274C;
 }
 
 .class-schedule-table th,
@@ -15,11 +39,13 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    outline: 1px solid #00274C;
 }
 
 .class-schedule-table th {
     background-color: #f2f2f2;
     font-weight: bold;
+    outline: 1px solid #00274C;
 }
 
 .class-schedule-table tbody tr:nth-child(even) {

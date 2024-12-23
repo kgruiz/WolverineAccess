@@ -6,6 +6,9 @@
 // ==============================
 // Search Suggestions Setup
 // ==============================
+
+import {state} from './constants.js';
+
 /**
  * Setup search suggestions for an input element.
  * @param {HTMLElement} inputElement - The search input element.

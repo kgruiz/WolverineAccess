@@ -28,8 +28,7 @@ export function RenderClassSchedule(uniqName) {
     ReadClassSchedules(jsonPath)
         .then((schedules) => {
             const schedule = schedules[uniqName];
-            const scheduleContainer =
-                document.querySelector('.not-implemented-container');
+            const scheduleContainer = document.querySelector('.schedule-container');
 
             if (schedule) {
                 // Clear the "Not Implemented" content
