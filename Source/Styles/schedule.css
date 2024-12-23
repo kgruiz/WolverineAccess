@@ -2,9 +2,8 @@
  * FILE: schedule.css
  */
 
-
+/* General Container Styling */
 .schedule-container {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,13 +14,14 @@
 
 .schedule-view-container {
     position: relative;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
     padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .schedule-view-container h1 {
@@ -39,8 +39,7 @@
 .class-schedule-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    border: 1px #00274C;
+    border: 1px solid #00274C;
     outline: 3px solid #00274C;
 }
 
@@ -49,13 +48,12 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    outline: 1px solid #00274C;
+    box-sizing: border-box;
 }
 
 .class-schedule-table th {
     background-color: #f2f2f2;
     font-weight: bold;
-    outline: 1px solid #00274C;
 }
 
 .class-schedule-table tbody tr:nth-child(even) {
@@ -64,23 +62,25 @@
 
 /* Optional: Responsive table */
 .class-schedule-table {
-    width: 100%;
     display: block;
     overflow-x: auto;
 }
 
-
+/* Course Container Styling */
 .course-container {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ddd;
     background-color: #fff;
+    border-radius: 4px;
 }
 
+/* Course Details Table Styling */
 .course-details-table td {
     padding: 5px 10px;
 }
 
+/* Sections Table Styling */
 .sections-table th {
     background-color: #f2f2f2;
     text-align: left;
@@ -90,4 +90,93 @@
 .sections-table td {
     border: 1px solid #ddd;
     padding: 8px;
+}
+
+/* Calendar Table Styling */
+.calendar-table th,
+.calendar-table td {
+    border: 1px solid #ddd;
+    padding: 0;
+    vertical-align: top;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.calendar-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    height: 40px;
+    /* Header height */
+    text-align: center;
+}
+
+.calendar-table td {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Class Block Styling */
+.class-block {
+    background-color: #00274C;
+    /* Light blue */
+    border: 1px solid #00274C;
+    padding: 2px;
+    font-size: 0.8rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 500;
+    position: absolute;
+    /* Position absolutely within the cell */
+    left: 0;
+    right: 0;
+}
+
+.class-block:hover {
+    background-color: #87CEFA;
+    /* Sky blue */
+}
+
+/* Table Views Styling */
+.class-schedule-table,
+.course-details-table,
+.sections-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.class-schedule-table th,
+.class-schedule-table td,
+.course-details-table th,
+.course-details-table td,
+.sections-table th,
+.sections-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.class-schedule-table th,
+.course-details-table th,
+.sections-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.class-schedule-table tbody tr:nth-child(even),
+.sections-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Updated Calendar Time Cell Styling */
+.calendar-table td:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
