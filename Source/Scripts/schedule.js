@@ -47,7 +47,6 @@ export function RenderClassSchedule(uniqName, viewType, selectedDays) {
                 }
 
             } else {
-                console.warn(`No schedule found for "${uniqName}".`);
                 const noScheduleMessage = document.createElement('p');
                 noScheduleMessage.textContent = 'No class schedule could be found';
                 scheduleViewContainer.appendChild(noScheduleMessage);
@@ -214,11 +213,15 @@ function RenderCalendarView(schedule, scheduleViewContainer, selectedDays) {
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Configuration Variables
-    const startTime = '08:00AM';  // 8 AM
-    const endTime = '07:00PM';    // 7 PM
+    const tempStartTime = getSelectedStartTime();
+    const tempEndTime = getSelectedEndTime();
     const interval = 30;          // 30 minutes
     const calendarHeight = 800;   // Fixed calendar height in pixels
     const timeColumnWidth = 100;  // Fixed width for the time column in pixels
+
+
+    const startTime = tempStartTime.replace(/\s+/g, '');
+    const endTime = tempEndTime.replace(/\s+/g, '');
 
     // Days of the week mapping
     const abbreviatedDays = {
@@ -446,15 +449,11 @@ function RenderCalendarView(schedule, scheduleViewContainer, selectedDays) {
                 }
                 const totalStartMinutes = startMinutes - calendarStartMinutes;
                 if (totalStartMinutes < 0) {
-                    console.warn(`Class starts before calendar start time: "${
-                        section.days_and_times}"`);
                     return;
                 }
                 const rowIndex = Math.floor(totalStartMinutes / interval);
 
                 if (rowIndex < 0 || rowIndex >= timeSlots.length) {
-                    console.warn(`Class time is out of calendar range: "${
-                        section.days_and_times}"`);
                     return;  // Out of calendar range
                 }
 
@@ -495,7 +494,7 @@ function RenderCalendarView(schedule, scheduleViewContainer, selectedDays) {
     });
 }
 
-export function initializeTimeSpinners() {
+export function initializeTimeSpinners(RenderClassSchedule) {
 
     function initializeStartTimeSpinner() {
         // Initialize elements and variables
@@ -538,6 +537,25 @@ export function initializeTimeSpinners() {
             startTimesIndex = (startTimesIndex + 1) % startTimeNumbers.length;
             startTimeNumbers[startTimesIndex].style.display = 'initial';
             updateEndTime(startTimeNumbers[startTimesIndex].textContent, startTimesIndex);
+            // Re-render the calendar
+            const selectedRadio =
+                document.querySelector('input[name="schedule-view"]:checked');
+            const viewType = selectedRadio ? selectedRadio.value : 'list';
+            const selectedCheckboxes =
+                document.querySelectorAll('input[name="schedule-day"]:checked');
+            let selectedDays =
+                Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+            if (selectedDays.length === 0) {
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                selectedDays = days.map(day => {
+                    const checkbox = document.getElementById(`day-${day}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                    return day.charAt(0).toUpperCase() + day.slice(1);
+                });
+            }
+            RenderClassSchedule('kgruiz', viewType, selectedDays)
         }
 
         // Function to show the previous number
@@ -547,6 +565,25 @@ export function initializeTimeSpinners() {
                 (startTimesIndex - 1 + startTimeNumbers.length) % startTimeNumbers.length;
             startTimeNumbers[startTimesIndex].style.display = 'initial';
             updateEndTime(startTimeNumbers[startTimesIndex].textContent, startTimesIndex);
+            // Re-render the calendar
+            const selectedRadio =
+                document.querySelector('input[name="schedule-view"]:checked');
+            const viewType = selectedRadio ? selectedRadio.value : 'list';
+            const selectedCheckboxes =
+                document.querySelectorAll('input[name="schedule-day"]:checked');
+            let selectedDays =
+                Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+            if (selectedDays.length === 0) {
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                selectedDays = days.map(day => {
+                    const checkbox = document.getElementById(`day-${day}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                    return day.charAt(0).toUpperCase() + day.slice(1);
+                });
+            }
+            RenderClassSchedule('kgruiz', viewType, selectedDays)
         }
 
         let nextTimeoutId = null;
@@ -608,7 +645,6 @@ export function initializeTimeSpinners() {
     function initializeEndTimeSpinner() {
         // Initialize elements and variables
         let endTimeSpinnerBox = document.getElementById('end-time-spinner-box');
-        // Add 'All' as the first option
 
         // Create options representing times from 12:00 AM to 11:30 PM in 30-minute
         // increments
@@ -646,6 +682,25 @@ export function initializeTimeSpinners() {
             endTimesIndex = (endTimesIndex + 1) % endTimeNumbers.length;
             endTimeNumbers[endTimesIndex].style.display = 'initial';
             updateStartTime(endTimeNumbers[endTimesIndex].textContent, endTimesIndex);
+            // Re-render the calendar
+            const selectedRadio =
+                document.querySelector('input[name="schedule-view"]:checked');
+            const viewType = selectedRadio ? selectedRadio.value : 'list';
+            const selectedCheckboxes =
+                document.querySelectorAll('input[name="schedule-day"]:checked');
+            let selectedDays =
+                Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+            if (selectedDays.length === 0) {
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                selectedDays = days.map(day => {
+                    const checkbox = document.getElementById(`day-${day}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                    return day.charAt(0).toUpperCase() + day.slice(1);
+                });
+            }
+            RenderClassSchedule('kgruiz', viewType, selectedDays)
         }
 
         // Function to show the previous number
@@ -655,6 +710,25 @@ export function initializeTimeSpinners() {
                 (endTimesIndex - 1 + endTimeNumbers.length) % endTimeNumbers.length;
             endTimeNumbers[endTimesIndex].style.display = 'initial';
             updateStartTime(endTimeNumbers[endTimesIndex].textContent, endTimesIndex);
+            // Re-render the calendar
+            const selectedRadio =
+                document.querySelector('input[name="schedule-view"]:checked');
+            const viewType = selectedRadio ? selectedRadio.value : 'list';
+            const selectedCheckboxes =
+                document.querySelectorAll('input[name="schedule-day"]:checked');
+            let selectedDays =
+                Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+            if (selectedDays.length === 0) {
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                selectedDays = days.map(day => {
+                    const checkbox = document.getElementById(`day-${day}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                    return day.charAt(0).toUpperCase() + day.slice(1);
+                });
+            }
+            RenderClassSchedule('kgruiz', viewType, selectedDays)
         }
 
         let nextTimeoutId = null;

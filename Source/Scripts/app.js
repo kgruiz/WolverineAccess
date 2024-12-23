@@ -357,7 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.location.pathname.includes('class-schedule.html')) {
 
-            initializeTimeSpinners();
+            // Initialize time spinners and pass RenderClassSchedule
+            const timeSpinners = initializeTimeSpinners(RenderClassSchedule);
 
             const daysSelectorWrapper = document.querySelector('.days-selector-wrapper');
             const startTimeSpinnerWrapper =
@@ -405,7 +406,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-
                 RenderClassSchedule('kgruiz', viewType, selectedDays);
             }
 

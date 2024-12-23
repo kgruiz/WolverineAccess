@@ -70,6 +70,7 @@ function createMessageContainer(type, message, backgroundColor) {
     const lines = escapedMessage.split('\n');
     const header = lines[0];
     const body = lines.slice(1).join('<br>');
+    const isSingleLine = lines.length === 1;
 
     if (existingContainer) {
         container = existingContainer;
@@ -143,18 +144,30 @@ function createMessageContainer(type, message, backgroundColor) {
         });
         container.appendChild(closeButton);
 
-        // Create and append expand button
-        const expandButton = document.createElement('span');
-        expandButton.innerHTML = '<span class="material-icons">expand_less</span>';
-        expandButton.classList.add('expand-button');
-        expandButton.style.position = 'absolute';
-        expandButton.style.top = '50%';
-        expandButton.style.right = '3rem';
-        expandButton.style.transform = 'translateY(-50%)';
-        expandButton.style.cursor = 'pointer';
-        expandButton.style.fontSize = '1.2rem';
-        expandButton.style.lineHeight = '1';
-        container.appendChild(expandButton);
+        if (!isSingleLine) {
+            // Create and append expand button
+            const expandButton = document.createElement('span');
+            expandButton.innerHTML = '<span class="material-icons">expand_less</span>';
+            expandButton.classList.add('expand-button');
+            expandButton.style.position = 'absolute';
+            expandButton.style.top = '50%';
+            expandButton.style.right = '3rem';
+            expandButton.style.transform = 'translateY(-50%)';
+            expandButton.style.cursor = 'pointer';
+            expandButton.style.fontSize = '1.2rem';
+            expandButton.style.lineHeight = '1';
+            container.appendChild(expandButton);
+
+            // Add event listener for expand/collapse via expand button
+            expandButton.addEventListener('click', () => {
+                toggleExpand(container, expandButton, isLog);
+            });
+
+            // Add event listener for expand/collapse via message header
+            messageHeader.addEventListener('click', () => {
+                toggleExpand(container, expandButton, isLog);
+            });
+        }
 
         // Append container to the body
         document.body.appendChild(container);
@@ -168,16 +181,6 @@ function createMessageContainer(type, message, backgroundColor) {
         container.removeTimeout = setTimeout(() => {
             hideContainer(container);
         }, defaultTimeout);
-
-        // Add event listener for expand/collapse via expand button
-        expandButton.addEventListener('click', () => {
-            toggleExpand(container, expandButton, isLog);
-        });
-
-        // Add event listener for expand/collapse via message header
-        messageHeader.addEventListener('click', () => {
-            toggleExpand(container, expandButton, isLog);
-        });
     }
 }  // End of createMessageContainer function
 
@@ -242,7 +245,9 @@ function collapseMessage(container, animate = true) {
     const messageBody = container.querySelector('.message-body');
     const expandButton = container.querySelector('.expand-button');
     const closeButton = container.querySelector('.close-button');
-
+    if (!expandButton) {
+        return;
+    }
     if (animate) {
         // Animate collapse
         messageBody.style.maxHeight = '0';
