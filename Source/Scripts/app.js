@@ -17,6 +17,7 @@ import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './fav
 import {InitializeGlobalListeners} from './globalListeners.js';
 import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
+import {RenderClassSchedule} from './schedule.js'
 import {SetupSearchSuggestions} from './search.js';
 
 
@@ -30,20 +31,58 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('../../Assets/JSON Files/tasks.json')
         .then((response) => {
             if (!response.ok) {
-                console.error(
-                    'Failed to load tasks.json. Make sure it exists at ../../Assets/JSON Files/tasks.json.');
-                return [];
+                // Attempt to extract error details from the response body
+                return response.text().then((text) => {
+                    let errorDetails = text;
+                    try {
+                        // Try parsing as JSON for structured error messages
+                        const json = JSON.parse(text);
+                        errorDetails = JSON.stringify(json, null, 2);
+                    } catch (e) {
+                        // If not JSON, keep the plain text
+                    }
+
+                    // Construct a detailed error message as a plain string
+                    const detailedErrorMessage =
+                        `Failed to load tasks.json.\n` +
+                        `Status: ${response.status} ${response.statusText}\n` +
+                        `Details:\n${errorDetails}`;
+
+                    // Log the detailed error to the console
+                    console.error(detailedErrorMessage);
+
+                    // Display the detailed error message on the page
+                    displayErrorMessage(detailedErrorMessage);
+
+                    // Reject the promise to skip the next `.then()`
+                    return Promise.reject(new Error('Failed to load tasks.json'));
+                });
             }
+            // If response is OK, parse it as JSON
             return response.json();
         })
         .then((data) => {
+            // Successfully fetched and parsed data
             state.linksData = data;
             initializePage();
         })
-        .catch(() => {
-            console.error('Error fetching tasks.json.');
+        .catch((error) => {
+            // Handle network errors or rejected promises from above
+            const detailedErrorMessage =
+                `Error fetching tasks.json.\n` +
+                `Message: ${error.message}\n` +
+                `Stack:\n${error.stack || 'No stack trace available.'}`;
+
+            // Log the detailed error to the console
+            console.error(detailedErrorMessage);
+
+            // Display the detailed error message on the page
+            displayErrorMessage(detailedErrorMessage);
+
+            // Initialize the page even if fetching fails, adjust as needed
             initializePage();
         });
+
 
     /**
      * Initialize the page with fetched data and user information.
@@ -312,5 +351,10 @@ document.addEventListener('DOMContentLoaded', () => {
         InitializePreferencesMenu();
         initializeFavoritesNumSpinner();
         InitializeAnimation(heroLogo);
+
+        // Check if we are on the class-schedule page
+        if (window.location.pathname.includes('class-schedule.html')) {
+            RenderClassSchedule('kgruiz');
+        }
     }
 });

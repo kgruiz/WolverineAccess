@@ -341,7 +341,7 @@
         "currentRating": 20,
         "alt": "Class Schedule",
         "image": "../../Assets/Media/Current/ClassSchedule.png",
-        "href": "https://wolverineaccess.umich.edu/launch-task/all/schedule"
+        "href": "class-schedule.html"
     },
     {
         "favorite": false,

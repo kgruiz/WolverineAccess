@@ -1,0 +1,104 @@
+{
+    "kgruiz": 
+    {
+        "courses": 
+        [
+            {
+                "course": "EECS 476 - Data Mining",
+                "status": "Enrolled",
+                "units": 4,
+                "grading": "Graded",
+                "sections": 
+                [
+                    {
+                        "class_nbr": 35040,
+                        "instruction_mode": "In Person",
+                        "section": "011",
+                        "component": "Discussion",
+                        "days_and_times": "We 12:30PM - 1:30PM",
+                        "room": "DOW1005",
+                        "instructor": "Staff",
+                        "start_end_date": "01/08/2025 - 04/22/2025"
+                    },
+                    {
+                        "class_nbr": 35039,
+                        "instruction_mode": "In Person",
+                        "section": "001",
+                        "component": "Lecture",
+                        "days_and_times": "Fr 1:30PM - 4:30PM",
+                        "room": "BEYST1670",
+                        "instructor": "Danai Koutra",
+                        "start_end_date": "01/08/2025 - 04/22/2025"
+                    }
+                ]
+            },
+            {
+                "course": "GERMAN 322 - Origins Of Nazism",
+                "status": "Enrolled",
+                "units": 4,
+                "grading": "Graded",
+                "sections": 
+                [
+                    {
+                        "class_nbr": 20525,
+                        "instruction_mode": "In Person",
+                        "section": "001",
+                        "component": "Lecture",
+                        "days_and_times": "TuTh 11:30AM - 1:00PM",
+                        "room": "SKB2500",
+                        "instructor": "Kira Thurman",
+                        "start_end_date": "01/08/2025 - 04/22/2025"
+                    },
+                    {
+                        "class_nbr": 20526,
+                        "instruction_mode": "In Person",
+                        "section": "002",
+                        "component": "Discussion",
+                        "days_and_times": "Th 1:00PM - 2:00PM",
+                        "room": "CHEM1650",
+                        "instructor": "Markus Merin",
+                        "start_end_date": "01/08/2025 - 04/22/2025"
+                    }
+                ]
+            },
+            {
+                "course": "MATH 425 - Intro Probability",
+                "status": "Enrolled",
+                "units": 3,
+                "grading": "Graded",
+                "sections": 
+                [
+                    {
+                        "class_nbr": 27137,
+                        "instruction_mode": "In Person",
+                        "section": "003",
+                        "component": "Lecture",
+                        "days_and_times": "MoWeFr 10:00AM - 11:00AM",
+                        "room": "WH120",
+                        "instructor": "Chuhao Sun",
+                        "start_end_date": "01/08/2025 - 04/22/2025"
+                    }
+                ]
+            },
+            {
+                "course": "MATH 465 - Intro Combinatorics",
+                "status": "Enrolled",
+                "units": 3,
+                "grading": "Graded",
+                "sections": 
+                [
+                    {
+                        "class_nbr": 40976,
+                        "instruction_mode": "In Person",
+                        "section": "003",
+                        "component": "Lecture",
+                        "days_and_times": "TuTh 2:30PM - 4:00PM",
+                        "room": "EHB737",
+                        "instructor": "Andrew Sack",
+                        "start_end_date": "01/08/2025 - 04/22/2025"
+                    }
+                ]
+            }
+        ]
+    }
+}
