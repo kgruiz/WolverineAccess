@@ -170,7 +170,8 @@
         </nav>
         <div id="preferences-menu" class="modal">
             <div class="preferences-menu-content">
-                <span class="preferences-menu-close-button" id="preferences-menu-close-button">×</span>
+                <span class="preferences-menu-close-button" id="preferences-menu-close-button"><span
+                        class="material-icons">close</span></span>
                 <h2>Preferences</h2>
                 <div class="preference-item">
                     <label for="toggleFavoritesCheckbox" class="switch">
@@ -195,8 +196,33 @@
 
     <!-- Main Content -->
     <main>
-        <!-- MAIN -->
+
         <div class="schedule-container">
+            <h1>My Class Schedule</h1>
+
+            <h3>View Type:</h3>
+            <div class="schedule-view-type-wrapper">
+                <!-- Radio Inputs -->
+                <input type="radio" id="view-list" name="schedule-view" class="schedule-view-type-selector" value="list"
+                    checked />
+                <input type="radio" id="view-table" name="schedule-view" class="schedule-view-type-selector"
+                    value="table" />
+                <input type="radio" id="view-calendar" name="schedule-view" class="schedule-view-type-selector"
+                    value="calendar" />
+
+
+                <!-- Labels for Options -->
+                <label for="view-list" class="schedule-view-type-option">List</label>
+                <label for="view-table" class="schedule-view-type-option">Table</label>
+                <label for="view-calendar" class="schedule-view-type-option">Calendar</label>
+
+                <!-- Highlight Indicator -->
+                <div class="schedule-view-type-highlight"></div>
+            </div>
+
+
+            <div class="schedule-view-container">
+            </div>
         </div>
 
     </main>

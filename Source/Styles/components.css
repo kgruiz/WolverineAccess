@@ -586,3 +586,148 @@ input:checked+.slider::before {
     display: initial;
     /* Show the default index*/
 }
+
+
+
+/* Sort Type Selector */
+.sort-type-selector {
+    display: none;
+}
+
+.sort-type-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border: 1.5px solid #00274C;
+    border-radius: 20px;
+    background: white;
+    font-weight: bold;
+    color: #00274C;
+    cursor: pointer;
+}
+
+.sort-type-container::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius: 20px;
+    background: #00274C;
+    transition: all 0.3s;
+}
+
+.sort-type-container div {
+    padding: 6px;
+    text-align: center;
+    z-index: 1;
+}
+
+.sort-type-selector:checked+.sort-type-container::before {
+    left: 50%;
+}
+
+.sort-type-selector:checked+.sort-type-container div:first-child {
+    color: #00274C;
+    transition: color 0.3s;
+}
+
+.sort-type-selector:checked+.sort-type-container div:last-child {
+    color: white;
+    transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:first-child {
+    color: white;
+    transition: color 0.3s;
+}
+
+.sort-type-selector+.sort-type-container div:last-child {
+    color: #00274C;
+    transition: color 0.3s;
+}
+
+
+
+/* Schedule View Type Selector */
+/* Wrapper for the Schedule View Type Selector */
+.schedule-view-type-wrapper {
+    position: relative;
+    display: flex;
+    width: 20rem;
+    border: 1.5px solid #00274C;
+    border-radius: 20px;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    /* Ensure the highlight doesn't overflow */
+    height: 40px;
+    /* Set a fixed height for consistent alignment */
+}
+
+/* Hide Radio Inputs */
+.schedule-view-type-selector {
+    display: none;
+}
+
+/* Labels for Each Option */
+.schedule-view-type-option {
+    flex: 1;
+    display: flex;
+    /* Enable Flexbox for centering */
+    align-items: center;
+    /* Vertically center the content */
+    justify-content: center;
+    /* Horizontally center the content */
+    padding: 0;
+    /* Remove padding to avoid extra space */
+    text-align: center;
+    color: #00274C;
+    transition: color 0.3s;
+    z-index: 2;
+    /* Ensure labels are above the highlight */
+    font-size: 16px;
+    /* Adjust font size as needed */
+    height: 100%;
+    /* Make labels fill the wrapper's height */
+    box-sizing: border-box;
+    /* Include border and padding in the element's total width and height */
+}
+
+/* Highlight Indicator */
+.schedule-view-type-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.3333333%;
+    height: 100%;
+    background: #00274C;
+    border-radius: 20px;
+    border: 3px solid #00274C;
+    transition: left 0.3s;
+    z-index: 1;
+    /* Ensure highlight is below the labels */
+}
+
+/* Move Highlight Based on Selected Option */
+#view-list:checked~.schedule-view-type-highlight {
+    left: 0%;
+}
+
+#view-table:checked~.schedule-view-type-highlight {
+    left: 33.333%;
+}
+
+#view-calendar:checked~.schedule-view-type-highlight {
+    left: 66.666%;
+}
+
+/* Change Label Colors Based on Selection */
+#view-list:checked~.schedule-view-type-option[for="view-list"],
+#view-table:checked~.schedule-view-type-option[for="view-table"],
+#view-calendar:checked~.schedule-view-type-option[for="view-calendar"] {
+    color: white;
+}

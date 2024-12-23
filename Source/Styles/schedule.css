@@ -4,6 +4,16 @@
 
 
 .schedule-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.schedule-view-container {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -14,13 +24,13 @@
     padding: 2rem;
 }
 
-.schedule-container h1 {
+.schedule-view-container h1 {
     font-size: 1.5rem;
     margin: 0 0 1rem 0;
     font-weight: 700;
 }
 
-.schedule-container p {
+.schedule-view-container p {
     margin: 1rem 0;
     font-size: 1rem;
 }
@@ -57,4 +67,27 @@
     width: 100%;
     display: block;
     overflow-x: auto;
+}
+
+
+.course-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.course-details-table td {
+    padding: 5px 10px;
+}
+
+.sections-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.sections-table th,
+.sections-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
