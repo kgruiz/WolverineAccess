@@ -468,3 +468,25 @@
 #end-time-spinner-box span:nth-child(1) {
     display: initial;
 }
+
+/* Printer Friendly Button */
+.printer-friendly-button {
+    margin-top: 2rem;
+    background: #00274C;
+    color: #FFCB05;
+    border: none;
+    display: flex;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.printer-friendly-button span {
+    margin: 5px;
+    margin-right: 10px;
+}

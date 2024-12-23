@@ -17,7 +17,7 @@ import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './fav
 import {InitializeGlobalListeners} from './globalListeners.js';
 import {addCardToPinnedsContainers, addPinned, isLinkPinnedd, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
 import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
-import {initializeTimeSpinners, RenderClassSchedule} from './schedule.js'
+import {InitializePrinterFriendlyButton, initializeTimeSpinners, RenderClassSchedule} from './schedule.js'
 import {SetupSearchSuggestions} from './search.js';
 
 
@@ -359,6 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Initialize time spinners and pass RenderClassSchedule
             const timeSpinners = initializeTimeSpinners(RenderClassSchedule);
+            InitializePrinterFriendlyButton();
 
             const daysSelectorWrapper = document.querySelector('.days-selector-wrapper');
             const startTimeSpinnerWrapper =
