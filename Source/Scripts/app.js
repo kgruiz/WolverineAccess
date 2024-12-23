@@ -357,23 +357,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (window.location.pathname.includes('class-schedule.html')) {
 
-            const initialRadio =
-                document.querySelector('input[name="schedule-view"]:checked');
-            const initialViewType = initialRadio ? initialRadio.value : 'list';
+            const daysSelectorWrapper = document.querySelector('.days-selector-wrapper');
 
-            RenderClassSchedule('kgruiz', initialViewType);
+            daysSelectorWrapper.style.display = 'none';
 
+            function updateClassSchedule() {
+                // Get the currently selected view type
+                const selectedRadio =
+                    document.querySelector('input[name="schedule-view"]:checked');
+                const viewType = selectedRadio ? selectedRadio.value : 'list';
+
+                if (viewType === 'calendar') {
+
+                    daysSelectorWrapper.style.display = 'flex';
+                } else {
+
+                    daysSelectorWrapper.style.display = 'none';
+                }
+
+                // Get all selected day checkboxes
+                const selectedCheckboxes =
+                    document.querySelectorAll('input[name="schedule-day"]:checked');
+                let selectedDays =
+                    Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+
+                // If no days are selected, default to Monday
+                if (selectedDays.length === 0) {
+                    const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                    selectedDays = days.map(day => {
+                        const checkbox = document.getElementById(`day-${day}`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                        return day.charAt(0).toUpperCase() + day.slice(1);
+                    });
+                }
+
+                RenderClassSchedule('kgruiz', viewType, selectedDays);
+            }
+
+            updateClassSchedule();
+
+            // Event listeners for view type radio buttons
             const scheduleViewRadios =
                 document.querySelectorAll('input[name="schedule-view"]');
-
             scheduleViewRadios.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    const selectedRadio =
-                        document.querySelector('input[name="schedule-view"]:checked');
-                    const viewType = selectedRadio ? selectedRadio.value : 'list';
+                radio.addEventListener('change', updateClassSchedule);
+            });
 
-                    RenderClassSchedule('kgruiz', viewType);
-                });
+            // Event listeners for day checkboxes
+            const dayCheckboxes = document.querySelectorAll('input[name="schedule-day"]');
+            dayCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateClassSchedule);
             });
         }
     }

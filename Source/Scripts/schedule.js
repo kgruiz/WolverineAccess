@@ -21,7 +21,7 @@ function ReadClassSchedules(jsonPath) {
         });
 }
 
-export function RenderClassSchedule(uniqName, viewType) {
+export function RenderClassSchedule(uniqName, viewType, selectedDays) {
     const jsonPath = '../../Assets/JSON Files/classSchedules.json';
 
     ReadClassSchedules(jsonPath)
@@ -41,7 +41,7 @@ export function RenderClassSchedule(uniqName, viewType) {
                 } else if (viewType === 'list') {
                     RenderListView(schedule, scheduleViewContainer);
                 } else if (viewType === 'calendar') {
-                    RenderCalendarView(schedule, scheduleViewContainer);
+                    RenderCalendarView(schedule, scheduleViewContainer, selectedDays);
                 } else {
                     console.error(`Invalid view type "${viewType}"`);
                 }
@@ -208,21 +208,19 @@ function RenderListView(schedule, scheduleViewContainer) {
     });
 }
 
-function RenderCalendarView(schedule, scheduleViewContainer) {
+function RenderCalendarView(schedule, scheduleViewContainer, selectedDays) {
     // Set styles specific to calendar view
     scheduleViewContainer.style.width = '80%';      // Adjust as needed
     scheduleViewContainer.style.display = 'block';  // Ensure block display
 
     // Configuration Variables
     const startTime = '08:00AM';  // 8 AM
-    const endTime = '07:00PM';    // 9 PM
+    const endTime = '07:00PM';    // 7 PM
     const interval = 30;          // 30 minutes
     const calendarHeight = 800;   // Fixed calendar height in pixels
     const timeColumnWidth = 100;  // Fixed width for the time column in pixels
 
-    // Days of the week in order
-    const daysOfWeek =
-        ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    // Days of the week mapping
     const abbreviatedDays = {
         'Mo': 'Monday',
         'Tu': 'Tuesday',
@@ -232,6 +230,15 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
         'Sa': 'Saturday',
         'Su': 'Sunday'
     };
+
+    // **New Addition:** Validate and filter selectedDays
+    const validDays = Object.values(abbreviatedDays);
+    const daysOfWeek = selectedDays.filter(day => validDays.includes(day));
+
+    if (daysOfWeek.length === 0) {
+        console.error('No valid selectedDays provided.');
+        return;
+    }
 
     // Helper function to parse time strings
     function parseTime(timeStr) {
@@ -333,15 +340,15 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
     timeHeader.style.textAlign = 'center';
     headerRow.appendChild(timeHeader);
 
-    // Days headers with calculated widths
+    // **Modified:** Generate headers based on selected days
     daysOfWeek.forEach(day => {
         const th = document.createElement('th');
         th.textContent = day;
         th.style.border = '1px solid #ddd';
         th.style.padding = '8px';
         th.style.backgroundColor = '#f2f2f2';
-        th.style.width = `calc((100% - ${
-            timeColumnWidth}px) / 7)`;  // Distribute remaining width equally
+        th.style.width = `calc((100% - ${timeColumnWidth}px) / ${
+            daysOfWeek.length})`;  // Distribute remaining width equally
         th.style.textAlign = 'center';
         headerRow.appendChild(th);
     });
@@ -376,7 +383,6 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
         timeCell.style.boxSizing = 'border-box';
         row.appendChild(timeCell);
 
-        // Day cells
         for (let i = 0; i < daysOfWeek.length; i++) {
             const cell = document.createElement('td');
             cell.style.borderTop = (time.endsWith(':00')) ?
@@ -410,9 +416,8 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
 
             const [, daysStr, startTimeStr, endTimeStr] = splitResult;
 
-            const days = extractDays(daysStr);
+            const days = extractDays(daysStr).filter(day => daysOfWeek.includes(day));
             if (days.length === 0) {
-                console.error(`No valid days extracted from: "${daysStr}"`);
                 return;
             }
 
@@ -430,8 +435,9 @@ function RenderCalendarView(schedule, scheduleViewContainer) {
 
             days.forEach(day => {
                 const dayIndex = daysOfWeek.indexOf(day);
-                if (dayIndex === -1)
-                    return;  // Skip if day is not in the calendar
+                if (dayIndex === -1) {
+                    return;  // Skip if day is not in the selected days
+                }
 
                 // Calculate row index based on start time
                 const calendarStartMinutes = parseTime(startTime);

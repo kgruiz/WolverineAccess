@@ -731,3 +731,53 @@ input:checked+.slider::before {
 #view-calendar:checked~.schedule-view-type-option[for="view-calendar"] {
     color: white;
 }
+
+/* Days Selector Wrapper */
+.days-selector-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    border: 1.5px solid #00274C;
+    border-radius: 20px;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    height: 40px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* Hide Checkboxes */
+.days-selector-checkbox {
+    display: none;
+}
+
+/* Style for Labels */
+.days-selector-option {
+    flex: 1 1 calc(14.28% - 4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    padding: 0;
+    text-align: center;
+    color: #00274C;
+    background: white;
+    transition: background 0.3s, color 0.3s;
+    border: 1px solid transparent;
+    border-radius: 18px;
+}
+
+/* Highlight Active Labels */
+.days-selector-checkbox:checked+.days-selector-option {
+    background: #00274C;
+    color: white;
+    border-color: #00274C;
+}
+
+/* Hover Effect */
+.days-selector-option:hover {
+    background: #e0e0e0;
+    border-color: #b0b0b0;
+}
