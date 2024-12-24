@@ -1,6 +1,6 @@
 /**
  * FILE: favorites.js
- * Handles favorites features and logic within the application.
+ * Manages all functionality related to handling favorite links within the application.
  */
 
 import {CreateCard, CreateFavoriteCard} from './cards.js';
@@ -14,8 +14,11 @@ import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, popula
 // ==============================
 // Favorites Handling
 // ==============================
+
 /**
- * Load favorite statuses from localStorage and initialize favorites.
+ * Loads favorite link status from localStorage and initializes the application's favorite
+ * state. This ensures that any previously favorited links are properly reflected in the
+ * UI and data model.
  */
 export function loadFavorites() {
     const storedFavorites = localStorage.getItem(FAVORITES_KEY);
@@ -27,7 +30,8 @@ export function loadFavorites() {
             console.error('Failed to parse favorite links from localStorage.', e);
         }
     }
-    // Initialize state.favoriteStatuses based on state.linksData if needed
+    // If a link's status is not found in localStorage, default to its existing property
+    // or false.
     state.linksData.forEach(link => {
         if (state.favoriteStatuses[link.uniqueKey] === undefined) {
             state.favoriteStatuses[link.uniqueKey] = link.favorite || false;
@@ -37,24 +41,25 @@ export function loadFavorites() {
 }
 
 /**
- * Save current favorite statuses to localStorage.
+ * Saves the current favorite status for all links to localStorage.
+ * This function should be called whenever any change is made to the favorite status.
  */
 export function saveFavorites() {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(state.favoriteStatuses));
 }
 
 /**
- * Check if a link is favorited.
- * @param {Object} link - The link object.
- * @returns {boolean} - Favorite status.
+ * Returns true if the provided link is currently marked as a favorite.
+ * @param {Object} link - The link object to check.
+ * @returns {boolean} - Indicates whether the link is favorited.
  */
 export function isLinkFavorited(link) {
     return state.favoriteStatuses[link.uniqueKey] || false;
 }
 
 /**
- * Add a link to favorites.
- * @param {Object} link - The link object.
+ * Marks a link as a favorite and saves the updated status to localStorage.
+ * @param {Object} link - The link object to be favorited.
  */
 export function addFavorite(link) {
     state.favoriteStatuses[link.uniqueKey] = true;
@@ -62,13 +67,14 @@ export function addFavorite(link) {
 }
 
 /**
- * Remove a link from favorites.
- * @param {Object} link - The link object.
+ * Removes a link from the favorites list. If the link was pinned, it is also removed from
+ * pinned status.
+ * @param {Object} link - The link object to be removed from favorites.
  */
 export function removeFavorite(link) {
     const wasPinned = isLinkPinned(link);
     state.favoriteStatuses[link.uniqueKey] = false;
-    removePinned(link)
+    removePinned(link);
     saveFavorites();
     if (wasPinned) {
         populatePinnedsContainers();
@@ -79,18 +85,18 @@ export function removeFavorite(link) {
 }
 
 /**
- * Update the star icon's appearance based on favorite status.
- * @param {HTMLElement} star - The star element.
- * @param {Object} link - The link object.
+ * Updates a star icon based on whether the associated link is currently favorited.
+ * This includes handling animations and setting the correct SVG.
+ * @param {HTMLElement} star - The star element to update.
+ * @param {Object} link - The link object used to determine favorite status.
  */
 export function updateStarAppearance(star, link) {
     if (isLinkFavorited(link)) {
         star.innerHTML = filledStarSVG;
-
         star.classList.add('favorited');
 
         star.classList.add('animate-fill');
-        // Remove the animation class after animation completes
+        // Remove the animation class after completion.
         star.addEventListener('animationend', () => {
             star.classList.remove('animate-fill');
         }, {once: true});
@@ -99,7 +105,7 @@ export function updateStarAppearance(star, link) {
         star.classList.remove('favorited');
 
         star.classList.add('animate-unfill');
-        // Remove the animation class after animation completes
+        // Remove the animation class after completion.
         star.addEventListener('animationend', () => {
             star.classList.remove('animate-unfill');
         }, {once: true});
@@ -107,14 +113,16 @@ export function updateStarAppearance(star, link) {
 }
 
 /**
- * Populate favorites containers based on current favorite statuses.
+ * Populates all containers designated for favorite links using the current favorite
+ * statuses. This function handles both a main favorites area and a navigation container,
+ * if present.
  */
 export function populateFavoritesContainers() {
     const favoriteContainers = [
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
     ];
-    // Load maxFavoritesDisplay from localStorage
+    // Retrieve user-configured maximum favorite display size from localStorage.
     const maxFavoritesDisplay = localStorage.getItem('maxFavoritesDisplay');
     let numToDisplay = maxFavoritesDisplay ? parseInt(maxFavoritesDisplay, 10) : 4;
     if (maxFavoritesDisplay == 0) {
@@ -136,7 +144,7 @@ export function populateFavoritesContainers() {
                     if (container.id === 'all-favorites-container') {
                         card = CreateFavoriteCard(link);
                     } else {
-                        card = CreateCard(link);
+                        card = CreateFavoriteCard(link);
                     }
                     container.appendChild(card);
                 });
@@ -149,15 +157,15 @@ export function populateFavoritesContainers() {
 }
 
 /**
- * Add a card to all favorites containers.
- * @param {HTMLElement} card - The card element to add.
+ * Adds the provided card element to all containers designated for favorite links.
+ * Ensures no duplicate cards are added and respects the maximum display limit if set.
+ * @param {HTMLElement} card - The card element to be added to favorites containers.
  */
 export function addCardToFavoritesContainers(card) {
     const favoriteContainers = [
         document.getElementById('all-favorites-container'),
         document.getElementById('favorite-links-nav-container'),
     ];
-    // Load maxFavoritesDisplay from localStorage
     const maxFavoritesDisplay = localStorage.getItem('maxFavoritesDisplay');
     let numToDisplay = maxFavoritesDisplay ? parseInt(maxFavoritesDisplay, 10) : 4;
     if (maxFavoritesDisplay == 0) {
@@ -165,14 +173,12 @@ export function addCardToFavoritesContainers(card) {
     }
     favoriteContainers.forEach(container => {
         if (container) {
-
-            // Remove "No pinned links yet." if present
+            // Remove the placeholder text if it is present.
             const noFavorites = container.querySelector('p');
             if (noFavorites && noFavorites.textContent === 'No favorite links yet.') {
                 container.removeChild(noFavorites);
             }
-            // Check if the card is already present to avoid duplicates
-            // Check if the card is already present to avoid duplicates
+            // Check if the card is already in the container to avoid duplicates.
             if (!container.querySelector(
                     `[data-unique-key="${card.dataset.uniqueKey}"]`)) {
                 const currentCards = container.querySelectorAll('.card, .favorite-card');
@@ -183,7 +189,7 @@ export function addCardToFavoritesContainers(card) {
                     if (container.id === 'all-favorites-container') {
                         newCard = CreateFavoriteCard(link);
                     } else {
-                        newCard = CreateCard(link);
+                        newCard = CreateFavoriteCard(link);
                     }
                     container.appendChild(newCard);
                 }
@@ -196,8 +202,9 @@ export function addCardToFavoritesContainers(card) {
 }
 
 /**
- * Remove a card from all favorites containers.
- * @param {HTMLElement} card - The card element to remove.
+ * Removes the provided card element from all favorites containers.
+ * Restores the placeholder text if no favorites remain in a particular container.
+ * @param {HTMLElement} card - The card element to be removed from favorites containers.
  */
 export function removeCardFromFavoritesContainers(card) {
     const favoriteContainers = [
@@ -206,13 +213,12 @@ export function removeCardFromFavoritesContainers(card) {
     ];
     favoriteContainers.forEach(container => {
         if (container) {
-
             const cardToRemove =
                 container.querySelector(`[data-unique-key="${card.dataset.uniqueKey}"]`);
             if (cardToRemove) {
                 cardToRemove.remove();
             }
-            // If no favorites left, show "No pinned links yet."
+            // If there are no cards left, display a placeholder message.
             if (container.querySelectorAll('.card, .favorite-card').length === 0) {
                 const noFavorites = document.createElement('p');
                 noFavorites.textContent = 'No favorite links yet.';

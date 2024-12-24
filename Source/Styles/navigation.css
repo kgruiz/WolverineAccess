@@ -35,7 +35,8 @@ nav {
 }
 
 /* --- Nav Icons Styles --- */
-.nav-icons {
+.left-section>.nav-icons,
+.right-section>.nav-icons {
     list-style: none;
     display: flex;
     align-items: center;
@@ -45,7 +46,8 @@ nav {
     margin-top: 8.5px;
 }
 
-.nav-icons li {
+.left-section>.nav-icons>li,
+.right-section>.nav-icons>li {
     margin: 0 0.25rem;
 }
 
@@ -76,7 +78,6 @@ nav {
 }
 
 .current-group {
-
     margin-right: 10px;
 }
 
@@ -354,7 +355,6 @@ nav {
 .sign-in-menu-header h3 {
     text-align: center;
 }
-
 
 .sign-in-menu::before {
     right: +35px;

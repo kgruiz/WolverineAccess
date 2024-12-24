@@ -33,13 +33,16 @@ export function setupHoverMenu(containerId, menuId) {
     const container = document.getElementById(containerId);
     const menu = document.getElementById(menuId);
     let clickedOpen = false;
+
     if (!container || !menu)
         return;
+
     container.addEventListener('mouseover', () => {
         if (!clickedOpen) {
             menu.classList.add('active');
         }
     });
+
     container.addEventListener('mouseout', () => {
         if (!clickedOpen) {
             if (menu.classList.contains('active')) {
@@ -47,11 +50,13 @@ export function setupHoverMenu(containerId, menuId) {
             }
         }
     });
+
     container.addEventListener('click', (e) => {
         e.preventDefault();
         clickedOpen = !clickedOpen;
         menu.classList.add('active');
     });
+
     document.addEventListener('click', (event) => {
         if (clickedOpen && !container.contains(event.target) &&
             !menu.contains(event.target)) {
@@ -91,6 +96,7 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
             }
         }
     });
+
     toggle.addEventListener('click', (e) => {
         e.preventDefault();
         if (!state.signedIn) {
@@ -108,6 +114,7 @@ export function setupSignInHover(containerId, menuId, menuToggle) {
             }
         });
     });
+
     signInItemSignedIn.forEach((item) => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
@@ -186,6 +193,7 @@ export function initializeCardHoverEffects() {
         card.addEventListener('mouseout', () => {
             card.style.transform = 'translateY(0px)';
             const favoriteStar = card.querySelector('.favorite-star');
+            // Only hide the star if the card isn't favorited
             if (favoriteStar && !card.classList.contains('favorited-card')) {
                 favoriteStar.style.display = 'none';
             }
@@ -197,10 +205,12 @@ export function initializeCardHoverEffects() {
 // Navigation Icons Hover Effects
 // ==============================
 /**
- * Initialize hover effects for navigation icons.
+ * Initialize hover effects for navigation icons only at the top nav level,
+ * ignoring any cards or items inside dropdown menus.
  */
 export function initializeNavIconsHoverEffects() {
-    const navIconLinks = document.querySelectorAll('.nav-icons a');
+    // Only grab the top-level nav icons, not dropdown items.
+    const navIconLinks = document.querySelectorAll('.nav-icons > li > a');
     navIconLinks.forEach((link) => {
         link.addEventListener('mouseover', () => {
             link.style.color = '#FFCB05';
@@ -215,16 +225,32 @@ export function initializeNavIconsHoverEffects() {
 // Favorites and Other Icons Hover Effects
 // ==============================
 /**
- * Initialize hover effects for favorites and other icons.
+ * Initialize hover effects for the top-level icons in the nav bar,
+ * without affecting items in the dropdowns.
  */
 export function initializeFavoritesIconHoverEffects() {
+    // Restrict the scaling effect to the direct anchor elements in the nav bar
+    // so we don’t affect the favorite cards in the dropdown menu.
     const iconSelectors = [
-        {selector: '.group-selector a', scale: 1.05},
-        {selector: '.favorites-icon a', scale: 1.15},
-        {selector: '.notifications-icon a', scale: 1.15},
-        {selector: '.home-icon', scale: 1.15},
-        {selector: '.all-links-icon', scale: 1.12},
+        {
+            selector:
+                '.group-selector.menu-toggle-icon > a.group-selector-toggle.menu-toggle',
+            scale: 1.05
+        },
+        {
+            selector:
+                '.favorites-icon.menu-toggle-icon > a.favorites-menu-toggle.menu-toggle',
+            scale: 1.15
+        },
+        {
+            selector:
+                '.notifications-icon.menu-toggle-icon > a.notifications-menu-toggle.menu-toggle',
+            scale: 1.15
+        },
+        {selector: '.home-icon > a', scale: 1.15},
+        {selector: '.all-links-icon > a', scale: 1.12},
     ];
+
     iconSelectors.forEach((iconInfo) => {
         const icons = document.querySelectorAll(iconInfo.selector);
         icons.forEach((icon) => {
