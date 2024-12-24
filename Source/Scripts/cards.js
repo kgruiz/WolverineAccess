@@ -172,7 +172,12 @@ export function CreateFavoriteCard(link) {
     const removeFavoriteOption = document.createElement('div');
     removeFavoriteOption.className = 'options-menu-item';
     removeFavoriteOption.textContent = 'Remove Favorite';
+
+
+
     optionsMenu.appendChild(removeFavoriteOption);
+
+
 
     let pinOption;
     if (isLinkPinned(link)) {
@@ -233,6 +238,23 @@ export function CreateFavoriteCard(link) {
         e.stopPropagation();  // Prevent card click
         optionsMenu.classList.toggle('active');
     });
+
+    optionsIcon.addEventListener('mouseover', () => {
+        optionsIcon.style.filter = 'brightness(70%)';
+    });
+    optionsIcon.addEventListener('mouseout', () => {
+        optionsIcon.style.filter = 'brightness(100%)';
+    });
+    optionsIcon.addEventListener('mousedown', () => {
+        optionsIcon.style.transform = 'scale(0.8)';
+    });
+    optionsIcon.addEventListener('mouseup', () => {
+        optionsIcon.style.transform = 'scale(1)';
+    });
+    optionsIcon.addEventListener('mouseleave', () => {
+        optionsIcon.style.transform = 'scale(1)';
+    });
+
 
     // Event listener for removeFavoriteOption click
     removeFavoriteOption.addEventListener('click', (e) => {
