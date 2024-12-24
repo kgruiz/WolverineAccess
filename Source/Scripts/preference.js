@@ -1,29 +1,20 @@
 /**
  * FILE: preference.js
- * Manages user preferences throughout the application.
- *
- * This file handles storage and retrieval of user preferences, including:
- *  - The Preferences modal (open/close)
- *  - Toggles like 'Show Pinned Links'
- *  - Spinner-based controls for number of Favorites
- *  - Section reordering toggle and functionality
+ * Manages user preferences throughout the application, including:
+ *  - Show/Hide pinned links
+ *  - Number of Favorites on main page
+ *  - Reordering of main sections from within the Preferences modal
  */
 
 // ==============================
-// Preferences
+// Modal Functionality
 // ==============================
-/**
- * The preferences modal is displayed by clicking the relevant UI element.
- * This includes a fade-in/out and slide-in/out animation for user clarity.
- */
-
-// Get modal elements
 const preferencesMenu = document.getElementById('preferences-menu');
 const preferencesMenuCloseButton =
     document.getElementById('preferences-menu-close-button');
 
 /**
- * Open the preferences modal with a simple fade-in and slide-in effect.
+ * Opens the preferences modal with a fade-in/slide-in effect.
  */
 export function openPreferencesMenu() {
     preferencesMenu.style.display = 'block';
@@ -37,7 +28,6 @@ export function openPreferencesMenu() {
         }
     }, 10);
 
-    // Slide in animation
     const content = preferencesMenu.querySelector('.preferences-menu-content');
     content.style.transform = 'translateY(-50px)';
     let translateY = -50;
@@ -49,10 +39,12 @@ export function openPreferencesMenu() {
             clearInterval(slideIn);
         }
     }, 10);
+
+    buildSectionReorderUI();
 }
 
 /**
- * Close the preferences modal with a fade-out animation.
+ * Closes the preferences modal with a fade-out effect.
  */
 export function closePreferencesMenu() {
     let opacity = 1;
@@ -67,7 +59,7 @@ export function closePreferencesMenu() {
 }
 
 /**
- * Sets up the modal's event listeners for close behavior.
+ * Initialize the Preferences modal's close/escape behavior.
  */
 export function InitializePreferencesMenu() {
     preferencesMenuCloseButton.addEventListener('click', closePreferencesMenu);
@@ -83,16 +75,14 @@ export function InitializePreferencesMenu() {
     });
 }
 
-/**
- * Controls toggles in the Preferences modal, such as "Show Pinned Links."
- * These preferences are saved to localStorage for persistence.
- */
+// ==============================
+// Show/Hide Pinned Links
+// ==============================
 export function InitializePreferencesToggle() {
-    // Handle the "Show Pinned Links" checkbox
     const toggleFavoritesCheckbox = document.getElementById('toggleFavoritesCheckbox');
     const heroPinnedBox = document.querySelector('.hero-pinned-box');
 
-    // Retrieve stored user preference
+    // Retrieve saved preference or default true
     const savedPreference = localStorage.getItem('showFavorites');
     const showFavorites = savedPreference !== null ? JSON.parse(savedPreference) : true;
     toggleFavoritesCheckbox.checked = showFavorites;
@@ -101,7 +91,6 @@ export function InitializePreferencesToggle() {
         heroPinnedBox.style.display = showFavorites ? 'block' : 'none';
     }
 
-    // Listen for changes
     toggleFavoritesCheckbox.addEventListener('change', () => {
         const show = toggleFavoritesCheckbox.checked;
         if (heroPinnedBox) {
@@ -111,11 +100,9 @@ export function InitializePreferencesToggle() {
     });
 }
 
-/**
- * Allows users to adjust how many favorites are shown on the main page,
- * with a spinner control that cycles through a range of values and 'All'.
- * The selection is saved to localStorage.
- */
+// ==============================
+// Favorites Number Spinner
+// ==============================
 export function initializeFavoritesNumSpinner() {
     let favoritesNumSpinnerBox = document.getElementById('favorites-num-spinner-box');
 
@@ -139,12 +126,12 @@ export function initializeFavoritesNumSpinner() {
     if (savedFavoritesNum !== null) {
         favoritesIndex = parseInt(savedFavoritesNum, 10);
     }
+
     for (let i = 0; i < favoritesNumbers.length; i++) {
         favoritesNumbers[i].style.display = 'none';
     }
     favoritesNumbers[favoritesIndex].style.display = 'initial';
 
-    // Handler for next/previous
     function nextFavoritesNum() {
         favoritesNumbers[favoritesIndex].style.display = 'none';
         favoritesIndex = (favoritesIndex + 1) % favoritesNumbers.length;
@@ -171,7 +158,6 @@ export function initializeFavoritesNumSpinner() {
     let nextTimeoutId = null;
     let prevTimeoutId = null;
 
-    // Allow continuous pressing
     function handleNextStart() {
         nextFavoritesNum();
         nextTimeoutId = setTimeout(function continuousNext() {
@@ -200,15 +186,13 @@ export function initializeFavoritesNumSpinner() {
     nextButton.addEventListener('mouseleave', handleStop);
     prevButton.addEventListener('mouseleave', handleStop);
 
-    // Prevent accidental text selection when clicking buttons
     favoritesNumSpinnerBox.addEventListener('mousedown', function(e) {
         e.preventDefault();
     });
 }
 
 /**
- * Trigger UI updates after changing favorites display settings.
- * If these functions exist, they re-render the relevant sections.
+ * Helper to re-render favorites if that feature is present.
  */
 function updateFavoritesDisplay() {
     if (typeof populateFavoritesContainers === 'function') {
@@ -219,142 +203,147 @@ function updateFavoritesDisplay() {
     }
 }
 
-// =======================================================================
-// Section Reordering Feature
-// =======================================================================
-/**
- * This feature allows users to reorder main sections (e.g., Favorites, Most Popular)
- * by dragging and dropping when the preference toggle is enabled.
- */
-
-// Track the section currently being dragged
-let draggedSection = null;
+// ==============================
+// Section Reordering from Preferences
+// ==============================
 
 /**
- * Handler for when a user starts dragging a section.
- * We only allow it if the section is marked draggable="true".
+ * Store an array of section IDs representing the user’s chosen order.
  */
-function handleDragStart(e) {
-    if (this.getAttribute('draggable') === 'true') {
-        draggedSection = this;
-        this.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-    }
+function saveSectionOrder(sectionIds) {
+    localStorage.setItem('sectionOrder', JSON.stringify(sectionIds));
 }
 
 /**
- * By default, dropping is disallowed. Prevent the default event
- * so this element becomes a valid drop target.
+ * Retrieve the stored section order from localStorage, or null if not found.
  */
-function handleDragOver(e) {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-}
-
-/**
- * When the user drops a section on another, place it before the
- * target in the DOM, then persist the new order.
- */
-function handleDrop(e) {
-    e.preventDefault();
-    if (!draggedSection)
-        return;
-    if (this !== draggedSection) {
-        const mainContainer = document.querySelector('main');
-        // Insert the dragged section before the section on which user dropped
-        mainContainer.insertBefore(draggedSection, this);
-    }
-    draggedSection.classList.remove('dragging');
-    draggedSection = null;
-    saveSectionOrder();
-}
-
-/**
- * Saves the current order of reorderable sections to localStorage.
- */
-function saveSectionOrder() {
-    const mainContainer = document.querySelector('main');
-    const reorderableSections = mainContainer.querySelectorAll('.reorderable');
-    const ids = Array.from(reorderableSections).map(sec => sec.id);
-    localStorage.setItem('sectionOrder', JSON.stringify(ids));
-}
-
-/**
- * Restores the order of sections from localStorage, if any.
- */
-function restoreSectionOrder() {
+function getSavedSectionOrder() {
     const saved = localStorage.getItem('sectionOrder');
-    if (!saved)
-        return;
-    const order = JSON.parse(saved);
-    const mainContainer = document.querySelector('main');
+    return saved ? JSON.parse(saved) : null;
+}
 
-    order.forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            mainContainer.appendChild(section);
+/**
+ * Reorder the DOM's <section> elements in <main> according to the provided ID list.
+ */
+function applySectionOrder(sectionIds) {
+    const mainContainer = document.querySelector('main');
+    sectionIds.forEach((id) => {
+        const sec = document.getElementById(id);
+        if (sec) {
+            mainContainer.appendChild(sec);
         }
     });
 }
 
 /**
- * Sets up the necessary drag-and-drop event handlers for all sections
- * that are marked with the class "reorderable."
- * Initially, they are set to draggable="false" and only become draggable
- * once the user enables the preference in the modal.
+ * Builds the UI in Preferences that lets users move sections up or down.
+ * Reflects changes immediately in the DOM, and persists order in localStorage.
  */
-function setupReorderableSections() {
-    const reorderableSections = document.querySelectorAll('.reorderable');
-    reorderableSections.forEach(section => {
-        // Default to not draggable
-        section.setAttribute('draggable', 'false');
-        section.addEventListener('dragstart', handleDragStart);
-        section.addEventListener('dragover', handleDragOver);
-        section.addEventListener('drop', handleDrop);
+function buildSectionReorderUI() {
+    const defaultSectionIds = [
+        'all-favorites-section', 'most-popular-section', 'all-links-section'
+        // Add more sections if needed
+    ];
+
+    // Load existing or fallback to default
+    let sectionOrder = getSavedSectionOrder() || defaultSectionIds.slice();
+
+    // Remove IDs that are no longer in the DOM, add newly introduced IDs
+    sectionOrder = sectionOrder.filter((id) => document.getElementById(id));
+    defaultSectionIds.forEach((id) => {
+        if (!sectionOrder.includes(id) && document.getElementById(id)) {
+            sectionOrder.push(id);
+        }
+    });
+
+    // Apply this order immediately
+    applySectionOrder(sectionOrder);
+
+    // Build the list
+    const listContainer = document.getElementById('sectionsReorderList');
+    if (!listContainer)
+        return;
+    listContainer.innerHTML = '';
+
+    sectionOrder.forEach((sectionId, index) => {
+        // Row container
+        const row = document.createElement('div');
+        row.classList.add('section-reorder-row');
+        row.dataset.sectionId = sectionId;
+
+        // Friendly label
+        let friendlyName = sectionId;
+        switch (sectionId) {
+            case 'all-favorites-section':
+                friendlyName = 'Favorites';
+                break;
+            case 'most-popular-section':
+                friendlyName = 'Most Popular';
+                break;
+            case 'all-links-section':
+                friendlyName = 'All Links';
+                break;
+            default:
+                friendlyName = sectionId;
+        }
+        const label = document.createElement('span');
+        label.textContent = friendlyName;
+
+        // Up button
+        const btnUp = document.createElement('button');
+        btnUp.textContent = '↑';
+        btnUp.addEventListener('click', () => {
+            if (index > 0) {
+                // Swap up
+                const tmp = sectionOrder[index - 1];
+                sectionOrder[index - 1] = sectionOrder[index];
+                sectionOrder[index] = tmp;
+                saveSectionOrder(sectionOrder);
+                applySectionOrder(sectionOrder);
+                buildSectionReorderUI();
+            }
+        });
+
+        // Down button
+        const btnDown = document.createElement('button');
+        btnDown.textContent = '↓';
+        btnDown.addEventListener('click', () => {
+            if (index < sectionOrder.length - 1) {
+                const tmp = sectionOrder[index + 1];
+                sectionOrder[index + 1] = sectionOrder[index];
+                sectionOrder[index] = tmp;
+                saveSectionOrder(sectionOrder);
+                applySectionOrder(sectionOrder);
+                buildSectionReorderUI();
+            }
+        });
+
+        row.appendChild(label);
+        row.appendChild(btnUp);
+        row.appendChild(btnDown);
+
+        listContainer.appendChild(row);
     });
 }
 
 /**
- * Initializes the toggle that allows enabling/disabling section reordering.
- * The user’s choice persists in localStorage under 'enableSectionReorder'.
+ * Public function: call this after or when Preferences are opened, so the user sees
+ * the current order. Also apply the saved order on initial load.
  */
-export function initializeSectionReorderingToggle() {
-    const toggleReorderCheckbox = document.getElementById('toggleSectionReorderCheckbox');
-    if (!toggleReorderCheckbox)
-        return;
-
-    // Restore any existing section order from localStorage
-    restoreSectionOrder();
-    // Attach basic event listeners for all reorderable sections
-    setupReorderableSections();
-
-    // Check if the user had previously enabled reordering
-    const savedPref = localStorage.getItem('enableSectionReorder');
-    const wasEnabled = savedPref ? JSON.parse(savedPref) : false;
-    toggleReorderCheckbox.checked = wasEnabled;
-
-    // If previously enabled, mark sections as draggable
-    if (wasEnabled) {
-        document.querySelectorAll('.reorderable').forEach(sec => {
-            sec.setAttribute('draggable', 'true');
-        });
+export function initializeSectionReorderPreferences() {
+    // In case the order was saved previously, apply it immediately on page load
+    const stored = getSavedSectionOrder();
+    if (stored) {
+        applySectionOrder(stored);
     }
 
-    // Listen for changes on the new toggle
-    toggleReorderCheckbox.addEventListener('change', () => {
-        const reorderableSections = document.querySelectorAll('.reorderable');
-        const isNowEnabled = toggleReorderCheckbox.checked;
-
-        // Save the user’s preference
-        localStorage.setItem('enableSectionReorder', JSON.stringify(isNowEnabled));
-
-        // Update each section's draggable status
-        reorderableSections.forEach(section => {
-            section.setAttribute('draggable', isNowEnabled ? 'true' : 'false');
-            // If turning off, remove visual cues
-            if (!isNowEnabled) {
-                section.classList.remove('dragging');
-            }
-        });
+    // Rebuild the UI each time the modal finishes opening, so it’s always current
+    preferencesMenu.addEventListener('transitionend', function handleOpen() {
+        if (preferencesMenu.style.display === 'block') {
+            buildSectionReorderUI();
+        }
     });
+
+    // If you’d rather build once on page load, uncomment:
+    // buildSectionReorderUI();
 }

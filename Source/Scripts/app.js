@@ -10,15 +10,15 @@ import {InitializeAnimation} from './animation.js';
 import {initializeSignInMenu} from './auth.js';
 import {CreateCard, CreateFavoriteCard} from './cards.js';
 import {state} from './constants.js';
-import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects,} from './effects.js';
+import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects} from './effects.js';
 import {InitializeMessages} from './error.js';
-import {isLinkFavorited, loadFavorites, populateFavoritesContainers,} from './favorites.js';
+import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './favorites.js';
 import {InitializeGlobalListeners} from './globalListeners.js';
-import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds,} from './pinned.js';
-import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle, initializeSectionReorderingToggle,} from './preference.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
+import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle, initializeSectionReorderPreferences} from './preference.js';
 import {initializeTimeSpinners} from './Schedule/calendarOptions.js';
 import {Class, Section} from './Schedule/class.js';
-import {InitializePrinterFriendlyButton, RenderClassSchedule,} from './Schedule/schedule.js';
+import {InitializePrinterFriendlyButton, RenderClassSchedule} from './Schedule/schedule.js';
 import {SetupSearchSuggestions} from './search.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,18 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .all([
             fetch('../../Assets/JSON Files/tasks.json').then((response) => {
                 if (!response.ok) {
-                    // Attempt to extract error details from the response body
                     return response.text().then((text) => {
                         let errorDetails = text;
                         try {
-                            // Try parsing as JSON for structured error messages
                             const json = JSON.parse(text);
                             errorDetails = JSON.stringify(json, null, 2);
                         } catch (e) {
-                            // If not JSON, keep the plain text
+                            // If not JSON, keep plain text
                         }
 
-                        // Construct a detailed error message as a plain string
                         const detailedErrorMessage =
                             `Failed to load tasks.json.\n` +
                             `Status: ${response.status} ${response.statusText}\n` +
@@ -52,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         return Promise.reject(new Error('Failed to load tasks.json'));
                     });
                 }
-                // If response is OK, parse as JSON
                 return response.json();
             }),
             fetch('../../../Assets/JSON Files/classSchedules.json').then((response) => {
@@ -71,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
                 return response.json();
-            }),
+            })
         ])
         .then(([tasksData, schedulesData]) => {
             // Successfully fetched both JSON files
@@ -102,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             initializePage();
         })
         .catch((error) => {
-            // Handle network errors or any thrown errors from above
             const detailedErrorMessage =
                 `Error during data fetching.\n` +
                 `Message: ${error.message}\n` +
@@ -111,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(detailedErrorMessage);
             displayErrorMessage(detailedErrorMessage);
 
-            // Initialize the page even if fetching fails, to show partial UI or errors
+            // Initialize the page even if fetching fails
             initializePage();
         });
 
@@ -231,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         allLinksFullContainer.append(card);
                     });
                 }
-                // Re-init card effects
+                // Re-init card hover
                 initializeCardHoverEffects();
             }
 
@@ -363,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
             SetupSearchSuggestions(heroInput, heroSuggestions);
         }
 
-        // Show More / Show Less buttons on index
+        // Show More / Show Less on index
         const showMoreButton = document.getElementById('show-more');
         const showLessButton = document.getElementById('show-less');
         const showAllButton = document.getElementById('show-all');
@@ -399,18 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeSwitchToggleEffects();
         InitializeMessages();
         InitializeGlobalListeners();
-        InitializePreferencesToggle();
-        InitializePreferencesMenu();
-        initializeFavoritesNumSpinner();
 
         // Initialize preferences
         InitializePreferencesMenu();
         InitializePreferencesToggle();
-
-        // Initialize new section reordering toggle
-        initializeSectionReorderingToggle();
-
         initializeFavoritesNumSpinner();
+
+        // Initialize the new approach for reordering sections in Preferences
+        initializeSectionReorderPreferences();
 
         if (window.location.pathname.includes('index.html')) {
             InitializeAnimation(heroLogo);
@@ -419,7 +410,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Class Schedule page logic
         if (window.location.pathname.includes('class-schedule.html')) {
             const calendarViewOptions = document.querySelector('.calendar-view-options');
-
             calendarViewOptions.style.display = 'none';
 
             let timeSpinners;
@@ -438,8 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const selectedCheckboxes =
                     document.querySelectorAll('input[name="schedule-day"]:checked');
-                let selectedDays =
-                    Array.from(selectedCheckboxes).map((checkbox) => checkbox.value);
+                let selectedDays = Array.from(selectedCheckboxes).map((c) => c.value);
 
                 // Default to Monday if no days are selected
                 if (selectedDays.length === 0) {
@@ -502,16 +491,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const toggleShowEnrolled = document.getElementById('toggleShowEnrolled');
             const toggleShowWaitlisted = document.getElementById('toggleShowWaitlisted');
 
-            [toggleTimePostfix,
-             toggleClassTitle,
-             toggleInstructor,
-             toggleLocation,
-             toggleShowTime,
-             toggleShowEnrolled,
-             toggleShowWaitlisted,
-            ].forEach((toggle) => {
-                toggle.addEventListener('change', updateClassSchedule);
-            });
+            [toggleTimePostfix, toggleClassTitle, toggleInstructor, toggleLocation,
+             toggleShowTime, toggleShowEnrolled, toggleShowWaitlisted]
+                .forEach((toggle) => {
+                    toggle.addEventListener('change', updateClassSchedule);
+                });
         }
     }
 });

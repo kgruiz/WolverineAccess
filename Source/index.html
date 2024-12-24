@@ -187,13 +187,11 @@ Home page for Wolverine Access
           </div>
           Number of Favorites Shown on Main Page
         </div>
-        <!-- New preference item for Section Reordering -->
+
+        <!-- Reorder Sections UI -->
         <div class="preference-item">
-          <label for="toggleSectionReorderCheckbox" class="switch">
-            <input type="checkbox" id="toggleSectionReorderCheckbox" />
-            <span class="slider round"></span>
-          </label>
-          Enable Section Reordering
+          <h3>Reorder Sections</h3>
+          <div id="sectionsReorderList"></div>
         </div>
       </div>
     </div>
@@ -225,8 +223,8 @@ Home page for Wolverine Access
       </div>
     </section>
 
-    <!-- Favorites Section (made reorderable) -->
-    <section class="content-section reorderable" aria-label="All Favorites" id="all-favorites-section">
+    <!-- Favorites Section (no longer 'reorderable') -->
+    <section class="content-section" aria-label="All Favorites" id="all-favorites-section">
       <h2>Favorites</h2>
       <div class="cards-container" id="favorites-container"></div>
       <section class="manage-favorites-button" id="manage-favorites-button">
@@ -237,14 +235,14 @@ Home page for Wolverine Access
       </section>
     </section>
 
-    <!-- Most Popular Section (made reorderable) -->
-    <section class="content-section reorderable" aria-label="Most Popular This Week" id="most-popular-section">
+    <!-- Most Popular Section (no longer 'reorderable') -->
+    <section class="content-section" aria-label="Most Popular This Week" id="most-popular-section">
       <h2>Most Popular This Week</h2>
       <div class="cards-container" id="most-popular-container"></div>
     </section>
 
-    <!-- All Links Section (made reorderable) -->
-    <section class="content-section reorderable" aria-label="All Links" id="all-links-section">
+    <!-- All Links Section (no longer 'reorderable') -->
+    <section class="content-section" aria-label="All Links" id="all-links-section">
       <h2>All Links</h2>
       <div class="cards-container all-links-expandable" id="all-links-container"></div>
       <button id="show-more">Show More</button>
@@ -278,6 +276,7 @@ Home page for Wolverine Access
       </div>
     </section>
   </main>
+
   <footer>
     <!-- FOOTER -->
     <div class="footer-top">
@@ -340,6 +339,7 @@ Home page for Wolverine Access
       </p>
     </div>
   </footer>
+
   <!-- Back to Top Button -->
   <button class="back-to-top" aria-label="Back to Top">
     <span class="material-icons">north</span>
