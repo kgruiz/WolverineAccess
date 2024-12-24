@@ -3,7 +3,9 @@
  * Renders the schedule in a table view.
  */
 
-export function RenderTableView(schedule, scheduleViewContainer) {
+export function RenderTableView(schedule, scheduleViewContainer, selectedDays,
+                                showTimePostfix, showClassTitle, showInstructor,
+                                showLocation, showTime) {
     // Set styles specific to table view
     scheduleViewContainer.style.width = '85%';
     scheduleViewContainer.style.display = 'block';  // Ensure block display

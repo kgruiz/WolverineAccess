@@ -200,7 +200,7 @@
         <div class="schedule-container">
             <h1>My Class Schedule</h1>
 
-            <div class="schedule-view-options">
+            <div class="schedule-type-options">
 
                 <h3>View Type:</h3>
                 <div class="schedule-view-type-wrapper">
@@ -230,61 +230,65 @@
             <div class="schedule-view-container">
             </div>
 
-            <div class="calendar-view-options">
+            <div class="schedule-view-options">
 
-                <h1>Calendar View Options</h1>
+                <h1>Schedule View Options</h1>
 
-                <div class="days-selector-wrapper">
-                    <!-- Checkboxes and Labels -->
-                    <input type="checkbox" id="day-monday" name="schedule-day" class="days-selector-checkbox"
-                        value="Monday" />
-                    <label for="day-monday" class="days-selector-option">Mon</label>
+                <div class="calendar-view-options">
 
-                    <input type="checkbox" id="day-tuesday" name="schedule-day" class="days-selector-checkbox"
-                        value="Tuesday" />
-                    <label for="day-tuesday" class="days-selector-option">Tue</label>
+                    <div class="days-selector-wrapper">
+                        <!-- Checkboxes and Labels -->
+                        <input type="checkbox" id="day-monday" name="schedule-day" class="days-selector-checkbox"
+                            value="Monday" />
+                        <label for="day-monday" class="days-selector-option">Mon</label>
 
-                    <input type="checkbox" id="day-wednesday" name="schedule-day" class="days-selector-checkbox"
-                        value="Wednesday" />
-                    <label for="day-wednesday" class="days-selector-option">Wed</label>
+                        <input type="checkbox" id="day-tuesday" name="schedule-day" class="days-selector-checkbox"
+                            value="Tuesday" />
+                        <label for="day-tuesday" class="days-selector-option">Tue</label>
 
-                    <input type="checkbox" id="day-thursday" name="schedule-day" class="days-selector-checkbox"
-                        value="Thursday" />
-                    <label for="day-thursday" class="days-selector-option">Thu</label>
+                        <input type="checkbox" id="day-wednesday" name="schedule-day" class="days-selector-checkbox"
+                            value="Wednesday" />
+                        <label for="day-wednesday" class="days-selector-option">Wed</label>
 
-                    <input type="checkbox" id="day-friday" name="schedule-day" class="days-selector-checkbox"
-                        value="Friday" />
-                    <label for="day-friday" class="days-selector-option">Fri</label>
+                        <input type="checkbox" id="day-thursday" name="schedule-day" class="days-selector-checkbox"
+                            value="Thursday" />
+                        <label for="day-thursday" class="days-selector-option">Thu</label>
 
-                    <input type="checkbox" id="day-saturday" name="schedule-day" class="days-selector-checkbox"
-                        value="Saturday" />
-                    <label for="day-saturday" class="days-selector-option">Sat</label>
+                        <input type="checkbox" id="day-friday" name="schedule-day" class="days-selector-checkbox"
+                            value="Friday" />
+                        <label for="day-friday" class="days-selector-option">Fri</label>
 
-                    <input type="checkbox" id="day-sunday" name="schedule-day" class="days-selector-checkbox"
-                        value="Sunday" />
-                    <label for="day-sunday" class="days-selector-option">Sun</label>
-                </div>
+                        <input type="checkbox" id="day-saturday" name="schedule-day" class="days-selector-checkbox"
+                            value="Saturday" />
+                        <label for="day-saturday" class="days-selector-option">Sat</label>
 
-
-                <div id="start-end-spinners">
-
-                    <div id="start-time-spinner-wrapper">
-                        <h3>Start Time</h3>
-                        <div class="start-time-spinner">
-                            <span class="start-time-spinner-next"></span>
-                            <span class="start-time-spinner-prev"></span>
-                            <div id="start-time-spinner-box"></div>
-                        </div>
-
+                        <input type="checkbox" id="day-sunday" name="schedule-day" class="days-selector-checkbox"
+                            value="Sunday" />
+                        <label for="day-sunday" class="days-selector-option">Sun</label>
                     </div>
 
 
-                    <div id="end-time-spinner-wrapper">
-                        <h3>End Time</h3>
-                        <div class="end-time-spinner">
-                            <span class="end-time-spinner-next"></span>
-                            <span class="end-time-spinner-prev"></span>
-                            <div id="end-time-spinner-box"></div>
+                    <div id="start-end-spinners">
+
+                        <div id="start-time-spinner-wrapper">
+                            <h3>Start Time</h3>
+                            <div class="start-time-spinner">
+                                <span class="start-time-spinner-next"></span>
+                                <span class="start-time-spinner-prev"></span>
+                                <div id="start-time-spinner-box"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div id="end-time-spinner-wrapper">
+                            <h3>End Time</h3>
+                            <div class="end-time-spinner">
+                                <span class="end-time-spinner-next"></span>
+                                <span class="end-time-spinner-prev"></span>
+                                <div id="end-time-spinner-box"></div>
+                            </div>
+
                         </div>
 
                     </div>

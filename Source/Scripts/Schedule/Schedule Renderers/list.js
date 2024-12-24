@@ -3,90 +3,129 @@
  * Renders the schedule in a list view.
  */
 
-export function RenderListView(schedule, scheduleViewContainer) {
-    // Set styles specific to list view
-    scheduleViewContainer.style.width = '80%';
-    scheduleViewContainer.style.display = 'block';  // Ensure block display
+import {FormatTime} from '../formatTime.js';
 
-    // Loop through courses to display each one
+export function RenderListView(schedule, scheduleViewContainer, showTimePostfix,
+                               showClassTitle, showInstructor, showLocation, showTime) {
+    // Set styles specific to list view
+    Object.assign(scheduleViewContainer.style, {
+        width: '80%',
+        display: 'block',
+    });
+
+    const fragment = document.createDocumentFragment();
+
     schedule.courses.forEach((course) => {
         // Create a container for each course
         const courseContainer = document.createElement('div');
-        courseContainer.classList.add('course-container');  // Add a class for styling
+        courseContainer.classList.add('course-container');
 
-        // Add course title
+        // Determine course title
+        const courseLabel = showClassTitle ? course.course : course.course.split('-')[0];
         const courseTitle = document.createElement('h2');
-        courseTitle.textContent = course.course;
-        courseTitle.style.backgroundColor =
-            '#f9f9f9';  // Light gray background for course title
-        courseTitle.style.padding = '10px';
-        courseTitle.style.border = '1px solid #ddd';
-        courseTitle.style.borderRadius = '4px';
+        courseTitle.textContent = courseLabel;
+        courseTitle.classList.add('course-title');
         courseContainer.appendChild(courseTitle);
 
-        // Add course-level details (Status, Units, Grading)
-        const courseDetailsTable = document.createElement('table');
-        courseDetailsTable.classList.add('course-details-table');
-        courseDetailsTable.style.width = '100%';
-        courseDetailsTable.style.marginBottom = '10px';
-        courseDetailsTable.style.borderCollapse = 'collapse';
-
-        courseDetailsTable.innerHTML = `
-            <tr>
-                <td><strong>Status</strong></td>
-                <td>${course.status}</td>
-                <td><strong>Units</strong></td>
-                <td>${course.units}</td>
-                <td><strong>Grading</strong></td>
-                <td>${course.grading}</td>
-            </tr>
-        `;
+        // Add course-level details
+        const courseDetailsTable = createCourseDetailsTable(course);
         courseContainer.appendChild(courseDetailsTable);
 
-        // Create a table for the sections
-        const sectionsTable = document.createElement('table');
-        sectionsTable.classList.add('sections-table');
-        sectionsTable.style.width = '100%';
-        sectionsTable.style.borderCollapse = 'collapse';
-        sectionsTable.style.marginBottom = '20px';
-
-        // Add table header
-        const tableHeader = document.createElement('thead');
-        tableHeader.innerHTML = `
-            <tr>
-                <th>Class Nbr</th>
-                <th>Instruction Mode</th>
-                <th>Section</th>
-                <th>Component</th>
-                <th>Days & Times</th>
-                <th>Room</th>
-                <th>Instructor</th>
-                <th>Start/End Date</th>
-            </tr>
-        `;
-        sectionsTable.appendChild(tableHeader);
-
-        // Add table body
-        const tableBody = document.createElement('tbody');
-        course.sections.forEach((section) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${section.classNum}</td>
-                <td>${section.instructionMode}</td>
-                <td>${section.sectionNum}</td>
-                <td>${section.component}</td>
-                <td>${section.daysAndTimes}</td>
-                <td>${section.room}</td>
-                <td>${section.instructor}</td>
-                <td>${section.startEndDate}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-
-        sectionsTable.appendChild(tableBody);
+        // Add sections table
+        const sectionsTable = createSectionsTable(course.sections, showTimePostfix,
+                                                  showTime, showLocation, showInstructor);
         courseContainer.appendChild(sectionsTable);
 
-        // Append the course container to the schedule container
-        scheduleViewContainer.appendChild(courseContainer);
+        fragment.appendChild(courseContainer);
     });
+
+    scheduleViewContainer.appendChild(fragment);
+}
+
+function createCourseDetailsTable(course) {
+    const table = document.createElement('table');
+    table.classList.add('course-details-table');
+
+    table.innerHTML = `
+        <tr>
+            <td><strong>Status</strong></td>
+            <td>${course.status}</td>
+            <td><strong>Units</strong></td>
+            <td>${course.units}</td>
+            <td><strong>Grading</strong></td>
+            <td>${course.grading}</td>
+        </tr>
+    `;
+    return table;
+}
+
+function createSectionsTable(sections, showTimePostfix, showTime, showLocation,
+                             showInstructor) {
+    const table = document.createElement('table');
+    table.classList.add('sections-table');
+
+    // Create table header
+    const thead = document.createElement('thead');
+    thead.innerHTML = generateTableHeader(showTime, showLocation, showInstructor);
+    table.appendChild(thead);
+
+    // Create table body
+    const tbody = document.createElement('tbody');
+
+    sections.forEach((section) => {
+        const row = document.createElement('tr');
+        const {days, timeStr} = parseSectionTimes(section.daysAndTimes, showTimePostfix);
+
+        row.innerHTML = `
+            <td>${section.classNum}</td>
+            <td>${section.instructionMode}</td>
+            <td>${section.sectionNum}</td>
+            <td>${section.component}</td>
+            <td>${showTime ? `${days} ${timeStr}` : days}</td>
+            ${showLocation ? `<td>${section.room}</td>` : ''}
+            ${showInstructor ? `<td>${section.instructor}</td>` : ''}
+            <td>${section.startEndDate}</td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    return table;
+}
+
+function generateTableHeader(showTime, showLocation, showInstructor) {
+    let headers = `
+        <tr>
+            <th>Class Nbr</th>
+            <th>Instruction Mode</th>
+            <th>Section</th>
+            <th>Component</th>
+    `;
+
+    headers += showTime ? `<th>Days & Times</th>` : `<th>Days</th>`;
+    if (showLocation)
+        headers += `<th>Room</th>`;
+    if (showInstructor)
+        headers += `<th>Instructor</th>`;
+    headers += `<th>Start / End Date</th></tr>`;
+
+    return headers;
+}
+
+function parseSectionTimes(daysAndTimes, showTimePostfix) {
+    const [days, ...timeParts] = daysAndTimes.split(' ');
+    const times =
+        timeParts.join(' ').split('-').map(time => FormatTime(time, showTimePostfix));
+
+    if (times.length < 2) {
+        console.error('Invalid times length:', times.length);
+        return {days, timeStr: ''};
+    }
+
+    if (times.length > 2) {
+        console.warn('Unexpected times length:', times.length);
+    }
+
+    const timeStr = `${times[0]}-${times[1]}`;
+    return {days, timeStr};
 }

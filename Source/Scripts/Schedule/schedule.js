@@ -21,9 +21,11 @@ export function RenderClassSchedule(uniqName, viewType, selectedDays, showTimePo
 
         // Render the selected view
         if (viewType === 'table') {
-            RenderTableView(schedule, scheduleViewContainer);
+            RenderTableView(schedule, scheduleViewContainer, showTimePostfix,
+                            showClassTitle, showInstructor, showLocation, showTime);
         } else if (viewType === 'list') {
-            RenderListView(schedule, scheduleViewContainer);
+            RenderListView(schedule, scheduleViewContainer, showTimePostfix,
+                           showClassTitle, showInstructor, showLocation, showTime);
         } else if (viewType === 'calendar') {
             RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
                                showTimePostfix, showClassTitle, showInstructor,
