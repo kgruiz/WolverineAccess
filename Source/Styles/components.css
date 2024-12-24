@@ -434,6 +434,10 @@
     margin: 10px 10px;
 }
 
+.preference-item h3 {
+    text-align: center;
+}
+
 /* Slider Styles */
 /* Container for toggle switches */
 .switch {
@@ -1088,6 +1092,20 @@ nav {
    Section Reorder UI
    These rows allow up/down and Hide/Unhide, plus drag-and-drop.
 */
+.reorderPreferences {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#reorderHeader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
 .section-reorder-row {
     display: flex;
     align-items: center;
