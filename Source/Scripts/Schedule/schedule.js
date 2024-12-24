@@ -7,9 +7,9 @@ import {RenderCalendarView} from './Schedule Renderers/calendar.js';
 import {RenderListView} from './Schedule Renderers/list.js';
 import {RenderTableView} from './Schedule Renderers/table.js';
 
-export function RenderClassSchedule(uniqName, viewType, selectedDays, showTimePostfix,
-                                    showClassTitle, showInstructor, showLocation,
-                                    showTime, classSchedules) {
+export function RenderClassSchedule(
+    uniqName, viewType, selectedDays, showTimePostfix, showClassTitle, showInstructor,
+    showLocation, showTime, showEnrolled, showWaitlisted, classSchedules) {
 
     const schedule = classSchedules[uniqName];
     const scheduleViewContainer = document.querySelector('.schedule-view-container');
@@ -22,14 +22,16 @@ export function RenderClassSchedule(uniqName, viewType, selectedDays, showTimePo
         // Render the selected view
         if (viewType === 'table') {
             RenderTableView(schedule, scheduleViewContainer, showTimePostfix,
-                            showClassTitle, showInstructor, showLocation, showTime);
+                            showClassTitle, showInstructor, showLocation, showTime,
+                            showEnrolled, showWaitlisted);
         } else if (viewType === 'list') {
             RenderListView(schedule, scheduleViewContainer, showTimePostfix,
-                           showClassTitle, showInstructor, showLocation, showTime);
+                           showClassTitle, showInstructor, showLocation, showTime,
+                           showEnrolled, showWaitlisted);
         } else if (viewType === 'calendar') {
             RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
                                showTimePostfix, showClassTitle, showInstructor,
-                               showLocation, showTime);
+                               showLocation, showTime, showEnrolled, showWaitlisted);
         } else {
             console.error(`Invalid view type "${viewType}"`);
         }

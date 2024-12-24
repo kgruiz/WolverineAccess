@@ -6,7 +6,8 @@
 import {FormatTime} from '../formatTime.js';
 
 export function RenderTableView(schedule, scheduleViewContainer, showTimePostfix,
-                                showClassTitle, showInstructor, showLocation, showTime) {
+                                showClassTitle, showInstructor, showLocation, showTime,
+                                showEnrolled, showWaitlisted) {
     // Set styles specific to table view
     scheduleViewContainer.style.width = '85%';
     scheduleViewContainer.style.display = 'block';  // Ensure block display
@@ -22,11 +23,14 @@ export function RenderTableView(schedule, scheduleViewContainer, showTimePostfix
 
     schedule.courses.forEach((course) => {
         course.sections.forEach((section) => {
-            const row = document.createElement('tr');
-            row.innerHTML =
-                generateTableRow(course, section, showTimePostfix, showClassTitle,
-                                 showTime, showLocation, showInstructor);
-            tableBody.appendChild(row);
+            if ((showEnrolled && course.status === 'Enrolled') ||
+                (showWaitlisted && course.status === 'Waitlisted')) {
+                const row = document.createElement('tr');
+                row.innerHTML =
+                    generateTableRow(course, section, showTimePostfix, showClassTitle,
+                                     showTime, showLocation, showInstructor);
+                tableBody.appendChild(row);
+            }
         });
     });
     table.appendChild(tableBody);

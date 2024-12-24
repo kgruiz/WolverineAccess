@@ -6,7 +6,8 @@
 import {FormatTime} from '../formatTime.js';
 
 export function RenderListView(schedule, scheduleViewContainer, showTimePostfix,
-                               showClassTitle, showInstructor, showLocation, showTime) {
+                               showClassTitle, showInstructor, showLocation, showTime,
+                               showEnrolled, showWaitlisted) {
     // Set styles specific to list view
     Object.assign(scheduleViewContainer.style, {
         width: '80%',

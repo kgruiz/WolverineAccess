@@ -8,7 +8,7 @@ import {Class, Section} from '../class.js';  // Import Class and Section
 
 export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays,
                                    showTimePostfix, showClassTitle, showInstructor,
-                                   showLocation, showTime) {
+                                   showLocation, showTime, showEnrolled, showWaitlisted) {
 
     // Set styles specific to calendar view
     scheduleViewContainer.style.width = '85%';      // Adjust as needed

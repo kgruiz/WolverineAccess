@@ -449,19 +449,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const toggleInstructor = document.getElementById('toggleInstructor');
                 const toggleLocation = document.getElementById('toggleLocation');
                 const toggleShowTime = document.getElementById('toggleShowTime');
+                const toggleShowEnrolled = document.getElementById('toggleShowEnrolled');
+                const toggleShowWaitlisted =
+                    document.getElementById('toggleShowWaitlisted');
 
                 const showTimePostfix = toggleTimePostfix.checked;
                 const showClassTitle = toggleClassTitle.checked;
                 const showInstructor = toggleInstructor.checked;
                 const showLocation = toggleLocation.checked;
                 const showTime = toggleShowTime.checked;
+                const showEnrolled = toggleShowEnrolled.checked;
+                const showWaitlisted = toggleShowWaitlisted.checked;
                 // Initialize time spinners and pass RenderClassSchedule
                 timeSpinners =
                     initializeTimeSpinners(RenderClassSchedule, showTimePostfix)
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
-                                    showTime, state.classSchedules);
+                                    showTime, showEnrolled, showWaitlisted,
+                                    state.classSchedules);
             }
 
 
@@ -486,11 +492,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const toggleInstructor = document.getElementById('toggleInstructor');
             const toggleLocation = document.getElementById('toggleLocation');
             const toggleShowTime = document.getElementById('toggleShowTime');
+            const toggleShowEnrolled = document.getElementById('toggleShowEnrolled');
+            const toggleShowWaitlisted = document.getElementById('toggleShowWaitlisted');
 
             // Event listeners for toggle switches
             const toggleElements = [
                 toggleTimePostfix, toggleClassTitle, toggleInstructor, toggleLocation,
-                toggleShowTime
+                toggleShowTime, toggleShowEnrolled, toggleShowWaitlisted
             ];
 
             toggleElements.forEach(toggle => {
