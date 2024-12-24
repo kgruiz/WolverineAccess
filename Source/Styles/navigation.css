@@ -306,6 +306,10 @@ nav {
     background: transparent;
 }
 
+.favorites-menu .dropdown-menu-header hr {
+    margin-bottom: -2rem;
+}
+
 /* Manage Favorites Button Styles */
 .manage-favorites-button {
     margin-top: -40px;
