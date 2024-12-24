@@ -227,17 +227,22 @@
     border: 1px solid #00274C;
     padding: 2px;
     margin: 1px;
-    font-size: 0.8rem;
+    font-size: 0.53rem;
     overflow: hidden;
     box-sizing: border-box;
     cursor: pointer;
     border-radius: 4px;
     color: #ffffff;
-    font-weight: 500;
+    font-weight: 600;
     position: absolute;
     left: 0;
     right: 0;
 }
+
+.class-block h2 {
+    font-size: .7rem;
+}
+
 
 .class-block:hover {
     background-color: #02396d;

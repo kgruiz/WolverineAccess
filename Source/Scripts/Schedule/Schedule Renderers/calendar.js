@@ -18,7 +18,7 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
     let tempStartTime = getSelectedStartTime();
     let tempEndTime = getSelectedEndTime();
     const interval = 30;          // 30 minutes
-    const calendarHeight = 700;   // Fixed calendar height in pixels
+    const calendarHeight = 850;   // Fixed calendar height in pixels
     const timeColumnWidth = 100;  // Fixed width for the time column in pixels
 
 
@@ -302,22 +302,24 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
                     return;
                 }
 
+                const courseNum = course.course.split('-')[0];
+                const courseName = course.course.split('-')[1];
+
                 // Create a class block
                 const classBlock = document.createElement('div');
                 classBlock.classList.add('class-block');
-                let classBlockContent = `${course.course} (${section.component})`;
+                let classBlockContent = '';
 
+
+
+                classBlockContent +=
+                    `<h2>${courseNum.trim()} - ${section.sectionNum}</h2>`;
+
+                // Reordered content
                 if (showClassTitle) {
-                    classBlockContent = `${course.course} (${section.component})`;
-                } else {
-                    classBlockContent = `(${section.component})`
+                    classBlockContent += `<h2>${courseName}</h2>`;
                 }
-                if (showInstructor) {
-                    classBlockContent = `${classBlockContent} ${section.instructor}`
-                }
-                if (showLocation) {
-                    classBlockContent = `${classBlockContent} ${section.room}`
-                }
+
                 if (showTime) {
                     let newStart = startTimeStr;
                     let newEnd = endTimeStr;
@@ -346,9 +348,25 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
                             `${String(startHour24).padStart(2, '0')}:${startMinute}`;
                         newEnd = `${String(endHour24).padStart(2, '0')}:${endMinute}`;
                     }
-                    classBlockContent = `${classBlockContent} ${newStart} - ${newEnd}`
+                    classBlockContent += `${newStart} - ${newEnd}<br>`;
                 }
-                classBlock.textContent = classBlockContent;
+
+                if (showLocation) {
+                    classBlockContent += `${section.room}<br>`;
+                }
+
+                if (showInstructor) {
+                    classBlockContent += `${section.instructor}<br>`;
+                }
+
+                // Always show component
+                classBlockContent += `(${section.component})`;
+
+                // Remove any trailing <br> tags
+                classBlockContent = classBlockContent.trim();
+
+                // Set the content using innerHTML to interpret <br> tags
+                classBlock.innerHTML = classBlockContent;
 
                 // Calculate top position within the cell
                 const minutesIntoSlot = startMinutes % interval;
