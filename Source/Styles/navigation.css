@@ -418,3 +418,10 @@ nav {
     display: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+#home-icon:hover,
+#all-links-icon:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
