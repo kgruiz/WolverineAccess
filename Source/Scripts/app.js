@@ -1,33 +1,30 @@
 /**
  * FILE: app.js
  * Initializes and orchestrates application functionality.
+ *
+ * This file is the main entry point for the app. It fetches data, populates
+ * UI components, sets up event listeners, and calls functions from other modules.
  */
-
-// ==============================
-// Application Entry Point
-// ==============================
 
 import {InitializeAnimation} from './animation.js';
 import {initializeSignInMenu} from './auth.js';
 import {CreateCard, CreateFavoriteCard} from './cards.js';
 import {state} from './constants.js';
-import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects} from './effects.js';
-import {InitializeMessages,} from './error.js';
-import {isLinkFavorited, loadFavorites, populateFavoritesContainers} from './favorites.js';
+import {initializeButtonEffects, initializeCardHoverEffects, initializeFavoritesIconHoverEffects, initializeHoverMenus, initializeNavIconsHoverEffects, initializeSwitchToggleEffects,} from './effects.js';
+import {InitializeMessages} from './error.js';
+import {isLinkFavorited, loadFavorites, populateFavoritesContainers,} from './favorites.js';
 import {InitializeGlobalListeners} from './globalListeners.js';
-import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds} from './pinned.js';
-import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle} from './preference.js';
+import {addCardToPinnedsContainers, addPinned, isLinkPinned, loadPinneds, populatePinnedsContainers, removeCardFromPinnedsContainers, removePinned, savePinneds,} from './pinned.js';
+import {initializeFavoritesNumSpinner, InitializePreferencesMenu, InitializePreferencesToggle, initializeSectionReorderingToggle,} from './preference.js';
 import {initializeTimeSpinners} from './Schedule/calendarOptions.js';
 import {Class, Section} from './Schedule/class.js';
-import {InitializePrinterFriendlyButton, RenderClassSchedule} from './Schedule/schedule.js';
+import {InitializePrinterFriendlyButton, RenderClassSchedule,} from './Schedule/schedule.js';
 import {SetupSearchSuggestions} from './search.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // ==============================
     // Data Fetching and Initialization
     // ==============================
-
-    // Create a promise that resolves when both fetches are complete
     Promise
         .all([
             fetch('../../Assets/JSON Files/tasks.json').then((response) => {
@@ -49,17 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             `Status: ${response.status} ${response.statusText}\n` +
                             `Details:\n${errorDetails}`;
 
-                        // Log the detailed error to the console
                         console.error(detailedErrorMessage);
-
-                        // Display the detailed error message on the page
                         displayErrorMessage(detailedErrorMessage);
 
-                        // Reject the promise to skip the next \`.then()\`
                         return Promise.reject(new Error('Failed to load tasks.json'));
                     });
                 }
-                // If response is OK, parse it as JSON
+                // If response is OK, parse as JSON
                 return response.json();
             }),
             fetch('../../../Assets/JSON Files/classSchedules.json').then((response) => {
@@ -68,22 +61,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         const detailedErrorMessage =
                             `Failed to load classSchedules.json\n` +
                             `Status: ${response.status} ${response.statusText}\n` +
-                            `Details:\n${text}`
+                            `Details:\n${text}`;
 
                         console.error(detailedErrorMessage);
                         displayErrorMessage(detailedErrorMessage);
 
                         return Promise.reject(
-                            new Error('Failed to load classSchedules.json'))
-                    })
+                            new Error('Failed to load classSchedules.json'));
+                    });
                 }
                 return response.json();
-            })
+            }),
         ])
         .then(([tasksData, schedulesData]) => {
-            // Successfully fetched and parsed both data files
-
-            // Parse task Data
+            // Successfully fetched both JSON files
+            // Parse tasksData into state
             state.linksData = tasksData;
 
             // Initialize the state for class schedules
@@ -91,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             for (const uniqName in schedulesData) {
                 if (schedulesData.hasOwnProperty(uniqName)) {
                     const scheduleData = schedulesData[uniqName];
-                    const courses = scheduleData.courses.map(courseData => {
-                        const sections = courseData.sections.map(sectionData => {
+                    const courses = scheduleData.courses.map((courseData) => {
+                        const sections = courseData.sections.map((sectionData) => {
                             return new Section(
                                 sectionData.class_nbr, sectionData.instruction_mode,
                                 sectionData.section, sectionData.component,
@@ -101,45 +93,43 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
                         return new Class(courseData.course, courseData.status,
                                          courseData.units, courseData.grading, sections);
-                    })
-                    state.classSchedules[uniqName] = {courses: courses};
+                    });
+                    state.classSchedules[uniqName] = {courses};
                 }
             }
 
-
-            // Now that all data is ready, initialize the page
+            // Proceed once data is in place
             initializePage();
         })
         .catch((error) => {
-            // Handle network errors or rejected promises from above
+            // Handle network errors or any thrown errors from above
             const detailedErrorMessage =
                 `Error during data fetching.\n` +
                 `Message: ${error.message}\n` +
                 `Stack:\n${error.stack || 'No stack trace available.'}`;
 
-            // Log the detailed error to the console
             console.error(detailedErrorMessage);
-
-            // Display the detailed error message on the page
             displayErrorMessage(detailedErrorMessage);
 
-            // Initialize the page even if fetching fails, adjust as needed
+            // Initialize the page even if fetching fails, to show partial UI or errors
             initializePage();
         });
 
-
-
     /**
-     * Initialize the page with fetched data and user information.
+     * Main initialization after data fetch completes or fails.
+     * Sets up user state, favorites, pinned, and UI interactions.
      */
     function initializePage() {
-        // For demonstration, set state.signedIn to true and user info
+        // For demonstration: set state to "signed in"
         state.signedIn = true;
         state.userName = 'Kaden';
         state.userEmail = 'kgruiz@umich.edu';
+
+        // Load favorites and pinned
         loadFavorites();
         loadPinneds();
-        // Populate Most Popular
+
+        // Populate 'Most Popular'
         const mostPopularContainer = document.getElementById('most-popular-container');
         if (mostPopularContainer && state.linksData.length > 0) {
             const sortedByRank =
@@ -150,16 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 mostPopularContainer.append(card);
             });
         }
-        // Populate Top Favorites
+
+        // Populate top Favorites
         const topFavoritesContainer = document.getElementById('favorites-container');
         if (topFavoritesContainer && state.linksData.length > 0) {
             function populateTopFavorites() {
                 topFavoritesContainer.innerHTML = '';
                 const favoritedLinks =
-                    state.linksData.filter(link => isLinkFavorited(link));
+                    state.linksData.filter((link) => isLinkFavorited(link));
                 const sortedByRank =
                     [...favoritedLinks].sort((a, b) => b.currentRating - a.currentRating);
-                // Load maxFavoritesDisplay from localStorage
                 const maxFavoritesDisplay = localStorage.getItem('maxFavoritesDisplay');
                 let numToDisplay =
                     maxFavoritesDisplay ? parseInt(maxFavoritesDisplay, 10) : 4;
@@ -176,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.populateTopFavorites = populateTopFavorites;
             populateTopFavorites();
         }
+
         // Populate All Links on Index
         const allLinksContainer = document.getElementById('all-links-container');
         if (allLinksContainer && state.linksData.length > 0) {
@@ -183,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 [...state.linksData].sort((a, b) => b.currentRating - a.currentRating);
             const top10 = sortedByRank.slice(0, 10);
             const next30 = sortedByRank.slice(10, 40);
+
             top10.forEach((link) => {
                 const card = CreateCard(link);
                 card.classList.add('initial-cards');
@@ -194,11 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 allLinksContainer.append(card);
             });
         }
-        // Initialize Favorites in Hero and Nav
+
+        // Initialize Favorites in hero/nav
         populateFavoritesContainers();
-        // Initialize Pinned Links
+        // Initialize pinned links
         populatePinnedsContainers();
-        // All Links Full Page
+
+        // For the All Links Full page
         const allLinksFullContainer = document.getElementById('all-links-full-container');
         if (allLinksFullContainer) {
             let sortType = 'rank';
@@ -211,11 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
             function RenderAllLinksFull() {
                 allLinksFullContainer.innerHTML = '';
                 let linksToShow = [...state.linksData];
+
                 if (sortType === 'rank') {
                     linksToShow.sort((a, b) => b.currentRating - a.currentRating);
                 } else if (sortType === 'alphabetical') {
                     linksToShow.sort((a, b) => a.title.localeCompare(b.title));
                 }
+
                 if (searchTerm.trim() !== '') {
                     linksToShow = linksToShow.filter(
                         (link) =>
@@ -224,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             (link.applicationName &&
                              link.applicationName.toLowerCase().includes(searchTerm)));
                 }
+
                 if (linksToShow.length === 0) {
                     const noResults = document.createElement('p');
                     noResults.textContent = 'No results found.';
@@ -234,8 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         allLinksFullContainer.append(card);
                     });
                 }
-                // No need to call updateAllCardStars
-                initializeCardHoverEffects();  // Re-initialize hover effects
+                // Re-init card effects
+                initializeCardHoverEffects();
             }
 
             const fullSearchInput = document.getElementById('fullSearchInput');
@@ -246,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     RenderAllLinksFull();
                 });
             }
+
             const sortTypeToggle = document.getElementById('sort-type-toggle');
             if (sortTypeToggle) {
                 sortTypeToggle.addEventListener('change', () => {
@@ -254,9 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
             RenderAllLinksFull();
+
             const showMoreButton = document.getElementById('show-more');
             const showLessButton = document.getElementById('show-less');
             const showAllButton = document.getElementById('show-all');
+
             showMoreButton?.addEventListener('click', () => {
                 const additionalCards = document.querySelectorAll('.additional-cards');
                 additionalCards.forEach((card) => {
@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showLessButton.classList.remove('hidden');
                 showAllButton.classList.remove('hidden');
             });
+
             showLessButton?.addEventListener('click', () => {
                 const additionalCards = document.querySelectorAll('.additional-cards');
                 additionalCards.forEach((card) => {
@@ -275,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showLessButton.classList.add('hidden');
                 showAllButton.classList.add('hidden');
             });
+
             initializeSignInMenu();
             initializeHoverMenus();
             initializeButtonEffects();
@@ -282,6 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
             initializeNavIconsHoverEffects();
             initializeFavoritesIconHoverEffects();
         }
+
         // Favorites Manager Page
         const favoritesManagerContainer =
             document.getElementById('all-favorites-container');
@@ -347,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
             initializeNavIconsHoverEffects();
             initializeFavoritesIconHoverEffects();
         }
+
         // Setup Search Suggestions
         const headerInput = document.getElementById('headerSearchInput');
         const headerSuggestions = document.getElementById('headerSearchSuggestions');
@@ -358,10 +362,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroInput && heroSuggestions) {
             SetupSearchSuggestions(heroInput, heroSuggestions);
         }
-        // Show More/Less
+
+        // Show More / Show Less buttons on index
         const showMoreButton = document.getElementById('show-more');
         const showLessButton = document.getElementById('show-less');
         const showAllButton = document.getElementById('show-all');
+
         showMoreButton?.addEventListener('click', () => {
             const additionalCards = document.querySelectorAll('.additional-cards');
             additionalCards.forEach((card) => {
@@ -371,6 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showLessButton.classList.remove('hidden');
             showAllButton.classList.remove('hidden');
         });
+
         showLessButton?.addEventListener('click', () => {
             const additionalCards = document.querySelectorAll('.additional-cards');
             additionalCards.forEach((card) => {
@@ -396,45 +403,48 @@ document.addEventListener('DOMContentLoaded', () => {
         InitializePreferencesMenu();
         initializeFavoritesNumSpinner();
 
+        // Initialize preferences
+        InitializePreferencesMenu();
+        InitializePreferencesToggle();
+
+        // Initialize new section reordering toggle
+        initializeSectionReorderingToggle();
+
+        initializeFavoritesNumSpinner();
+
         if (window.location.pathname.includes('index.html')) {
             InitializeAnimation(heroLogo);
         }
 
+        // Class Schedule page logic
         if (window.location.pathname.includes('class-schedule.html')) {
-
             const calendarViewOptions = document.querySelector('.calendar-view-options');
 
             calendarViewOptions.style.display = 'none';
 
             let timeSpinners;
-
             InitializePrinterFriendlyButton();
 
-
             function updateClassSchedule() {
-                // Get the currently selected view type
                 const selectedRadio =
                     document.querySelector('input[name="schedule-view"]:checked');
                 const viewType = selectedRadio ? selectedRadio.value : 'list';
 
                 if (viewType === 'calendar') {
-
                     calendarViewOptions.style.display = 'flex';
                 } else {
-
                     calendarViewOptions.style.display = 'none';
                 }
 
-                // Get all selected day checkboxes
                 const selectedCheckboxes =
                     document.querySelectorAll('input[name="schedule-day"]:checked');
                 let selectedDays =
-                    Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+                    Array.from(selectedCheckboxes).map((checkbox) => checkbox.value);
 
-                // If no days are selected, default to Monday
+                // Default to Monday if no days are selected
                 if (selectedDays.length === 0) {
                     const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-                    selectedDays = days.map(day => {
+                    selectedDays = days.map((day) => {
                         const checkbox = document.getElementById(`day-${day}`);
                         if (checkbox) {
                             checkbox.checked = true;
@@ -442,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         return day.charAt(0).toUpperCase() + day.slice(1);
                     });
                 }
-
 
                 const toggleTimePostfix = document.getElementById('toggleTimePostfix');
                 const toggleClassTitle = document.getElementById('toggleClassTitle');
@@ -460,9 +469,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const showTime = toggleShowTime.checked;
                 const showEnrolled = toggleShowEnrolled.checked;
                 const showWaitlisted = toggleShowWaitlisted.checked;
-                // Initialize time spinners and pass RenderClassSchedule
+
                 timeSpinners =
-                    initializeTimeSpinners(RenderClassSchedule, showTimePostfix)
+                    initializeTimeSpinners(RenderClassSchedule, showTimePostfix);
 
                 RenderClassSchedule('kgruiz', viewType, selectedDays, showTimePostfix,
                                     showClassTitle, showInstructor, showLocation,
@@ -470,22 +479,20 @@ document.addEventListener('DOMContentLoaded', () => {
                                     state.classSchedules);
             }
 
-
             updateClassSchedule();
 
-            // Event listeners for view type radio buttons
+            // Event listeners for schedule view radio
             const scheduleViewRadios =
                 document.querySelectorAll('input[name="schedule-view"]');
-            scheduleViewRadios.forEach(radio => {
+            scheduleViewRadios.forEach((radio) => {
                 radio.addEventListener('change', updateClassSchedule);
             });
 
             // Event listeners for day checkboxes
             const dayCheckboxes = document.querySelectorAll('input[name="schedule-day"]');
-            dayCheckboxes.forEach(checkbox => {
+            dayCheckboxes.forEach((checkbox) => {
                 checkbox.addEventListener('change', updateClassSchedule);
             });
-
 
             const toggleTimePostfix = document.getElementById('toggleTimePostfix');
             const toggleClassTitle = document.getElementById('toggleClassTitle');
@@ -495,19 +502,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const toggleShowEnrolled = document.getElementById('toggleShowEnrolled');
             const toggleShowWaitlisted = document.getElementById('toggleShowWaitlisted');
 
-            // Event listeners for toggle switches
-            const toggleElements = [
-                toggleTimePostfix, toggleClassTitle, toggleInstructor, toggleLocation,
-                toggleShowTime, toggleShowEnrolled, toggleShowWaitlisted
-            ];
-
-            toggleElements.forEach(toggle => {
+            [toggleTimePostfix,
+             toggleClassTitle,
+             toggleInstructor,
+             toggleLocation,
+             toggleShowTime,
+             toggleShowEnrolled,
+             toggleShowWaitlisted,
+            ].forEach((toggle) => {
                 toggle.addEventListener('change', updateClassSchedule);
             });
         }
     }
 });
 
+/**
+ * Displays an error message in the #error-message-container if present.
+ */
 function displayErrorMessage(message) {
     const errorContainer = document.getElementById('error-message-container');
     if (errorContainer) {

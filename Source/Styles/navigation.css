@@ -438,3 +438,17 @@ nav {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+
+/* Ensure the nav bar is positioned and stacked above other elements */
+nav {
+    position: relative;
+    z-index: 9999;
+    /* A high value so it's on top */
+}
+
+/* Keep the main content behind the nav */
+.reorderable {
+    position: relative;
+    z-index: 1;
+}
