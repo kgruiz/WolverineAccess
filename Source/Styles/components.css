@@ -66,11 +66,9 @@
     margin-right: 50px;
 }
 
-
 .cards-container.all-links-expandable .card {
     flex: 0 1 calc((100% - (4 * 1rem))/5);
 }
-
 
 .cards-container.all-links-full {
     display: flex;
@@ -383,8 +381,6 @@
     flex-direction: column;
 }
 
-
-
 /* Modal Styles */
 /* The Modal (background) */
 .modal {
@@ -437,8 +433,6 @@
     gap: 10px;
     margin: 10px 10px;
 }
-
-
 
 /* Slider Styles */
 /* Container for toggle switches */
@@ -583,7 +577,6 @@ input:checked+.slider::before {
     font-weight: 700;
     user-select: none;
     white-space: nowrap;
-
     /* Prevent wrapping of number */
 }
 
@@ -591,8 +584,6 @@ input:checked+.slider::before {
     display: initial;
     /* Show the default index*/
 }
-
-
 
 /* Sort Type Selector */
 .sort-type-selector {
@@ -651,4 +642,15 @@ input:checked+.slider::before {
 .sort-type-selector+.sort-type-container div:last-child {
     color: #00274C;
     transition: color 0.3s;
+}
+
+/*
+   Override nav styling so favorite cards in the dropdown
+   don't inherit unwanted color or font size from the nav.
+*/
+.dropdown-menu .favorite-card,
+.dropdown-menu .favorite-card * {
+    color: #00274C !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
 }
