@@ -4,12 +4,15 @@
  *  - Show/Hide pinned links
  *  - Number of Favorites on main page
  *  - Reordering of main sections from within the Preferences modal
+ *  - Tabbed interface in a sidebar for the Preferences modal
+ *  - Navigation Bar icon selection for pinned links
  *
- * This version adds:
- *  1. IT Services section in the reorder list.
- *  2. Hide/Unhide functionality for each section.
- *  3. Drag-and-drop ordering with visual feedback.
+ * This version ensures that each tab’s content is displayed separately:
+ *  - Only the tab with .active is shown, per the CSS in index.html
  */
+
+import {state} from './constants.js';
+import {isLinkPinned} from './pinned.js';  // Production note: Using pinned.js for pinned checks
 
 // ==============================
 // Modal Functionality
@@ -47,7 +50,9 @@ export function openPreferencesMenu() {
         }
     }, 10);
 
+    // Rebuild relevant UIs on modal open
     buildSectionReorderUI();
+    buildNavBarLinksSelectionUI();
 }
 
 /**
@@ -66,7 +71,8 @@ export function closePreferencesMenu() {
 }
 
 /**
- * Initialize the Preferences modal's close/escape behavior.
+ * Initialize the Preferences modal's close/escape behavior,
+ * along with tab switching in the sidebar.
  */
 export function InitializePreferencesMenu() {
     preferencesMenuCloseButton.addEventListener('click', closePreferencesMenu);
@@ -81,6 +87,24 @@ export function InitializePreferencesMenu() {
         if (event.key === 'Escape' && preferencesMenu.style.display === 'block') {
             closePreferencesMenu();
         }
+    });
+
+    // Production note: Initialize sidebar-based tab switching.
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.preferences-tab-content');
+
+    tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            tabButtons.forEach((b) => b.classList.remove('active'));
+            tabContents.forEach((c) => c.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetTab = btn.getAttribute('data-tab');
+            const tabContent = document.getElementById(targetTab);
+            if (tabContent) {
+                tabContent.classList.add('active');
+            }
+        });
     });
 }
 
@@ -203,6 +227,8 @@ export function initializeFavoritesNumSpinner() {
 }
 
 function updateFavoritesDisplay() {
+    // Production note: This calls other dynamic updates after
+    // changing the number of favorites displayed.
     if (typeof populateFavoritesContainers === 'function') {
         populateFavoritesContainers();
     }
@@ -279,14 +305,12 @@ function toggleSectionVisibility(sectionId) {
     const hiddenSections = getHiddenSections();
 
     if (isSectionHidden(sectionId)) {
-        // Unhide
         sec.style.display = '';
         const idx = hiddenSections.indexOf(sectionId);
         if (idx !== -1) {
             hiddenSections.splice(idx, 1);
         }
     } else {
-        // Hide
         sec.style.display = 'none';
         if (!hiddenSections.includes(sectionId)) {
             hiddenSections.push(sectionId);
@@ -310,12 +334,11 @@ function applyHiddenSections() {
 
 /**
  * Builds the UI in Preferences to let users reorder and hide sections.
- * Reflects changes immediately and persists order in localStorage.
  */
 function buildSectionReorderUI() {
     let sectionOrder = getSavedSectionOrder() || defaultSectionIds.slice();
 
-    // Remove IDs not in DOM; add new ones if in DOM
+    // Remove IDs not in DOM; add new ones if present
     sectionOrder = sectionOrder.filter((id) => document.getElementById(id));
     defaultSectionIds.forEach((id) => {
         if (!sectionOrder.includes(id) && document.getElementById(id)) {
@@ -336,7 +359,7 @@ function buildSectionReorderUI() {
         const row = document.createElement('div');
         row.classList.add('section-reorder-row');
         row.dataset.sectionId = sectionId;
-        row.draggable = true;  // for drag-and-drop
+        row.draggable = true;
 
         let friendlyName = sectionId;
         switch (sectionId) {
@@ -468,6 +491,142 @@ export function initializeSectionReorderPreferences() {
         applySectionOrder(stored);
     }
     applyHiddenSections();
-    // Build the interface so it's ready when user opens the Preferences modal
     buildSectionReorderUI();
+    buildNavBarLinksSelectionUI();
 }
+
+// ==============================
+// Navigation Bar Icon Selection
+// ==============================
+function buildNavBarLinksSelectionUI() {
+    const navBarLinksSelection = document.getElementById('nav-bar-links-selection');
+    if (!navBarLinksSelection)
+        return;
+
+    navBarLinksSelection.innerHTML = '';
+
+    if (!state || !state.linksData) {
+        const noStateMsg = document.createElement('p');
+        noStateMsg.textContent = 'No pinned links available (no link data found).';
+        navBarLinksSelection.appendChild(noStateMsg);
+        return;
+    }
+
+    // Gather pinned links from state
+    const pinnedLinks = state.linksData.filter((link) => isLinkPinned(link));
+
+    // Retrieve existing nav bar picks from localStorage
+    let navBarPicks = localStorage.getItem('navBarSelectedPinnedLinks');
+    if (!navBarPicks) {
+        navBarPicks = [];
+    } else {
+        try {
+            navBarPicks = JSON.parse(navBarPicks);
+        } catch (e) {
+            navBarPicks = [];
+        }
+    }
+
+    if (pinnedLinks.length === 0) {
+        const noneMsg = document.createElement('p');
+        noneMsg.textContent = 'No pinned links yet.';
+        navBarLinksSelection.appendChild(noneMsg);
+        return;
+    }
+
+    pinnedLinks.forEach((link) => {
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.alignItems = 'center';
+        wrapper.style.marginBottom = '6px';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.style.marginRight = '8px';
+        checkbox.checked = navBarPicks.includes(link.uniqueKey);
+
+        const label = document.createElement('label');
+        label.textContent = link.title || link.applicationName || 'Pinned Link';
+
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(label);
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                if (!navBarPicks.includes(link.uniqueKey)) {
+                    navBarPicks.push(link.uniqueKey);
+                }
+            } else {
+                const idx = navBarPicks.indexOf(link.uniqueKey);
+                if (idx !== -1) {
+                    navBarPicks.splice(idx, 1);
+                }
+            }
+            localStorage.setItem('navBarSelectedPinnedLinks',
+                                 JSON.stringify(navBarPicks));
+            applyNavBarIcons();
+        });
+
+        navBarLinksSelection.appendChild(wrapper);
+    });
+
+    applyNavBarIcons();
+}
+
+/**
+ * applyNavBarIcons reads the user-chosen pinned link IDs and renders them in the nav bar.
+ */
+function applyNavBarIcons() {
+    const customNavIcons = document.getElementById('custom-nav-icons');
+    if (!customNavIcons)
+        return;
+
+    customNavIcons.innerHTML = '';
+
+    // Retrieve picks from localStorage
+    const picksString = localStorage.getItem('navBarSelectedPinnedLinks');
+    if (!picksString)
+        return;
+
+    let picks = [];
+    try {
+        picks = JSON.parse(picksString);
+    } catch (e) {
+        picks = [];
+    }
+
+    // Gather pinned links from state
+    const pinnedLinks =
+        state.linksData ? state.linksData.filter((link) => isLinkPinned(link)) : [];
+
+    // Filter down to only links that user selected
+    const selectedLinks = pinnedLinks.filter((link) => picks.includes(link.uniqueKey));
+
+    // For each selection, place an icon or fallback text in the nav bar
+    selectedLinks.forEach((link) => {
+        const li = document.createElement('li');
+        li.style.listStyle = 'none';
+
+        const anchor = document.createElement('a');
+        anchor.href = link.url || link.destination || '#';
+        anchor.ariaLabel = link.title || link.applicationName || 'Pinned Link';
+        anchor.style.display = 'inline-flex';
+        anchor.style.alignItems = 'center';
+
+        if (link.iconName) {
+            const iconSpan = document.createElement('span');
+            iconSpan.classList.add('material-icons');
+            iconSpan.textContent = link.iconName;
+            anchor.appendChild(iconSpan);
+        } else {
+            const textSpan = document.createElement('span');
+            textSpan.textContent = link.title || link.applicationName || 'Link';
+            anchor.appendChild(textSpan);
+        }
+
+        li.appendChild(anchor);
+        customNavIcons.appendChild(li);
+    });
+}
+
+export {buildSectionReorderUI};

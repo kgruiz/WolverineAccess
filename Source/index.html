@@ -22,6 +22,12 @@ Home page for Wolverine Access
   <!-- Favicon -->
   <link rel="icon" href="../../Assets/Media/PrimaryLogoKit/Color Logo/U-M_Logo-Hex.png" type="image/png" />
   <title>Wolverine Access</title>
+
+  <!--
+    Production note: Adding inline styles here to ensure that only one tab
+    displays at a time. In a production environment, these could go in main.css
+    or a dedicated stylesheet.
+  -->
 </head>
 
 <body>
@@ -132,6 +138,12 @@ Home page for Wolverine Access
               </a>
             </li>
           </ul>
+          <!--
+            Production note: The user's custom nav icons will appear here.
+            They are appended in preference.js when the user chooses them.
+          -->
+          <ul class="nav-icons custom-nav-icons" id="custom-nav-icons"></ul>
+
           <!-- Sign In Button -->
           <div class="sign-in-container menu-toggle-icon" id="sign-in-container">
             <button class="sign-in-button" type="button" id="sign-in-menu-toggle">
@@ -171,34 +183,64 @@ Home page for Wolverine Access
         <span class="preferences-menu-close-button" id="preferences-menu-close-button">
           <span class="material-icons">close</span>
         </span>
-        <h2>Preferences</h2>
-        <div class="preference-item">
-          <label for="toggleFavoritesCheckbox" class="switch">
-            <input type="checkbox" id="toggleFavoritesCheckbox" checked />
-            <span class="slider round"></span>
-          </label>
-          Show Pinned Links
-        </div>
-        <div class="preference-item">
-          <div class="favorites-num-spinner">
-            <label for="favorites-num-spinner-box"></label>
-            <span class="favorites-spinner-next"></span>
-            <span class="favorites-spinner-prev"></span>
-            <div id="favorites-num-spinner-box"></div>
-          </div>
-          Number of Favorites Shown on Main Page
-        </div>
 
-        <!-- Reorder Sections UI -->
-        <div class="preference-item">
-          <div class="reorderPreferences">
-            <div id="reorderHeader">
-              <h3>Reorder Sections</h3>
+        <!--
+          Production note: We use a sidebar layout for the tabs. The sidebar is on the
+          left, and the main content for each tab is on the right. The .active class
+          determines which tab content is displayed, per CSS above.
+        -->
+        <div class="preferences-modal-layout">
+          <div class="preferences-sidebar">
+            <button class="tab-button active" data-tab="main-page-tab" id="main-page-tab-button">
+              Main Page
+            </button>
+            <button class="tab-button" data-tab="nav-bar-tab" id="nav-bar-tab-button">
+              Navigation Bar
+            </button>
+          </div>
+
+          <div class="preferences-content">
+            <!-- Main Page tab content -->
+            <div class="preferences-tab-content active" id="main-page-tab">
+              <h2>Main Page Preferences</h2>
+              <div class="preference-item">
+                <label for="toggleFavoritesCheckbox" class="switch">
+                  <input type="checkbox" id="toggleFavoritesCheckbox" checked />
+                  <span class="slider round"></span>
+                </label>
+                Show Pinned Links
+              </div>
+              <div class="preference-item">
+                <div class="favorites-num-spinner">
+                  <label for="favorites-num-spinner-box"></label>
+                  <span class="favorites-spinner-next"></span>
+                  <span class="favorites-spinner-prev"></span>
+                  <div id="favorites-num-spinner-box"></div>
+                </div>
+                Number of Favorites Shown on Main Page
+              </div>
+
+              <!-- Reorder Sections UI -->
+              <div class="preference-item">
+                <div class="reorderPreferences">
+                  <div id="reorderHeader">
+                    <h3>Reorder Sections</h3>
+                  </div>
+                  <div id="sectionsReorderList"></div>
+                </div>
+              </div>
             </div>
-            <div id="sectionsReorderList"></div>
+
+            <!-- Navigation Bar tab content -->
+            <div class="preferences-tab-content" id="nav-bar-tab">
+              <h2>Navigation Bar Preferences</h2>
+              <p>Select pinned links to add as icons in the nav bar:</p>
+              <div id="nav-bar-links-selection"></div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
   </header>
 
   <main>
