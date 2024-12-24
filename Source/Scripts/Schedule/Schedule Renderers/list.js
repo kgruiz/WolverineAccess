@@ -17,6 +17,12 @@ export function RenderListView(schedule, scheduleViewContainer, showTimePostfix,
     const fragment = document.createDocumentFragment();
 
     schedule.courses.forEach((course) => {
+        // Control whether a course is shown based on its status
+        if ((course.status === 'Enrolled' && !showEnrolled) ||
+            (course.status === 'Waitlisted' && !showWaitlisted)) {
+            return;
+        }
+
         // Create a container for each course
         const courseContainer = document.createElement('div');
         courseContainer.classList.add('course-container');

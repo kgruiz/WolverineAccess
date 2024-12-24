@@ -231,6 +231,12 @@ export function RenderCalendarView(schedule, scheduleViewContainer, selectedDays
 
     // Process each course section
     schedule.courses.forEach(course => {
+        // Control whether a course is shown based on its status
+        if ((course.status === 'Enrolled' && !showEnrolled) ||
+            (course.status === 'Waitlisted' && !showWaitlisted)) {
+            return;
+        }
+
         course.sections.forEach(section => {
             // Correctly split the days and time range using regex to handle different
             // dash types and extra spaces
