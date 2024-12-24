@@ -15,6 +15,7 @@ export function RenderListView(schedule, scheduleViewContainer, showTimePostfix,
     });
 
     const fragment = document.createDocumentFragment();
+    let coursesShown = false;
 
     schedule.courses.forEach((course) => {
         // Control whether a course is shown based on its status
@@ -22,6 +23,8 @@ export function RenderListView(schedule, scheduleViewContainer, showTimePostfix,
             (course.status === 'Waitlisted' && !showWaitlisted)) {
             return;
         }
+
+        coursesShown = true;
 
         // Create a container for each course
         const courseContainer = document.createElement('div');
@@ -45,6 +48,13 @@ export function RenderListView(schedule, scheduleViewContainer, showTimePostfix,
 
         fragment.appendChild(courseContainer);
     });
+
+    if (!coursesShown) {
+        const noCoursesMessage = document.createElement('p');
+        noCoursesMessage.textContent = 'No courses match current view options';
+        noCoursesMessage.style.textAlign = 'center';
+        fragment.appendChild(noCoursesMessage);
+    }
 
     scheduleViewContainer.appendChild(fragment);
 }

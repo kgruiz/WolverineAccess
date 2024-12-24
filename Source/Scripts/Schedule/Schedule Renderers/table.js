@@ -20,11 +20,13 @@ export function RenderTableView(schedule, scheduleViewContainer, showTimePostfix
     table.appendChild(tableHeader);
 
     const tableBody = document.createElement('tbody');
+    let coursesShown = false;
 
     schedule.courses.forEach((course) => {
         course.sections.forEach((section) => {
             if ((showEnrolled && course.status === 'Enrolled') ||
                 (showWaitlisted && course.status === 'Waitlisted')) {
+                coursesShown = true;
                 const row = document.createElement('tr');
                 row.innerHTML =
                     generateTableRow(course, section, showTimePostfix, showClassTitle,
@@ -33,8 +35,15 @@ export function RenderTableView(schedule, scheduleViewContainer, showTimePostfix
             }
         });
     });
-    table.appendChild(tableBody);
-    scheduleViewContainer.appendChild(table);
+
+    if (!coursesShown) {
+        const noCoursesMessage = document.createElement('p');
+        noCoursesMessage.textContent = 'No courses match current view options';
+        scheduleViewContainer.appendChild(noCoursesMessage);
+    } else {
+        table.appendChild(tableBody);
+        scheduleViewContainer.appendChild(table);
+    }
 }
 
 function generateTableHeader(showTime, showLocation, showInstructor) {
