@@ -169,14 +169,6 @@ export function CreateFavoriteCard(link) {
     // Create the options menu
     const optionsMenu = document.createElement('div');
     optionsMenu.className = 'options-menu';
-    const removeFavoriteOption = document.createElement('div');
-    removeFavoriteOption.className = 'options-menu-item';
-    removeFavoriteOption.textContent = 'Remove Favorite';
-
-
-
-    optionsMenu.appendChild(removeFavoriteOption);
-
 
 
     let pinOption;
@@ -194,6 +186,12 @@ export function CreateFavoriteCard(link) {
         optionsMenu.appendChild(pinOption);
     }
 
+    const removeFavoriteOption = document.createElement('div');
+    removeFavoriteOption.className = 'options-menu-item';
+    removeFavoriteOption.textContent = 'Remove Favorite';
+
+
+    optionsMenu.appendChild(removeFavoriteOption);
 
 
     // Add the options menu to the card
