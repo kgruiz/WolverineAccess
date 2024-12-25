@@ -234,8 +234,15 @@ Home page for Wolverine Access
             <!-- Navigation Bar tab content -->
             <div class="preferences-tab-content" id="nav-bar-tab">
               <h2>Navigation Bar Preferences</h2>
-              <p>Select pinned links to add as icons in the nav bar:</p>
-              <div id="nav-bar-links-selection"></div>
+
+              <div class="preference-item">
+                <div class="reorderNavIcons" id="reorderNavIcons">
+                </div>
+              </div>
+              <div id="nav-bar-links-selection-container">
+                <button id="nav-bar-add-links" class="manage-favorites">Add Icons From Pinned Links</button>
+                <div id="nav-bar-links-selection"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -379,7 +386,7 @@ Home page for Wolverine Access
     </div>
     <div class="footer-bottom">
       <p>
-        &copy 2024
+        © 2024
         <a href="http://regents.umich.edu/">The Regents of the University of Michigan</a>
         and
         <a href="https://github.com/kgruiz">Kaden Gruizenga</a>

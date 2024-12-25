@@ -53,6 +53,7 @@ export function openPreferencesMenu() {
     // Rebuild relevant UIs on modal open
     buildSectionReorderUI();
     buildNavBarLinksSelectionUI();
+    buildNavBarReorderUI();
 }
 
 /**
@@ -493,6 +494,7 @@ export function initializeSectionReorderPreferences() {
     applyHiddenSections();
     buildSectionReorderUI();
     buildNavBarLinksSelectionUI();
+    buildNavBarReorderUI();
 }
 
 // ==============================
@@ -500,10 +502,14 @@ export function initializeSectionReorderPreferences() {
 // ==============================
 function buildNavBarLinksSelectionUI() {
     const navBarLinksSelection = document.getElementById('nav-bar-links-selection');
+    const navBarLinksSelectionContainer =
+        document.getElementById('nav-bar-links-selection-container');
     if (!navBarLinksSelection)
         return;
 
     navBarLinksSelection.innerHTML = '';
+    navBarLinksSelectionContainer.style.display = 'none';
+
 
     if (!state || !state.linksData) {
         const noStateMsg = document.createElement('p');
@@ -533,6 +539,12 @@ function buildNavBarLinksSelectionUI() {
         navBarLinksSelection.appendChild(noneMsg);
         return;
     }
+
+    const addLinksButton = document.getElementById('nav-bar-add-links');
+    addLinksButton.addEventListener('click', () => {
+        navBarLinksSelectionContainer.style.display = 'flex';
+        addLinksButton.style.display = 'none';
+    });
 
     pinnedLinks.forEach((link) => {
         const wrapper = document.createElement('div');
@@ -612,6 +624,7 @@ function applyNavBarIcons() {
         anchor.ariaLabel = link.title || link.applicationName || 'Pinned Link';
         anchor.style.display = 'inline-flex';
         anchor.style.alignItems = 'center';
+        anchor.dataset.uniqueKey = link.uniqueKey;
 
         if (link.iconName) {
             const iconSpan = document.createElement('span');
@@ -626,6 +639,155 @@ function applyNavBarIcons() {
 
         li.appendChild(anchor);
         customNavIcons.appendChild(li);
+    });
+    buildNavBarReorderUI();
+}
+
+// ==============================
+// Navigation Bar Icon Reordering
+// ==============================
+/**
+ * Store array of IDs representing the user’s chosen order for nav bar icons.
+ */
+function saveNavBarOrder(navBarOrder) {
+    localStorage.setItem('navBarOrder', JSON.stringify(navBarOrder));
+}
+
+/**
+ * Retrieve the stored nav bar order from localStorage or null if not found.
+ */
+function getSavedNavBarOrder() {
+    const saved = localStorage.getItem('navBarOrder');
+    return saved ? JSON.parse(saved) : null;
+}
+
+/**
+ * Reorder the DOM's nav icons in the nav bar according to the given uniqueKey list.
+ */
+function applyNavBarOrder(navBarOrder) {
+    const navBar = document.getElementById('custom-nav-icons');
+    if (!navBar)
+        return;
+
+    navBarOrder.forEach((uniqueKey) => {
+        const icon = navBar.querySelector(`a[data-unique-key="${uniqueKey}"]`);
+        if (icon) {
+            navBar.appendChild(icon.parentElement);
+        }
+    });
+}
+
+function buildNavBarReorderUI() {
+    let navBarOrder = getSavedNavBarOrder() || [];
+
+    const navBar = document.getElementById('custom-nav-icons');
+    if (!navBar)
+        return;
+
+    // Get current order from the DOM in case there are new additions or removals.
+    const currentOrder =
+        Array.from(navBar.querySelectorAll('li > a')).map(icon => icon.dataset.uniqueKey)
+
+    // Remove IDs not in DOM, and add new ones if present.
+    navBarOrder = navBarOrder.filter(id => currentOrder.includes(id));
+    currentOrder.forEach(id => {
+        if (!navBarOrder.includes(id)) {
+            navBarOrder.push(id)
+        }
+    })
+
+
+    applyNavBarOrder(navBarOrder);
+    saveNavBarOrder(navBarOrder);
+
+
+    const listContainer = document.getElementById('reorderNavIcons');
+    if (!listContainer)
+        return;
+    listContainer.innerHTML = '';
+
+    navBarOrder.forEach((uniqueKey, index) => {
+        const row = document.createElement('div');
+        row.classList.add('section-reorder-row');
+        row.dataset.uniqueKey = uniqueKey;
+        row.draggable = true;
+
+        let friendlyName = uniqueKey;
+        const link = state.linksData.find(l => l.uniqueKey === uniqueKey);
+        if (link) {
+            friendlyName = link.title || link.applicationName || 'Nav Icon'
+        }
+
+        const label = document.createElement('span');
+        label.classList.add('section-reorder-label');
+        label.textContent = friendlyName;
+
+        const btnContainer = document.createElement('div');
+        btnContainer.classList.add('section-reorder-buttons');
+
+        // Up button
+        const btnUp = document.createElement('button');
+        btnUp.textContent = '↑';
+        btnUp.addEventListener('click', () => {
+            if (index > 0) {
+                [navBarOrder[index - 1], navBarOrder[index]] =
+                    [navBarOrder[index], navBarOrder[index - 1]];
+                saveNavBarOrder(navBarOrder);
+                applyNavBarOrder(navBarOrder);
+                buildNavBarReorderUI();
+            }
+        });
+
+        // Down button
+        const btnDown = document.createElement('button');
+        btnDown.textContent = '↓';
+        btnDown.addEventListener('click', () => {
+            if (index < navBarOrder.length - 1) {
+                [navBarOrder[index + 1], navBarOrder[index]] =
+                    [navBarOrder[index], navBarOrder[index + 1]];
+                saveNavBarOrder(navBarOrder);
+                applyNavBarOrder(navBarOrder);
+                buildNavBarReorderUI();
+            }
+        });
+
+        btnContainer.appendChild(btnUp);
+        btnContainer.appendChild(btnDown);
+
+        row.appendChild(label);
+        row.appendChild(btnContainer);
+        listContainer.appendChild(row);
+    });
+
+
+    // DRAG & DROP
+    listContainer.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(listContainer, e.clientY);
+        const draggingRow = document.querySelector('.dragging');
+        if (!draggingRow)
+            return;
+
+        if (!afterElement) {
+            listContainer.appendChild(draggingRow);
+        } else {
+            listContainer.insertBefore(draggingRow, afterElement);
+        }
+    });
+
+    listContainer.querySelectorAll('.section-reorder-row').forEach((rowEl) => {
+        rowEl.addEventListener('dragstart', () => {
+            rowEl.classList.add('dragging');
+        });
+        rowEl.addEventListener('dragend', () => {
+            rowEl.classList.remove('dragging');
+            const newOrder =
+                [...listContainer.querySelectorAll('.section-reorder-row')].map(
+                    (el) => el.dataset.uniqueKey);
+            saveNavBarOrder(newOrder);
+            applyNavBarOrder(newOrder);
+            buildNavBarReorderUI();
+        });
     });
 }
 
