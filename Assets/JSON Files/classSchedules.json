@@ -45,7 +45,7 @@
                         "section": "001",
                         "component": "Lecture",
                         "days_and_times": "TuTh 11:30AM - 1:00PM",
-                        "room": "SKB2500",
+                        "room": "MLB1400",
                         "instructor": "Kira Thurman",
                         "start_end_date": "01/08/2025 - 04/22/2025"
                     },
@@ -74,7 +74,7 @@
                         "section": "003",
                         "component": "Lecture",
                         "days_and_times": "MoWeFr 10:00AM - 11:00AM",
-                        "room": "WH120",
+                        "room": "EH1068",
                         "instructor": "Chuhao Sun",
                         "start_end_date": "01/08/2025 - 04/22/2025"
                     }
